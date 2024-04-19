@@ -1,4 +1,4 @@
-namespace DnDDesktop
+namespace DnDDesktop.Controllers
 {
     internal static class Program
     {

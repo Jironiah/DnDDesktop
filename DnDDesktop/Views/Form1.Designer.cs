@@ -30,7 +30,8 @@
         {
             tabControl1 = new TabControl();
             AbilityScore = new TabPage();
-            lbDescriptionAbilityScore = new ListBox();
+            rtbDescriptionAbilityScore = new RichTextBox();
+            btInsertarAbilityScore = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -373,7 +374,8 @@
             // 
             // AbilityScore
             // 
-            AbilityScore.Controls.Add(lbDescriptionAbilityScore);
+            AbilityScore.Controls.Add(rtbDescriptionAbilityScore);
+            AbilityScore.Controls.Add(btInsertarAbilityScore);
             AbilityScore.Controls.Add(label5);
             AbilityScore.Controls.Add(label4);
             AbilityScore.Controls.Add(label3);
@@ -391,15 +393,24 @@
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
             AbilityScore.UseVisualStyleBackColor = true;
+            AbilityScore.Click += AbilityScore_Click;
             // 
-            // lbDescriptionAbilityScore
+            // rtbDescriptionAbilityScore
             // 
-            lbDescriptionAbilityScore.ItemHeight = 20;
-            lbDescriptionAbilityScore.Location = new Point(629, 31);
-            lbDescriptionAbilityScore.Margin = new Padding(3, 4, 3, 4);
-            lbDescriptionAbilityScore.Name = "lbDescriptionAbilityScore";
-            lbDescriptionAbilityScore.Size = new Size(505, 204);
-            lbDescriptionAbilityScore.TabIndex = 10;
+            rtbDescriptionAbilityScore.Location = new Point(626, 31);
+            rtbDescriptionAbilityScore.Name = "rtbDescriptionAbilityScore";
+            rtbDescriptionAbilityScore.Size = new Size(568, 45);
+            rtbDescriptionAbilityScore.TabIndex = 21;
+            rtbDescriptionAbilityScore.Text = "";
+            // 
+            // btInsertarAbilityScore
+            // 
+            btInsertarAbilityScore.Location = new Point(1164, 462);
+            btInsertarAbilityScore.Name = "btInsertarAbilityScore";
+            btInsertarAbilityScore.Size = new Size(94, 34);
+            btInsertarAbilityScore.TabIndex = 20;
+            btInsertarAbilityScore.Text = "Instertar";
+            btInsertarAbilityScore.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -3280,8 +3291,6 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage AbilityScore;
-        public System.Windows.Forms.ListBox lbDescriptionAbilityScore;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label3;
@@ -3570,6 +3579,9 @@
         public System.Windows.Forms.Label label129;
         public System.Windows.Forms.TextBox tbIndexSkills;
         public System.Windows.Forms.TextBox tbNameSkills;
+        public TabPage AbilityScore;
+        public Button btInsertarAbilityScore;
+        public RichTextBox rtbDescriptionAbilityScore;
     }
 }
 

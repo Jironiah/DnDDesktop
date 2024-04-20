@@ -1,7 +1,7 @@
-﻿using DNDAPI.Models.Commons;
+﻿using DnDDesktop.Models.Commons;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace DNDAPI.Models.SubModels
+namespace DnDDesktop.Models.SubModels
 {
     [BsonNoId]
     public class ClassSpecificLevel

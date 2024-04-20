@@ -54,7 +54,7 @@ namespace DnDDesktop.Models
         public int? Quantity { get; set; }
 
         [BsonElement("range")]
-        public DNDAPI.Models.Commons.Range? Range { get; set; }
+        public DnDDesktop.Models.Commons.Range? Range { get; set; }
 
         [BsonElement("special")]
         public string[]? Special { get; set; }
@@ -69,7 +69,7 @@ namespace DnDDesktop.Models
         public int? StrengthMinimum { get; set; }
 
         [BsonElement("throw_range")]
-        public DNDAPI.Models.Commons.Range? ThrowRange { get; set; }
+        public DnDDesktop.Models.Commons.Range? ThrowRange { get; set; }
 
         [BsonElement("tool_category")]
         public string ToolCategory { get; set; } = String.Empty;

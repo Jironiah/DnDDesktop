@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace DNDAPI.Models.Commons
+namespace DnDDesktop.Models.Commons
 {
     [BsonNoId]
     public class DiceCountValueCommon

@@ -110,5 +110,10 @@ namespace DnDDesktop
         {
 
         }
+
+        private void AbilityScore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

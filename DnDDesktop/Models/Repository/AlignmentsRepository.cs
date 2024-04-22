@@ -1,36 +1,40 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using Newtonsoft.Json;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DnDDesktop.Models.Repository
 {
-    public class AbilityScoreRepository
+    public class AlignmentsRepository
     {
-        string urlAbilityScore = "https://localhost:44349/api/AbilityScore";
+        string urlAlignments = "https://localhost:44349/api/Alignment/";
 
-        public List<AbilityScore> GetAbilityScores()
+        public List<Alignment> GetAlignments()
         {
-            return MakeRequest<List<AbilityScore>>(urlAbilityScore, null, "GET", "application/json");
+            return MakeRequest<List<Alignment>>(urlAlignments, null, "GET", "application/json");
         }
 
-        public AbilityScore GetAbilityScore(string id)
+        public Alignment GetAlignment(string id)
         {
-            return MakeRequest<AbilityScore>(urlAbilityScore + id, null, "GET", "application/json");
+            return MakeRequest<Alignment>(urlAlignments + id, null, "GET", "application/json");
         }
 
-        public AbilityScore CreateAbilityScore(AbilityScore abilityScore)
+        public Alignment CreateAlignment(Alignment alignment)
         {
-            return MakeRequest<AbilityScore>(urlAbilityScore, abilityScore, "POST", "application/json");
+            return MakeRequest<Alignment>(urlAlignments, alignment, "POST", "application/json");
         }
 
-        public AbilityScore UpdateAbilityScore(AbilityScore abilityScore)
+        public Alignment UpdateAlignment(Alignment alignment)
         {
-            return MakeRequest<AbilityScore>(urlAbilityScore + abilityScore.Id, abilityScore, "PUT", "application/json");
+            return MakeRequest<Alignment>(urlAlignments + alignment.Id, alignment, "PUT", "application/json");
         }
 
-        public AbilityScore DeleteAbilityScore(string id)
+        public Alignment DeleteAlignment(string id)
         {
-            return MakeRequest<AbilityScore>(urlAbilityScore + id, null, "DELETE", "application/json");
+            return MakeRequest<Alignment>(urlAlignments + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

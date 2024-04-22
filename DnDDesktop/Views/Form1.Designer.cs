@@ -42,7 +42,7 @@
             tbIndexAbilityScore = new TextBox();
             tbFullNameAbilityScore = new TextBox();
             Alignments = new TabPage();
-            lbDescriptionAlignments = new ListBox();
+            rtbDescriptionAlignments = new RichTextBox();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
@@ -320,6 +320,7 @@
             Subclasses = new TabPage();
             SubRaces = new TabPage();
             Traits = new TabPage();
+            btInsertarAlignments = new Button();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             Alignments.SuspendLayout();
@@ -365,11 +366,10 @@
             tabControl1.Controls.Add(Subclasses);
             tabControl1.Controls.Add(SubRaces);
             tabControl1.Controls.Add(Traits);
-            tabControl1.Location = new Point(13, 16);
-            tabControl1.Margin = new Padding(3, 4, 3, 4);
+            tabControl1.Location = new Point(11, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1304, 561);
+            tabControl1.Size = new Size(1141, 421);
             tabControl1.TabIndex = 0;
             // 
             // AbilityScore
@@ -385,11 +385,10 @@
             AbilityScore.Controls.Add(tbNameAbilityScore);
             AbilityScore.Controls.Add(tbIndexAbilityScore);
             AbilityScore.Controls.Add(tbFullNameAbilityScore);
-            AbilityScore.Location = new Point(4, 29);
-            AbilityScore.Margin = new Padding(3, 4, 3, 4);
+            AbilityScore.Location = new Point(4, 24);
             AbilityScore.Name = "AbilityScore";
-            AbilityScore.Padding = new Padding(3, 4, 3, 4);
-            AbilityScore.Size = new Size(1296, 528);
+            AbilityScore.Padding = new Padding(3);
+            AbilityScore.Size = new Size(1133, 393);
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
             AbilityScore.UseVisualStyleBackColor = true;
@@ -397,17 +396,19 @@
             // 
             // rtbDescriptionAbilityScore
             // 
-            rtbDescriptionAbilityScore.Location = new Point(626, 31);
+            rtbDescriptionAbilityScore.Location = new Point(548, 23);
+            rtbDescriptionAbilityScore.Margin = new Padding(3, 2, 3, 2);
             rtbDescriptionAbilityScore.Name = "rtbDescriptionAbilityScore";
-            rtbDescriptionAbilityScore.Size = new Size(568, 45);
+            rtbDescriptionAbilityScore.Size = new Size(498, 35);
             rtbDescriptionAbilityScore.TabIndex = 21;
             rtbDescriptionAbilityScore.Text = "";
             // 
             // btInsertarAbilityScore
             // 
-            btInsertarAbilityScore.Location = new Point(1164, 462);
+            btInsertarAbilityScore.Location = new Point(1018, 346);
+            btInsertarAbilityScore.Margin = new Padding(3, 2, 3, 2);
             btInsertarAbilityScore.Name = "btInsertarAbilityScore";
-            btInsertarAbilityScore.Size = new Size(94, 34);
+            btInsertarAbilityScore.Size = new Size(82, 26);
             btInsertarAbilityScore.TabIndex = 20;
             btInsertarAbilityScore.Text = "Instertar";
             btInsertarAbilityScore.UseVisualStyleBackColor = true;
@@ -415,84 +416,81 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 95);
+            label5.Location = new Point(14, 71);
             label5.Name = "label5";
-            label5.Size = new Size(42, 20);
+            label5.Size = new Size(33, 15);
             label5.TabIndex = 19;
             label5.Text = "Skills";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(93, 8);
+            label4.Location = new Point(81, 6);
             label4.Name = "label4";
-            label4.Size = new Size(49, 20);
+            label4.Size = new Size(39, 15);
             label4.TabIndex = 18;
             label4.Text = "Name";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 8);
+            label3.Location = new Point(14, 6);
             label3.Name = "label3";
-            label3.Size = new Size(45, 20);
+            label3.Size = new Size(36, 15);
             label3.TabIndex = 17;
             label3.Text = "Index";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(335, 8);
+            label2.Location = new Point(293, 6);
             label2.Name = "label2";
-            label2.Size = new Size(76, 20);
+            label2.Size = new Size(61, 15);
             label2.TabIndex = 16;
             label2.Text = "Full Name";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(626, 8);
+            label1.Location = new Point(548, 6);
             label1.Name = "label1";
-            label1.Size = new Size(85, 20);
+            label1.Size = new Size(67, 15);
             label1.TabIndex = 15;
             label1.Text = "Description";
             // 
             // cbSkillsAbilityScore
             // 
             cbSkillsAbilityScore.FormattingEnabled = true;
-            cbSkillsAbilityScore.Location = new Point(16, 122);
-            cbSkillsAbilityScore.Margin = new Padding(3, 4, 3, 4);
+            cbSkillsAbilityScore.Location = new Point(14, 92);
             cbSkillsAbilityScore.Name = "cbSkillsAbilityScore";
-            cbSkillsAbilityScore.Size = new Size(220, 28);
+            cbSkillsAbilityScore.Size = new Size(193, 23);
             cbSkillsAbilityScore.TabIndex = 14;
             // 
             // tbNameAbilityScore
             // 
-            tbNameAbilityScore.Location = new Point(96, 31);
-            tbNameAbilityScore.Margin = new Padding(3, 4, 3, 4);
+            tbNameAbilityScore.Location = new Point(84, 23);
             tbNameAbilityScore.Name = "tbNameAbilityScore";
-            tbNameAbilityScore.Size = new Size(199, 27);
+            tbNameAbilityScore.Size = new Size(175, 23);
             tbNameAbilityScore.TabIndex = 13;
             // 
             // tbIndexAbilityScore
             // 
-            tbIndexAbilityScore.Location = new Point(19, 31);
-            tbIndexAbilityScore.Margin = new Padding(3, 4, 3, 4);
+            tbIndexAbilityScore.Location = new Point(17, 23);
             tbIndexAbilityScore.Name = "tbIndexAbilityScore";
-            tbIndexAbilityScore.Size = new Size(41, 27);
+            tbIndexAbilityScore.Size = new Size(36, 23);
             tbIndexAbilityScore.TabIndex = 12;
             // 
             // tbFullNameAbilityScore
             // 
-            tbFullNameAbilityScore.Location = new Point(338, 31);
-            tbFullNameAbilityScore.Margin = new Padding(3, 4, 3, 4);
+            tbFullNameAbilityScore.Location = new Point(296, 23);
             tbFullNameAbilityScore.Name = "tbFullNameAbilityScore";
-            tbFullNameAbilityScore.Size = new Size(252, 27);
+            tbFullNameAbilityScore.Size = new Size(221, 23);
             tbFullNameAbilityScore.TabIndex = 11;
             // 
             // Alignments
             // 
-            Alignments.Controls.Add(lbDescriptionAlignments);
+            Alignments.Controls.Add(btInsertarAlignments);
+            Alignments.Controls.Add(rtbDescriptionAlignments);
             Alignments.Controls.Add(label7);
             Alignments.Controls.Add(label8);
             Alignments.Controls.Add(label9);
@@ -500,82 +498,78 @@
             Alignments.Controls.Add(tbAbbreviationAlignments);
             Alignments.Controls.Add(tbIndexAlignments);
             Alignments.Controls.Add(tbNameAlignments);
-            Alignments.Location = new Point(4, 29);
-            Alignments.Margin = new Padding(3, 4, 3, 4);
+            Alignments.Location = new Point(4, 24);
             Alignments.Name = "Alignments";
-            Alignments.Padding = new Padding(3, 4, 3, 4);
-            Alignments.Size = new Size(1296, 528);
+            Alignments.Padding = new Padding(3);
+            Alignments.Size = new Size(1133, 393);
             Alignments.TabIndex = 1;
             Alignments.Text = "Alignments";
             Alignments.UseVisualStyleBackColor = true;
             // 
-            // lbDescriptionAlignments
+            // rtbDescriptionAlignments
             // 
-            lbDescriptionAlignments.ItemHeight = 20;
-            lbDescriptionAlignments.Location = new Point(629, 31);
-            lbDescriptionAlignments.Margin = new Padding(3, 4, 3, 4);
-            lbDescriptionAlignments.Name = "lbDescriptionAlignments";
-            lbDescriptionAlignments.Size = new Size(505, 204);
-            lbDescriptionAlignments.TabIndex = 20;
+            rtbDescriptionAlignments.Location = new Point(548, 23);
+            rtbDescriptionAlignments.Margin = new Padding(3, 2, 3, 2);
+            rtbDescriptionAlignments.Name = "rtbDescriptionAlignments";
+            rtbDescriptionAlignments.Size = new Size(498, 70);
+            rtbDescriptionAlignments.TabIndex = 29;
+            rtbDescriptionAlignments.Text = "";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(93, 8);
+            label7.Location = new Point(81, 6);
             label7.Name = "label7";
-            label7.Size = new Size(95, 20);
+            label7.Size = new Size(75, 15);
             label7.TabIndex = 28;
             label7.Text = "Abbreviation";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(16, 8);
+            label8.Location = new Point(14, 6);
             label8.Name = "label8";
-            label8.Size = new Size(45, 20);
+            label8.Size = new Size(36, 15);
             label8.TabIndex = 27;
             label8.Text = "Index";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(335, 8);
+            label9.Location = new Point(293, 6);
             label9.Name = "label9";
-            label9.Size = new Size(49, 20);
+            label9.Size = new Size(39, 15);
             label9.TabIndex = 26;
             label9.Text = "Name";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(626, 8);
+            label10.Location = new Point(548, 6);
             label10.Name = "label10";
-            label10.Size = new Size(85, 20);
+            label10.Size = new Size(67, 15);
             label10.TabIndex = 25;
             label10.Text = "Description";
             // 
             // tbAbbreviationAlignments
             // 
-            tbAbbreviationAlignments.Location = new Point(96, 31);
-            tbAbbreviationAlignments.Margin = new Padding(3, 4, 3, 4);
+            tbAbbreviationAlignments.Location = new Point(84, 23);
             tbAbbreviationAlignments.Name = "tbAbbreviationAlignments";
-            tbAbbreviationAlignments.Size = new Size(199, 27);
+            tbAbbreviationAlignments.Size = new Size(175, 23);
             tbAbbreviationAlignments.TabIndex = 23;
             // 
             // tbIndexAlignments
             // 
-            tbIndexAlignments.Location = new Point(19, 31);
-            tbIndexAlignments.Margin = new Padding(3, 4, 3, 4);
+            tbIndexAlignments.Location = new Point(17, 23);
             tbIndexAlignments.Name = "tbIndexAlignments";
-            tbIndexAlignments.Size = new Size(41, 27);
+            tbIndexAlignments.Size = new Size(36, 23);
             tbIndexAlignments.TabIndex = 22;
             // 
             // tbNameAlignments
             // 
-            tbNameAlignments.Location = new Point(338, 31);
-            tbNameAlignments.Margin = new Padding(3, 4, 3, 4);
+            tbNameAlignments.Location = new Point(296, 23);
             tbNameAlignments.Name = "tbNameAlignments";
-            tbNameAlignments.Size = new Size(252, 27);
+            tbNameAlignments.Size = new Size(221, 23);
             tbNameAlignments.TabIndex = 21;
             // 
             // WeaponProperties
@@ -586,11 +580,10 @@
             WeaponProperties.Controls.Add(label13);
             WeaponProperties.Controls.Add(tbIndexWeaponProperties);
             WeaponProperties.Controls.Add(tbNameWeaponProperties);
-            WeaponProperties.Location = new Point(4, 29);
-            WeaponProperties.Margin = new Padding(3, 4, 3, 4);
+            WeaponProperties.Location = new Point(4, 24);
             WeaponProperties.Name = "WeaponProperties";
-            WeaponProperties.Padding = new Padding(3, 4, 3, 4);
-            WeaponProperties.Size = new Size(1296, 528);
+            WeaponProperties.Padding = new Padding(3);
+            WeaponProperties.Size = new Size(1133, 393);
             WeaponProperties.TabIndex = 2;
             WeaponProperties.Text = "Weapon Properties";
             WeaponProperties.UseVisualStyleBackColor = true;
@@ -598,54 +591,51 @@
             // 
             // lbDescriptionWeaponProperties
             // 
-            lbDescriptionWeaponProperties.ItemHeight = 20;
-            lbDescriptionWeaponProperties.Location = new Point(376, 31);
-            lbDescriptionWeaponProperties.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionWeaponProperties.ItemHeight = 15;
+            lbDescriptionWeaponProperties.Location = new Point(329, 23);
             lbDescriptionWeaponProperties.Name = "lbDescriptionWeaponProperties";
-            lbDescriptionWeaponProperties.Size = new Size(505, 204);
+            lbDescriptionWeaponProperties.Size = new Size(442, 154);
             lbDescriptionWeaponProperties.TabIndex = 29;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(16, 8);
+            label11.Location = new Point(14, 6);
             label11.Name = "label11";
-            label11.Size = new Size(45, 20);
+            label11.Size = new Size(36, 15);
             label11.TabIndex = 35;
             label11.Text = "Index";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(82, 8);
+            label12.Location = new Point(72, 6);
             label12.Name = "label12";
-            label12.Size = new Size(49, 20);
+            label12.Size = new Size(39, 15);
             label12.TabIndex = 34;
             label12.Text = "Name";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(373, 8);
+            label13.Location = new Point(326, 6);
             label13.Name = "label13";
-            label13.Size = new Size(85, 20);
+            label13.Size = new Size(67, 15);
             label13.TabIndex = 33;
             label13.Text = "Description";
             // 
             // tbIndexWeaponProperties
             // 
-            tbIndexWeaponProperties.Location = new Point(19, 31);
-            tbIndexWeaponProperties.Margin = new Padding(3, 4, 3, 4);
+            tbIndexWeaponProperties.Location = new Point(17, 23);
             tbIndexWeaponProperties.Name = "tbIndexWeaponProperties";
-            tbIndexWeaponProperties.Size = new Size(41, 27);
+            tbIndexWeaponProperties.Size = new Size(36, 23);
             tbIndexWeaponProperties.TabIndex = 31;
             // 
             // tbNameWeaponProperties
             // 
-            tbNameWeaponProperties.Location = new Point(85, 31);
-            tbNameWeaponProperties.Margin = new Padding(3, 4, 3, 4);
+            tbNameWeaponProperties.Location = new Point(74, 23);
             tbNameWeaponProperties.Name = "tbNameWeaponProperties";
-            tbNameWeaponProperties.Size = new Size(252, 27);
+            tbNameWeaponProperties.Size = new Size(221, 23);
             tbNameWeaponProperties.TabIndex = 30;
             // 
             // Classes
@@ -672,11 +662,10 @@
             Classes.Controls.Add(tbHitDieClasses);
             Classes.Controls.Add(textBox2);
             Classes.Controls.Add(tbName);
-            Classes.Location = new Point(4, 29);
-            Classes.Margin = new Padding(3, 4, 3, 4);
+            Classes.Location = new Point(4, 24);
             Classes.Name = "Classes";
-            Classes.Padding = new Padding(3, 4, 3, 4);
-            Classes.Size = new Size(1296, 528);
+            Classes.Padding = new Padding(3);
+            Classes.Size = new Size(1133, 393);
             Classes.TabIndex = 3;
             Classes.Text = "Classes";
             Classes.UseVisualStyleBackColor = true;
@@ -685,18 +674,17 @@
             // cbSubclassesClasses
             // 
             cbSubclassesClasses.FormattingEnabled = true;
-            cbSubclassesClasses.Location = new Point(485, 131);
-            cbSubclassesClasses.Margin = new Padding(3, 4, 3, 4);
+            cbSubclassesClasses.Location = new Point(424, 98);
             cbSubclassesClasses.Name = "cbSubclassesClasses";
-            cbSubclassesClasses.Size = new Size(121, 28);
+            cbSubclassesClasses.Size = new Size(106, 23);
             cbSubclassesClasses.TabIndex = 52;
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(482, 108);
+            label16.Location = new Point(422, 81);
             label16.Name = "label16";
-            label16.Size = new Size(79, 20);
+            label16.Size = new Size(63, 15);
             label16.TabIndex = 51;
             label16.Text = "Subclasses";
             label16.Click += label16_Click;
@@ -704,72 +692,68 @@
             // cbStartingEquipmentOptionsClasses
             // 
             cbStartingEquipmentOptionsClasses.FormattingEnabled = true;
-            cbStartingEquipmentOptionsClasses.Location = new Point(303, 131);
-            cbStartingEquipmentOptionsClasses.Margin = new Padding(3, 4, 3, 4);
+            cbStartingEquipmentOptionsClasses.Location = new Point(265, 98);
             cbStartingEquipmentOptionsClasses.Name = "cbStartingEquipmentOptionsClasses";
-            cbStartingEquipmentOptionsClasses.Size = new Size(159, 28);
+            cbStartingEquipmentOptionsClasses.Size = new Size(140, 23);
             cbStartingEquipmentOptionsClasses.TabIndex = 50;
             // 
             // Sa
             // 
             Sa.AutoSize = true;
-            Sa.Location = new Point(300, 108);
+            Sa.Location = new Point(262, 81);
             Sa.Name = "Sa";
-            Sa.Size = new Size(185, 20);
+            Sa.Size = new Size(148, 15);
             Sa.TabIndex = 49;
             Sa.Text = "StartingEquipmentOptions";
             // 
             // cbStartingEquipmentClasses
             // 
             cbStartingEquipmentClasses.FormattingEnabled = true;
-            cbStartingEquipmentClasses.Location = new Point(160, 131);
-            cbStartingEquipmentClasses.Margin = new Padding(3, 4, 3, 4);
+            cbStartingEquipmentClasses.Location = new Point(140, 98);
             cbStartingEquipmentClasses.Name = "cbStartingEquipmentClasses";
-            cbStartingEquipmentClasses.Size = new Size(121, 28);
+            cbStartingEquipmentClasses.Size = new Size(106, 23);
             cbStartingEquipmentClasses.TabIndex = 48;
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(157, 108);
+            label22.Location = new Point(137, 81);
             label22.Name = "label22";
-            label22.Size = new Size(133, 20);
+            label22.Size = new Size(106, 15);
             label22.TabIndex = 47;
             label22.Text = "StartingEquipment";
             // 
             // cbSpellcastingClasses
             // 
             cbSpellcastingClasses.FormattingEnabled = true;
-            cbSpellcastingClasses.Location = new Point(17, 131);
-            cbSpellcastingClasses.Margin = new Padding(3, 4, 3, 4);
+            cbSpellcastingClasses.Location = new Point(15, 98);
             cbSpellcastingClasses.Name = "cbSpellcastingClasses";
-            cbSpellcastingClasses.Size = new Size(121, 28);
+            cbSpellcastingClasses.Size = new Size(106, 23);
             cbSpellcastingClasses.TabIndex = 46;
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(14, 108);
+            label23.Location = new Point(12, 81);
             label23.Name = "label23";
-            label23.Size = new Size(89, 20);
+            label23.Size = new Size(70, 15);
             label23.TabIndex = 45;
             label23.Text = "Spellcasting";
             // 
             // cbSavingThrowsClasses
             // 
             cbSavingThrowsClasses.FormattingEnabled = true;
-            cbSavingThrowsClasses.Location = new Point(1038, 38);
-            cbSavingThrowsClasses.Margin = new Padding(3, 4, 3, 4);
+            cbSavingThrowsClasses.Location = new Point(908, 28);
             cbSavingThrowsClasses.Name = "cbSavingThrowsClasses";
-            cbSavingThrowsClasses.Size = new Size(121, 28);
+            cbSavingThrowsClasses.Size = new Size(106, 23);
             cbSavingThrowsClasses.TabIndex = 44;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(1035, 14);
+            label19.Location = new Point(906, 10);
             label19.Name = "label19";
-            label19.Size = new Size(100, 20);
+            label19.Size = new Size(80, 15);
             label19.TabIndex = 43;
             label19.Text = "SavingThrows";
             label19.Click += label19_Click;
@@ -777,18 +761,17 @@
             // cbProficiencyChoicesClasses
             // 
             cbProficiencyChoicesClasses.FormattingEnabled = true;
-            cbProficiencyChoicesClasses.Location = new Point(895, 38);
-            cbProficiencyChoicesClasses.Margin = new Padding(3, 4, 3, 4);
+            cbProficiencyChoicesClasses.Location = new Point(783, 28);
             cbProficiencyChoicesClasses.Name = "cbProficiencyChoicesClasses";
-            cbProficiencyChoicesClasses.Size = new Size(121, 28);
+            cbProficiencyChoicesClasses.Size = new Size(106, 23);
             cbProficiencyChoicesClasses.TabIndex = 42;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(892, 14);
+            label20.Location = new Point(780, 10);
             label20.Name = "label20";
-            label20.Size = new Size(132, 20);
+            label20.Size = new Size(108, 15);
             label20.TabIndex = 41;
             label20.Text = "ProficiencyChoices";
             label20.Click += label20_Click;
@@ -796,18 +779,17 @@
             // cbProficienciesClasses
             // 
             cbProficienciesClasses.FormattingEnabled = true;
-            cbProficienciesClasses.Location = new Point(752, 38);
-            cbProficienciesClasses.Margin = new Padding(3, 4, 3, 4);
+            cbProficienciesClasses.Location = new Point(658, 28);
             cbProficienciesClasses.Name = "cbProficienciesClasses";
-            cbProficienciesClasses.Size = new Size(121, 28);
+            cbProficienciesClasses.Size = new Size(106, 23);
             cbProficienciesClasses.TabIndex = 40;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(749, 14);
+            label18.Location = new Point(655, 10);
             label18.Name = "label18";
-            label18.Size = new Size(92, 20);
+            label18.Size = new Size(74, 15);
             label18.TabIndex = 39;
             label18.Text = "Proficiencies";
             label18.Click += label18_Click;
@@ -815,18 +797,17 @@
             // cbMultiClassingClasses
             // 
             cbMultiClassingClasses.FormattingEnabled = true;
-            cbMultiClassingClasses.Location = new Point(609, 38);
-            cbMultiClassingClasses.Margin = new Padding(3, 4, 3, 4);
+            cbMultiClassingClasses.Location = new Point(533, 28);
             cbMultiClassingClasses.Name = "cbMultiClassingClasses";
-            cbMultiClassingClasses.Size = new Size(121, 28);
+            cbMultiClassingClasses.Size = new Size(106, 23);
             cbMultiClassingClasses.TabIndex = 38;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(606, 14);
+            label17.Location = new Point(530, 10);
             label17.Name = "label17";
-            label17.Size = new Size(97, 20);
+            label17.Size = new Size(79, 15);
             label17.TabIndex = 37;
             label17.Text = "MultiClassing";
             label17.Click += label17_Click;
@@ -834,52 +815,49 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(89, 14);
+            label6.Location = new Point(78, 10);
             label6.Name = "label6";
-            label6.Size = new Size(58, 20);
+            label6.Size = new Size(45, 15);
             label6.TabIndex = 36;
             label6.Text = "Hit-Die";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(12, 14);
+            label14.Location = new Point(10, 10);
             label14.Name = "label14";
-            label14.Size = new Size(45, 20);
+            label14.Size = new Size(36, 15);
             label14.TabIndex = 35;
             label14.Text = "Index";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(331, 14);
+            label15.Location = new Point(290, 10);
             label15.Name = "label15";
-            label15.Size = new Size(49, 20);
+            label15.Size = new Size(39, 15);
             label15.TabIndex = 34;
             label15.Text = "Name";
             // 
             // tbHitDieClasses
             // 
-            tbHitDieClasses.Location = new Point(92, 38);
-            tbHitDieClasses.Margin = new Padding(3, 4, 3, 4);
+            tbHitDieClasses.Location = new Point(80, 28);
             tbHitDieClasses.Name = "tbHitDieClasses";
-            tbHitDieClasses.Size = new Size(199, 27);
+            tbHitDieClasses.Size = new Size(175, 23);
             tbHitDieClasses.TabIndex = 32;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(15, 38);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Location = new Point(13, 28);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(41, 27);
+            textBox2.Size = new Size(36, 23);
             textBox2.TabIndex = 31;
             // 
             // tbName
             // 
-            tbName.Location = new Point(334, 38);
-            tbName.Margin = new Padding(3, 4, 3, 4);
+            tbName.Location = new Point(292, 28);
             tbName.Name = "tbName";
-            tbName.Size = new Size(252, 27);
+            tbName.Size = new Size(221, 23);
             tbName.TabIndex = 30;
             // 
             // Backgrounds
@@ -908,10 +886,9 @@
             Backgrounds.Controls.Add(textBox1);
             Backgrounds.Controls.Add(textBox3);
             Backgrounds.Controls.Add(textBox4);
-            Backgrounds.Location = new Point(4, 29);
-            Backgrounds.Margin = new Padding(3, 4, 3, 4);
+            Backgrounds.Location = new Point(4, 24);
             Backgrounds.Name = "Backgrounds";
-            Backgrounds.Size = new Size(1296, 528);
+            Backgrounds.Size = new Size(1133, 393);
             Backgrounds.TabIndex = 4;
             Backgrounds.Text = "Backgrounds";
             Backgrounds.UseVisualStyleBackColor = true;
@@ -919,213 +896,201 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(628, 11);
+            label34.Location = new Point(550, 8);
             label34.Name = "label34";
-            label34.Size = new Size(126, 20);
+            label34.Size = new Size(101, 15);
             label34.TabIndex = 76;
             label34.Text = "LanguageOptions";
             // 
             // cbLanguageOptionsBackgrounds
             // 
-            cbLanguageOptionsBackgrounds.Location = new Point(631, 35);
-            cbLanguageOptionsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbLanguageOptionsBackgrounds.Location = new Point(552, 26);
             cbLanguageOptionsBackgrounds.Name = "cbLanguageOptionsBackgrounds";
-            cbLanguageOptionsBackgrounds.Size = new Size(252, 27);
+            cbLanguageOptionsBackgrounds.Size = new Size(221, 23);
             cbLanguageOptionsBackgrounds.TabIndex = 75;
             // 
             // cbStartingProficienciesBackgrounds
             // 
             cbStartingProficienciesBackgrounds.FormattingEnabled = true;
-            cbStartingProficienciesBackgrounds.Location = new Point(488, 129);
-            cbStartingProficienciesBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbStartingProficienciesBackgrounds.Location = new Point(427, 97);
             cbStartingProficienciesBackgrounds.Name = "cbStartingProficienciesBackgrounds";
-            cbStartingProficienciesBackgrounds.Size = new Size(121, 28);
+            cbStartingProficienciesBackgrounds.Size = new Size(106, 23);
             cbStartingProficienciesBackgrounds.TabIndex = 74;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(485, 105);
+            label21.Location = new Point(424, 79);
             label21.Name = "label21";
-            label21.Size = new Size(144, 20);
+            label21.Size = new Size(115, 15);
             label21.TabIndex = 73;
             label21.Text = "StartingProficiencies";
             // 
             // cbStartingEquipmentOptionsBackgrounds
             // 
             cbStartingEquipmentOptionsBackgrounds.FormattingEnabled = true;
-            cbStartingEquipmentOptionsBackgrounds.Location = new Point(306, 129);
-            cbStartingEquipmentOptionsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbStartingEquipmentOptionsBackgrounds.Location = new Point(268, 97);
             cbStartingEquipmentOptionsBackgrounds.Name = "cbStartingEquipmentOptionsBackgrounds";
-            cbStartingEquipmentOptionsBackgrounds.Size = new Size(159, 28);
+            cbStartingEquipmentOptionsBackgrounds.Size = new Size(140, 23);
             cbStartingEquipmentOptionsBackgrounds.TabIndex = 72;
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(303, 105);
+            label24.Location = new Point(265, 79);
             label24.Name = "label24";
-            label24.Size = new Size(185, 20);
+            label24.Size = new Size(148, 15);
             label24.TabIndex = 71;
             label24.Text = "StartingEquipmentOptions";
             // 
             // cbStartingEquipmentBackgrounds
             // 
             cbStartingEquipmentBackgrounds.FormattingEnabled = true;
-            cbStartingEquipmentBackgrounds.Location = new Point(163, 129);
-            cbStartingEquipmentBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbStartingEquipmentBackgrounds.Location = new Point(143, 97);
             cbStartingEquipmentBackgrounds.Name = "cbStartingEquipmentBackgrounds";
-            cbStartingEquipmentBackgrounds.Size = new Size(121, 28);
+            cbStartingEquipmentBackgrounds.Size = new Size(106, 23);
             cbStartingEquipmentBackgrounds.TabIndex = 70;
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(160, 105);
+            label25.Location = new Point(140, 79);
             label25.Name = "label25";
-            label25.Size = new Size(133, 20);
+            label25.Size = new Size(106, 15);
             label25.TabIndex = 69;
             label25.Text = "StartingEquipment";
             // 
             // cbPersonalityTraitsBackgrounds
             // 
             cbPersonalityTraitsBackgrounds.FormattingEnabled = true;
-            cbPersonalityTraitsBackgrounds.Location = new Point(20, 129);
-            cbPersonalityTraitsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbPersonalityTraitsBackgrounds.Location = new Point(18, 97);
             cbPersonalityTraitsBackgrounds.Name = "cbPersonalityTraitsBackgrounds";
-            cbPersonalityTraitsBackgrounds.Size = new Size(121, 28);
+            cbPersonalityTraitsBackgrounds.Size = new Size(106, 23);
             cbPersonalityTraitsBackgrounds.TabIndex = 68;
             // 
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(17, 105);
+            label26.Location = new Point(15, 79);
             label26.Name = "label26";
-            label26.Size = new Size(115, 20);
+            label26.Size = new Size(92, 15);
             label26.TabIndex = 67;
             label26.Text = "PersonalityTraits";
             // 
             // cbIdealsBackgrounds
             // 
             cbIdealsBackgrounds.FormattingEnabled = true;
-            cbIdealsBackgrounds.Location = new Point(1079, 129);
-            cbIdealsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbIdealsBackgrounds.Location = new Point(944, 97);
             cbIdealsBackgrounds.Name = "cbIdealsBackgrounds";
-            cbIdealsBackgrounds.Size = new Size(121, 28);
+            cbIdealsBackgrounds.Size = new Size(106, 23);
             cbIdealsBackgrounds.TabIndex = 66;
             // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(1076, 105);
+            label27.Location = new Point(942, 79);
             label27.Name = "label27";
-            label27.Size = new Size(48, 20);
+            label27.Size = new Size(37, 15);
             label27.TabIndex = 65;
             label27.Text = "Ideals";
             // 
             // cbFlawsBackgrounds
             // 
             cbFlawsBackgrounds.FormattingEnabled = true;
-            cbFlawsBackgrounds.Location = new Point(936, 129);
-            cbFlawsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbFlawsBackgrounds.Location = new Point(819, 97);
             cbFlawsBackgrounds.Name = "cbFlawsBackgrounds";
-            cbFlawsBackgrounds.Size = new Size(121, 28);
+            cbFlawsBackgrounds.Size = new Size(106, 23);
             cbFlawsBackgrounds.TabIndex = 64;
             // 
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(933, 105);
+            label28.Location = new Point(816, 79);
             label28.Name = "label28";
-            label28.Size = new Size(45, 20);
+            label28.Size = new Size(36, 15);
             label28.TabIndex = 63;
             label28.Text = "Flaws";
             // 
             // cbFeatureBackgrounds
             // 
             cbFeatureBackgrounds.FormattingEnabled = true;
-            cbFeatureBackgrounds.Location = new Point(793, 129);
-            cbFeatureBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbFeatureBackgrounds.Location = new Point(694, 97);
             cbFeatureBackgrounds.Name = "cbFeatureBackgrounds";
-            cbFeatureBackgrounds.Size = new Size(121, 28);
+            cbFeatureBackgrounds.Size = new Size(106, 23);
             cbFeatureBackgrounds.TabIndex = 62;
             // 
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(790, 105);
+            label29.Location = new Point(691, 79);
             label29.Name = "label29";
-            label29.Size = new Size(58, 20);
+            label29.Size = new Size(46, 15);
             label29.TabIndex = 61;
             label29.Text = "Feature";
             // 
             // cbBondsBackgrounds
             // 
             cbBondsBackgrounds.FormattingEnabled = true;
-            cbBondsBackgrounds.Location = new Point(650, 129);
-            cbBondsBackgrounds.Margin = new Padding(3, 4, 3, 4);
+            cbBondsBackgrounds.Location = new Point(569, 97);
             cbBondsBackgrounds.Name = "cbBondsBackgrounds";
-            cbBondsBackgrounds.Size = new Size(121, 28);
+            cbBondsBackgrounds.Size = new Size(106, 23);
             cbBondsBackgrounds.TabIndex = 60;
             // 
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(647, 105);
+            label30.Location = new Point(566, 79);
             label30.Name = "label30";
-            label30.Size = new Size(50, 20);
+            label30.Size = new Size(40, 15);
             label30.TabIndex = 59;
             label30.Text = "Bonds";
             // 
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(92, 11);
+            label31.Location = new Point(80, 8);
             label31.Name = "label31";
-            label31.Size = new Size(58, 20);
+            label31.Size = new Size(45, 15);
             label31.TabIndex = 58;
             label31.Text = "Hit-Die";
             // 
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(15, 11);
+            label32.Location = new Point(13, 8);
             label32.Name = "label32";
-            label32.Size = new Size(45, 20);
+            label32.Size = new Size(36, 15);
             label32.TabIndex = 57;
             label32.Text = "Index";
             // 
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(334, 11);
+            label33.Location = new Point(292, 8);
             label33.Name = "label33";
-            label33.Size = new Size(49, 20);
+            label33.Size = new Size(39, 15);
             label33.TabIndex = 56;
             label33.Text = "Name";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(95, 35);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(83, 26);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(199, 27);
+            textBox1.Size = new Size(175, 23);
             textBox1.TabIndex = 55;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(18, 35);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
+            textBox3.Location = new Point(16, 26);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(41, 27);
+            textBox3.Size = new Size(36, 23);
             textBox3.TabIndex = 54;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(337, 35);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
+            textBox4.Location = new Point(295, 26);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(252, 27);
+            textBox4.Size = new Size(221, 23);
             textBox4.TabIndex = 53;
             // 
             // Conditions
@@ -1136,64 +1101,60 @@
             Conditions.Controls.Add(label38);
             Conditions.Controls.Add(tbIndexConditions);
             Conditions.Controls.Add(tbNameConditions);
-            Conditions.Location = new Point(4, 29);
-            Conditions.Margin = new Padding(3, 4, 3, 4);
+            Conditions.Location = new Point(4, 24);
             Conditions.Name = "Conditions";
-            Conditions.Size = new Size(1296, 528);
+            Conditions.Size = new Size(1133, 393);
             Conditions.TabIndex = 5;
             Conditions.Text = "Conditions";
             Conditions.UseVisualStyleBackColor = true;
             // 
             // lbDescriptionConditions
             // 
-            lbDescriptionConditions.ItemHeight = 20;
-            lbDescriptionConditions.Location = new Point(375, 41);
-            lbDescriptionConditions.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionConditions.ItemHeight = 15;
+            lbDescriptionConditions.Location = new Point(328, 31);
             lbDescriptionConditions.Name = "lbDescriptionConditions";
-            lbDescriptionConditions.Size = new Size(505, 204);
+            lbDescriptionConditions.Size = new Size(442, 154);
             lbDescriptionConditions.TabIndex = 29;
             // 
             // label36
             // 
             label36.AutoSize = true;
-            label36.Location = new Point(12, 18);
+            label36.Location = new Point(10, 14);
             label36.Name = "label36";
-            label36.Size = new Size(45, 20);
+            label36.Size = new Size(36, 15);
             label36.TabIndex = 35;
             label36.Text = "Index";
             // 
             // label37
             // 
             label37.AutoSize = true;
-            label37.Location = new Point(81, 18);
+            label37.Location = new Point(71, 14);
             label37.Name = "label37";
-            label37.Size = new Size(49, 20);
+            label37.Size = new Size(39, 15);
             label37.TabIndex = 34;
             label37.Text = "Name";
             // 
             // label38
             // 
             label38.AutoSize = true;
-            label38.Location = new Point(372, 18);
+            label38.Location = new Point(326, 14);
             label38.Name = "label38";
-            label38.Size = new Size(85, 20);
+            label38.Size = new Size(67, 15);
             label38.TabIndex = 33;
             label38.Text = "Description";
             // 
             // tbIndexConditions
             // 
-            tbIndexConditions.Location = new Point(15, 41);
-            tbIndexConditions.Margin = new Padding(3, 4, 3, 4);
+            tbIndexConditions.Location = new Point(13, 31);
             tbIndexConditions.Name = "tbIndexConditions";
-            tbIndexConditions.Size = new Size(41, 27);
+            tbIndexConditions.Size = new Size(36, 23);
             tbIndexConditions.TabIndex = 31;
             // 
             // tbNameConditions
             // 
-            tbNameConditions.Location = new Point(84, 41);
-            tbNameConditions.Margin = new Padding(3, 4, 3, 4);
+            tbNameConditions.Location = new Point(74, 31);
             tbNameConditions.Name = "tbNameConditions";
-            tbNameConditions.Size = new Size(252, 27);
+            tbNameConditions.Size = new Size(221, 23);
             tbNameConditions.TabIndex = 30;
             // 
             // DamageType
@@ -1204,64 +1165,60 @@
             DamageType.Controls.Add(label40);
             DamageType.Controls.Add(tbIndexDamageType);
             DamageType.Controls.Add(tbNameDamageType);
-            DamageType.Location = new Point(4, 29);
-            DamageType.Margin = new Padding(3, 4, 3, 4);
+            DamageType.Location = new Point(4, 24);
             DamageType.Name = "DamageType";
-            DamageType.Size = new Size(1296, 528);
+            DamageType.Size = new Size(1133, 393);
             DamageType.TabIndex = 6;
             DamageType.Text = "DamageType";
             DamageType.UseVisualStyleBackColor = true;
             // 
             // lbDescriptionDamageType
             // 
-            lbDescriptionDamageType.ItemHeight = 20;
-            lbDescriptionDamageType.Location = new Point(380, 44);
-            lbDescriptionDamageType.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionDamageType.ItemHeight = 15;
+            lbDescriptionDamageType.Location = new Point(332, 33);
             lbDescriptionDamageType.Name = "lbDescriptionDamageType";
-            lbDescriptionDamageType.Size = new Size(505, 204);
+            lbDescriptionDamageType.Size = new Size(442, 154);
             lbDescriptionDamageType.TabIndex = 36;
             // 
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(17, 20);
+            label35.Location = new Point(15, 15);
             label35.Name = "label35";
-            label35.Size = new Size(45, 20);
+            label35.Size = new Size(36, 15);
             label35.TabIndex = 41;
             label35.Text = "Index";
             // 
             // label39
             // 
             label39.AutoSize = true;
-            label39.Location = new Point(86, 20);
+            label39.Location = new Point(75, 15);
             label39.Name = "label39";
-            label39.Size = new Size(49, 20);
+            label39.Size = new Size(39, 15);
             label39.TabIndex = 40;
             label39.Text = "Name";
             // 
             // label40
             // 
             label40.AutoSize = true;
-            label40.Location = new Point(377, 20);
+            label40.Location = new Point(330, 15);
             label40.Name = "label40";
-            label40.Size = new Size(85, 20);
+            label40.Size = new Size(67, 15);
             label40.TabIndex = 39;
             label40.Text = "Description";
             // 
             // tbIndexDamageType
             // 
-            tbIndexDamageType.Location = new Point(20, 44);
-            tbIndexDamageType.Margin = new Padding(3, 4, 3, 4);
+            tbIndexDamageType.Location = new Point(18, 33);
             tbIndexDamageType.Name = "tbIndexDamageType";
-            tbIndexDamageType.Size = new Size(41, 27);
+            tbIndexDamageType.Size = new Size(36, 23);
             tbIndexDamageType.TabIndex = 38;
             // 
             // tbNameDamageType
             // 
-            tbNameDamageType.Location = new Point(89, 44);
-            tbNameDamageType.Margin = new Padding(3, 4, 3, 4);
+            tbNameDamageType.Location = new Point(78, 33);
             tbNameDamageType.Name = "tbNameDamageType";
-            tbNameDamageType.Size = new Size(252, 27);
+            tbNameDamageType.Size = new Size(221, 23);
             tbNameDamageType.TabIndex = 37;
             // 
             // Equipment
@@ -1316,10 +1273,9 @@
             Equipment.Controls.Add(tbArmorClassEquipment);
             Equipment.Controls.Add(tbIndexEquipment);
             Equipment.Controls.Add(tbNameEquipment);
-            Equipment.Location = new Point(4, 29);
-            Equipment.Margin = new Padding(3, 4, 3, 4);
+            Equipment.Location = new Point(4, 24);
             Equipment.Name = "Equipment";
-            Equipment.Size = new Size(1296, 528);
+            Equipment.Size = new Size(1133, 393);
             Equipment.TabIndex = 7;
             Equipment.Text = "Equipment";
             Equipment.UseVisualStyleBackColor = true;
@@ -1328,326 +1284,308 @@
             // cbTwoHandedDamageEquipment
             // 
             cbTwoHandedDamageEquipment.FormattingEnabled = true;
-            cbTwoHandedDamageEquipment.Location = new Point(306, 380);
-            cbTwoHandedDamageEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbTwoHandedDamageEquipment.Location = new Point(268, 285);
             cbTwoHandedDamageEquipment.Name = "cbTwoHandedDamageEquipment";
-            cbTwoHandedDamageEquipment.Size = new Size(121, 28);
+            cbTwoHandedDamageEquipment.Size = new Size(106, 23);
             cbTwoHandedDamageEquipment.TabIndex = 130;
             // 
             // cbThrowRangeEquipment
             // 
             cbThrowRangeEquipment.FormattingEnabled = true;
-            cbThrowRangeEquipment.Location = new Point(163, 380);
-            cbThrowRangeEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbThrowRangeEquipment.Location = new Point(143, 285);
             cbThrowRangeEquipment.Name = "cbThrowRangeEquipment";
-            cbThrowRangeEquipment.Size = new Size(121, 28);
+            cbThrowRangeEquipment.Size = new Size(106, 23);
             cbThrowRangeEquipment.TabIndex = 129;
             // 
             // cbSpeedEquipment
             // 
             cbSpeedEquipment.FormattingEnabled = true;
-            cbSpeedEquipment.Location = new Point(20, 381);
-            cbSpeedEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbSpeedEquipment.Location = new Point(18, 286);
             cbSpeedEquipment.Name = "cbSpeedEquipment";
-            cbSpeedEquipment.Size = new Size(121, 28);
+            cbSpeedEquipment.Size = new Size(106, 23);
             cbSpeedEquipment.TabIndex = 128;
             // 
             // label63
             // 
             label63.AutoSize = true;
-            label63.Location = new Point(306, 345);
+            label63.Location = new Point(268, 259);
             label63.Name = "label63";
-            label63.Size = new Size(146, 20);
+            label63.Size = new Size(114, 15);
             label63.TabIndex = 127;
             label63.Text = "TwoHandedDamage";
             // 
             // label62
             // 
             label62.AutoSize = true;
-            label62.Location = new Point(163, 346);
+            label62.Location = new Point(143, 260);
             label62.Name = "label62";
-            label62.Size = new Size(92, 20);
+            label62.Size = new Size(73, 15);
             label62.TabIndex = 126;
             label62.Text = "ThrowRange";
             // 
             // label61
             // 
             label61.AutoSize = true;
-            label61.Location = new Point(17, 346);
+            label61.Location = new Point(15, 260);
             label61.Name = "label61";
-            label61.Size = new Size(51, 20);
+            label61.Size = new Size(39, 15);
             label61.TabIndex = 125;
             label61.Text = "Speed";
             // 
             // cbRangeEquipment
             // 
             cbRangeEquipment.FormattingEnabled = true;
-            cbRangeEquipment.Location = new Point(1087, 234);
-            cbRangeEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbRangeEquipment.Location = new Point(951, 176);
             cbRangeEquipment.Name = "cbRangeEquipment";
-            cbRangeEquipment.Size = new Size(121, 28);
+            cbRangeEquipment.Size = new Size(106, 23);
             cbRangeEquipment.TabIndex = 124;
             // 
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(1084, 210);
+            label49.Location = new Point(948, 158);
             label49.Name = "label49";
-            label49.Size = new Size(51, 20);
+            label49.Size = new Size(40, 15);
             label49.TabIndex = 123;
             label49.Text = "Range";
             // 
             // cbPropertiesEquipment
             // 
             cbPropertiesEquipment.FormattingEnabled = true;
-            cbPropertiesEquipment.Location = new Point(905, 234);
-            cbPropertiesEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbPropertiesEquipment.Location = new Point(792, 176);
             cbPropertiesEquipment.Name = "cbPropertiesEquipment";
-            cbPropertiesEquipment.Size = new Size(159, 28);
+            cbPropertiesEquipment.Size = new Size(140, 23);
             cbPropertiesEquipment.TabIndex = 122;
             // 
             // label54
             // 
             label54.AutoSize = true;
-            label54.Location = new Point(902, 210);
+            label54.Location = new Point(789, 158);
             label54.Name = "label54";
-            label54.Size = new Size(76, 20);
+            label54.Size = new Size(60, 15);
             label54.TabIndex = 121;
             label54.Text = "Properties";
             // 
             // cbGearCategoryEquipment
             // 
             cbGearCategoryEquipment.FormattingEnabled = true;
-            cbGearCategoryEquipment.Location = new Point(762, 234);
-            cbGearCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbGearCategoryEquipment.Location = new Point(667, 176);
             cbGearCategoryEquipment.Name = "cbGearCategoryEquipment";
-            cbGearCategoryEquipment.Size = new Size(121, 28);
+            cbGearCategoryEquipment.Size = new Size(106, 23);
             cbGearCategoryEquipment.TabIndex = 120;
             // 
             // label55
             // 
             label55.AutoSize = true;
-            label55.Location = new Point(759, 210);
+            label55.Location = new Point(664, 158);
             label55.Name = "label55";
-            label55.Size = new Size(100, 20);
+            label55.Size = new Size(79, 15);
             label55.TabIndex = 119;
             label55.Text = "GearCategory";
             // 
             // cbEquipmentCategoryEquipment
             // 
             cbEquipmentCategoryEquipment.FormattingEnabled = true;
-            cbEquipmentCategoryEquipment.Location = new Point(619, 234);
-            cbEquipmentCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbEquipmentCategoryEquipment.Location = new Point(542, 176);
             cbEquipmentCategoryEquipment.Name = "cbEquipmentCategoryEquipment";
-            cbEquipmentCategoryEquipment.Size = new Size(121, 28);
+            cbEquipmentCategoryEquipment.Size = new Size(106, 23);
             cbEquipmentCategoryEquipment.TabIndex = 118;
             // 
             // label56
             // 
             label56.AutoSize = true;
-            label56.Location = new Point(616, 210);
+            label56.Location = new Point(539, 158);
             label56.Name = "label56";
-            label56.Size = new Size(141, 20);
+            label56.Size = new Size(113, 15);
             label56.TabIndex = 117;
             label56.Text = "EquipmentCategory";
             // 
             // cbDamageEquipment
             // 
             cbDamageEquipment.FormattingEnabled = true;
-            cbDamageEquipment.Location = new Point(449, 234);
-            cbDamageEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbDamageEquipment.Location = new Point(393, 176);
             cbDamageEquipment.Name = "cbDamageEquipment";
-            cbDamageEquipment.Size = new Size(121, 28);
+            cbDamageEquipment.Size = new Size(106, 23);
             cbDamageEquipment.TabIndex = 116;
             // 
             // label57
             // 
             label57.AutoSize = true;
-            label57.Location = new Point(446, 210);
+            label57.Location = new Point(390, 158);
             label57.Name = "label57";
-            label57.Size = new Size(66, 20);
+            label57.Size = new Size(51, 15);
             label57.TabIndex = 115;
             label57.Text = "Damage";
             // 
             // dbCostEquipment
             // 
             dbCostEquipment.FormattingEnabled = true;
-            dbCostEquipment.Location = new Point(306, 234);
-            dbCostEquipment.Margin = new Padding(3, 4, 3, 4);
+            dbCostEquipment.Location = new Point(268, 176);
             dbCostEquipment.Name = "dbCostEquipment";
-            dbCostEquipment.Size = new Size(121, 28);
+            dbCostEquipment.Size = new Size(106, 23);
             dbCostEquipment.TabIndex = 114;
             // 
             // label58
             // 
             label58.AutoSize = true;
-            label58.Location = new Point(303, 210);
+            label58.Location = new Point(265, 158);
             label58.Name = "label58";
-            label58.Size = new Size(38, 20);
+            label58.Size = new Size(31, 15);
             label58.TabIndex = 113;
             label58.Text = "Cost";
             // 
             // cbContentsEquipment
             // 
             cbContentsEquipment.FormattingEnabled = true;
-            cbContentsEquipment.Location = new Point(163, 234);
-            cbContentsEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbContentsEquipment.Location = new Point(143, 176);
             cbContentsEquipment.Name = "cbContentsEquipment";
-            cbContentsEquipment.Size = new Size(121, 28);
+            cbContentsEquipment.Size = new Size(106, 23);
             cbContentsEquipment.TabIndex = 112;
             // 
             // label59
             // 
             label59.AutoSize = true;
-            label59.Location = new Point(160, 210);
+            label59.Location = new Point(140, 158);
             label59.Name = "label59";
-            label59.Size = new Size(67, 20);
+            label59.Size = new Size(55, 15);
             label59.TabIndex = 111;
             label59.Text = "Contents";
             // 
             // cbArmorClassEquipment
             // 
             cbArmorClassEquipment.FormattingEnabled = true;
-            cbArmorClassEquipment.Location = new Point(20, 234);
-            cbArmorClassEquipment.Margin = new Padding(3, 4, 3, 4);
+            cbArmorClassEquipment.Location = new Point(18, 176);
             cbArmorClassEquipment.Name = "cbArmorClassEquipment";
-            cbArmorClassEquipment.Size = new Size(121, 28);
+            cbArmorClassEquipment.Size = new Size(106, 23);
             cbArmorClassEquipment.TabIndex = 110;
             // 
             // label60
             // 
             label60.AutoSize = true;
-            label60.Location = new Point(17, 210);
+            label60.Location = new Point(15, 158);
             label60.Name = "label60";
-            label60.Size = new Size(84, 20);
+            label60.Size = new Size(68, 15);
             label60.TabIndex = 109;
             label60.Text = "ArmorClass";
             // 
             // label41
             // 
             label41.AutoSize = true;
-            label41.Location = new Point(908, 111);
+            label41.Location = new Point(794, 83);
             label41.Name = "label41";
-            label41.Size = new Size(106, 20);
+            label41.Size = new Size(84, 15);
             label41.TabIndex = 104;
             label41.Text = "WeaponRange";
             // 
             // label45
             // 
             label45.AutoSize = true;
-            label45.Location = new Point(779, 111);
+            label45.Location = new Point(682, 83);
             label45.Name = "label45";
-            label45.Size = new Size(124, 20);
+            label45.Size = new Size(99, 15);
             label45.TabIndex = 103;
             label45.Text = "WeaponCategory";
             // 
             // W
             // 
             W.AutoSize = true;
-            W.Location = new Point(1038, 111);
+            W.Location = new Point(908, 83);
             W.Name = "W";
-            W.Size = new Size(56, 20);
+            W.Size = new Size(45, 15);
             W.TabIndex = 102;
             W.Text = "Weight";
             // 
             // tbWeaponRangeEquipment
             // 
-            tbWeaponRangeEquipment.Location = new Point(911, 135);
-            tbWeaponRangeEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbWeaponRangeEquipment.Location = new Point(797, 101);
             tbWeaponRangeEquipment.Name = "tbWeaponRangeEquipment";
-            tbWeaponRangeEquipment.Size = new Size(96, 27);
+            tbWeaponRangeEquipment.Size = new Size(84, 23);
             tbWeaponRangeEquipment.TabIndex = 101;
             // 
             // tbWeapongCategoryEquipment
             // 
-            tbWeapongCategoryEquipment.Location = new Point(782, 135);
-            tbWeapongCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbWeapongCategoryEquipment.Location = new Point(684, 101);
             tbWeapongCategoryEquipment.Name = "tbWeapongCategoryEquipment";
-            tbWeapongCategoryEquipment.Size = new Size(100, 27);
+            tbWeapongCategoryEquipment.Size = new Size(88, 23);
             tbWeapongCategoryEquipment.TabIndex = 100;
             // 
             // tbWeightEquipment
             // 
-            tbWeightEquipment.Location = new Point(1041, 135);
-            tbWeightEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbWeightEquipment.Location = new Point(911, 101);
             tbWeightEquipment.Name = "tbWeightEquipment";
-            tbWeightEquipment.Size = new Size(252, 27);
+            tbWeightEquipment.Size = new Size(221, 23);
             tbWeightEquipment.TabIndex = 99;
             // 
             // label50
             // 
             label50.AutoSize = true;
-            label50.Location = new Point(501, 111);
+            label50.Location = new Point(438, 83);
             label50.Name = "label50";
-            label50.Size = new Size(116, 20);
+            label50.Size = new Size(92, 15);
             label50.TabIndex = 98;
             label50.Text = "VehicleCategory";
             // 
             // tbVehicleCategoryEquipment
             // 
-            tbVehicleCategoryEquipment.Location = new Point(504, 135);
-            tbVehicleCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbVehicleCategoryEquipment.Location = new Point(441, 101);
             tbVehicleCategoryEquipment.Name = "tbVehicleCategoryEquipment";
-            tbVehicleCategoryEquipment.Size = new Size(252, 27);
+            tbVehicleCategoryEquipment.Size = new Size(221, 23);
             tbVehicleCategoryEquipment.TabIndex = 97;
             // 
             // label51
             // 
             label51.AutoSize = true;
-            label51.Location = new Point(361, 111);
+            label51.Location = new Point(316, 83);
             label51.Name = "label51";
-            label51.Size = new Size(98, 20);
+            label51.Size = new Size(77, 15);
             label51.TabIndex = 96;
             label51.Text = "ToolCategory";
             // 
             // label52
             // 
             label52.AutoSize = true;
-            label52.Location = new Point(153, 111);
+            label52.Location = new Point(134, 83);
             label52.Name = "label52";
-            label52.Size = new Size(146, 20);
+            label52.Size = new Size(114, 15);
             label52.TabIndex = 95;
             label52.Text = "StealthDisadvantage";
             // 
             // label53
             // 
             label53.AutoSize = true;
-            label53.Location = new Point(12, 111);
+            label53.Location = new Point(10, 83);
             label53.Name = "label53";
-            label53.Size = new Size(97, 20);
+            label53.Size = new Size(79, 15);
             label53.TabIndex = 94;
             label53.Text = "STRMinimum";
             // 
             // tbToolCategoryEquipment
             // 
-            tbToolCategoryEquipment.Location = new Point(364, 135);
-            tbToolCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbToolCategoryEquipment.Location = new Point(318, 101);
             tbToolCategoryEquipment.Name = "tbToolCategoryEquipment";
-            tbToolCategoryEquipment.Size = new Size(96, 27);
+            tbToolCategoryEquipment.Size = new Size(84, 23);
             tbToolCategoryEquipment.TabIndex = 93;
             // 
             // tbSTRMinimumEquipment
             // 
-            tbSTRMinimumEquipment.Location = new Point(15, 135);
-            tbSTRMinimumEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbSTRMinimumEquipment.Location = new Point(13, 101);
             tbSTRMinimumEquipment.Name = "tbSTRMinimumEquipment";
-            tbSTRMinimumEquipment.Size = new Size(81, 27);
+            tbSTRMinimumEquipment.Size = new Size(71, 23);
             tbSTRMinimumEquipment.TabIndex = 92;
             // 
             // tbStealthDisadvantageEquipment
             // 
-            tbStealthDisadvantageEquipment.Location = new Point(156, 135);
-            tbStealthDisadvantageEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbStealthDisadvantageEquipment.Location = new Point(136, 101);
             tbStealthDisadvantageEquipment.Name = "tbStealthDisadvantageEquipment";
-            tbStealthDisadvantageEquipment.Size = new Size(179, 27);
+            tbStealthDisadvantageEquipment.Size = new Size(157, 23);
             tbStealthDisadvantageEquipment.TabIndex = 91;
             // 
             // label46
             // 
             label46.AutoSize = true;
-            label46.Location = new Point(908, 12);
+            label46.Location = new Point(794, 9);
             label46.Name = "label46";
-            label46.Size = new Size(65, 20);
+            label46.Size = new Size(53, 15);
             label46.TabIndex = 90;
             label46.Text = "Quantity";
             label46.Click += label46_Click;
@@ -1655,68 +1593,64 @@
             // label47
             // 
             label47.AutoSize = true;
-            label47.Location = new Point(779, 12);
+            label47.Location = new Point(682, 9);
             label47.Name = "label47";
-            label47.Size = new Size(111, 20);
+            label47.Size = new Size(88, 15);
             label47.TabIndex = 89;
             label47.Text = "CategoryRange";
             // 
             // label48
             // 
             label48.AutoSize = true;
-            label48.Location = new Point(1038, 12);
+            label48.Location = new Point(908, 9);
             label48.Name = "label48";
-            label48.Size = new Size(57, 20);
+            label48.Size = new Size(44, 15);
             label48.TabIndex = 88;
             label48.Text = "Special";
             // 
             // tbQuantityEquipment
             // 
-            tbQuantityEquipment.Location = new Point(911, 36);
-            tbQuantityEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbQuantityEquipment.Location = new Point(797, 27);
             tbQuantityEquipment.Name = "tbQuantityEquipment";
-            tbQuantityEquipment.Size = new Size(96, 27);
+            tbQuantityEquipment.Size = new Size(84, 23);
             tbQuantityEquipment.TabIndex = 87;
             // 
             // tbCategoryRangeEquipment
             // 
-            tbCategoryRangeEquipment.Location = new Point(782, 36);
-            tbCategoryRangeEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbCategoryRangeEquipment.Location = new Point(684, 27);
             tbCategoryRangeEquipment.Name = "tbCategoryRangeEquipment";
-            tbCategoryRangeEquipment.Size = new Size(100, 27);
+            tbCategoryRangeEquipment.Size = new Size(88, 23);
             tbCategoryRangeEquipment.TabIndex = 86;
             // 
             // tbSpecialEquipment
             // 
-            tbSpecialEquipment.Location = new Point(1041, 36);
-            tbSpecialEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbSpecialEquipment.Location = new Point(911, 27);
             tbSpecialEquipment.Name = "tbSpecialEquipment";
-            tbSpecialEquipment.Size = new Size(252, 27);
+            tbSpecialEquipment.Size = new Size(221, 23);
             tbSpecialEquipment.TabIndex = 85;
             // 
             // Capacity
             // 
             Capacity.AutoSize = true;
-            Capacity.Location = new Point(501, 12);
+            Capacity.Location = new Point(438, 9);
             Capacity.Name = "Capacity";
-            Capacity.Size = new Size(66, 20);
+            Capacity.Size = new Size(53, 15);
             Capacity.TabIndex = 84;
             Capacity.Text = "Capacity";
             // 
             // tbCapacityEquipment
             // 
-            tbCapacityEquipment.Location = new Point(504, 36);
-            tbCapacityEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbCapacityEquipment.Location = new Point(441, 27);
             tbCapacityEquipment.Name = "tbCapacityEquipment";
-            tbCapacityEquipment.Size = new Size(252, 27);
+            tbCapacityEquipment.Size = new Size(221, 23);
             tbCapacityEquipment.TabIndex = 83;
             // 
             // label42
             // 
             label42.AutoSize = true;
-            label42.Location = new Point(361, 12);
+            label42.Location = new Point(316, 9);
             label42.Name = "label42";
-            label42.Size = new Size(84, 20);
+            label42.Size = new Size(68, 15);
             label42.TabIndex = 82;
             label42.Text = "ArmorClass";
             label42.Click += label42_Click;
@@ -1724,43 +1658,40 @@
             // label43
             // 
             label43.AutoSize = true;
-            label43.Location = new Point(12, 12);
+            label43.Location = new Point(10, 9);
             label43.Name = "label43";
-            label43.Size = new Size(45, 20);
+            label43.Size = new Size(36, 15);
             label43.TabIndex = 81;
             label43.Text = "Index";
             // 
             // label44
             // 
             label44.AutoSize = true;
-            label44.Location = new Point(80, 12);
+            label44.Location = new Point(70, 9);
             label44.Name = "label44";
-            label44.Size = new Size(49, 20);
+            label44.Size = new Size(39, 15);
             label44.TabIndex = 80;
             label44.Text = "Name";
             // 
             // tbArmorClassEquipment
             // 
-            tbArmorClassEquipment.Location = new Point(364, 36);
-            tbArmorClassEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbArmorClassEquipment.Location = new Point(318, 27);
             tbArmorClassEquipment.Name = "tbArmorClassEquipment";
-            tbArmorClassEquipment.Size = new Size(96, 27);
+            tbArmorClassEquipment.Size = new Size(84, 23);
             tbArmorClassEquipment.TabIndex = 79;
             // 
             // tbIndexEquipment
             // 
-            tbIndexEquipment.Location = new Point(15, 36);
-            tbIndexEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbIndexEquipment.Location = new Point(13, 27);
             tbIndexEquipment.Name = "tbIndexEquipment";
-            tbIndexEquipment.Size = new Size(41, 27);
+            tbIndexEquipment.Size = new Size(36, 23);
             tbIndexEquipment.TabIndex = 78;
             // 
             // tbNameEquipment
             // 
-            tbNameEquipment.Location = new Point(83, 36);
-            tbNameEquipment.Margin = new Padding(3, 4, 3, 4);
+            tbNameEquipment.Location = new Point(73, 27);
             tbNameEquipment.Name = "tbNameEquipment";
-            tbNameEquipment.Size = new Size(252, 27);
+            tbNameEquipment.Size = new Size(221, 23);
             tbNameEquipment.TabIndex = 77;
             // 
             // EquipmentCategories
@@ -1771,10 +1702,9 @@
             EquipmentCategories.Controls.Add(cbEquipmentEquipmentCategories);
             EquipmentCategories.Controls.Add(tbNameEquipmentCategories);
             EquipmentCategories.Controls.Add(tbIndexEquipmentCategories);
-            EquipmentCategories.Location = new Point(4, 29);
-            EquipmentCategories.Margin = new Padding(3, 4, 3, 4);
+            EquipmentCategories.Location = new Point(4, 24);
             EquipmentCategories.Name = "EquipmentCategories";
-            EquipmentCategories.Size = new Size(1296, 528);
+            EquipmentCategories.Size = new Size(1133, 393);
             EquipmentCategories.TabIndex = 8;
             EquipmentCategories.Text = "EquipmentCategories";
             EquipmentCategories.UseVisualStyleBackColor = true;
@@ -1782,53 +1712,50 @@
             // label64
             // 
             label64.AutoSize = true;
-            label64.Location = new Point(343, 15);
+            label64.Location = new Point(300, 11);
             label64.Name = "label64";
-            label64.Size = new Size(81, 20);
+            label64.Size = new Size(65, 15);
             label64.TabIndex = 27;
             label64.Text = "Equipment";
             // 
             // label65
             // 
             label65.AutoSize = true;
-            label65.Location = new Point(91, 21);
+            label65.Location = new Point(80, 16);
             label65.Name = "label65";
-            label65.Size = new Size(49, 20);
+            label65.Size = new Size(39, 15);
             label65.TabIndex = 26;
             label65.Text = "Name";
             // 
             // label66
             // 
             label66.AutoSize = true;
-            label66.Location = new Point(14, 21);
+            label66.Location = new Point(12, 16);
             label66.Name = "label66";
-            label66.Size = new Size(45, 20);
+            label66.Size = new Size(36, 15);
             label66.TabIndex = 25;
             label66.Text = "Index";
             // 
             // cbEquipmentEquipmentCategories
             // 
             cbEquipmentEquipmentCategories.FormattingEnabled = true;
-            cbEquipmentEquipmentCategories.Location = new Point(343, 42);
-            cbEquipmentEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
+            cbEquipmentEquipmentCategories.Location = new Point(300, 32);
             cbEquipmentEquipmentCategories.Name = "cbEquipmentEquipmentCategories";
-            cbEquipmentEquipmentCategories.Size = new Size(220, 28);
+            cbEquipmentEquipmentCategories.Size = new Size(193, 23);
             cbEquipmentEquipmentCategories.TabIndex = 23;
             // 
             // tbNameEquipmentCategories
             // 
-            tbNameEquipmentCategories.Location = new Point(94, 45);
-            tbNameEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
+            tbNameEquipmentCategories.Location = new Point(82, 34);
             tbNameEquipmentCategories.Name = "tbNameEquipmentCategories";
-            tbNameEquipmentCategories.Size = new Size(199, 27);
+            tbNameEquipmentCategories.Size = new Size(175, 23);
             tbNameEquipmentCategories.TabIndex = 22;
             // 
             // tbIndexEquipmentCategories
             // 
-            tbIndexEquipmentCategories.Location = new Point(17, 45);
-            tbIndexEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
+            tbIndexEquipmentCategories.Location = new Point(15, 34);
             tbIndexEquipmentCategories.Name = "tbIndexEquipmentCategories";
-            tbIndexEquipmentCategories.Size = new Size(41, 27);
+            tbIndexEquipmentCategories.Size = new Size(36, 23);
             tbIndexEquipmentCategories.TabIndex = 21;
             // 
             // Feats
@@ -1841,10 +1768,9 @@
             Feats.Controls.Add(label69);
             Feats.Controls.Add(tbIndexFeats);
             Feats.Controls.Add(tbNameFeats);
-            Feats.Location = new Point(4, 29);
-            Feats.Margin = new Padding(3, 4, 3, 4);
+            Feats.Location = new Point(4, 24);
             Feats.Name = "Feats";
-            Feats.Size = new Size(1296, 528);
+            Feats.Size = new Size(1133, 393);
             Feats.TabIndex = 9;
             Feats.Text = "Feats";
             Feats.UseVisualStyleBackColor = true;
@@ -1852,72 +1778,68 @@
             // label70
             // 
             label70.AutoSize = true;
-            label70.Location = new Point(911, 12);
+            label70.Location = new Point(797, 9);
             label70.Name = "label70";
-            label70.Size = new Size(93, 20);
+            label70.Size = new Size(74, 15);
             label70.TabIndex = 43;
             label70.Text = "Prerequisites";
             // 
             // cbPrerequisitesFeats
             // 
             cbPrerequisitesFeats.FormattingEnabled = true;
-            cbPrerequisitesFeats.Location = new Point(914, 36);
-            cbPrerequisitesFeats.Margin = new Padding(3, 4, 3, 4);
+            cbPrerequisitesFeats.Location = new Point(800, 27);
             cbPrerequisitesFeats.Name = "cbPrerequisitesFeats";
-            cbPrerequisitesFeats.Size = new Size(121, 28);
+            cbPrerequisitesFeats.Size = new Size(106, 23);
             cbPrerequisitesFeats.TabIndex = 42;
             // 
             // lbDescriptionFeats
             // 
-            lbDescriptionFeats.ItemHeight = 20;
-            lbDescriptionFeats.Location = new Point(370, 36);
-            lbDescriptionFeats.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionFeats.ItemHeight = 15;
+            lbDescriptionFeats.Location = new Point(324, 27);
             lbDescriptionFeats.Name = "lbDescriptionFeats";
-            lbDescriptionFeats.Size = new Size(505, 204);
+            lbDescriptionFeats.Size = new Size(442, 154);
             lbDescriptionFeats.TabIndex = 36;
             lbDescriptionFeats.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label67
             // 
             label67.AutoSize = true;
-            label67.Location = new Point(10, 12);
+            label67.Location = new Point(9, 9);
             label67.Name = "label67";
-            label67.Size = new Size(45, 20);
+            label67.Size = new Size(36, 15);
             label67.TabIndex = 41;
             label67.Text = "Index";
             // 
             // label68
             // 
             label68.AutoSize = true;
-            label68.Location = new Point(76, 12);
+            label68.Location = new Point(66, 9);
             label68.Name = "label68";
-            label68.Size = new Size(49, 20);
+            label68.Size = new Size(39, 15);
             label68.TabIndex = 40;
             label68.Text = "Name";
             // 
             // label69
             // 
             label69.AutoSize = true;
-            label69.Location = new Point(367, 12);
+            label69.Location = new Point(321, 9);
             label69.Name = "label69";
-            label69.Size = new Size(85, 20);
+            label69.Size = new Size(67, 15);
             label69.TabIndex = 39;
             label69.Text = "Description";
             // 
             // tbIndexFeats
             // 
-            tbIndexFeats.Location = new Point(13, 36);
-            tbIndexFeats.Margin = new Padding(3, 4, 3, 4);
+            tbIndexFeats.Location = new Point(11, 27);
             tbIndexFeats.Name = "tbIndexFeats";
-            tbIndexFeats.Size = new Size(41, 27);
+            tbIndexFeats.Size = new Size(36, 23);
             tbIndexFeats.TabIndex = 38;
             // 
             // tbNameFeats
             // 
-            tbNameFeats.Location = new Point(79, 36);
-            tbNameFeats.Margin = new Padding(3, 4, 3, 4);
+            tbNameFeats.Location = new Point(69, 27);
             tbNameFeats.Name = "tbNameFeats";
-            tbNameFeats.Size = new Size(252, 27);
+            tbNameFeats.Size = new Size(221, 23);
             tbNameFeats.TabIndex = 37;
             // 
             // Features
@@ -1940,171 +1862,161 @@
             Features.Controls.Add(tbLevelFeatures);
             Features.Controls.Add(tbNameFeatures);
             Features.Controls.Add(tbIndexFeatures);
-            Features.Location = new Point(4, 29);
-            Features.Margin = new Padding(3, 4, 3, 4);
+            Features.Location = new Point(4, 24);
             Features.Name = "Features";
-            Features.Size = new Size(1296, 528);
+            Features.Size = new Size(1133, 393);
             Features.TabIndex = 10;
             Features.Text = "Features";
             // 
             // label79
             // 
             label79.AutoSize = true;
-            label79.Location = new Point(397, 100);
+            label79.Location = new Point(347, 75);
             label79.Name = "label79";
-            label79.Size = new Size(65, 20);
+            label79.Size = new Size(52, 15);
             label79.TabIndex = 17;
             label79.Text = "Subclass";
             // 
             // label78
             // 
             label78.AutoSize = true;
-            label78.Location = new Point(207, 100);
+            label78.Location = new Point(181, 75);
             label78.Name = "label78";
-            label78.Size = new Size(93, 20);
+            label78.Size = new Size(74, 15);
             label78.TabIndex = 16;
             label78.Text = "Prerequisites";
             // 
             // label75
             // 
             label75.AutoSize = true;
-            label75.Location = new Point(667, 18);
+            label75.Location = new Point(584, 14);
             label75.Name = "label75";
-            label75.Size = new Size(110, 20);
+            label75.Size = new Size(87, 15);
             label75.TabIndex = 15;
             label75.Text = "FeatureSpecific";
             // 
             // label76
             // 
             label76.AutoSize = true;
-            label76.Location = new Point(829, 18);
+            label76.Location = new Point(725, 14);
             label76.Name = "label76";
-            label76.Size = new Size(85, 20);
+            label76.Size = new Size(67, 15);
             label76.TabIndex = 14;
             label76.Text = "Description";
             // 
             // label77
             // 
             label77.AutoSize = true;
-            label77.Location = new Point(16, 100);
+            label77.Location = new Point(14, 75);
             label77.Name = "label77";
-            label77.Size = new Size(50, 20);
+            label77.Size = new Size(41, 15);
             label77.TabIndex = 13;
             label77.Text = "Parent";
             // 
             // label73
             // 
             label73.AutoSize = true;
-            label73.Location = new Point(476, 18);
+            label73.Location = new Point(416, 14);
             label73.Name = "label73";
-            label73.Size = new Size(42, 20);
+            label73.Size = new Size(34, 15);
             label73.TabIndex = 12;
             label73.Text = "Class";
             // 
             // label74
             // 
             label74.AutoSize = true;
-            label74.Location = new Point(313, 18);
+            label74.Location = new Point(274, 14);
             label74.Name = "label74";
-            label74.Size = new Size(43, 20);
+            label74.Size = new Size(34, 15);
             label74.TabIndex = 11;
             label74.Text = "Level";
             // 
             // label72
             // 
             label72.AutoSize = true;
-            label72.Location = new Point(161, 18);
+            label72.Location = new Point(141, 14);
             label72.Name = "label72";
-            label72.Size = new Size(49, 20);
+            label72.Size = new Size(39, 15);
             label72.TabIndex = 10;
             label72.Text = "Name";
             // 
             // label71
             // 
             label71.AutoSize = true;
-            label71.Location = new Point(16, 18);
+            label71.Location = new Point(14, 14);
             label71.Name = "label71";
-            label71.Size = new Size(45, 20);
+            label71.Size = new Size(36, 15);
             label71.TabIndex = 9;
             label71.Text = "Index";
             // 
             // cbSubclassFeatures
             // 
             cbSubclassFeatures.FormattingEnabled = true;
-            cbSubclassFeatures.Location = new Point(400, 124);
-            cbSubclassFeatures.Margin = new Padding(3, 4, 3, 4);
+            cbSubclassFeatures.Location = new Point(350, 93);
             cbSubclassFeatures.Name = "cbSubclassFeatures";
-            cbSubclassFeatures.Size = new Size(121, 28);
+            cbSubclassFeatures.Size = new Size(106, 23);
             cbSubclassFeatures.TabIndex = 8;
             // 
             // cnbPrerequisitesFeatures
             // 
             cnbPrerequisitesFeatures.FormattingEnabled = true;
-            cnbPrerequisitesFeatures.Location = new Point(210, 124);
-            cnbPrerequisitesFeatures.Margin = new Padding(3, 4, 3, 4);
+            cnbPrerequisitesFeatures.Location = new Point(184, 93);
             cnbPrerequisitesFeatures.Name = "cnbPrerequisitesFeatures";
-            cnbPrerequisitesFeatures.Size = new Size(121, 28);
+            cnbPrerequisitesFeatures.Size = new Size(106, 23);
             cnbPrerequisitesFeatures.TabIndex = 7;
             // 
             // cbParentFeatures
             // 
             cbParentFeatures.FormattingEnabled = true;
-            cbParentFeatures.Location = new Point(19, 124);
-            cbParentFeatures.Margin = new Padding(3, 4, 3, 4);
+            cbParentFeatures.Location = new Point(17, 93);
             cbParentFeatures.Name = "cbParentFeatures";
-            cbParentFeatures.Size = new Size(121, 28);
+            cbParentFeatures.Size = new Size(106, 23);
             cbParentFeatures.TabIndex = 6;
             // 
             // cbFeatureSpecificFeatures
             // 
             cbFeatureSpecificFeatures.FormattingEnabled = true;
-            cbFeatureSpecificFeatures.Location = new Point(670, 41);
-            cbFeatureSpecificFeatures.Margin = new Padding(3, 4, 3, 4);
+            cbFeatureSpecificFeatures.Location = new Point(586, 31);
             cbFeatureSpecificFeatures.Name = "cbFeatureSpecificFeatures";
-            cbFeatureSpecificFeatures.Size = new Size(121, 28);
+            cbFeatureSpecificFeatures.Size = new Size(106, 23);
             cbFeatureSpecificFeatures.TabIndex = 5;
             // 
             // cbClassFeatures
             // 
             cbClassFeatures.FormattingEnabled = true;
-            cbClassFeatures.Location = new Point(479, 41);
-            cbClassFeatures.Margin = new Padding(3, 4, 3, 4);
+            cbClassFeatures.Location = new Point(419, 31);
             cbClassFeatures.Name = "cbClassFeatures";
-            cbClassFeatures.Size = new Size(121, 28);
+            cbClassFeatures.Size = new Size(106, 23);
             cbClassFeatures.TabIndex = 4;
             // 
             // lbDescriptionFeatures
             // 
             lbDescriptionFeatures.FormattingEnabled = true;
-            lbDescriptionFeatures.ItemHeight = 20;
-            lbDescriptionFeatures.Location = new Point(832, 41);
-            lbDescriptionFeatures.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionFeatures.ItemHeight = 15;
+            lbDescriptionFeatures.Location = new Point(728, 31);
             lbDescriptionFeatures.Name = "lbDescriptionFeatures";
-            lbDescriptionFeatures.Size = new Size(416, 284);
+            lbDescriptionFeatures.Size = new Size(364, 214);
             lbDescriptionFeatures.TabIndex = 3;
             // 
             // tbLevelFeatures
             // 
-            tbLevelFeatures.Location = new Point(316, 41);
-            tbLevelFeatures.Margin = new Padding(3, 4, 3, 4);
+            tbLevelFeatures.Location = new Point(276, 31);
             tbLevelFeatures.Name = "tbLevelFeatures";
-            tbLevelFeatures.Size = new Size(100, 27);
+            tbLevelFeatures.Size = new Size(88, 23);
             tbLevelFeatures.TabIndex = 2;
             // 
             // tbNameFeatures
             // 
-            tbNameFeatures.Location = new Point(164, 41);
-            tbNameFeatures.Margin = new Padding(3, 4, 3, 4);
+            tbNameFeatures.Location = new Point(144, 31);
             tbNameFeatures.Name = "tbNameFeatures";
-            tbNameFeatures.Size = new Size(100, 27);
+            tbNameFeatures.Size = new Size(88, 23);
             tbNameFeatures.TabIndex = 1;
             // 
             // tbIndexFeatures
             // 
-            tbIndexFeatures.Location = new Point(17, 41);
-            tbIndexFeatures.Margin = new Padding(3, 4, 3, 4);
+            tbIndexFeatures.Location = new Point(15, 31);
             tbIndexFeatures.Name = "tbIndexFeatures";
-            tbIndexFeatures.Size = new Size(100, 27);
+            tbIndexFeatures.Size = new Size(88, 23);
             tbIndexFeatures.TabIndex = 0;
             // 
             // Languages
@@ -2121,10 +2033,9 @@
             Languages.Controls.Add(tbScriptLanguages);
             Languages.Controls.Add(tbNameLanguages);
             Languages.Controls.Add(tbIndexLanguages);
-            Languages.Location = new Point(4, 29);
-            Languages.Margin = new Padding(3, 4, 3, 4);
+            Languages.Location = new Point(4, 24);
             Languages.Name = "Languages";
-            Languages.Size = new Size(1296, 528);
+            Languages.Size = new Size(1133, 393);
             Languages.TabIndex = 11;
             Languages.Text = "Languages";
             Languages.UseVisualStyleBackColor = true;
@@ -2132,28 +2043,27 @@
             // label85
             // 
             label85.AutoSize = true;
-            label85.Location = new Point(19, 109);
+            label85.Location = new Point(17, 82);
             label85.Name = "label85";
-            label85.Size = new Size(114, 20);
+            label85.Size = new Size(89, 15);
             label85.TabIndex = 11;
             label85.Text = "TypicalSpeakers";
             // 
             // lbTypicalSpeakersLanguages
             // 
             lbTypicalSpeakersLanguages.FormattingEnabled = true;
-            lbTypicalSpeakersLanguages.ItemHeight = 20;
-            lbTypicalSpeakersLanguages.Location = new Point(22, 132);
-            lbTypicalSpeakersLanguages.Margin = new Padding(3, 4, 3, 4);
+            lbTypicalSpeakersLanguages.ItemHeight = 15;
+            lbTypicalSpeakersLanguages.Location = new Point(19, 99);
             lbTypicalSpeakersLanguages.Name = "lbTypicalSpeakersLanguages";
-            lbTypicalSpeakersLanguages.Size = new Size(691, 324);
+            lbTypicalSpeakersLanguages.Size = new Size(605, 244);
             lbTypicalSpeakersLanguages.TabIndex = 10;
             // 
             // label84
             // 
             label84.AutoSize = true;
-            label84.Location = new Point(610, 24);
+            label84.Location = new Point(534, 18);
             label84.Name = "label84";
-            label84.Size = new Size(85, 20);
+            label84.Size = new Size(67, 15);
             label84.TabIndex = 9;
             label84.Text = "Description";
             label84.Click += label84_Click;
@@ -2161,78 +2071,73 @@
             // label82
             // 
             label82.AutoSize = true;
-            label82.Location = new Point(465, 24);
+            label82.Location = new Point(407, 18);
             label82.Name = "label82";
-            label82.Size = new Size(40, 20);
+            label82.Size = new Size(31, 15);
             label82.TabIndex = 8;
             label82.Text = "Type";
             // 
             // label83
             // 
             label83.AutoSize = true;
-            label83.Location = new Point(318, 24);
+            label83.Location = new Point(278, 18);
             label83.Name = "label83";
-            label83.Size = new Size(47, 20);
+            label83.Size = new Size(37, 15);
             label83.TabIndex = 7;
             label83.Text = "Script";
             // 
             // label81
             // 
             label81.AutoSize = true;
-            label81.Location = new Point(166, 24);
+            label81.Location = new Point(145, 18);
             label81.Name = "label81";
-            label81.Size = new Size(49, 20);
+            label81.Size = new Size(39, 15);
             label81.TabIndex = 6;
             label81.Text = "Name";
             // 
             // label80
             // 
             label80.AutoSize = true;
-            label80.Location = new Point(19, 24);
+            label80.Location = new Point(17, 18);
             label80.Name = "label80";
-            label80.Size = new Size(45, 20);
+            label80.Size = new Size(36, 15);
             label80.TabIndex = 5;
             label80.Text = "Index";
             label80.Click += label80_Click;
             // 
             // tbDescriptionLanguages
             // 
-            tbDescriptionLanguages.Location = new Point(613, 48);
-            tbDescriptionLanguages.Margin = new Padding(3, 4, 3, 4);
+            tbDescriptionLanguages.Location = new Point(536, 36);
             tbDescriptionLanguages.Name = "tbDescriptionLanguages";
-            tbDescriptionLanguages.Size = new Size(100, 27);
+            tbDescriptionLanguages.Size = new Size(88, 23);
             tbDescriptionLanguages.TabIndex = 4;
             // 
             // tbTypeLanguages
             // 
-            tbTypeLanguages.Location = new Point(468, 48);
-            tbTypeLanguages.Margin = new Padding(3, 4, 3, 4);
+            tbTypeLanguages.Location = new Point(410, 36);
             tbTypeLanguages.Name = "tbTypeLanguages";
-            tbTypeLanguages.Size = new Size(100, 27);
+            tbTypeLanguages.Size = new Size(88, 23);
             tbTypeLanguages.TabIndex = 3;
             // 
             // tbScriptLanguages
             // 
-            tbScriptLanguages.Location = new Point(321, 48);
-            tbScriptLanguages.Margin = new Padding(3, 4, 3, 4);
+            tbScriptLanguages.Location = new Point(281, 36);
             tbScriptLanguages.Name = "tbScriptLanguages";
-            tbScriptLanguages.Size = new Size(100, 27);
+            tbScriptLanguages.Size = new Size(88, 23);
             tbScriptLanguages.TabIndex = 2;
             // 
             // tbNameLanguages
             // 
-            tbNameLanguages.Location = new Point(169, 48);
-            tbNameLanguages.Margin = new Padding(3, 4, 3, 4);
+            tbNameLanguages.Location = new Point(148, 36);
             tbNameLanguages.Name = "tbNameLanguages";
-            tbNameLanguages.Size = new Size(100, 27);
+            tbNameLanguages.Size = new Size(88, 23);
             tbNameLanguages.TabIndex = 1;
             // 
             // tbIndexLanguages
             // 
-            tbIndexLanguages.Location = new Point(22, 48);
-            tbIndexLanguages.Margin = new Padding(3, 4, 3, 4);
+            tbIndexLanguages.Location = new Point(19, 36);
             tbIndexLanguages.Name = "tbIndexLanguages";
-            tbIndexLanguages.Size = new Size(100, 27);
+            tbIndexLanguages.Size = new Size(88, 23);
             tbIndexLanguages.TabIndex = 0;
             // 
             // Levels
@@ -2257,10 +2162,9 @@
             Levels.Controls.Add(tbProfBonusLevels);
             Levels.Controls.Add(tbIndexLevels);
             Levels.Controls.Add(tbAbilityScoreBonusesLevels);
-            Levels.Location = new Point(4, 29);
-            Levels.Margin = new Padding(3, 4, 3, 4);
+            Levels.Location = new Point(4, 24);
             Levels.Name = "Levels";
-            Levels.Size = new Size(1296, 528);
+            Levels.Size = new Size(1133, 393);
             Levels.TabIndex = 12;
             Levels.Text = "Levels";
             Levels.UseVisualStyleBackColor = true;
@@ -2268,177 +2172,167 @@
             // label95
             // 
             label95.AutoSize = true;
-            label95.Location = new Point(147, 30);
+            label95.Location = new Point(129, 22);
             label95.Name = "label95";
-            label95.Size = new Size(43, 20);
+            label95.Size = new Size(34, 15);
             label95.TabIndex = 19;
             label95.Text = "Level";
             // 
             // label94
             // 
             label94.AutoSize = true;
-            label94.Location = new Point(305, 29);
+            label94.Location = new Point(267, 22);
             label94.Name = "label94";
-            label94.Size = new Size(76, 20);
+            label94.Size = new Size(62, 15);
             label94.TabIndex = 18;
             label94.Text = "ProfBonus";
             // 
             // label93
             // 
             label93.AutoSize = true;
-            label93.Location = new Point(458, 30);
+            label93.Location = new Point(401, 22);
             label93.Name = "label93";
-            label93.Size = new Size(143, 20);
+            label93.Size = new Size(114, 15);
             label93.TabIndex = 17;
             label93.Text = "AbilityScoreBonuses";
             // 
             // label92
             // 
             label92.AutoSize = true;
-            label92.Location = new Point(622, 29);
+            label92.Location = new Point(544, 22);
             label92.Name = "label92";
-            label92.Size = new Size(42, 20);
+            label92.Size = new Size(34, 15);
             label92.TabIndex = 16;
             label92.Text = "Class";
             // 
             // label91
             // 
             label91.AutoSize = true;
-            label91.Location = new Point(779, 29);
+            label91.Location = new Point(682, 22);
             label91.Name = "label91";
-            label91.Size = new Size(94, 20);
+            label91.Size = new Size(75, 15);
             label91.TabIndex = 15;
             label91.Text = "ClassSpecific";
             // 
             // label90
             // 
             label90.AutoSize = true;
-            label90.Location = new Point(939, 29);
+            label90.Location = new Point(822, 22);
             label90.Name = "label90";
-            label90.Size = new Size(64, 20);
+            label90.Size = new Size(51, 15);
             label90.TabIndex = 14;
             label90.Text = "Features";
             // 
             // label89
             // 
             label89.AutoSize = true;
-            label89.Location = new Point(1098, 29);
+            label89.Location = new Point(961, 22);
             label89.Name = "label89";
-            label89.Size = new Size(89, 20);
+            label89.Size = new Size(70, 15);
             label89.TabIndex = 13;
             label89.Text = "Spellcasting";
             // 
             // label88
             // 
             label88.AutoSize = true;
-            label88.Location = new Point(15, 120);
+            label88.Location = new Point(13, 90);
             label88.Name = "label88";
-            label88.Size = new Size(65, 20);
+            label88.Size = new Size(52, 15);
             label88.TabIndex = 12;
             label88.Text = "Subclass";
             // 
             // label87
             // 
             label87.AutoSize = true;
-            label87.Location = new Point(199, 120);
+            label87.Location = new Point(174, 90);
             label87.Name = "label87";
-            label87.Size = new Size(117, 20);
+            label87.Size = new Size(93, 15);
             label87.TabIndex = 11;
             label87.Text = "SubclassSpecific";
             // 
             // label86
             // 
             label86.AutoSize = true;
-            label86.Location = new Point(15, 29);
+            label86.Location = new Point(13, 22);
             label86.Name = "label86";
-            label86.Size = new Size(45, 20);
+            label86.Size = new Size(36, 15);
             label86.TabIndex = 10;
             label86.Text = "Index";
             // 
             // cbClassLevels
             // 
             cbClassLevels.FormattingEnabled = true;
-            cbClassLevels.Location = new Point(625, 52);
-            cbClassLevels.Margin = new Padding(3, 4, 3, 4);
+            cbClassLevels.Location = new Point(547, 39);
             cbClassLevels.Name = "cbClassLevels";
-            cbClassLevels.Size = new Size(121, 28);
+            cbClassLevels.Size = new Size(106, 23);
             cbClassLevels.TabIndex = 9;
             // 
             // cbClassSpecificLevels
             // 
             cbClassSpecificLevels.FormattingEnabled = true;
-            cbClassSpecificLevels.Location = new Point(782, 52);
-            cbClassSpecificLevels.Margin = new Padding(3, 4, 3, 4);
+            cbClassSpecificLevels.Location = new Point(684, 39);
             cbClassSpecificLevels.Name = "cbClassSpecificLevels";
-            cbClassSpecificLevels.Size = new Size(121, 28);
+            cbClassSpecificLevels.Size = new Size(106, 23);
             cbClassSpecificLevels.TabIndex = 8;
             // 
             // cbFeaturesLevels
             // 
             cbFeaturesLevels.FormattingEnabled = true;
-            cbFeaturesLevels.Location = new Point(942, 52);
-            cbFeaturesLevels.Margin = new Padding(3, 4, 3, 4);
+            cbFeaturesLevels.Location = new Point(824, 39);
             cbFeaturesLevels.Name = "cbFeaturesLevels";
-            cbFeaturesLevels.Size = new Size(121, 28);
+            cbFeaturesLevels.Size = new Size(106, 23);
             cbFeaturesLevels.TabIndex = 7;
             // 
             // cbSpellcastingLevels
             // 
             cbSpellcastingLevels.FormattingEnabled = true;
-            cbSpellcastingLevels.Location = new Point(1101, 52);
-            cbSpellcastingLevels.Margin = new Padding(3, 4, 3, 4);
+            cbSpellcastingLevels.Location = new Point(963, 39);
             cbSpellcastingLevels.Name = "cbSpellcastingLevels";
-            cbSpellcastingLevels.Size = new Size(121, 28);
+            cbSpellcastingLevels.Size = new Size(106, 23);
             cbSpellcastingLevels.TabIndex = 6;
             // 
             // cbSubclassLevels
             // 
             cbSubclassLevels.FormattingEnabled = true;
-            cbSubclassLevels.Location = new Point(18, 144);
-            cbSubclassLevels.Margin = new Padding(3, 4, 3, 4);
+            cbSubclassLevels.Location = new Point(16, 108);
             cbSubclassLevels.Name = "cbSubclassLevels";
-            cbSubclassLevels.Size = new Size(121, 28);
+            cbSubclassLevels.Size = new Size(106, 23);
             cbSubclassLevels.TabIndex = 5;
             // 
             // cbSubclassSpecificLevels
             // 
             cbSubclassSpecificLevels.FormattingEnabled = true;
-            cbSubclassSpecificLevels.Location = new Point(198, 144);
-            cbSubclassSpecificLevels.Margin = new Padding(3, 4, 3, 4);
+            cbSubclassSpecificLevels.Location = new Point(173, 108);
             cbSubclassSpecificLevels.Name = "cbSubclassSpecificLevels";
-            cbSubclassSpecificLevels.Size = new Size(121, 28);
+            cbSubclassSpecificLevels.Size = new Size(106, 23);
             cbSubclassSpecificLevels.TabIndex = 4;
             // 
             // tbLevelLevels
             // 
-            tbLevelLevels.Location = new Point(150, 52);
-            tbLevelLevels.Margin = new Padding(3, 4, 3, 4);
+            tbLevelLevels.Location = new Point(131, 39);
             tbLevelLevels.Name = "tbLevelLevels";
-            tbLevelLevels.Size = new Size(100, 27);
+            tbLevelLevels.Size = new Size(88, 23);
             tbLevelLevels.TabIndex = 3;
             // 
             // tbProfBonusLevels
             // 
-            tbProfBonusLevels.Location = new Point(308, 52);
-            tbProfBonusLevels.Margin = new Padding(3, 4, 3, 4);
+            tbProfBonusLevels.Location = new Point(270, 39);
             tbProfBonusLevels.Name = "tbProfBonusLevels";
-            tbProfBonusLevels.Size = new Size(100, 27);
+            tbProfBonusLevels.Size = new Size(88, 23);
             tbProfBonusLevels.TabIndex = 2;
             // 
             // tbIndexLevels
             // 
-            tbIndexLevels.Location = new Point(18, 52);
-            tbIndexLevels.Margin = new Padding(3, 4, 3, 4);
+            tbIndexLevels.Location = new Point(16, 39);
             tbIndexLevels.Name = "tbIndexLevels";
-            tbIndexLevels.Size = new Size(100, 27);
+            tbIndexLevels.Size = new Size(88, 23);
             tbIndexLevels.TabIndex = 1;
             // 
             // tbAbilityScoreBonusesLevels
             // 
-            tbAbilityScoreBonusesLevels.Location = new Point(461, 52);
-            tbAbilityScoreBonusesLevels.Margin = new Padding(3, 4, 3, 4);
+            tbAbilityScoreBonusesLevels.Location = new Point(403, 39);
             tbAbilityScoreBonusesLevels.Name = "tbAbilityScoreBonusesLevels";
-            tbAbilityScoreBonusesLevels.Size = new Size(100, 27);
+            tbAbilityScoreBonusesLevels.Size = new Size(88, 23);
             tbAbilityScoreBonusesLevels.TabIndex = 0;
             // 
             // MagicItems
@@ -2457,10 +2351,9 @@
             MagicItems.Controls.Add(cbVariantsMagicItems);
             MagicItems.Controls.Add(tbNameMagicItems);
             MagicItems.Controls.Add(tbIndexMagicItems);
-            MagicItems.Location = new Point(4, 29);
-            MagicItems.Margin = new Padding(3, 4, 3, 4);
+            MagicItems.Location = new Point(4, 24);
             MagicItems.Name = "MagicItems";
-            MagicItems.Size = new Size(1296, 528);
+            MagicItems.Size = new Size(1133, 393);
             MagicItems.TabIndex = 13;
             MagicItems.Text = "MagicItems";
             MagicItems.UseVisualStyleBackColor = true;
@@ -2468,127 +2361,120 @@
             // chbVariantMagicItems
             // 
             chbVariantMagicItems.AutoSize = true;
-            chbVariantMagicItems.Location = new Point(314, 50);
-            chbVariantMagicItems.Margin = new Padding(3, 4, 3, 4);
+            chbVariantMagicItems.Location = new Point(275, 38);
             chbVariantMagicItems.Name = "chbVariantMagicItems";
-            chbVariantMagicItems.Size = new Size(18, 17);
+            chbVariantMagicItems.Size = new Size(15, 14);
             chbVariantMagicItems.TabIndex = 14;
             chbVariantMagicItems.UseVisualStyleBackColor = true;
             // 
             // label102
             // 
             label102.AutoSize = true;
-            label102.Location = new Point(13, 22);
+            label102.Location = new Point(11, 16);
             label102.Name = "label102";
-            label102.Size = new Size(45, 20);
+            label102.Size = new Size(36, 15);
             label102.TabIndex = 13;
             label102.Text = "Index";
             // 
             // label101
             // 
             label101.AutoSize = true;
-            label101.Location = new Point(146, 22);
+            label101.Location = new Point(128, 16);
             label101.Name = "label101";
-            label101.Size = new Size(49, 20);
+            label101.Size = new Size(39, 15);
             label101.TabIndex = 12;
             label101.Text = "Name";
             // 
             // label100
             // 
             label100.AutoSize = true;
-            label100.Location = new Point(887, 20);
+            label100.Location = new Point(776, 15);
             label100.Name = "label100";
-            label100.Size = new Size(85, 20);
+            label100.Size = new Size(67, 15);
             label100.TabIndex = 11;
             label100.Text = "Description";
             // 
             // label99
             // 
             label99.AutoSize = true;
-            label99.Location = new Point(295, 22);
+            label99.Location = new Point(258, 16);
             label99.Name = "label99";
-            label99.Size = new Size(55, 20);
+            label99.Size = new Size(43, 15);
             label99.TabIndex = 10;
             label99.Text = "Variant";
             // 
             // label98
             // 
             label98.AutoSize = true;
-            label98.Location = new Point(409, 22);
+            label98.Location = new Point(358, 16);
             label98.Name = "label98";
-            label98.Size = new Size(141, 20);
+            label98.Size = new Size(113, 15);
             label98.TabIndex = 9;
             label98.Text = "EquipmentCategory";
             // 
             // label97
             // 
             label97.AutoSize = true;
-            label97.Location = new Point(719, 20);
+            label97.Location = new Point(629, 15);
             label97.Name = "label97";
-            label97.Size = new Size(61, 20);
+            label97.Size = new Size(48, 15);
             label97.TabIndex = 8;
             label97.Text = "Variants";
             // 
             // label96
             // 
             label96.AutoSize = true;
-            label96.Location = new Point(562, 20);
+            label96.Location = new Point(492, 15);
             label96.Name = "label96";
-            label96.Size = new Size(47, 20);
+            label96.Size = new Size(37, 15);
             label96.TabIndex = 7;
             label96.Text = "Rarity";
             // 
             // lbDescriptionMagicItems
             // 
             lbDescriptionMagicItems.FormattingEnabled = true;
-            lbDescriptionMagicItems.ItemHeight = 20;
-            lbDescriptionMagicItems.Location = new Point(890, 46);
-            lbDescriptionMagicItems.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionMagicItems.ItemHeight = 15;
+            lbDescriptionMagicItems.Location = new Point(779, 34);
             lbDescriptionMagicItems.Name = "lbDescriptionMagicItems";
-            lbDescriptionMagicItems.Size = new Size(382, 464);
+            lbDescriptionMagicItems.Size = new Size(335, 349);
             lbDescriptionMagicItems.TabIndex = 6;
             // 
             // cbEquipmentCategoryMagicItems
             // 
             cbEquipmentCategoryMagicItems.FormattingEnabled = true;
-            cbEquipmentCategoryMagicItems.Location = new Point(412, 44);
-            cbEquipmentCategoryMagicItems.Margin = new Padding(3, 4, 3, 4);
+            cbEquipmentCategoryMagicItems.Location = new Point(360, 33);
             cbEquipmentCategoryMagicItems.Name = "cbEquipmentCategoryMagicItems";
-            cbEquipmentCategoryMagicItems.Size = new Size(121, 28);
+            cbEquipmentCategoryMagicItems.Size = new Size(106, 23);
             cbEquipmentCategoryMagicItems.TabIndex = 5;
             // 
             // cbRarityMagicItems
             // 
             cbRarityMagicItems.FormattingEnabled = true;
-            cbRarityMagicItems.Location = new Point(565, 44);
-            cbRarityMagicItems.Margin = new Padding(3, 4, 3, 4);
+            cbRarityMagicItems.Location = new Point(494, 33);
             cbRarityMagicItems.Name = "cbRarityMagicItems";
-            cbRarityMagicItems.Size = new Size(121, 28);
+            cbRarityMagicItems.Size = new Size(106, 23);
             cbRarityMagicItems.TabIndex = 4;
             // 
             // cbVariantsMagicItems
             // 
             cbVariantsMagicItems.FormattingEnabled = true;
-            cbVariantsMagicItems.Location = new Point(722, 46);
-            cbVariantsMagicItems.Margin = new Padding(3, 4, 3, 4);
+            cbVariantsMagicItems.Location = new Point(632, 34);
             cbVariantsMagicItems.Name = "cbVariantsMagicItems";
-            cbVariantsMagicItems.Size = new Size(121, 28);
+            cbVariantsMagicItems.Size = new Size(106, 23);
             cbVariantsMagicItems.TabIndex = 3;
             // 
             // tbNameMagicItems
             // 
-            tbNameMagicItems.Location = new Point(149, 46);
-            tbNameMagicItems.Margin = new Padding(3, 4, 3, 4);
+            tbNameMagicItems.Location = new Point(130, 34);
             tbNameMagicItems.Name = "tbNameMagicItems";
-            tbNameMagicItems.Size = new Size(100, 27);
+            tbNameMagicItems.Size = new Size(88, 23);
             tbNameMagicItems.TabIndex = 2;
             // 
             // tbIndexMagicItems
             // 
-            tbIndexMagicItems.Location = new Point(16, 46);
-            tbIndexMagicItems.Margin = new Padding(3, 4, 3, 4);
+            tbIndexMagicItems.Location = new Point(14, 34);
             tbIndexMagicItems.Name = "tbIndexMagicItems";
-            tbIndexMagicItems.Size = new Size(100, 27);
+            tbIndexMagicItems.Size = new Size(88, 23);
             tbIndexMagicItems.TabIndex = 0;
             // 
             // MagicSchools
@@ -2599,64 +2485,60 @@
             MagicSchools.Controls.Add(label105);
             MagicSchools.Controls.Add(tbIndexMagicSchools);
             MagicSchools.Controls.Add(tbNameMagicSchools);
-            MagicSchools.Location = new Point(4, 29);
-            MagicSchools.Margin = new Padding(3, 4, 3, 4);
+            MagicSchools.Location = new Point(4, 24);
             MagicSchools.Name = "MagicSchools";
-            MagicSchools.Size = new Size(1296, 528);
+            MagicSchools.Size = new Size(1133, 393);
             MagicSchools.TabIndex = 14;
             MagicSchools.Text = "MagicSchools";
             MagicSchools.UseVisualStyleBackColor = true;
             // 
             // lbDescriptionMagicSchools
             // 
-            lbDescriptionMagicSchools.ItemHeight = 20;
-            lbDescriptionMagicSchools.Location = new Point(371, 41);
-            lbDescriptionMagicSchools.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionMagicSchools.ItemHeight = 15;
+            lbDescriptionMagicSchools.Location = new Point(325, 31);
             lbDescriptionMagicSchools.Name = "lbDescriptionMagicSchools";
-            lbDescriptionMagicSchools.Size = new Size(505, 204);
+            lbDescriptionMagicSchools.Size = new Size(442, 154);
             lbDescriptionMagicSchools.TabIndex = 42;
             // 
             // label103
             // 
             label103.AutoSize = true;
-            label103.Location = new Point(11, 18);
+            label103.Location = new Point(10, 14);
             label103.Name = "label103";
-            label103.Size = new Size(45, 20);
+            label103.Size = new Size(36, 15);
             label103.TabIndex = 47;
             label103.Text = "Index";
             // 
             // label104
             // 
             label104.AutoSize = true;
-            label104.Location = new Point(77, 18);
+            label104.Location = new Point(67, 14);
             label104.Name = "label104";
-            label104.Size = new Size(49, 20);
+            label104.Size = new Size(39, 15);
             label104.TabIndex = 46;
             label104.Text = "Name";
             // 
             // label105
             // 
             label105.AutoSize = true;
-            label105.Location = new Point(368, 18);
+            label105.Location = new Point(322, 14);
             label105.Name = "label105";
-            label105.Size = new Size(85, 20);
+            label105.Size = new Size(67, 15);
             label105.TabIndex = 45;
             label105.Text = "Description";
             // 
             // tbIndexMagicSchools
             // 
-            tbIndexMagicSchools.Location = new Point(14, 41);
-            tbIndexMagicSchools.Margin = new Padding(3, 4, 3, 4);
+            tbIndexMagicSchools.Location = new Point(12, 31);
             tbIndexMagicSchools.Name = "tbIndexMagicSchools";
-            tbIndexMagicSchools.Size = new Size(41, 27);
+            tbIndexMagicSchools.Size = new Size(36, 23);
             tbIndexMagicSchools.TabIndex = 44;
             // 
             // tbNameMagicSchools
             // 
-            tbNameMagicSchools.Location = new Point(80, 41);
-            tbNameMagicSchools.Margin = new Padding(3, 4, 3, 4);
+            tbNameMagicSchools.Location = new Point(70, 31);
             tbNameMagicSchools.Name = "tbNameMagicSchools";
-            tbNameMagicSchools.Size = new Size(252, 27);
+            tbNameMagicSchools.Size = new Size(221, 23);
             tbNameMagicSchools.TabIndex = 43;
             // 
             // Proficiencies
@@ -2673,10 +2555,9 @@
             Proficiencies.Controls.Add(label107);
             Proficiencies.Controls.Add(tbIndexProficiencies);
             Proficiencies.Controls.Add(tbNameProficiencies);
-            Proficiencies.Location = new Point(4, 29);
-            Proficiencies.Margin = new Padding(3, 4, 3, 4);
+            Proficiencies.Location = new Point(4, 24);
             Proficiencies.Name = "Proficiencies";
-            Proficiencies.Size = new Size(1296, 528);
+            Proficiencies.Size = new Size(1133, 393);
             Proficiencies.TabIndex = 16;
             Proficiencies.Text = "Proficiencies";
             Proficiencies.UseVisualStyleBackColor = true;
@@ -2684,106 +2565,100 @@
             // label111
             // 
             label111.AutoSize = true;
-            label111.Location = new Point(800, 21);
+            label111.Location = new Point(700, 16);
             label111.Name = "label111";
-            label111.Size = new Size(75, 20);
+            label111.Size = new Size(59, 15);
             label111.TabIndex = 59;
             label111.Text = "Reference";
             // 
             // label110
             // 
             label110.AutoSize = true;
-            label110.Location = new Point(487, 24);
+            label110.Location = new Point(426, 18);
             label110.Name = "label110";
-            label110.Size = new Size(56, 20);
+            label110.Size = new Size(45, 15);
             label110.TabIndex = 58;
             label110.Text = "Classes";
             // 
             // label109
             // 
             label109.AutoSize = true;
-            label109.Location = new Point(644, 21);
+            label109.Location = new Point(564, 16);
             label109.Name = "label109";
-            label109.Size = new Size(47, 20);
+            label109.Size = new Size(37, 15);
             label109.TabIndex = 57;
             label109.Text = "Races";
             // 
             // cbClassesProficiencies
             // 
             cbClassesProficiencies.FormattingEnabled = true;
-            cbClassesProficiencies.Location = new Point(490, 45);
-            cbClassesProficiencies.Margin = new Padding(3, 4, 3, 4);
+            cbClassesProficiencies.Location = new Point(429, 34);
             cbClassesProficiencies.Name = "cbClassesProficiencies";
-            cbClassesProficiencies.Size = new Size(121, 28);
+            cbClassesProficiencies.Size = new Size(106, 23);
             cbClassesProficiencies.TabIndex = 56;
             // 
             // cbRacesProficiencies
             // 
             cbRacesProficiencies.FormattingEnabled = true;
-            cbRacesProficiencies.Location = new Point(647, 45);
-            cbRacesProficiencies.Margin = new Padding(3, 4, 3, 4);
+            cbRacesProficiencies.Location = new Point(566, 34);
             cbRacesProficiencies.Name = "cbRacesProficiencies";
-            cbRacesProficiencies.Size = new Size(121, 28);
+            cbRacesProficiencies.Size = new Size(106, 23);
             cbRacesProficiencies.TabIndex = 55;
             // 
             // cbReferenceProficiencies
             // 
             cbReferenceProficiencies.FormattingEnabled = true;
-            cbReferenceProficiencies.Location = new Point(803, 45);
-            cbReferenceProficiencies.Margin = new Padding(3, 4, 3, 4);
+            cbReferenceProficiencies.Location = new Point(703, 34);
             cbReferenceProficiencies.Name = "cbReferenceProficiencies";
-            cbReferenceProficiencies.Size = new Size(121, 28);
+            cbReferenceProficiencies.Size = new Size(106, 23);
             cbReferenceProficiencies.TabIndex = 54;
             // 
             // tbTypeProficiencies
             // 
             tbTypeProficiencies.AutoSize = true;
-            tbTypeProficiencies.Location = new Point(373, 24);
+            tbTypeProficiencies.Location = new Point(326, 18);
             tbTypeProficiencies.Name = "tbTypeProficiencies";
-            tbTypeProficiencies.Size = new Size(40, 20);
+            tbTypeProficiencies.Size = new Size(31, 15);
             tbTypeProficiencies.TabIndex = 53;
             tbTypeProficiencies.Text = "Type";
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(376, 48);
-            textBox7.Margin = new Padding(3, 4, 3, 4);
+            textBox7.Location = new Point(329, 36);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(73, 27);
+            textBox7.Size = new Size(64, 23);
             textBox7.TabIndex = 52;
             // 
             // label106
             // 
             label106.AutoSize = true;
-            label106.Location = new Point(16, 24);
+            label106.Location = new Point(14, 18);
             label106.Name = "label106";
-            label106.Size = new Size(45, 20);
+            label106.Size = new Size(36, 15);
             label106.TabIndex = 51;
             label106.Text = "Index";
             // 
             // label107
             // 
             label107.AutoSize = true;
-            label107.Location = new Point(82, 24);
+            label107.Location = new Point(72, 18);
             label107.Name = "label107";
-            label107.Size = new Size(49, 20);
+            label107.Size = new Size(39, 15);
             label107.TabIndex = 50;
             label107.Text = "Name";
             // 
             // tbIndexProficiencies
             // 
-            tbIndexProficiencies.Location = new Point(19, 48);
-            tbIndexProficiencies.Margin = new Padding(3, 4, 3, 4);
+            tbIndexProficiencies.Location = new Point(17, 36);
             tbIndexProficiencies.Name = "tbIndexProficiencies";
-            tbIndexProficiencies.Size = new Size(41, 27);
+            tbIndexProficiencies.Size = new Size(36, 23);
             tbIndexProficiencies.TabIndex = 49;
             // 
             // tbNameProficiencies
             // 
-            tbNameProficiencies.Location = new Point(85, 48);
-            tbNameProficiencies.Margin = new Padding(3, 4, 3, 4);
+            tbNameProficiencies.Location = new Point(74, 36);
             tbNameProficiencies.Name = "tbNameProficiencies";
-            tbNameProficiencies.Size = new Size(252, 27);
+            tbNameProficiencies.Size = new Size(221, 23);
             tbNameProficiencies.TabIndex = 48;
             // 
             // Races
@@ -2820,10 +2695,9 @@
             Races.Controls.Add(tbAgeRaces);
             Races.Controls.Add(tbNameRaces);
             Races.Controls.Add(tbIndexRaces);
-            Races.Location = new Point(4, 29);
-            Races.Margin = new Padding(3, 4, 3, 4);
+            Races.Location = new Point(4, 24);
             Races.Name = "Races";
-            Races.Size = new Size(1296, 528);
+            Races.Size = new Size(1133, 393);
             Races.TabIndex = 17;
             Races.Text = "Races";
             Races.UseVisualStyleBackColor = true;
@@ -2831,63 +2705,63 @@
             // label126
             // 
             label126.AutoSize = true;
-            label126.Location = new Point(176, 215);
+            label126.Location = new Point(154, 161);
             label126.Name = "label126";
-            label126.Size = new Size(44, 20);
+            label126.Size = new Size(34, 15);
             label126.TabIndex = 31;
             label126.Text = "Traits";
             // 
             // label125
             // 
             label125.AutoSize = true;
-            label125.Location = new Point(16, 114);
+            label125.Location = new Point(14, 86);
             label125.Name = "label125";
-            label125.Size = new Size(144, 20);
+            label125.Size = new Size(116, 15);
             label125.TabIndex = 30;
             label125.Text = "AbilityBonusOptions";
             // 
             // label124
             // 
             label124.AutoSize = true;
-            label124.Location = new Point(15, 215);
+            label124.Location = new Point(13, 161);
             label124.Name = "label124";
-            label124.Size = new Size(68, 20);
+            label124.Size = new Size(54, 15);
             label124.TabIndex = 29;
             label124.Text = "Subraces";
             // 
             // label123
             // 
             label123.AutoSize = true;
-            label123.Location = new Point(327, 114);
+            label123.Location = new Point(286, 86);
             label123.Name = "label123";
-            label123.Size = new Size(126, 20);
+            label123.Size = new Size(101, 15);
             label123.TabIndex = 28;
             label123.Text = "LanguageOptions";
             // 
             // label122
             // 
             label122.AutoSize = true;
-            label122.Location = new Point(627, 114);
+            label122.Location = new Point(549, 86);
             label122.Name = "label122";
-            label122.Size = new Size(144, 20);
+            label122.Size = new Size(115, 15);
             label122.TabIndex = 27;
             label122.Text = "StartingProficiencies";
             // 
             // label121
             // 
             label121.AutoSize = true;
-            label121.Location = new Point(176, 114);
+            label121.Location = new Point(154, 86);
             label121.Name = "label121";
-            label121.Size = new Size(106, 20);
+            label121.Size = new Size(85, 15);
             label121.TabIndex = 26;
             label121.Text = "AbilityBonuses";
             // 
             // label120
             // 
             label120.AutoSize = true;
-            label120.Location = new Point(480, 114);
+            label120.Location = new Point(420, 86);
             label120.Name = "label120";
-            label120.Size = new Size(80, 20);
+            label120.Size = new Size(64, 15);
             label120.TabIndex = 25;
             label120.Text = "Languages";
             label120.Click += label120_Click;
@@ -2895,219 +2769,203 @@
             // label119
             // 
             label119.AutoSize = true;
-            label119.Location = new Point(806, 114);
+            label119.Location = new Point(705, 86);
             label119.Name = "label119";
-            label119.Size = new Size(185, 20);
+            label119.Size = new Size(149, 15);
             label119.TabIndex = 24;
             label119.Text = "StartingProficiencyOptions";
             // 
             // cbSubracesRaces
             // 
             cbSubracesRaces.FormattingEnabled = true;
-            cbSubracesRaces.Location = new Point(18, 239);
-            cbSubracesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbSubracesRaces.Location = new Point(16, 179);
             cbSubracesRaces.Name = "cbSubracesRaces";
-            cbSubracesRaces.Size = new Size(121, 28);
+            cbSubracesRaces.Size = new Size(106, 23);
             cbSubracesRaces.TabIndex = 23;
             // 
             // cbTraitsRaces
             // 
             cbTraitsRaces.FormattingEnabled = true;
-            cbTraitsRaces.Location = new Point(179, 239);
-            cbTraitsRaces.Margin = new Padding(3, 4, 3, 4);
+            cbTraitsRaces.Location = new Point(157, 179);
             cbTraitsRaces.Name = "cbTraitsRaces";
-            cbTraitsRaces.Size = new Size(121, 28);
+            cbTraitsRaces.Size = new Size(106, 23);
             cbTraitsRaces.TabIndex = 22;
             // 
             // cbAbilityBonusesRaces
             // 
             cbAbilityBonusesRaces.FormattingEnabled = true;
-            cbAbilityBonusesRaces.Location = new Point(179, 138);
-            cbAbilityBonusesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbAbilityBonusesRaces.Location = new Point(157, 104);
             cbAbilityBonusesRaces.Name = "cbAbilityBonusesRaces";
-            cbAbilityBonusesRaces.Size = new Size(121, 28);
+            cbAbilityBonusesRaces.Size = new Size(106, 23);
             cbAbilityBonusesRaces.TabIndex = 21;
             // 
             // cbLanguageOptionsRaces
             // 
             cbLanguageOptionsRaces.FormattingEnabled = true;
-            cbLanguageOptionsRaces.Location = new Point(330, 138);
-            cbLanguageOptionsRaces.Margin = new Padding(3, 4, 3, 4);
+            cbLanguageOptionsRaces.Location = new Point(289, 104);
             cbLanguageOptionsRaces.Name = "cbLanguageOptionsRaces";
-            cbLanguageOptionsRaces.Size = new Size(121, 28);
+            cbLanguageOptionsRaces.Size = new Size(106, 23);
             cbLanguageOptionsRaces.TabIndex = 20;
             // 
             // cbLanguagesRaces
             // 
             cbLanguagesRaces.FormattingEnabled = true;
-            cbLanguagesRaces.Location = new Point(483, 138);
-            cbLanguagesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbLanguagesRaces.Location = new Point(423, 104);
             cbLanguagesRaces.Name = "cbLanguagesRaces";
-            cbLanguagesRaces.Size = new Size(121, 28);
+            cbLanguagesRaces.Size = new Size(106, 23);
             cbLanguagesRaces.TabIndex = 19;
             // 
             // cbStartingProficienciesRaces
             // 
             cbStartingProficienciesRaces.FormattingEnabled = true;
-            cbStartingProficienciesRaces.Location = new Point(630, 138);
-            cbStartingProficienciesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbStartingProficienciesRaces.Location = new Point(551, 104);
             cbStartingProficienciesRaces.Name = "cbStartingProficienciesRaces";
-            cbStartingProficienciesRaces.Size = new Size(121, 28);
+            cbStartingProficienciesRaces.Size = new Size(106, 23);
             cbStartingProficienciesRaces.TabIndex = 18;
             // 
             // cbStartingProficiencyOptionsRaces
             // 
             cbStartingProficiencyOptionsRaces.FormattingEnabled = true;
-            cbStartingProficiencyOptionsRaces.Location = new Point(809, 138);
-            cbStartingProficiencyOptionsRaces.Margin = new Padding(3, 4, 3, 4);
+            cbStartingProficiencyOptionsRaces.Location = new Point(708, 104);
             cbStartingProficiencyOptionsRaces.Name = "cbStartingProficiencyOptionsRaces";
-            cbStartingProficiencyOptionsRaces.Size = new Size(121, 28);
+            cbStartingProficiencyOptionsRaces.Size = new Size(106, 23);
             cbStartingProficiencyOptionsRaces.TabIndex = 17;
             // 
             // cbAbilityBonusOptionsRaces
             // 
             cbAbilityBonusOptionsRaces.FormattingEnabled = true;
-            cbAbilityBonusOptionsRaces.Location = new Point(19, 138);
-            cbAbilityBonusOptionsRaces.Margin = new Padding(3, 4, 3, 4);
+            cbAbilityBonusOptionsRaces.Location = new Point(17, 104);
             cbAbilityBonusOptionsRaces.Name = "cbAbilityBonusOptionsRaces";
-            cbAbilityBonusOptionsRaces.Size = new Size(121, 28);
+            cbAbilityBonusOptionsRaces.Size = new Size(106, 23);
             cbAbilityBonusOptionsRaces.TabIndex = 16;
             // 
             // label118
             // 
             label118.AutoSize = true;
-            label118.Location = new Point(847, 14);
+            label118.Location = new Point(741, 10);
             label118.Name = "label118";
-            label118.Size = new Size(51, 20);
+            label118.Size = new Size(39, 15);
             label118.TabIndex = 15;
             label118.Text = "Speed";
             // 
             // label117
             // 
             label117.AutoSize = true;
-            label117.Location = new Point(731, 14);
+            label117.Location = new Point(640, 10);
             label117.Name = "label117";
-            label117.Size = new Size(112, 20);
+            label117.Size = new Size(87, 15);
             label117.TabIndex = 14;
             label117.Text = "SizeDescription";
             // 
             // label116
             // 
             label116.AutoSize = true;
-            label116.Location = new Point(614, 14);
+            label116.Location = new Point(537, 10);
             label116.Name = "label116";
-            label116.Size = new Size(36, 20);
+            label116.Size = new Size(27, 15);
             label116.TabIndex = 13;
             label116.Text = "Size";
             // 
             // label115
             // 
             label115.AutoSize = true;
-            label115.Location = new Point(498, 14);
+            label115.Location = new Point(436, 10);
             label115.Name = "label115";
-            label115.Size = new Size(106, 20);
+            label115.Size = new Size(84, 15);
             label115.TabIndex = 12;
             label115.Text = "LanguageDesc";
             // 
             // label114
             // 
             label114.AutoSize = true;
-            label114.Location = new Point(380, 14);
+            label114.Location = new Point(332, 10);
             label114.Name = "label114";
-            label114.Size = new Size(78, 20);
+            label114.Size = new Size(63, 15);
             label114.TabIndex = 11;
             label114.Text = "Alignment";
             // 
             // label113
             // 
             label113.AutoSize = true;
-            label113.Location = new Point(257, 14);
+            label113.Location = new Point(225, 10);
             label113.Name = "label113";
-            label113.Size = new Size(36, 20);
+            label113.Size = new Size(28, 15);
             label113.TabIndex = 10;
             label113.Text = "Age";
             // 
             // label112
             // 
             label112.AutoSize = true;
-            label112.Location = new Point(138, 14);
+            label112.Location = new Point(121, 10);
             label112.Name = "label112";
-            label112.Size = new Size(49, 20);
+            label112.Size = new Size(39, 15);
             label112.TabIndex = 9;
             label112.Text = "Name";
             // 
             // label108
             // 
             label108.AutoSize = true;
-            label108.Location = new Point(16, 14);
+            label108.Location = new Point(14, 10);
             label108.Name = "label108";
-            label108.Size = new Size(45, 20);
+            label108.Size = new Size(36, 15);
             label108.TabIndex = 8;
             label108.Text = "Index";
             // 
             // tbSizeRaces
             // 
-            tbSizeRaces.Location = new Point(617, 38);
-            tbSizeRaces.Margin = new Padding(3, 4, 3, 4);
+            tbSizeRaces.Location = new Point(540, 28);
             tbSizeRaces.Name = "tbSizeRaces";
-            tbSizeRaces.Size = new Size(100, 27);
+            tbSizeRaces.Size = new Size(88, 23);
             tbSizeRaces.TabIndex = 7;
             // 
             // tbSizeDescriptionRaces
             // 
-            tbSizeDescriptionRaces.Location = new Point(734, 38);
-            tbSizeDescriptionRaces.Margin = new Padding(3, 4, 3, 4);
+            tbSizeDescriptionRaces.Location = new Point(642, 28);
             tbSizeDescriptionRaces.Name = "tbSizeDescriptionRaces";
-            tbSizeDescriptionRaces.Size = new Size(100, 27);
+            tbSizeDescriptionRaces.Size = new Size(88, 23);
             tbSizeDescriptionRaces.TabIndex = 6;
             // 
             // tbSpeedRaces
             // 
-            tbSpeedRaces.Location = new Point(850, 38);
-            tbSpeedRaces.Margin = new Padding(3, 4, 3, 4);
+            tbSpeedRaces.Location = new Point(744, 28);
             tbSpeedRaces.Name = "tbSpeedRaces";
-            tbSpeedRaces.Size = new Size(100, 27);
+            tbSpeedRaces.Size = new Size(88, 23);
             tbSpeedRaces.TabIndex = 5;
             // 
             // tbLanguageDescRaces
             // 
-            tbLanguageDescRaces.Location = new Point(501, 38);
-            tbLanguageDescRaces.Margin = new Padding(3, 4, 3, 4);
+            tbLanguageDescRaces.Location = new Point(438, 28);
             tbLanguageDescRaces.Name = "tbLanguageDescRaces";
-            tbLanguageDescRaces.Size = new Size(100, 27);
+            tbLanguageDescRaces.Size = new Size(88, 23);
             tbLanguageDescRaces.TabIndex = 4;
             // 
             // tbAlignmentRaces
             // 
-            tbAlignmentRaces.Location = new Point(383, 38);
-            tbAlignmentRaces.Margin = new Padding(3, 4, 3, 4);
+            tbAlignmentRaces.Location = new Point(335, 28);
             tbAlignmentRaces.Name = "tbAlignmentRaces";
-            tbAlignmentRaces.Size = new Size(100, 27);
+            tbAlignmentRaces.Size = new Size(88, 23);
             tbAlignmentRaces.TabIndex = 3;
             // 
             // tbAgeRaces
             // 
-            tbAgeRaces.Location = new Point(260, 38);
-            tbAgeRaces.Margin = new Padding(3, 4, 3, 4);
+            tbAgeRaces.Location = new Point(228, 28);
             tbAgeRaces.Name = "tbAgeRaces";
-            tbAgeRaces.Size = new Size(100, 27);
+            tbAgeRaces.Size = new Size(88, 23);
             tbAgeRaces.TabIndex = 2;
             // 
             // tbNameRaces
             // 
-            tbNameRaces.Location = new Point(141, 38);
-            tbNameRaces.Margin = new Padding(3, 4, 3, 4);
+            tbNameRaces.Location = new Point(123, 28);
             tbNameRaces.Name = "tbNameRaces";
-            tbNameRaces.Size = new Size(100, 27);
+            tbNameRaces.Size = new Size(88, 23);
             tbNameRaces.TabIndex = 1;
             tbNameRaces.TextChanged += textBox6_TextChanged;
             // 
             // tbIndexRaces
             // 
-            tbIndexRaces.Location = new Point(19, 38);
-            tbIndexRaces.Margin = new Padding(3, 4, 3, 4);
+            tbIndexRaces.Location = new Point(17, 28);
             tbIndexRaces.Name = "tbIndexRaces";
-            tbIndexRaces.Size = new Size(100, 27);
+            tbIndexRaces.Size = new Size(88, 23);
             tbIndexRaces.TabIndex = 0;
             // 
             // Skills
@@ -3120,10 +2978,9 @@
             Skills.Controls.Add(label129);
             Skills.Controls.Add(tbIndexSkills);
             Skills.Controls.Add(tbNameSkills);
-            Skills.Location = new Point(4, 29);
-            Skills.Margin = new Padding(3, 4, 3, 4);
+            Skills.Location = new Point(4, 24);
             Skills.Name = "Skills";
-            Skills.Size = new Size(1296, 528);
+            Skills.Size = new Size(1133, 393);
             Skills.TabIndex = 18;
             Skills.Text = "Skills";
             Skills.UseVisualStyleBackColor = true;
@@ -3131,120 +2988,121 @@
             // label130
             // 
             label130.AutoSize = true;
-            label130.Location = new Point(910, 18);
+            label130.Location = new Point(796, 14);
             label130.Name = "label130";
-            label130.Size = new Size(89, 20);
+            label130.Size = new Size(70, 15);
             label130.TabIndex = 55;
             label130.Text = "AbilityScore";
             // 
             // cbAbilityScoreSkills
             // 
             cbAbilityScoreSkills.FormattingEnabled = true;
-            cbAbilityScoreSkills.Location = new Point(913, 41);
-            cbAbilityScoreSkills.Margin = new Padding(3, 4, 3, 4);
+            cbAbilityScoreSkills.Location = new Point(799, 31);
             cbAbilityScoreSkills.Name = "cbAbilityScoreSkills";
-            cbAbilityScoreSkills.Size = new Size(121, 28);
+            cbAbilityScoreSkills.Size = new Size(106, 23);
             cbAbilityScoreSkills.TabIndex = 54;
             // 
             // lbDescriptionSkills
             // 
-            lbDescriptionSkills.ItemHeight = 20;
-            lbDescriptionSkills.Location = new Point(378, 41);
-            lbDescriptionSkills.Margin = new Padding(3, 4, 3, 4);
+            lbDescriptionSkills.ItemHeight = 15;
+            lbDescriptionSkills.Location = new Point(331, 31);
             lbDescriptionSkills.Name = "lbDescriptionSkills";
-            lbDescriptionSkills.Size = new Size(505, 204);
+            lbDescriptionSkills.Size = new Size(442, 154);
             lbDescriptionSkills.TabIndex = 48;
             // 
             // label127
             // 
             label127.AutoSize = true;
-            label127.Location = new Point(18, 18);
+            label127.Location = new Point(16, 14);
             label127.Name = "label127";
-            label127.Size = new Size(45, 20);
+            label127.Size = new Size(36, 15);
             label127.TabIndex = 53;
             label127.Text = "Index";
             // 
             // label128
             // 
             label128.AutoSize = true;
-            label128.Location = new Point(84, 18);
+            label128.Location = new Point(74, 14);
             label128.Name = "label128";
-            label128.Size = new Size(49, 20);
+            label128.Size = new Size(39, 15);
             label128.TabIndex = 52;
             label128.Text = "Name";
             // 
             // label129
             // 
             label129.AutoSize = true;
-            label129.Location = new Point(375, 18);
+            label129.Location = new Point(328, 14);
             label129.Name = "label129";
-            label129.Size = new Size(85, 20);
+            label129.Size = new Size(67, 15);
             label129.TabIndex = 51;
             label129.Text = "Description";
             // 
             // tbIndexSkills
             // 
-            tbIndexSkills.Location = new Point(21, 41);
-            tbIndexSkills.Margin = new Padding(3, 4, 3, 4);
+            tbIndexSkills.Location = new Point(18, 31);
             tbIndexSkills.Name = "tbIndexSkills";
-            tbIndexSkills.Size = new Size(41, 27);
+            tbIndexSkills.Size = new Size(36, 23);
             tbIndexSkills.TabIndex = 50;
             // 
             // tbNameSkills
             // 
-            tbNameSkills.Location = new Point(87, 41);
-            tbNameSkills.Margin = new Padding(3, 4, 3, 4);
+            tbNameSkills.Location = new Point(76, 31);
             tbNameSkills.Name = "tbNameSkills";
-            tbNameSkills.Size = new Size(252, 27);
+            tbNameSkills.Size = new Size(221, 23);
             tbNameSkills.TabIndex = 49;
             // 
             // Spells
             // 
-            Spells.Location = new Point(4, 29);
-            Spells.Margin = new Padding(3, 4, 3, 4);
+            Spells.Location = new Point(4, 24);
             Spells.Name = "Spells";
-            Spells.Size = new Size(1296, 528);
+            Spells.Size = new Size(1133, 393);
             Spells.TabIndex = 19;
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
             // 
             // Subclasses
             // 
-            Subclasses.Location = new Point(4, 29);
-            Subclasses.Margin = new Padding(3, 4, 3, 4);
+            Subclasses.Location = new Point(4, 24);
             Subclasses.Name = "Subclasses";
-            Subclasses.Size = new Size(1296, 528);
+            Subclasses.Size = new Size(1133, 393);
             Subclasses.TabIndex = 20;
             Subclasses.Text = "Subclasses";
             Subclasses.UseVisualStyleBackColor = true;
             // 
             // SubRaces
             // 
-            SubRaces.Location = new Point(4, 29);
-            SubRaces.Margin = new Padding(3, 4, 3, 4);
+            SubRaces.Location = new Point(4, 24);
             SubRaces.Name = "SubRaces";
-            SubRaces.Size = new Size(1296, 528);
+            SubRaces.Size = new Size(1133, 393);
             SubRaces.TabIndex = 21;
             SubRaces.Text = "SubRaces";
             SubRaces.UseVisualStyleBackColor = true;
             // 
             // Traits
             // 
-            Traits.Location = new Point(4, 29);
-            Traits.Margin = new Padding(3, 4, 3, 4);
+            Traits.Location = new Point(4, 24);
             Traits.Name = "Traits";
-            Traits.Size = new Size(1296, 528);
+            Traits.Size = new Size(1133, 393);
             Traits.TabIndex = 22;
             Traits.Text = "Traits";
             Traits.UseVisualStyleBackColor = true;
             // 
+            // btInsertarAlignments
+            // 
+            btInsertarAlignments.Location = new Point(1012, 342);
+            btInsertarAlignments.Margin = new Padding(3, 2, 3, 2);
+            btInsertarAlignments.Name = "btInsertarAlignments";
+            btInsertarAlignments.Size = new Size(82, 26);
+            btInsertarAlignments.TabIndex = 30;
+            btInsertarAlignments.Text = "Instertar";
+            btInsertarAlignments.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1329, 592);
+            ClientSize = new Size(1163, 444);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             Load += FormAbilityScores_Load;
@@ -3302,7 +3160,6 @@
         public System.Windows.Forms.TextBox tbFullNameAbilityScore;
         private System.Windows.Forms.TabPage Alignments;
         private System.Windows.Forms.TabPage WeaponProperties;
-        public System.Windows.Forms.ListBox lbDescriptionAlignments;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label9;
@@ -3582,6 +3439,8 @@
         public TabPage AbilityScore;
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
+        public RichTextBox rtbDescriptionAlignments;
+        public Button btInsertarAlignments;
     }
 }
 

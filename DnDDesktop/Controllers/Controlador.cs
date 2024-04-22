@@ -8,6 +8,7 @@ namespace DnDDesktop.Controllers
     {
         Form1 f = new Form1();
         AbilityScoreRepository rAbilityScore = new AbilityScoreRepository();
+        AlignmentsRepository alignmentsRepository = new AlignmentsRepository();
 
         public Controlador()
         {
@@ -25,8 +26,10 @@ namespace DnDDesktop.Controllers
         private void InitListeners()
         {
             f.btInsertarAbilityScore.Click += BtInsertarAbilityScore_Click;
+            f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
         }
 
+        //AbilityScore
         private void BtInsertarAbilityScore_Click(object? sender, EventArgs e)
         {
             AbilityScore score = new AbilityScore();
@@ -42,6 +45,17 @@ namespace DnDDesktop.Controllers
             }
 
             rAbilityScore.CreateAbilityScore(score);
+        }
+
+        private void BtInsertarAlignments_Click(object? sender, EventArgs e)
+        {
+            Alignment alignment = new Alignment();
+            alignment.Index = f.tbIndexAlignments.Text.ToString();
+            alignment.Name = f.tbNameAlignments.Text.ToString();
+            alignment.Abbreviation = f.tbAbbreviationAlignments.Text.ToString();
+            alignment.Description = f.rtbDescriptionAlignments.Text.ToString();
+
+            alignmentsRepository.CreateAlignment(alignment);
         }
 
     }

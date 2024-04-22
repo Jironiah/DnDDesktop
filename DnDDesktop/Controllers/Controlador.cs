@@ -2,6 +2,9 @@
 using DnDDesktop.Models.Commons;
 using DnDDesktop.Models.Repository;
 using DnDDesktop.Views.ViewsPopup;
+using System.Xml.Linq;
+using System;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace DnDDesktop.Controllers
 {
@@ -45,11 +48,12 @@ namespace DnDDesktop.Controllers
             f.cbSkillsAbilityScore.MouseUp += CbSkillsAbilityScore_MouseUp;
             f.btBuscarAbilityScore.Click += BtBuscarAbilityScore_Click;
             f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
+            f.btModificarAbilityScore.Click += BtModificarAbilityScore_Click;
             f.dgvAbilityScore.SelectionChanged += DgvAbilityScore_SelectionChanged;
-            //Alignments
-            f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
-            //WeaponProperties
-            f.btInsertarWeaponProperties.Click += BtInsertarWeaponProperties_Click;
+            ////Alignments
+            //f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
+            ////WeaponProperties
+            //f.btInsertarWeaponProperties.Click += BtInsertarWeaponProperties_Click;
         }
 
         //AbilityScore
@@ -97,6 +101,7 @@ namespace DnDDesktop.Controllers
                 {
                     MessageBox.Show("No puedes dejar espacios vacíos");
                 }
+                LoadDataAbilityScore();
             }
             catch (Exception ex)
             {
@@ -138,6 +143,7 @@ namespace DnDDesktop.Controllers
                         f.cbSkillsAbilityScore.DataSource = listaAbilityScoreSkills;
                         MessageBox.Show("AbilityScore sin skills introducido");
                     }
+                    LoadDataAbilityScore();
                 }
                 catch (Exception ex)
                 {
@@ -196,30 +202,62 @@ namespace DnDDesktop.Controllers
             }
         }
 
-
-
-        //Alignments
-        private void BtInsertarAlignments_Click(object? sender, EventArgs e)
+        private void BtModificarAbilityScore_Click(object? sender, EventArgs e)
         {
-            Alignment alignment = new Alignment();
-            alignment.Index = f.tbIndexAlignments.Text.ToString();
-            alignment.Name = f.tbNameAlignments.Text.ToString();
-            alignment.Abbreviation = f.tbAbbreviationAlignments.Text.ToString();
-            alignment.Description = f.rtbDescriptionAlignments.Text.ToString();
+            try
+            {
+                string index = f.tbIndexAbilityScore.Text.ToString();
+                string name = f.tbNameAbilityScore.Text.ToString();
+                string fullName = f.tbFullNameAbilityScore.Text.ToString();
+                string[] description = new string[] { f.rtbDescriptionAbilityScore.Text };
+                AbilityScore abilityScoreModificar = new AbilityScore();
 
-            alignmentsRepository.CreateAlignment(alignment);
-            MessageBox.Show("Alignments introducido");
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(fullName))
+                {
+                    From selectedSkill = (From)f.cbSkillsAbilityScore.SelectedItem;
+                    string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    abilityScoreModificar.Id = idBuscar;
+                    abilityScoreModificar.Index = index;
+                    abilityScoreModificar.Name = name;
+                    abilityScoreModificar.FullName = fullName;
+                    abilityScoreModificar.Description = description;
+                    if (selectedSkill != null)
+                    {
+                        abilityScoreModificar.Skills = new From[] { selectedSkill };
+                    }
+                    abilityScoreRepository.UpdateAbilityScore(abilityScoreModificar);
+                    MessageBox.Show("Modificado correctamente");
+                    LoadDataAbilityScore();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
-        //WeaponProperties
-        private void BtInsertarWeaponProperties_Click(object? sender, EventArgs e)
-        {
-            WeaponProperty weaponProperty = new WeaponProperty();
-            weaponProperty.Index = f.tbIndexWeaponProperties.Text.ToString();
-            weaponProperty.Name = f.tbNameWeaponProperties.Text.ToString();
-            weaponProperty.Description = new string[] { f.rtbDescriptionWeaponProperties.Text };
-            weaponPropertiesRepository.CreateWeaponProperty(weaponProperty);
-        }
+        ////Alignments
+        //private void BtInsertarAlignments_Click(object? sender, EventArgs e)
+        //{
+        //    Alignment alignment = new Alignment();
+        //    alignment.Index = f.tbIndexAlignments.Text.ToString();
+        //    alignment.Name = f.tbNameAlignments.Text.ToString();
+        //    alignment.Abbreviation = f.tbAbbreviationAlignments.Text.ToString();
+        //    alignment.Description = f.rtbDescriptionAlignments.Text.ToString();
+
+        //    alignmentsRepository.CreateAlignment(alignment);
+        //    MessageBox.Show("Alignments introducido");
+        //}
+
+        ////WeaponProperties
+        //private void BtInsertarWeaponProperties_Click(object? sender, EventArgs e)
+        //{
+        //    WeaponProperty weaponProperty = new WeaponProperty();
+        //    weaponProperty.Index = f.tbIndexWeaponProperties.Text.ToString();
+        //    weaponProperty.Name = f.tbNameWeaponProperties.Text.ToString();
+        //    weaponProperty.Description = new string[] { f.rtbDescriptionWeaponProperties.Text };
+        //    weaponPropertiesRepository.CreateWeaponProperty(weaponProperty);
+        //}
 
     }
 }

@@ -42,6 +42,7 @@
             tbIndexAbilityScore = new TextBox();
             tbFullNameAbilityScore = new TextBox();
             Alignments = new TabPage();
+            btInsertarAlignments = new Button();
             rtbDescriptionAlignments = new RichTextBox();
             label7 = new Label();
             label8 = new Label();
@@ -51,13 +52,15 @@
             tbIndexAlignments = new TextBox();
             tbNameAlignments = new TextBox();
             WeaponProperties = new TabPage();
-            lbDescriptionWeaponProperties = new ListBox();
+            rtbDescriptionWeaponProperties = new RichTextBox();
+            label13 = new Label();
+            btInsertarWeaponProperties = new Button();
             label11 = new Label();
             label12 = new Label();
-            label13 = new Label();
             tbIndexWeaponProperties = new TextBox();
             tbNameWeaponProperties = new TextBox();
             Classes = new TabPage();
+            btInsertarClasses = new Button();
             cbSubclassesClasses = new ComboBox();
             label16 = new Label();
             cbStartingEquipmentOptionsClasses = new ComboBox();
@@ -81,6 +84,7 @@
             textBox2 = new TextBox();
             tbName = new TextBox();
             Backgrounds = new TabPage();
+            btInsertarBackgrounds = new Button();
             label34 = new Label();
             cbLanguageOptionsBackgrounds = new TextBox();
             cbStartingProficienciesBackgrounds = new ComboBox();
@@ -106,20 +110,23 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             Conditions = new TabPage();
-            lbDescriptionConditions = new ListBox();
+            rtbDescriptionConditions = new RichTextBox();
+            label38 = new Label();
+            btInsertarConditions = new Button();
             label36 = new Label();
             label37 = new Label();
-            label38 = new Label();
             tbIndexConditions = new TextBox();
             tbNameConditions = new TextBox();
             DamageType = new TabPage();
-            lbDescriptionDamageType = new ListBox();
+            rtbDescriptionDamageType = new RichTextBox();
+            label40 = new Label();
+            btInsertarDamageType = new Button();
             label35 = new Label();
             label39 = new Label();
-            label40 = new Label();
             tbIndexDamageType = new TextBox();
             tbNameDamageType = new TextBox();
             Equipment = new TabPage();
+            btInsertarEquipment = new Button();
             cbTwoHandedDamageEquipment = new ComboBox();
             cbThrowRangeEquipment = new ComboBox();
             cbSpeedEquipment = new ComboBox();
@@ -171,6 +178,7 @@
             tbIndexEquipment = new TextBox();
             tbNameEquipment = new TextBox();
             EquipmentCategories = new TabPage();
+            btInsertarEquipmentCategories = new Button();
             label64 = new Label();
             label65 = new Label();
             label66 = new Label();
@@ -178,19 +186,22 @@
             tbNameEquipmentCategories = new TextBox();
             tbIndexEquipmentCategories = new TextBox();
             Feats = new TabPage();
+            rtbDescriptionFeats = new RichTextBox();
+            label69 = new Label();
+            btInsertarFeats = new Button();
             label70 = new Label();
             cbPrerequisitesFeats = new ComboBox();
-            lbDescriptionFeats = new ListBox();
             label67 = new Label();
             label68 = new Label();
-            label69 = new Label();
             tbIndexFeats = new TextBox();
             tbNameFeats = new TextBox();
             Features = new TabPage();
+            rtbDescriptionFeatures = new RichTextBox();
+            label76 = new Label();
+            btInsertarFeatures = new Button();
             label79 = new Label();
             label78 = new Label();
             label75 = new Label();
-            label76 = new Label();
             label77 = new Label();
             label73 = new Label();
             label74 = new Label();
@@ -201,13 +212,13 @@
             cbParentFeatures = new ComboBox();
             cbFeatureSpecificFeatures = new ComboBox();
             cbClassFeatures = new ComboBox();
-            lbDescriptionFeatures = new ListBox();
             tbLevelFeatures = new TextBox();
             tbNameFeatures = new TextBox();
             tbIndexFeatures = new TextBox();
             Languages = new TabPage();
+            rtbTypicalSpeakersLanguages = new RichTextBox();
             label85 = new Label();
-            lbTypicalSpeakersLanguages = new ListBox();
+            btInsertarLanguages = new Button();
             label84 = new Label();
             label82 = new Label();
             label83 = new Label();
@@ -219,6 +230,7 @@
             tbNameLanguages = new TextBox();
             tbIndexLanguages = new TextBox();
             Levels = new TabPage();
+            btInsertarLevels = new Button();
             label95 = new Label();
             label94 = new Label();
             label93 = new Label();
@@ -240,28 +252,31 @@
             tbIndexLevels = new TextBox();
             tbAbilityScoreBonusesLevels = new TextBox();
             MagicItems = new TabPage();
+            rtbDescriptionMagicItems = new RichTextBox();
+            label100 = new Label();
+            btInsertarMagicItems = new Button();
             chbVariantMagicItems = new CheckBox();
             label102 = new Label();
             label101 = new Label();
-            label100 = new Label();
             label99 = new Label();
             label98 = new Label();
             label97 = new Label();
             label96 = new Label();
-            lbDescriptionMagicItems = new ListBox();
             cbEquipmentCategoryMagicItems = new ComboBox();
             cbRarityMagicItems = new ComboBox();
             cbVariantsMagicItems = new ComboBox();
             tbNameMagicItems = new TextBox();
             tbIndexMagicItems = new TextBox();
             MagicSchools = new TabPage();
-            lbDescriptionMagicSchools = new ListBox();
+            rtbDescriptionMagicSchools = new RichTextBox();
+            label105 = new Label();
+            btInsertarMagicSchools = new Button();
             label103 = new Label();
             label104 = new Label();
-            label105 = new Label();
             tbIndexMagicSchools = new TextBox();
             tbNameMagicSchools = new TextBox();
             Proficiencies = new TabPage();
+            btInsertarProficiencies = new Button();
             label111 = new Label();
             label110 = new Label();
             label109 = new Label();
@@ -275,6 +290,7 @@
             tbIndexProficiencies = new TextBox();
             tbNameProficiencies = new TextBox();
             Races = new TabPage();
+            btInsertarRaces = new Button();
             label126 = new Label();
             label125 = new Label();
             label124 = new Label();
@@ -308,19 +324,113 @@
             tbNameRaces = new TextBox();
             tbIndexRaces = new TextBox();
             Skills = new TabPage();
+            rtbDescriptionSkills = new RichTextBox();
+            btInsertarSkills = new Button();
             label130 = new Label();
             cbAbilityScoreSkills = new ComboBox();
-            lbDescriptionSkills = new ListBox();
             label127 = new Label();
             label128 = new Label();
             label129 = new Label();
             tbIndexSkills = new TextBox();
             tbNameSkills = new TextBox();
             Spells = new TabPage();
+            btInsertarSpells = new Button();
+            label149 = new Label();
+            rtbSubclassesSpells = new RichTextBox();
+            label148 = new Label();
+            label147 = new Label();
+            label146 = new Label();
+            label145 = new Label();
+            label144 = new Label();
+            label143 = new Label();
+            label142 = new Label();
+            cbDCSpells = new ComboBox();
+            cbClassesSpells = new ComboBox();
+            cbDamageSpells = new ComboBox();
+            cbHealAtSlotLevelSpells = new ComboBox();
+            cbSchoolsSpells = new ComboBox();
+            cbSubclassesSpells = new ComboBox();
+            cbAreaOfEffectSpells = new ComboBox();
+            label141 = new Label();
+            tbRangeSpells = new TextBox();
+            label140 = new Label();
+            label139 = new Label();
+            label138 = new Label();
+            label137 = new Label();
+            label136 = new Label();
+            label135 = new Label();
+            label133 = new Label();
+            label134 = new Label();
+            label132 = new Label();
+            label131 = new Label();
+            tbConcentrationSpells = new TextBox();
+            tbComponentsSpells = new TextBox();
+            tbHigherLevelSpells = new TextBox();
+            tbDurationSpells = new TextBox();
+            tbCastingTimeSpells = new TextBox();
+            tbAttackTypeSpells = new TextBox();
+            tbMaterialSpells = new TextBox();
+            tbLevelSpells = new TextBox();
+            tbNameSpells = new TextBox();
+            tbIndexSpells = new TextBox();
             Subclasses = new TabPage();
+            btInsertarSubclasses = new Button();
+            label156 = new Label();
+            tbSubclassLevelsSubclasses = new TextBox();
+            label155 = new Label();
+            tbSubclassFlavorSubclasses = new TextBox();
+            label154 = new Label();
+            cbSpellsSubclasses = new ComboBox();
+            rtbDescriptionSubclasses = new RichTextBox();
+            label153 = new Label();
+            label150 = new Label();
+            cbClassSubclasses = new ComboBox();
+            label151 = new Label();
+            label152 = new Label();
+            tbIndexSubclasses = new TextBox();
+            tbNameSubclasses = new TextBox();
             SubRaces = new TabPage();
+            btInsertarSubRaces = new Button();
+            label165 = new Label();
+            cbStartingProficienciesSubRaces = new ComboBox();
+            label164 = new Label();
+            cbRacialTraitsSubRaces = new ComboBox();
+            label163 = new Label();
+            cbRaceSubRaces = new ComboBox();
+            label162 = new Label();
+            cbLanguageOptionsSubRaces = new ComboBox();
+            label161 = new Label();
+            cbAbilityBonusesSubRaces = new ComboBox();
+            label157 = new Label();
+            tbLanguagesSubRaces = new TextBox();
+            label158 = new Label();
+            tbDescriptionSubRaces = new TextBox();
+            label159 = new Label();
+            label160 = new Label();
+            tbIndexSubRaces = new TextBox();
+            tbNameSubRaces = new TextBox();
             Traits = new TabPage();
-            btInsertarAlignments = new Button();
+            btInsertarTraits = new Button();
+            richTextBox1 = new RichTextBox();
+            label175 = new Label();
+            label173 = new Label();
+            label174 = new Label();
+            cbSubracesTraits = new ComboBox();
+            cbTraitSpecificTraits = new ComboBox();
+            label168 = new Label();
+            label169 = new Label();
+            label170 = new Label();
+            label171 = new Label();
+            label172 = new Label();
+            cbProficiencyChoicesTraits = new ComboBox();
+            cbParentTraits = new ComboBox();
+            cbProficienciesTraits = new ComboBox();
+            cbRacesTraits = new ComboBox();
+            cbLanguageOptionsTraits = new ComboBox();
+            label166 = new Label();
+            label167 = new Label();
+            tbIndexTraits = new TextBox();
+            tbNameTraits = new TextBox();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             Alignments.SuspendLayout();
@@ -340,6 +450,10 @@
             Proficiencies.SuspendLayout();
             Races.SuspendLayout();
             Skills.SuspendLayout();
+            Spells.SuspendLayout();
+            Subclasses.SuspendLayout();
+            SubRaces.SuspendLayout();
+            Traits.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -506,6 +620,16 @@
             Alignments.Text = "Alignments";
             Alignments.UseVisualStyleBackColor = true;
             // 
+            // btInsertarAlignments
+            // 
+            btInsertarAlignments.Location = new Point(1012, 342);
+            btInsertarAlignments.Margin = new Padding(3, 2, 3, 2);
+            btInsertarAlignments.Name = "btInsertarAlignments";
+            btInsertarAlignments.Size = new Size(82, 26);
+            btInsertarAlignments.TabIndex = 30;
+            btInsertarAlignments.Text = "Instertar";
+            btInsertarAlignments.UseVisualStyleBackColor = true;
+            // 
             // rtbDescriptionAlignments
             // 
             rtbDescriptionAlignments.Location = new Point(548, 23);
@@ -574,10 +698,11 @@
             // 
             // WeaponProperties
             // 
-            WeaponProperties.Controls.Add(lbDescriptionWeaponProperties);
+            WeaponProperties.Controls.Add(rtbDescriptionWeaponProperties);
+            WeaponProperties.Controls.Add(label13);
+            WeaponProperties.Controls.Add(btInsertarWeaponProperties);
             WeaponProperties.Controls.Add(label11);
             WeaponProperties.Controls.Add(label12);
-            WeaponProperties.Controls.Add(label13);
             WeaponProperties.Controls.Add(tbIndexWeaponProperties);
             WeaponProperties.Controls.Add(tbNameWeaponProperties);
             WeaponProperties.Location = new Point(4, 24);
@@ -589,13 +714,32 @@
             WeaponProperties.UseVisualStyleBackColor = true;
             WeaponProperties.Click += tabPage3_Click;
             // 
-            // lbDescriptionWeaponProperties
+            // rtbDescriptionWeaponProperties
             // 
-            lbDescriptionWeaponProperties.ItemHeight = 15;
-            lbDescriptionWeaponProperties.Location = new Point(329, 23);
-            lbDescriptionWeaponProperties.Name = "lbDescriptionWeaponProperties";
-            lbDescriptionWeaponProperties.Size = new Size(442, 154);
-            lbDescriptionWeaponProperties.TabIndex = 29;
+            rtbDescriptionWeaponProperties.Location = new Point(323, 23);
+            rtbDescriptionWeaponProperties.Name = "rtbDescriptionWeaponProperties";
+            rtbDescriptionWeaponProperties.Size = new Size(432, 96);
+            rtbDescriptionWeaponProperties.TabIndex = 84;
+            rtbDescriptionWeaponProperties.Text = "";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(323, 5);
+            label13.Name = "label13";
+            label13.Size = new Size(67, 15);
+            label13.TabIndex = 83;
+            label13.Text = "Description";
+            // 
+            // btInsertarWeaponProperties
+            // 
+            btInsertarWeaponProperties.Location = new Point(1024, 347);
+            btInsertarWeaponProperties.Margin = new Padding(3, 2, 3, 2);
+            btInsertarWeaponProperties.Name = "btInsertarWeaponProperties";
+            btInsertarWeaponProperties.Size = new Size(82, 26);
+            btInsertarWeaponProperties.TabIndex = 36;
+            btInsertarWeaponProperties.Text = "Instertar";
+            btInsertarWeaponProperties.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -615,15 +759,6 @@
             label12.TabIndex = 34;
             label12.Text = "Name";
             // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(326, 6);
-            label13.Name = "label13";
-            label13.Size = new Size(67, 15);
-            label13.TabIndex = 33;
-            label13.Text = "Description";
-            // 
             // tbIndexWeaponProperties
             // 
             tbIndexWeaponProperties.Location = new Point(17, 23);
@@ -640,6 +775,7 @@
             // 
             // Classes
             // 
+            Classes.Controls.Add(btInsertarClasses);
             Classes.Controls.Add(cbSubclassesClasses);
             Classes.Controls.Add(label16);
             Classes.Controls.Add(cbStartingEquipmentOptionsClasses);
@@ -670,6 +806,16 @@
             Classes.Text = "Classes";
             Classes.UseVisualStyleBackColor = true;
             Classes.Click += Classes_Click;
+            // 
+            // btInsertarClasses
+            // 
+            btInsertarClasses.Location = new Point(1018, 336);
+            btInsertarClasses.Margin = new Padding(3, 2, 3, 2);
+            btInsertarClasses.Name = "btInsertarClasses";
+            btInsertarClasses.Size = new Size(82, 26);
+            btInsertarClasses.TabIndex = 53;
+            btInsertarClasses.Text = "Instertar";
+            btInsertarClasses.UseVisualStyleBackColor = true;
             // 
             // cbSubclassesClasses
             // 
@@ -862,6 +1008,7 @@
             // 
             // Backgrounds
             // 
+            Backgrounds.Controls.Add(btInsertarBackgrounds);
             Backgrounds.Controls.Add(label34);
             Backgrounds.Controls.Add(cbLanguageOptionsBackgrounds);
             Backgrounds.Controls.Add(cbStartingProficienciesBackgrounds);
@@ -892,6 +1039,16 @@
             Backgrounds.TabIndex = 4;
             Backgrounds.Text = "Backgrounds";
             Backgrounds.UseVisualStyleBackColor = true;
+            // 
+            // btInsertarBackgrounds
+            // 
+            btInsertarBackgrounds.Location = new Point(1021, 344);
+            btInsertarBackgrounds.Margin = new Padding(3, 2, 3, 2);
+            btInsertarBackgrounds.Name = "btInsertarBackgrounds";
+            btInsertarBackgrounds.Size = new Size(82, 26);
+            btInsertarBackgrounds.TabIndex = 77;
+            btInsertarBackgrounds.Text = "Instertar";
+            btInsertarBackgrounds.UseVisualStyleBackColor = true;
             // 
             // label34
             // 
@@ -1095,10 +1252,11 @@
             // 
             // Conditions
             // 
-            Conditions.Controls.Add(lbDescriptionConditions);
+            Conditions.Controls.Add(rtbDescriptionConditions);
+            Conditions.Controls.Add(label38);
+            Conditions.Controls.Add(btInsertarConditions);
             Conditions.Controls.Add(label36);
             Conditions.Controls.Add(label37);
-            Conditions.Controls.Add(label38);
             Conditions.Controls.Add(tbIndexConditions);
             Conditions.Controls.Add(tbNameConditions);
             Conditions.Location = new Point(4, 24);
@@ -1108,13 +1266,32 @@
             Conditions.Text = "Conditions";
             Conditions.UseVisualStyleBackColor = true;
             // 
-            // lbDescriptionConditions
+            // rtbDescriptionConditions
             // 
-            lbDescriptionConditions.ItemHeight = 15;
-            lbDescriptionConditions.Location = new Point(328, 31);
-            lbDescriptionConditions.Name = "lbDescriptionConditions";
-            lbDescriptionConditions.Size = new Size(442, 154);
-            lbDescriptionConditions.TabIndex = 29;
+            rtbDescriptionConditions.Location = new Point(330, 31);
+            rtbDescriptionConditions.Name = "rtbDescriptionConditions";
+            rtbDescriptionConditions.Size = new Size(432, 96);
+            rtbDescriptionConditions.TabIndex = 84;
+            rtbDescriptionConditions.Text = "";
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Location = new Point(330, 13);
+            label38.Name = "label38";
+            label38.Size = new Size(67, 15);
+            label38.TabIndex = 83;
+            label38.Text = "Description";
+            // 
+            // btInsertarConditions
+            // 
+            btInsertarConditions.Location = new Point(1013, 336);
+            btInsertarConditions.Margin = new Padding(3, 2, 3, 2);
+            btInsertarConditions.Name = "btInsertarConditions";
+            btInsertarConditions.Size = new Size(82, 26);
+            btInsertarConditions.TabIndex = 36;
+            btInsertarConditions.Text = "Instertar";
+            btInsertarConditions.UseVisualStyleBackColor = true;
             // 
             // label36
             // 
@@ -1134,15 +1311,6 @@
             label37.TabIndex = 34;
             label37.Text = "Name";
             // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.Location = new Point(326, 14);
-            label38.Name = "label38";
-            label38.Size = new Size(67, 15);
-            label38.TabIndex = 33;
-            label38.Text = "Description";
-            // 
             // tbIndexConditions
             // 
             tbIndexConditions.Location = new Point(13, 31);
@@ -1159,10 +1327,11 @@
             // 
             // DamageType
             // 
-            DamageType.Controls.Add(lbDescriptionDamageType);
+            DamageType.Controls.Add(rtbDescriptionDamageType);
+            DamageType.Controls.Add(label40);
+            DamageType.Controls.Add(btInsertarDamageType);
             DamageType.Controls.Add(label35);
             DamageType.Controls.Add(label39);
-            DamageType.Controls.Add(label40);
             DamageType.Controls.Add(tbIndexDamageType);
             DamageType.Controls.Add(tbNameDamageType);
             DamageType.Location = new Point(4, 24);
@@ -1172,13 +1341,32 @@
             DamageType.Text = "DamageType";
             DamageType.UseVisualStyleBackColor = true;
             // 
-            // lbDescriptionDamageType
+            // rtbDescriptionDamageType
             // 
-            lbDescriptionDamageType.ItemHeight = 15;
-            lbDescriptionDamageType.Location = new Point(332, 33);
-            lbDescriptionDamageType.Name = "lbDescriptionDamageType";
-            lbDescriptionDamageType.Size = new Size(442, 154);
-            lbDescriptionDamageType.TabIndex = 36;
+            rtbDescriptionDamageType.Location = new Point(333, 33);
+            rtbDescriptionDamageType.Name = "rtbDescriptionDamageType";
+            rtbDescriptionDamageType.Size = new Size(432, 96);
+            rtbDescriptionDamageType.TabIndex = 84;
+            rtbDescriptionDamageType.Text = "";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Location = new Point(333, 15);
+            label40.Name = "label40";
+            label40.Size = new Size(67, 15);
+            label40.TabIndex = 83;
+            label40.Text = "Description";
+            // 
+            // btInsertarDamageType
+            // 
+            btInsertarDamageType.Location = new Point(1027, 342);
+            btInsertarDamageType.Margin = new Padding(3, 2, 3, 2);
+            btInsertarDamageType.Name = "btInsertarDamageType";
+            btInsertarDamageType.Size = new Size(82, 26);
+            btInsertarDamageType.TabIndex = 42;
+            btInsertarDamageType.Text = "Instertar";
+            btInsertarDamageType.UseVisualStyleBackColor = true;
             // 
             // label35
             // 
@@ -1198,15 +1386,6 @@
             label39.TabIndex = 40;
             label39.Text = "Name";
             // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Location = new Point(330, 15);
-            label40.Name = "label40";
-            label40.Size = new Size(67, 15);
-            label40.TabIndex = 39;
-            label40.Text = "Description";
-            // 
             // tbIndexDamageType
             // 
             tbIndexDamageType.Location = new Point(18, 33);
@@ -1223,6 +1402,7 @@
             // 
             // Equipment
             // 
+            Equipment.Controls.Add(btInsertarEquipment);
             Equipment.Controls.Add(cbTwoHandedDamageEquipment);
             Equipment.Controls.Add(cbThrowRangeEquipment);
             Equipment.Controls.Add(cbSpeedEquipment);
@@ -1280,6 +1460,16 @@
             Equipment.Text = "Equipment";
             Equipment.UseVisualStyleBackColor = true;
             Equipment.Click += Equipment_Click;
+            // 
+            // btInsertarEquipment
+            // 
+            btInsertarEquipment.Location = new Point(1034, 344);
+            btInsertarEquipment.Margin = new Padding(3, 2, 3, 2);
+            btInsertarEquipment.Name = "btInsertarEquipment";
+            btInsertarEquipment.Size = new Size(82, 26);
+            btInsertarEquipment.TabIndex = 131;
+            btInsertarEquipment.Text = "Instertar";
+            btInsertarEquipment.UseVisualStyleBackColor = true;
             // 
             // cbTwoHandedDamageEquipment
             // 
@@ -1696,6 +1886,7 @@
             // 
             // EquipmentCategories
             // 
+            EquipmentCategories.Controls.Add(btInsertarEquipmentCategories);
             EquipmentCategories.Controls.Add(label64);
             EquipmentCategories.Controls.Add(label65);
             EquipmentCategories.Controls.Add(label66);
@@ -1708,6 +1899,16 @@
             EquipmentCategories.TabIndex = 8;
             EquipmentCategories.Text = "EquipmentCategories";
             EquipmentCategories.UseVisualStyleBackColor = true;
+            // 
+            // btInsertarEquipmentCategories
+            // 
+            btInsertarEquipmentCategories.Location = new Point(1022, 340);
+            btInsertarEquipmentCategories.Margin = new Padding(3, 2, 3, 2);
+            btInsertarEquipmentCategories.Name = "btInsertarEquipmentCategories";
+            btInsertarEquipmentCategories.Size = new Size(82, 26);
+            btInsertarEquipmentCategories.TabIndex = 28;
+            btInsertarEquipmentCategories.Text = "Instertar";
+            btInsertarEquipmentCategories.UseVisualStyleBackColor = true;
             // 
             // label64
             // 
@@ -1760,12 +1961,13 @@
             // 
             // Feats
             // 
+            Feats.Controls.Add(rtbDescriptionFeats);
+            Feats.Controls.Add(label69);
+            Feats.Controls.Add(btInsertarFeats);
             Feats.Controls.Add(label70);
             Feats.Controls.Add(cbPrerequisitesFeats);
-            Feats.Controls.Add(lbDescriptionFeats);
             Feats.Controls.Add(label67);
             Feats.Controls.Add(label68);
-            Feats.Controls.Add(label69);
             Feats.Controls.Add(tbIndexFeats);
             Feats.Controls.Add(tbNameFeats);
             Feats.Location = new Point(4, 24);
@@ -1774,6 +1976,33 @@
             Feats.TabIndex = 9;
             Feats.Text = "Feats";
             Feats.UseVisualStyleBackColor = true;
+            // 
+            // rtbDescriptionFeats
+            // 
+            rtbDescriptionFeats.Location = new Point(325, 27);
+            rtbDescriptionFeats.Name = "rtbDescriptionFeats";
+            rtbDescriptionFeats.Size = new Size(432, 96);
+            rtbDescriptionFeats.TabIndex = 84;
+            rtbDescriptionFeats.Text = "";
+            // 
+            // label69
+            // 
+            label69.AutoSize = true;
+            label69.Location = new Point(325, 9);
+            label69.Name = "label69";
+            label69.Size = new Size(67, 15);
+            label69.TabIndex = 83;
+            label69.Text = "Description";
+            // 
+            // btInsertarFeats
+            // 
+            btInsertarFeats.Location = new Point(1035, 341);
+            btInsertarFeats.Margin = new Padding(3, 2, 3, 2);
+            btInsertarFeats.Name = "btInsertarFeats";
+            btInsertarFeats.Size = new Size(82, 26);
+            btInsertarFeats.TabIndex = 44;
+            btInsertarFeats.Text = "Instertar";
+            btInsertarFeats.UseVisualStyleBackColor = true;
             // 
             // label70
             // 
@@ -1791,15 +2020,6 @@
             cbPrerequisitesFeats.Name = "cbPrerequisitesFeats";
             cbPrerequisitesFeats.Size = new Size(106, 23);
             cbPrerequisitesFeats.TabIndex = 42;
-            // 
-            // lbDescriptionFeats
-            // 
-            lbDescriptionFeats.ItemHeight = 15;
-            lbDescriptionFeats.Location = new Point(324, 27);
-            lbDescriptionFeats.Name = "lbDescriptionFeats";
-            lbDescriptionFeats.Size = new Size(442, 154);
-            lbDescriptionFeats.TabIndex = 36;
-            lbDescriptionFeats.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label67
             // 
@@ -1819,15 +2039,6 @@
             label68.TabIndex = 40;
             label68.Text = "Name";
             // 
-            // label69
-            // 
-            label69.AutoSize = true;
-            label69.Location = new Point(321, 9);
-            label69.Name = "label69";
-            label69.Size = new Size(67, 15);
-            label69.TabIndex = 39;
-            label69.Text = "Description";
-            // 
             // tbIndexFeats
             // 
             tbIndexFeats.Location = new Point(11, 27);
@@ -1844,10 +2055,12 @@
             // 
             // Features
             // 
+            Features.Controls.Add(rtbDescriptionFeatures);
+            Features.Controls.Add(label76);
+            Features.Controls.Add(btInsertarFeatures);
             Features.Controls.Add(label79);
             Features.Controls.Add(label78);
             Features.Controls.Add(label75);
-            Features.Controls.Add(label76);
             Features.Controls.Add(label77);
             Features.Controls.Add(label73);
             Features.Controls.Add(label74);
@@ -1858,7 +2071,6 @@
             Features.Controls.Add(cbParentFeatures);
             Features.Controls.Add(cbFeatureSpecificFeatures);
             Features.Controls.Add(cbClassFeatures);
-            Features.Controls.Add(lbDescriptionFeatures);
             Features.Controls.Add(tbLevelFeatures);
             Features.Controls.Add(tbNameFeatures);
             Features.Controls.Add(tbIndexFeatures);
@@ -1867,6 +2079,33 @@
             Features.Size = new Size(1133, 393);
             Features.TabIndex = 10;
             Features.Text = "Features";
+            // 
+            // rtbDescriptionFeatures
+            // 
+            rtbDescriptionFeatures.Location = new Point(705, 31);
+            rtbDescriptionFeatures.Name = "rtbDescriptionFeatures";
+            rtbDescriptionFeatures.Size = new Size(387, 95);
+            rtbDescriptionFeatures.TabIndex = 84;
+            rtbDescriptionFeatures.Text = "";
+            // 
+            // label76
+            // 
+            label76.AutoSize = true;
+            label76.Location = new Point(705, 13);
+            label76.Name = "label76";
+            label76.Size = new Size(67, 15);
+            label76.TabIndex = 83;
+            label76.Text = "Description";
+            // 
+            // btInsertarFeatures
+            // 
+            btInsertarFeatures.Location = new Point(1010, 341);
+            btInsertarFeatures.Margin = new Padding(3, 2, 3, 2);
+            btInsertarFeatures.Name = "btInsertarFeatures";
+            btInsertarFeatures.Size = new Size(82, 26);
+            btInsertarFeatures.TabIndex = 21;
+            btInsertarFeatures.Text = "Instertar";
+            btInsertarFeatures.UseVisualStyleBackColor = true;
             // 
             // label79
             // 
@@ -1894,15 +2133,6 @@
             label75.Size = new Size(87, 15);
             label75.TabIndex = 15;
             label75.Text = "FeatureSpecific";
-            // 
-            // label76
-            // 
-            label76.AutoSize = true;
-            label76.Location = new Point(725, 14);
-            label76.Name = "label76";
-            label76.Size = new Size(67, 15);
-            label76.TabIndex = 14;
-            label76.Text = "Description";
             // 
             // label77
             // 
@@ -1989,15 +2219,6 @@
             cbClassFeatures.Size = new Size(106, 23);
             cbClassFeatures.TabIndex = 4;
             // 
-            // lbDescriptionFeatures
-            // 
-            lbDescriptionFeatures.FormattingEnabled = true;
-            lbDescriptionFeatures.ItemHeight = 15;
-            lbDescriptionFeatures.Location = new Point(728, 31);
-            lbDescriptionFeatures.Name = "lbDescriptionFeatures";
-            lbDescriptionFeatures.Size = new Size(364, 214);
-            lbDescriptionFeatures.TabIndex = 3;
-            // 
             // tbLevelFeatures
             // 
             tbLevelFeatures.Location = new Point(276, 31);
@@ -2021,8 +2242,9 @@
             // 
             // Languages
             // 
+            Languages.Controls.Add(rtbTypicalSpeakersLanguages);
             Languages.Controls.Add(label85);
-            Languages.Controls.Add(lbTypicalSpeakersLanguages);
+            Languages.Controls.Add(btInsertarLanguages);
             Languages.Controls.Add(label84);
             Languages.Controls.Add(label82);
             Languages.Controls.Add(label83);
@@ -2040,23 +2262,32 @@
             Languages.Text = "Languages";
             Languages.UseVisualStyleBackColor = true;
             // 
+            // rtbTypicalSpeakersLanguages
+            // 
+            rtbTypicalSpeakersLanguages.Location = new Point(663, 36);
+            rtbTypicalSpeakersLanguages.Name = "rtbTypicalSpeakersLanguages";
+            rtbTypicalSpeakersLanguages.Size = new Size(432, 96);
+            rtbTypicalSpeakersLanguages.TabIndex = 84;
+            rtbTypicalSpeakersLanguages.Text = "";
+            // 
             // label85
             // 
             label85.AutoSize = true;
-            label85.Location = new Point(17, 82);
+            label85.Location = new Point(663, 18);
             label85.Name = "label85";
             label85.Size = new Size(89, 15);
-            label85.TabIndex = 11;
+            label85.TabIndex = 83;
             label85.Text = "TypicalSpeakers";
             // 
-            // lbTypicalSpeakersLanguages
+            // btInsertarLanguages
             // 
-            lbTypicalSpeakersLanguages.FormattingEnabled = true;
-            lbTypicalSpeakersLanguages.ItemHeight = 15;
-            lbTypicalSpeakersLanguages.Location = new Point(19, 99);
-            lbTypicalSpeakersLanguages.Name = "lbTypicalSpeakersLanguages";
-            lbTypicalSpeakersLanguages.Size = new Size(605, 244);
-            lbTypicalSpeakersLanguages.TabIndex = 10;
+            btInsertarLanguages.Location = new Point(1030, 344);
+            btInsertarLanguages.Margin = new Padding(3, 2, 3, 2);
+            btInsertarLanguages.Name = "btInsertarLanguages";
+            btInsertarLanguages.Size = new Size(82, 26);
+            btInsertarLanguages.TabIndex = 21;
+            btInsertarLanguages.Text = "Instertar";
+            btInsertarLanguages.UseVisualStyleBackColor = true;
             // 
             // label84
             // 
@@ -2142,6 +2373,7 @@
             // 
             // Levels
             // 
+            Levels.Controls.Add(btInsertarLevels);
             Levels.Controls.Add(label95);
             Levels.Controls.Add(label94);
             Levels.Controls.Add(label93);
@@ -2168,6 +2400,16 @@
             Levels.TabIndex = 12;
             Levels.Text = "Levels";
             Levels.UseVisualStyleBackColor = true;
+            // 
+            // btInsertarLevels
+            // 
+            btInsertarLevels.Location = new Point(1016, 343);
+            btInsertarLevels.Margin = new Padding(3, 2, 3, 2);
+            btInsertarLevels.Name = "btInsertarLevels";
+            btInsertarLevels.Size = new Size(82, 26);
+            btInsertarLevels.TabIndex = 21;
+            btInsertarLevels.Text = "Instertar";
+            btInsertarLevels.UseVisualStyleBackColor = true;
             // 
             // label95
             // 
@@ -2337,15 +2579,16 @@
             // 
             // MagicItems
             // 
+            MagicItems.Controls.Add(rtbDescriptionMagicItems);
+            MagicItems.Controls.Add(label100);
+            MagicItems.Controls.Add(btInsertarMagicItems);
             MagicItems.Controls.Add(chbVariantMagicItems);
             MagicItems.Controls.Add(label102);
             MagicItems.Controls.Add(label101);
-            MagicItems.Controls.Add(label100);
             MagicItems.Controls.Add(label99);
             MagicItems.Controls.Add(label98);
             MagicItems.Controls.Add(label97);
             MagicItems.Controls.Add(label96);
-            MagicItems.Controls.Add(lbDescriptionMagicItems);
             MagicItems.Controls.Add(cbEquipmentCategoryMagicItems);
             MagicItems.Controls.Add(cbRarityMagicItems);
             MagicItems.Controls.Add(cbVariantsMagicItems);
@@ -2357,6 +2600,33 @@
             MagicItems.TabIndex = 13;
             MagicItems.Text = "MagicItems";
             MagicItems.UseVisualStyleBackColor = true;
+            // 
+            // rtbDescriptionMagicItems
+            // 
+            rtbDescriptionMagicItems.Location = new Point(744, 33);
+            rtbDescriptionMagicItems.Name = "rtbDescriptionMagicItems";
+            rtbDescriptionMagicItems.Size = new Size(359, 96);
+            rtbDescriptionMagicItems.TabIndex = 84;
+            rtbDescriptionMagicItems.Text = "";
+            // 
+            // label100
+            // 
+            label100.AutoSize = true;
+            label100.Location = new Point(744, 15);
+            label100.Name = "label100";
+            label100.Size = new Size(67, 15);
+            label100.TabIndex = 83;
+            label100.Text = "Description";
+            // 
+            // btInsertarMagicItems
+            // 
+            btInsertarMagicItems.Location = new Point(1021, 351);
+            btInsertarMagicItems.Margin = new Padding(3, 2, 3, 2);
+            btInsertarMagicItems.Name = "btInsertarMagicItems";
+            btInsertarMagicItems.Size = new Size(82, 26);
+            btInsertarMagicItems.TabIndex = 21;
+            btInsertarMagicItems.Text = "Instertar";
+            btInsertarMagicItems.UseVisualStyleBackColor = true;
             // 
             // chbVariantMagicItems
             // 
@@ -2384,15 +2654,6 @@
             label101.Size = new Size(39, 15);
             label101.TabIndex = 12;
             label101.Text = "Name";
-            // 
-            // label100
-            // 
-            label100.AutoSize = true;
-            label100.Location = new Point(776, 15);
-            label100.Name = "label100";
-            label100.Size = new Size(67, 15);
-            label100.TabIndex = 11;
-            label100.Text = "Description";
             // 
             // label99
             // 
@@ -2429,15 +2690,6 @@
             label96.Size = new Size(37, 15);
             label96.TabIndex = 7;
             label96.Text = "Rarity";
-            // 
-            // lbDescriptionMagicItems
-            // 
-            lbDescriptionMagicItems.FormattingEnabled = true;
-            lbDescriptionMagicItems.ItemHeight = 15;
-            lbDescriptionMagicItems.Location = new Point(779, 34);
-            lbDescriptionMagicItems.Name = "lbDescriptionMagicItems";
-            lbDescriptionMagicItems.Size = new Size(335, 349);
-            lbDescriptionMagicItems.TabIndex = 6;
             // 
             // cbEquipmentCategoryMagicItems
             // 
@@ -2479,10 +2731,11 @@
             // 
             // MagicSchools
             // 
-            MagicSchools.Controls.Add(lbDescriptionMagicSchools);
+            MagicSchools.Controls.Add(rtbDescriptionMagicSchools);
+            MagicSchools.Controls.Add(label105);
+            MagicSchools.Controls.Add(btInsertarMagicSchools);
             MagicSchools.Controls.Add(label103);
             MagicSchools.Controls.Add(label104);
-            MagicSchools.Controls.Add(label105);
             MagicSchools.Controls.Add(tbIndexMagicSchools);
             MagicSchools.Controls.Add(tbNameMagicSchools);
             MagicSchools.Location = new Point(4, 24);
@@ -2492,13 +2745,32 @@
             MagicSchools.Text = "MagicSchools";
             MagicSchools.UseVisualStyleBackColor = true;
             // 
-            // lbDescriptionMagicSchools
+            // rtbDescriptionMagicSchools
             // 
-            lbDescriptionMagicSchools.ItemHeight = 15;
-            lbDescriptionMagicSchools.Location = new Point(325, 31);
-            lbDescriptionMagicSchools.Name = "lbDescriptionMagicSchools";
-            lbDescriptionMagicSchools.Size = new Size(442, 154);
-            lbDescriptionMagicSchools.TabIndex = 42;
+            rtbDescriptionMagicSchools.Location = new Point(327, 31);
+            rtbDescriptionMagicSchools.Name = "rtbDescriptionMagicSchools";
+            rtbDescriptionMagicSchools.Size = new Size(432, 96);
+            rtbDescriptionMagicSchools.TabIndex = 84;
+            rtbDescriptionMagicSchools.Text = "";
+            // 
+            // label105
+            // 
+            label105.AutoSize = true;
+            label105.Location = new Point(327, 13);
+            label105.Name = "label105";
+            label105.Size = new Size(67, 15);
+            label105.TabIndex = 83;
+            label105.Text = "Description";
+            // 
+            // btInsertarMagicSchools
+            // 
+            btInsertarMagicSchools.Location = new Point(1020, 343);
+            btInsertarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            btInsertarMagicSchools.Name = "btInsertarMagicSchools";
+            btInsertarMagicSchools.Size = new Size(82, 26);
+            btInsertarMagicSchools.TabIndex = 48;
+            btInsertarMagicSchools.Text = "Instertar";
+            btInsertarMagicSchools.UseVisualStyleBackColor = true;
             // 
             // label103
             // 
@@ -2518,15 +2790,6 @@
             label104.TabIndex = 46;
             label104.Text = "Name";
             // 
-            // label105
-            // 
-            label105.AutoSize = true;
-            label105.Location = new Point(322, 14);
-            label105.Name = "label105";
-            label105.Size = new Size(67, 15);
-            label105.TabIndex = 45;
-            label105.Text = "Description";
-            // 
             // tbIndexMagicSchools
             // 
             tbIndexMagicSchools.Location = new Point(12, 31);
@@ -2543,6 +2806,7 @@
             // 
             // Proficiencies
             // 
+            Proficiencies.Controls.Add(btInsertarProficiencies);
             Proficiencies.Controls.Add(label111);
             Proficiencies.Controls.Add(label110);
             Proficiencies.Controls.Add(label109);
@@ -2561,6 +2825,16 @@
             Proficiencies.TabIndex = 16;
             Proficiencies.Text = "Proficiencies";
             Proficiencies.UseVisualStyleBackColor = true;
+            // 
+            // btInsertarProficiencies
+            // 
+            btInsertarProficiencies.Location = new Point(1027, 342);
+            btInsertarProficiencies.Margin = new Padding(3, 2, 3, 2);
+            btInsertarProficiencies.Name = "btInsertarProficiencies";
+            btInsertarProficiencies.Size = new Size(82, 26);
+            btInsertarProficiencies.TabIndex = 60;
+            btInsertarProficiencies.Text = "Instertar";
+            btInsertarProficiencies.UseVisualStyleBackColor = true;
             // 
             // label111
             // 
@@ -2663,6 +2937,7 @@
             // 
             // Races
             // 
+            Races.Controls.Add(btInsertarRaces);
             Races.Controls.Add(label126);
             Races.Controls.Add(label125);
             Races.Controls.Add(label124);
@@ -2701,6 +2976,16 @@
             Races.TabIndex = 17;
             Races.Text = "Races";
             Races.UseVisualStyleBackColor = true;
+            // 
+            // btInsertarRaces
+            // 
+            btInsertarRaces.Location = new Point(1019, 345);
+            btInsertarRaces.Margin = new Padding(3, 2, 3, 2);
+            btInsertarRaces.Name = "btInsertarRaces";
+            btInsertarRaces.Size = new Size(82, 26);
+            btInsertarRaces.TabIndex = 32;
+            btInsertarRaces.Text = "Instertar";
+            btInsertarRaces.UseVisualStyleBackColor = true;
             // 
             // label126
             // 
@@ -2970,9 +3255,10 @@
             // 
             // Skills
             // 
+            Skills.Controls.Add(rtbDescriptionSkills);
+            Skills.Controls.Add(btInsertarSkills);
             Skills.Controls.Add(label130);
             Skills.Controls.Add(cbAbilityScoreSkills);
-            Skills.Controls.Add(lbDescriptionSkills);
             Skills.Controls.Add(label127);
             Skills.Controls.Add(label128);
             Skills.Controls.Add(label129);
@@ -2984,6 +3270,24 @@
             Skills.TabIndex = 18;
             Skills.Text = "Skills";
             Skills.UseVisualStyleBackColor = true;
+            // 
+            // rtbDescriptionSkills
+            // 
+            rtbDescriptionSkills.Location = new Point(328, 32);
+            rtbDescriptionSkills.Name = "rtbDescriptionSkills";
+            rtbDescriptionSkills.Size = new Size(432, 96);
+            rtbDescriptionSkills.TabIndex = 57;
+            rtbDescriptionSkills.Text = "";
+            // 
+            // btInsertarSkills
+            // 
+            btInsertarSkills.Location = new Point(1021, 343);
+            btInsertarSkills.Margin = new Padding(3, 2, 3, 2);
+            btInsertarSkills.Name = "btInsertarSkills";
+            btInsertarSkills.Size = new Size(82, 26);
+            btInsertarSkills.TabIndex = 56;
+            btInsertarSkills.Text = "Instertar";
+            btInsertarSkills.UseVisualStyleBackColor = true;
             // 
             // label130
             // 
@@ -3001,14 +3305,6 @@
             cbAbilityScoreSkills.Name = "cbAbilityScoreSkills";
             cbAbilityScoreSkills.Size = new Size(106, 23);
             cbAbilityScoreSkills.TabIndex = 54;
-            // 
-            // lbDescriptionSkills
-            // 
-            lbDescriptionSkills.ItemHeight = 15;
-            lbDescriptionSkills.Location = new Point(331, 31);
-            lbDescriptionSkills.Name = "lbDescriptionSkills";
-            lbDescriptionSkills.Size = new Size(442, 154);
-            lbDescriptionSkills.TabIndex = 48;
             // 
             // label127
             // 
@@ -3053,6 +3349,45 @@
             // 
             // Spells
             // 
+            Spells.Controls.Add(btInsertarSpells);
+            Spells.Controls.Add(label149);
+            Spells.Controls.Add(rtbSubclassesSpells);
+            Spells.Controls.Add(label148);
+            Spells.Controls.Add(label147);
+            Spells.Controls.Add(label146);
+            Spells.Controls.Add(label145);
+            Spells.Controls.Add(label144);
+            Spells.Controls.Add(label143);
+            Spells.Controls.Add(label142);
+            Spells.Controls.Add(cbDCSpells);
+            Spells.Controls.Add(cbClassesSpells);
+            Spells.Controls.Add(cbDamageSpells);
+            Spells.Controls.Add(cbHealAtSlotLevelSpells);
+            Spells.Controls.Add(cbSchoolsSpells);
+            Spells.Controls.Add(cbSubclassesSpells);
+            Spells.Controls.Add(cbAreaOfEffectSpells);
+            Spells.Controls.Add(label141);
+            Spells.Controls.Add(tbRangeSpells);
+            Spells.Controls.Add(label140);
+            Spells.Controls.Add(label139);
+            Spells.Controls.Add(label138);
+            Spells.Controls.Add(label137);
+            Spells.Controls.Add(label136);
+            Spells.Controls.Add(label135);
+            Spells.Controls.Add(label133);
+            Spells.Controls.Add(label134);
+            Spells.Controls.Add(label132);
+            Spells.Controls.Add(label131);
+            Spells.Controls.Add(tbConcentrationSpells);
+            Spells.Controls.Add(tbComponentsSpells);
+            Spells.Controls.Add(tbHigherLevelSpells);
+            Spells.Controls.Add(tbDurationSpells);
+            Spells.Controls.Add(tbCastingTimeSpells);
+            Spells.Controls.Add(tbAttackTypeSpells);
+            Spells.Controls.Add(tbMaterialSpells);
+            Spells.Controls.Add(tbLevelSpells);
+            Spells.Controls.Add(tbNameSpells);
+            Spells.Controls.Add(tbIndexSpells);
             Spells.Location = new Point(4, 24);
             Spells.Name = "Spells";
             Spells.Size = new Size(1133, 393);
@@ -3060,8 +3395,344 @@
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
             // 
+            // btInsertarSpells
+            // 
+            btInsertarSpells.Location = new Point(1040, 348);
+            btInsertarSpells.Name = "btInsertarSpells";
+            btInsertarSpells.Size = new Size(75, 23);
+            btInsertarSpells.TabIndex = 38;
+            btInsertarSpells.Text = "Insertar";
+            btInsertarSpells.UseVisualStyleBackColor = true;
+            // 
+            // label149
+            // 
+            label149.AutoSize = true;
+            label149.Location = new Point(334, 169);
+            label149.Name = "label149";
+            label149.Size = new Size(63, 15);
+            label149.TabIndex = 37;
+            label149.Text = "Subclasses";
+            // 
+            // rtbSubclassesSpells
+            // 
+            rtbSubclassesSpells.Location = new Point(334, 187);
+            rtbSubclassesSpells.Name = "rtbSubclassesSpells";
+            rtbSubclassesSpells.Size = new Size(492, 136);
+            rtbSubclassesSpells.TabIndex = 36;
+            rtbSubclassesSpells.Text = "";
+            // 
+            // label148
+            // 
+            label148.AutoSize = true;
+            label148.Location = new Point(171, 169);
+            label148.Name = "label148";
+            label148.Size = new Size(63, 15);
+            label148.TabIndex = 35;
+            label148.Text = "Subclasses";
+            // 
+            // label147
+            // 
+            label147.AutoSize = true;
+            label147.Location = new Point(19, 169);
+            label147.Name = "label147";
+            label147.Size = new Size(48, 15);
+            label147.TabIndex = 34;
+            label147.Text = "Schools";
+            // 
+            // label146
+            // 
+            label146.AutoSize = true;
+            label146.Location = new Point(1009, 100);
+            label146.Name = "label146";
+            label146.Size = new Size(89, 15);
+            label146.TabIndex = 33;
+            label146.Text = "HealAlSlotLevel";
+            // 
+            // label145
+            // 
+            label145.AutoSize = true;
+            label145.Location = new Point(855, 100);
+            label145.Name = "label145";
+            label145.Size = new Size(23, 15);
+            label145.TabIndex = 32;
+            label145.Text = "DC";
+            // 
+            // label144
+            // 
+            label144.AutoSize = true;
+            label144.Location = new Point(705, 100);
+            label144.Name = "label144";
+            label144.Size = new Size(51, 15);
+            label144.TabIndex = 31;
+            label144.Text = "Damage";
+            // 
+            // label143
+            // 
+            label143.AutoSize = true;
+            label143.Location = new Point(559, 100);
+            label143.Name = "label143";
+            label143.Size = new Size(45, 15);
+            label143.TabIndex = 30;
+            label143.Text = "Classes";
+            // 
+            // label142
+            // 
+            label142.AutoSize = true;
+            label142.Location = new Point(414, 100);
+            label142.Name = "label142";
+            label142.Size = new Size(74, 15);
+            label142.TabIndex = 29;
+            label142.Text = "AreaOfEffect";
+            // 
+            // cbDCSpells
+            // 
+            cbDCSpells.FormattingEnabled = true;
+            cbDCSpells.Location = new Point(855, 118);
+            cbDCSpells.Name = "cbDCSpells";
+            cbDCSpells.Size = new Size(121, 23);
+            cbDCSpells.TabIndex = 28;
+            // 
+            // cbClassesSpells
+            // 
+            cbClassesSpells.FormattingEnabled = true;
+            cbClassesSpells.Location = new Point(559, 118);
+            cbClassesSpells.Name = "cbClassesSpells";
+            cbClassesSpells.Size = new Size(121, 23);
+            cbClassesSpells.TabIndex = 27;
+            // 
+            // cbDamageSpells
+            // 
+            cbDamageSpells.FormattingEnabled = true;
+            cbDamageSpells.Location = new Point(705, 118);
+            cbDamageSpells.Name = "cbDamageSpells";
+            cbDamageSpells.Size = new Size(121, 23);
+            cbDamageSpells.TabIndex = 26;
+            // 
+            // cbHealAtSlotLevelSpells
+            // 
+            cbHealAtSlotLevelSpells.FormattingEnabled = true;
+            cbHealAtSlotLevelSpells.Location = new Point(1009, 118);
+            cbHealAtSlotLevelSpells.Name = "cbHealAtSlotLevelSpells";
+            cbHealAtSlotLevelSpells.Size = new Size(121, 23);
+            cbHealAtSlotLevelSpells.TabIndex = 25;
+            // 
+            // cbSchoolsSpells
+            // 
+            cbSchoolsSpells.FormattingEnabled = true;
+            cbSchoolsSpells.Location = new Point(19, 187);
+            cbSchoolsSpells.Name = "cbSchoolsSpells";
+            cbSchoolsSpells.Size = new Size(121, 23);
+            cbSchoolsSpells.TabIndex = 24;
+            // 
+            // cbSubclassesSpells
+            // 
+            cbSubclassesSpells.FormattingEnabled = true;
+            cbSubclassesSpells.Location = new Point(171, 187);
+            cbSubclassesSpells.Name = "cbSubclassesSpells";
+            cbSubclassesSpells.Size = new Size(121, 23);
+            cbSubclassesSpells.TabIndex = 23;
+            // 
+            // cbAreaOfEffectSpells
+            // 
+            cbAreaOfEffectSpells.FormattingEnabled = true;
+            cbAreaOfEffectSpells.Location = new Point(414, 118);
+            cbAreaOfEffectSpells.Name = "cbAreaOfEffectSpells";
+            cbAreaOfEffectSpells.Size = new Size(121, 23);
+            cbAreaOfEffectSpells.TabIndex = 22;
+            // 
+            // label141
+            // 
+            label141.AutoSize = true;
+            label141.Location = new Point(287, 100);
+            label141.Name = "label141";
+            label141.Size = new Size(40, 15);
+            label141.TabIndex = 21;
+            label141.Text = "Range";
+            // 
+            // tbRangeSpells
+            // 
+            tbRangeSpells.Location = new Point(287, 118);
+            tbRangeSpells.Name = "tbRangeSpells";
+            tbRangeSpells.Size = new Size(100, 23);
+            tbRangeSpells.TabIndex = 20;
+            // 
+            // label140
+            // 
+            label140.AutoSize = true;
+            label140.Location = new Point(151, 100);
+            label140.Name = "label140";
+            label140.Size = new Size(70, 15);
+            label140.TabIndex = 19;
+            label140.Text = "HigherLevel";
+            // 
+            // label139
+            // 
+            label139.AutoSize = true;
+            label139.Location = new Point(19, 100);
+            label139.Name = "label139";
+            label139.Size = new Size(53, 15);
+            label139.TabIndex = 18;
+            label139.Text = "Duration";
+            // 
+            // label138
+            // 
+            label138.AutoSize = true;
+            label138.Location = new Point(949, 16);
+            label138.Name = "label138";
+            label138.Size = new Size(83, 15);
+            label138.TabIndex = 17;
+            label138.Text = "Concentration";
+            // 
+            // label137
+            // 
+            label137.AutoSize = true;
+            label137.Location = new Point(816, 16);
+            label137.Name = "label137";
+            label137.Size = new Size(76, 15);
+            label137.TabIndex = 16;
+            label137.Text = "Components";
+            // 
+            // label136
+            // 
+            label136.AutoSize = true;
+            label136.Location = new Point(682, 16);
+            label136.Name = "label136";
+            label136.Size = new Size(73, 15);
+            label136.TabIndex = 15;
+            label136.Text = "CastingTime";
+            // 
+            // label135
+            // 
+            label135.AutoSize = true;
+            label135.Location = new Point(546, 16);
+            label135.Name = "label135";
+            label135.Size = new Size(65, 15);
+            label135.TabIndex = 14;
+            label135.Text = "AttackType";
+            // 
+            // label133
+            // 
+            label133.AutoSize = true;
+            label133.Location = new Point(414, 16);
+            label133.Name = "label133";
+            label133.Size = new Size(50, 15);
+            label133.TabIndex = 13;
+            label133.Text = "Material";
+            // 
+            // label134
+            // 
+            label134.AutoSize = true;
+            label134.Location = new Point(287, 16);
+            label134.Name = "label134";
+            label134.Size = new Size(34, 15);
+            label134.TabIndex = 12;
+            label134.Text = "Level";
+            // 
+            // label132
+            // 
+            label132.AutoSize = true;
+            label132.Location = new Point(151, 16);
+            label132.Name = "label132";
+            label132.Size = new Size(39, 15);
+            label132.TabIndex = 11;
+            label132.Text = "Name";
+            // 
+            // label131
+            // 
+            label131.AutoSize = true;
+            label131.Location = new Point(19, 16);
+            label131.Name = "label131";
+            label131.Size = new Size(36, 15);
+            label131.TabIndex = 10;
+            label131.Text = "Index";
+            // 
+            // tbConcentrationSpells
+            // 
+            tbConcentrationSpells.Location = new Point(949, 34);
+            tbConcentrationSpells.Name = "tbConcentrationSpells";
+            tbConcentrationSpells.Size = new Size(100, 23);
+            tbConcentrationSpells.TabIndex = 9;
+            // 
+            // tbComponentsSpells
+            // 
+            tbComponentsSpells.Location = new Point(816, 34);
+            tbComponentsSpells.Name = "tbComponentsSpells";
+            tbComponentsSpells.Size = new Size(100, 23);
+            tbComponentsSpells.TabIndex = 8;
+            // 
+            // tbHigherLevelSpells
+            // 
+            tbHigherLevelSpells.Location = new Point(151, 118);
+            tbHigherLevelSpells.Name = "tbHigherLevelSpells";
+            tbHigherLevelSpells.Size = new Size(100, 23);
+            tbHigherLevelSpells.TabIndex = 7;
+            // 
+            // tbDurationSpells
+            // 
+            tbDurationSpells.Location = new Point(19, 118);
+            tbDurationSpells.Name = "tbDurationSpells";
+            tbDurationSpells.Size = new Size(100, 23);
+            tbDurationSpells.TabIndex = 6;
+            // 
+            // tbCastingTimeSpells
+            // 
+            tbCastingTimeSpells.Location = new Point(682, 34);
+            tbCastingTimeSpells.Name = "tbCastingTimeSpells";
+            tbCastingTimeSpells.Size = new Size(100, 23);
+            tbCastingTimeSpells.TabIndex = 5;
+            // 
+            // tbAttackTypeSpells
+            // 
+            tbAttackTypeSpells.Location = new Point(549, 34);
+            tbAttackTypeSpells.Name = "tbAttackTypeSpells";
+            tbAttackTypeSpells.Size = new Size(100, 23);
+            tbAttackTypeSpells.TabIndex = 4;
+            // 
+            // tbMaterialSpells
+            // 
+            tbMaterialSpells.Location = new Point(414, 34);
+            tbMaterialSpells.Name = "tbMaterialSpells";
+            tbMaterialSpells.Size = new Size(100, 23);
+            tbMaterialSpells.TabIndex = 3;
+            // 
+            // tbLevelSpells
+            // 
+            tbLevelSpells.Location = new Point(287, 34);
+            tbLevelSpells.Name = "tbLevelSpells";
+            tbLevelSpells.Size = new Size(100, 23);
+            tbLevelSpells.TabIndex = 2;
+            // 
+            // tbNameSpells
+            // 
+            tbNameSpells.Location = new Point(151, 34);
+            tbNameSpells.Name = "tbNameSpells";
+            tbNameSpells.Size = new Size(100, 23);
+            tbNameSpells.TabIndex = 1;
+            // 
+            // tbIndexSpells
+            // 
+            tbIndexSpells.Location = new Point(19, 34);
+            tbIndexSpells.Name = "tbIndexSpells";
+            tbIndexSpells.Size = new Size(100, 23);
+            tbIndexSpells.TabIndex = 0;
+            // 
             // Subclasses
             // 
+            Subclasses.Controls.Add(btInsertarSubclasses);
+            Subclasses.Controls.Add(label156);
+            Subclasses.Controls.Add(tbSubclassLevelsSubclasses);
+            Subclasses.Controls.Add(label155);
+            Subclasses.Controls.Add(tbSubclassFlavorSubclasses);
+            Subclasses.Controls.Add(label154);
+            Subclasses.Controls.Add(cbSpellsSubclasses);
+            Subclasses.Controls.Add(rtbDescriptionSubclasses);
+            Subclasses.Controls.Add(label153);
+            Subclasses.Controls.Add(label150);
+            Subclasses.Controls.Add(cbClassSubclasses);
+            Subclasses.Controls.Add(label151);
+            Subclasses.Controls.Add(label152);
+            Subclasses.Controls.Add(tbIndexSubclasses);
+            Subclasses.Controls.Add(tbNameSubclasses);
             Subclasses.Location = new Point(4, 24);
             Subclasses.Name = "Subclasses";
             Subclasses.Size = new Size(1133, 393);
@@ -3069,8 +3740,151 @@
             Subclasses.Text = "Subclasses";
             Subclasses.UseVisualStyleBackColor = true;
             // 
+            // btInsertarSubclasses
+            // 
+            btInsertarSubclasses.Location = new Point(1025, 350);
+            btInsertarSubclasses.Name = "btInsertarSubclasses";
+            btInsertarSubclasses.Size = new Size(75, 23);
+            btInsertarSubclasses.TabIndex = 74;
+            btInsertarSubclasses.Text = "Insertar";
+            btInsertarSubclasses.UseVisualStyleBackColor = true;
+            // 
+            // label156
+            // 
+            label156.AutoSize = true;
+            label156.Location = new Point(495, 14);
+            label156.Name = "label156";
+            label156.Size = new Size(84, 15);
+            label156.TabIndex = 73;
+            label156.Text = "SubclassLevels";
+            // 
+            // tbSubclassLevelsSubclasses
+            // 
+            tbSubclassLevelsSubclasses.Location = new Point(495, 32);
+            tbSubclassLevelsSubclasses.Name = "tbSubclassLevelsSubclasses";
+            tbSubclassLevelsSubclasses.Size = new Size(136, 23);
+            tbSubclassLevelsSubclasses.TabIndex = 72;
+            // 
+            // label155
+            // 
+            label155.AutoSize = true;
+            label155.Location = new Point(337, 15);
+            label155.Name = "label155";
+            label155.Size = new Size(84, 15);
+            label155.TabIndex = 71;
+            label155.Text = "SubclassFlavor";
+            // 
+            // tbSubclassFlavorSubclasses
+            // 
+            tbSubclassFlavorSubclasses.Location = new Point(339, 32);
+            tbSubclassFlavorSubclasses.Name = "tbSubclassFlavorSubclasses";
+            tbSubclassFlavorSubclasses.Size = new Size(123, 23);
+            tbSubclassFlavorSubclasses.TabIndex = 70;
+            // 
+            // label154
+            // 
+            label154.AutoSize = true;
+            label154.Location = new Point(160, 95);
+            label154.Name = "label154";
+            label154.Size = new Size(37, 15);
+            label154.TabIndex = 69;
+            label154.Text = "Spells";
+            // 
+            // cbSpellsSubclasses
+            // 
+            cbSpellsSubclasses.FormattingEnabled = true;
+            cbSpellsSubclasses.Location = new Point(160, 113);
+            cbSpellsSubclasses.Name = "cbSpellsSubclasses";
+            cbSpellsSubclasses.Size = new Size(106, 23);
+            cbSpellsSubclasses.TabIndex = 68;
+            // 
+            // rtbDescriptionSubclasses
+            // 
+            rtbDescriptionSubclasses.Location = new Point(668, 32);
+            rtbDescriptionSubclasses.Name = "rtbDescriptionSubclasses";
+            rtbDescriptionSubclasses.Size = new Size(432, 96);
+            rtbDescriptionSubclasses.TabIndex = 67;
+            rtbDescriptionSubclasses.Text = "";
+            // 
+            // label153
+            // 
+            label153.AutoSize = true;
+            label153.Location = new Point(668, 14);
+            label153.Name = "label153";
+            label153.Size = new Size(67, 15);
+            label153.TabIndex = 66;
+            label153.Text = "Description";
+            // 
+            // label150
+            // 
+            label150.AutoSize = true;
+            label150.Location = new Point(15, 95);
+            label150.Name = "label150";
+            label150.Size = new Size(34, 15);
+            label150.TabIndex = 64;
+            label150.Text = "Class";
+            // 
+            // cbClassSubclasses
+            // 
+            cbClassSubclasses.FormattingEnabled = true;
+            cbClassSubclasses.Location = new Point(15, 113);
+            cbClassSubclasses.Name = "cbClassSubclasses";
+            cbClassSubclasses.Size = new Size(106, 23);
+            cbClassSubclasses.TabIndex = 63;
+            // 
+            // label151
+            // 
+            label151.AutoSize = true;
+            label151.Location = new Point(13, 15);
+            label151.Name = "label151";
+            label151.Size = new Size(36, 15);
+            label151.TabIndex = 62;
+            label151.Text = "Index";
+            // 
+            // label152
+            // 
+            label152.AutoSize = true;
+            label152.Location = new Point(85, 15);
+            label152.Name = "label152";
+            label152.Size = new Size(39, 15);
+            label152.TabIndex = 61;
+            label152.Text = "Name";
+            // 
+            // tbIndexSubclasses
+            // 
+            tbIndexSubclasses.Location = new Point(15, 32);
+            tbIndexSubclasses.Name = "tbIndexSubclasses";
+            tbIndexSubclasses.Size = new Size(52, 23);
+            tbIndexSubclasses.TabIndex = 59;
+            // 
+            // tbNameSubclasses
+            // 
+            tbNameSubclasses.Location = new Point(87, 32);
+            tbNameSubclasses.Name = "tbNameSubclasses";
+            tbNameSubclasses.Size = new Size(221, 23);
+            tbNameSubclasses.TabIndex = 58;
+            // 
             // SubRaces
             // 
+            SubRaces.Controls.Add(btInsertarSubRaces);
+            SubRaces.Controls.Add(label165);
+            SubRaces.Controls.Add(cbStartingProficienciesSubRaces);
+            SubRaces.Controls.Add(label164);
+            SubRaces.Controls.Add(cbRacialTraitsSubRaces);
+            SubRaces.Controls.Add(label163);
+            SubRaces.Controls.Add(cbRaceSubRaces);
+            SubRaces.Controls.Add(label162);
+            SubRaces.Controls.Add(cbLanguageOptionsSubRaces);
+            SubRaces.Controls.Add(label161);
+            SubRaces.Controls.Add(cbAbilityBonusesSubRaces);
+            SubRaces.Controls.Add(label157);
+            SubRaces.Controls.Add(tbLanguagesSubRaces);
+            SubRaces.Controls.Add(label158);
+            SubRaces.Controls.Add(tbDescriptionSubRaces);
+            SubRaces.Controls.Add(label159);
+            SubRaces.Controls.Add(label160);
+            SubRaces.Controls.Add(tbIndexSubRaces);
+            SubRaces.Controls.Add(tbNameSubRaces);
             SubRaces.Location = new Point(4, 24);
             SubRaces.Name = "SubRaces";
             SubRaces.Size = new Size(1133, 393);
@@ -3078,8 +3892,187 @@
             SubRaces.Text = "SubRaces";
             SubRaces.UseVisualStyleBackColor = true;
             // 
+            // btInsertarSubRaces
+            // 
+            btInsertarSubRaces.Location = new Point(1033, 347);
+            btInsertarSubRaces.Name = "btInsertarSubRaces";
+            btInsertarSubRaces.Size = new Size(75, 23);
+            btInsertarSubRaces.TabIndex = 92;
+            btInsertarSubRaces.Text = "Insertar";
+            btInsertarSubRaces.UseVisualStyleBackColor = true;
+            // 
+            // label165
+            // 
+            label165.AutoSize = true;
+            label165.Location = new Point(170, 103);
+            label165.Name = "label165";
+            label165.Size = new Size(115, 15);
+            label165.TabIndex = 91;
+            label165.Text = "StartingProficiencies";
+            // 
+            // cbStartingProficienciesSubRaces
+            // 
+            cbStartingProficienciesSubRaces.FormattingEnabled = true;
+            cbStartingProficienciesSubRaces.Location = new Point(170, 121);
+            cbStartingProficienciesSubRaces.Name = "cbStartingProficienciesSubRaces";
+            cbStartingProficienciesSubRaces.Size = new Size(106, 23);
+            cbStartingProficienciesSubRaces.TabIndex = 90;
+            // 
+            // label164
+            // 
+            label164.AutoSize = true;
+            label164.Location = new Point(19, 103);
+            label164.Name = "label164";
+            label164.Size = new Size(65, 15);
+            label164.TabIndex = 89;
+            label164.Text = "RacialTraits";
+            // 
+            // cbRacialTraitsSubRaces
+            // 
+            cbRacialTraitsSubRaces.FormattingEnabled = true;
+            cbRacialTraitsSubRaces.Location = new Point(19, 121);
+            cbRacialTraitsSubRaces.Name = "cbRacialTraitsSubRaces";
+            cbRacialTraitsSubRaces.Size = new Size(106, 23);
+            cbRacialTraitsSubRaces.TabIndex = 88;
+            // 
+            // label163
+            // 
+            label163.AutoSize = true;
+            label163.Location = new Point(966, 22);
+            label163.Name = "label163";
+            label163.Size = new Size(32, 15);
+            label163.TabIndex = 87;
+            label163.Text = "Race";
+            // 
+            // cbRaceSubRaces
+            // 
+            cbRaceSubRaces.FormattingEnabled = true;
+            cbRaceSubRaces.Location = new Point(969, 39);
+            cbRaceSubRaces.Name = "cbRaceSubRaces";
+            cbRaceSubRaces.Size = new Size(106, 23);
+            cbRaceSubRaces.TabIndex = 86;
+            // 
+            // label162
+            // 
+            label162.AutoSize = true;
+            label162.Location = new Point(811, 22);
+            label162.Name = "label162";
+            label162.Size = new Size(101, 15);
+            label162.TabIndex = 85;
+            label162.Text = "LanguageOptions";
+            // 
+            // cbLanguageOptionsSubRaces
+            // 
+            cbLanguageOptionsSubRaces.FormattingEnabled = true;
+            cbLanguageOptionsSubRaces.Location = new Point(814, 39);
+            cbLanguageOptionsSubRaces.Name = "cbLanguageOptionsSubRaces";
+            cbLanguageOptionsSubRaces.Size = new Size(106, 23);
+            cbLanguageOptionsSubRaces.TabIndex = 84;
+            // 
+            // label161
+            // 
+            label161.AutoSize = true;
+            label161.Location = new Point(669, 22);
+            label161.Name = "label161";
+            label161.Size = new Size(85, 15);
+            label161.TabIndex = 83;
+            label161.Text = "AbilityBonuses";
+            // 
+            // cbAbilityBonusesSubRaces
+            // 
+            cbAbilityBonusesSubRaces.FormattingEnabled = true;
+            cbAbilityBonusesSubRaces.Location = new Point(672, 39);
+            cbAbilityBonusesSubRaces.Name = "cbAbilityBonusesSubRaces";
+            cbAbilityBonusesSubRaces.Size = new Size(106, 23);
+            cbAbilityBonusesSubRaces.TabIndex = 82;
+            // 
+            // label157
+            // 
+            label157.AutoSize = true;
+            label157.Location = new Point(499, 21);
+            label157.Name = "label157";
+            label157.Size = new Size(64, 15);
+            label157.TabIndex = 81;
+            label157.Text = "Languages";
+            // 
+            // tbLanguagesSubRaces
+            // 
+            tbLanguagesSubRaces.Location = new Point(499, 39);
+            tbLanguagesSubRaces.Name = "tbLanguagesSubRaces";
+            tbLanguagesSubRaces.Size = new Size(136, 23);
+            tbLanguagesSubRaces.TabIndex = 80;
+            // 
+            // label158
+            // 
+            label158.AutoSize = true;
+            label158.Location = new Point(341, 22);
+            label158.Name = "label158";
+            label158.Size = new Size(67, 15);
+            label158.TabIndex = 79;
+            label158.Text = "Description";
+            // 
+            // tbDescriptionSubRaces
+            // 
+            tbDescriptionSubRaces.Location = new Point(343, 39);
+            tbDescriptionSubRaces.Name = "tbDescriptionSubRaces";
+            tbDescriptionSubRaces.Size = new Size(123, 23);
+            tbDescriptionSubRaces.TabIndex = 78;
+            // 
+            // label159
+            // 
+            label159.AutoSize = true;
+            label159.Location = new Point(17, 22);
+            label159.Name = "label159";
+            label159.Size = new Size(36, 15);
+            label159.TabIndex = 77;
+            label159.Text = "Index";
+            // 
+            // label160
+            // 
+            label160.AutoSize = true;
+            label160.Location = new Point(89, 22);
+            label160.Name = "label160";
+            label160.Size = new Size(39, 15);
+            label160.TabIndex = 76;
+            label160.Text = "Name";
+            // 
+            // tbIndexSubRaces
+            // 
+            tbIndexSubRaces.Location = new Point(19, 39);
+            tbIndexSubRaces.Name = "tbIndexSubRaces";
+            tbIndexSubRaces.Size = new Size(52, 23);
+            tbIndexSubRaces.TabIndex = 75;
+            // 
+            // tbNameSubRaces
+            // 
+            tbNameSubRaces.Location = new Point(91, 39);
+            tbNameSubRaces.Name = "tbNameSubRaces";
+            tbNameSubRaces.Size = new Size(221, 23);
+            tbNameSubRaces.TabIndex = 74;
+            // 
             // Traits
             // 
+            Traits.Controls.Add(btInsertarTraits);
+            Traits.Controls.Add(richTextBox1);
+            Traits.Controls.Add(label175);
+            Traits.Controls.Add(label173);
+            Traits.Controls.Add(label174);
+            Traits.Controls.Add(cbSubracesTraits);
+            Traits.Controls.Add(cbTraitSpecificTraits);
+            Traits.Controls.Add(label168);
+            Traits.Controls.Add(label169);
+            Traits.Controls.Add(label170);
+            Traits.Controls.Add(label171);
+            Traits.Controls.Add(label172);
+            Traits.Controls.Add(cbProficiencyChoicesTraits);
+            Traits.Controls.Add(cbParentTraits);
+            Traits.Controls.Add(cbProficienciesTraits);
+            Traits.Controls.Add(cbRacesTraits);
+            Traits.Controls.Add(cbLanguageOptionsTraits);
+            Traits.Controls.Add(label166);
+            Traits.Controls.Add(label167);
+            Traits.Controls.Add(tbIndexTraits);
+            Traits.Controls.Add(tbNameTraits);
             Traits.Location = new Point(4, 24);
             Traits.Name = "Traits";
             Traits.Size = new Size(1133, 393);
@@ -3087,15 +4080,182 @@
             Traits.Text = "Traits";
             Traits.UseVisualStyleBackColor = true;
             // 
-            // btInsertarAlignments
+            // btInsertarTraits
             // 
-            btInsertarAlignments.Location = new Point(1012, 342);
-            btInsertarAlignments.Margin = new Padding(3, 2, 3, 2);
-            btInsertarAlignments.Name = "btInsertarAlignments";
-            btInsertarAlignments.Size = new Size(82, 26);
-            btInsertarAlignments.TabIndex = 30;
-            btInsertarAlignments.Text = "Instertar";
-            btInsertarAlignments.UseVisualStyleBackColor = true;
+            btInsertarTraits.Location = new Point(1027, 346);
+            btInsertarTraits.Name = "btInsertarTraits";
+            btInsertarTraits.Size = new Size(75, 23);
+            btInsertarTraits.TabIndex = 93;
+            btInsertarTraits.Text = "Insertar";
+            btInsertarTraits.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(350, 117);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(432, 96);
+            richTextBox1.TabIndex = 82;
+            richTextBox1.Text = "";
+            // 
+            // label175
+            // 
+            label175.AutoSize = true;
+            label175.Location = new Point(350, 99);
+            label175.Name = "label175";
+            label175.Size = new Size(67, 15);
+            label175.TabIndex = 81;
+            label175.Text = "Description";
+            // 
+            // label173
+            // 
+            label173.AutoSize = true;
+            label173.Location = new Point(172, 99);
+            label173.Name = "label173";
+            label173.Size = new Size(70, 15);
+            label173.TabIndex = 80;
+            label173.Text = "TraitSpecific";
+            // 
+            // label174
+            // 
+            label174.AutoSize = true;
+            label174.Location = new Point(18, 99);
+            label174.Name = "label174";
+            label174.Size = new Size(54, 15);
+            label174.TabIndex = 79;
+            label174.Text = "Subraces";
+            // 
+            // cbSubracesTraits
+            // 
+            cbSubracesTraits.FormattingEnabled = true;
+            cbSubracesTraits.Location = new Point(18, 117);
+            cbSubracesTraits.Name = "cbSubracesTraits";
+            cbSubracesTraits.Size = new Size(121, 23);
+            cbSubracesTraits.TabIndex = 78;
+            // 
+            // cbTraitSpecificTraits
+            // 
+            cbTraitSpecificTraits.FormattingEnabled = true;
+            cbTraitSpecificTraits.Location = new Point(172, 117);
+            cbTraitSpecificTraits.Name = "cbTraitSpecificTraits";
+            cbTraitSpecificTraits.Size = new Size(146, 23);
+            cbTraitSpecificTraits.TabIndex = 77;
+            // 
+            // label168
+            // 
+            label168.AutoSize = true;
+            label168.Location = new Point(945, 20);
+            label168.Name = "label168";
+            label168.Size = new Size(37, 15);
+            label168.TabIndex = 76;
+            label168.Text = "Races";
+            // 
+            // label169
+            // 
+            label169.AutoSize = true;
+            label169.Location = new Point(791, 20);
+            label169.Name = "label169";
+            label169.Size = new Size(108, 15);
+            label169.TabIndex = 75;
+            label169.Text = "ProficiencyChoices";
+            // 
+            // label170
+            // 
+            label170.AutoSize = true;
+            label170.Location = new Point(641, 20);
+            label170.Name = "label170";
+            label170.Size = new Size(74, 15);
+            label170.TabIndex = 74;
+            label170.Text = "Proficiencies";
+            // 
+            // label171
+            // 
+            label171.AutoSize = true;
+            label171.Location = new Point(495, 20);
+            label171.Name = "label171";
+            label171.Size = new Size(41, 15);
+            label171.TabIndex = 73;
+            label171.Text = "Parent";
+            // 
+            // label172
+            // 
+            label172.AutoSize = true;
+            label172.Location = new Point(350, 20);
+            label172.Name = "label172";
+            label172.Size = new Size(101, 15);
+            label172.TabIndex = 72;
+            label172.Text = "LanguageOptions";
+            // 
+            // cbProficiencyChoicesTraits
+            // 
+            cbProficiencyChoicesTraits.FormattingEnabled = true;
+            cbProficiencyChoicesTraits.Location = new Point(791, 38);
+            cbProficiencyChoicesTraits.Name = "cbProficiencyChoicesTraits";
+            cbProficiencyChoicesTraits.Size = new Size(121, 23);
+            cbProficiencyChoicesTraits.TabIndex = 71;
+            // 
+            // cbParentTraits
+            // 
+            cbParentTraits.FormattingEnabled = true;
+            cbParentTraits.Location = new Point(495, 38);
+            cbParentTraits.Name = "cbParentTraits";
+            cbParentTraits.Size = new Size(121, 23);
+            cbParentTraits.TabIndex = 70;
+            // 
+            // cbProficienciesTraits
+            // 
+            cbProficienciesTraits.FormattingEnabled = true;
+            cbProficienciesTraits.Location = new Point(641, 38);
+            cbProficienciesTraits.Name = "cbProficienciesTraits";
+            cbProficienciesTraits.Size = new Size(121, 23);
+            cbProficienciesTraits.TabIndex = 69;
+            // 
+            // cbRacesTraits
+            // 
+            cbRacesTraits.FormattingEnabled = true;
+            cbRacesTraits.Location = new Point(945, 38);
+            cbRacesTraits.Name = "cbRacesTraits";
+            cbRacesTraits.Size = new Size(121, 23);
+            cbRacesTraits.TabIndex = 68;
+            // 
+            // cbLanguageOptionsTraits
+            // 
+            cbLanguageOptionsTraits.FormattingEnabled = true;
+            cbLanguageOptionsTraits.Location = new Point(350, 38);
+            cbLanguageOptionsTraits.Name = "cbLanguageOptionsTraits";
+            cbLanguageOptionsTraits.Size = new Size(121, 23);
+            cbLanguageOptionsTraits.TabIndex = 67;
+            // 
+            // label166
+            // 
+            label166.AutoSize = true;
+            label166.Location = new Point(16, 21);
+            label166.Name = "label166";
+            label166.Size = new Size(36, 15);
+            label166.TabIndex = 66;
+            label166.Text = "Index";
+            // 
+            // label167
+            // 
+            label167.AutoSize = true;
+            label167.Location = new Point(88, 21);
+            label167.Name = "label167";
+            label167.Size = new Size(39, 15);
+            label167.TabIndex = 65;
+            label167.Text = "Name";
+            // 
+            // tbIndexTraits
+            // 
+            tbIndexTraits.Location = new Point(18, 38);
+            tbIndexTraits.Name = "tbIndexTraits";
+            tbIndexTraits.Size = new Size(52, 23);
+            tbIndexTraits.TabIndex = 64;
+            // 
+            // tbNameTraits
+            // 
+            tbNameTraits.Location = new Point(97, 38);
+            tbNameTraits.Name = "tbNameTraits";
+            tbNameTraits.Size = new Size(221, 23);
+            tbNameTraits.TabIndex = 63;
             // 
             // Form1
             // 
@@ -3143,6 +4303,14 @@
             Races.PerformLayout();
             Skills.ResumeLayout(false);
             Skills.PerformLayout();
+            Spells.ResumeLayout(false);
+            Spells.PerformLayout();
+            Subclasses.ResumeLayout(false);
+            Subclasses.PerformLayout();
+            SubRaces.ResumeLayout(false);
+            SubRaces.PerformLayout();
+            Traits.ResumeLayout(false);
+            Traits.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -3167,10 +4335,8 @@
         public System.Windows.Forms.TextBox tbAbbreviationAlignments;
         public System.Windows.Forms.TextBox tbIndexAlignments;
         public System.Windows.Forms.TextBox tbNameAlignments;
-        public System.Windows.Forms.ListBox lbDescriptionWeaponProperties;
         public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label12;
-        public System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox tbIndexWeaponProperties;
         public System.Windows.Forms.TextBox tbNameWeaponProperties;
         private System.Windows.Forms.TabPage Backgrounds;
@@ -3238,16 +4404,12 @@
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.Label label34;
         public System.Windows.Forms.TextBox cbLanguageOptionsBackgrounds;
-        public System.Windows.Forms.ListBox lbDescriptionConditions;
         public System.Windows.Forms.Label label36;
         public System.Windows.Forms.Label label37;
-        public System.Windows.Forms.Label label38;
         public System.Windows.Forms.TextBox tbIndexConditions;
         public System.Windows.Forms.TextBox tbNameConditions;
-        public System.Windows.Forms.ListBox lbDescriptionDamageType;
         public System.Windows.Forms.Label label35;
         public System.Windows.Forms.Label label39;
-        public System.Windows.Forms.Label label40;
         public System.Windows.Forms.TextBox tbIndexDamageType;
         public System.Windows.Forms.TextBox tbNameDamageType;
         public System.Windows.Forms.Label Capacity;
@@ -3306,10 +4468,8 @@
         public System.Windows.Forms.ComboBox cbEquipmentEquipmentCategories;
         public System.Windows.Forms.TextBox tbNameEquipmentCategories;
         public System.Windows.Forms.TextBox tbIndexEquipmentCategories;
-        public System.Windows.Forms.ListBox lbDescriptionFeats;
         public System.Windows.Forms.Label label67;
         public System.Windows.Forms.Label label68;
-        public System.Windows.Forms.Label label69;
         public System.Windows.Forms.TextBox tbIndexFeats;
         public System.Windows.Forms.TextBox tbNameFeats;
         private System.Windows.Forms.Label label70;
@@ -3317,7 +4477,6 @@
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label74;
@@ -3328,7 +4487,6 @@
         private System.Windows.Forms.ComboBox cbParentFeatures;
         private System.Windows.Forms.ComboBox cbFeatureSpecificFeatures;
         private System.Windows.Forms.ComboBox cbClassFeatures;
-        private System.Windows.Forms.ListBox lbDescriptionFeatures;
         private System.Windows.Forms.TextBox tbLevelFeatures;
         private System.Windows.Forms.TextBox tbNameFeatures;
         private System.Windows.Forms.TextBox tbIndexFeatures;
@@ -3342,8 +4500,6 @@
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.ListBox lbTypicalSpeakersLanguages;
         private System.Windows.Forms.TextBox tbLevelLevels;
         private System.Windows.Forms.TextBox tbProfBonusLevels;
         private System.Windows.Forms.TextBox tbIndexLevels;
@@ -3367,21 +4523,17 @@
         private System.Windows.Forms.CheckBox chbVariantMagicItems;
         private System.Windows.Forms.Label label102;
         private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.Label label100;
         private System.Windows.Forms.Label label99;
         private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.ListBox lbDescriptionMagicItems;
         private System.Windows.Forms.ComboBox cbEquipmentCategoryMagicItems;
         private System.Windows.Forms.ComboBox cbRarityMagicItems;
         private System.Windows.Forms.ComboBox cbVariantsMagicItems;
         private System.Windows.Forms.TextBox tbNameMagicItems;
         private System.Windows.Forms.TextBox tbIndexMagicItems;
-        public System.Windows.Forms.ListBox lbDescriptionMagicSchools;
         public System.Windows.Forms.Label label103;
         public System.Windows.Forms.Label label104;
-        public System.Windows.Forms.Label label105;
         public System.Windows.Forms.TextBox tbIndexMagicSchools;
         public System.Windows.Forms.TextBox tbNameMagicSchools;
         public System.Windows.Forms.Label tbTypeProficiencies;
@@ -3430,7 +4582,6 @@
         private System.Windows.Forms.Label label119;
         private System.Windows.Forms.Label label130;
         private System.Windows.Forms.ComboBox cbAbilityScoreSkills;
-        public System.Windows.Forms.ListBox lbDescriptionSkills;
         public System.Windows.Forms.Label label127;
         public System.Windows.Forms.Label label128;
         public System.Windows.Forms.Label label129;
@@ -3441,6 +4592,133 @@
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
         public Button btInsertarAlignments;
+        public Button btInsertarWeaponProperties;
+        public Button btInsertarClasses;
+        public Button btInsertarBackgrounds;
+        public Button btInsertarConditions;
+        public Button btInsertarDamageType;
+        public Button btInsertarEquipment;
+        public Button btInsertarEquipmentCategories;
+        public Button btInsertarFeats;
+        public Button btInsertarFeatures;
+        public Button btInsertarLanguages;
+        public Button btInsertarLevels;
+        public Button btInsertarMagicItems;
+        public Button btInsertarMagicSchools;
+        public Button btInsertarProficiencies;
+        public Button btInsertarRaces;
+        public Button btInsertarSkills;
+        public Label label156;
+        public TextBox tbSubclassLevelsSubclasses;
+        public Label label155;
+        public TextBox tbSubclassFlavorSubclasses;
+        public Label label153;
+        public Label label151;
+        public Label label152;
+        public TextBox tbIndexSubclasses;
+        public TextBox tbNameSubclasses;
+        public Label label157;
+        public TextBox tbLanguagesSubRaces;
+        public Label label158;
+        public TextBox tbDescriptionSubRaces;
+        public Label label159;
+        public Label label160;
+        public TextBox tbIndexSubRaces;
+        public TextBox tbNameSubRaces;
+        public Label label166;
+        public Label label167;
+        public TextBox tbIndexTraits;
+        public TextBox tbNameTraits;
+        public Label label175;
+        public Label label13;
+        public Label label38;
+        public Label label40;
+        public Label label69;
+        public Label label76;
+        public Label label85;
+        public Label label100;
+        public Label label105;
+        public TextBox tbAttackTypeSpells;
+        public TextBox tbMaterialSpells;
+        public TextBox tbLevelSpells;
+        public TextBox tbNameSpells;
+        public TextBox tbIndexSpells;
+        public Label label140;
+        public Label label139;
+        public Label label138;
+        public Label label137;
+        public Label label136;
+        public Label label135;
+        public Label label133;
+        public Label label134;
+        public Label label132;
+        public Label label131;
+        public TextBox tbConcentrationSpells;
+        public TextBox tbComponentsSpells;
+        public TextBox tbHigherLevelSpells;
+        public TextBox tbDurationSpells;
+        public TextBox tbCastingTimeSpells;
+        public Label label148;
+        public Label label147;
+        public Label label146;
+        public Label label145;
+        public Label label144;
+        public Label label143;
+        public Label label142;
+        public ComboBox cbDCSpells;
+        public ComboBox cbClassesSpells;
+        public ComboBox cbDamageSpells;
+        public ComboBox cbHealAtSlotLevelSpells;
+        public ComboBox cbSchoolsSpells;
+        public ComboBox cbSubclassesSpells;
+        public ComboBox cbAreaOfEffectSpells;
+        public Label label141;
+        public TextBox tbRangeSpells;
+        public Label label149;
+        public RichTextBox rtbSubclassesSpells;
+        public Button btInsertarSpells;
+        public Label label154;
+        public ComboBox cbSpellsSubclasses;
+        public RichTextBox rtbDescriptionSubclasses;
+        public Label label150;
+        public ComboBox cbClassSubclasses;
+        public Button btInsertarSubclasses;
+        public Label label165;
+        public ComboBox cbStartingProficienciesSubRaces;
+        public Label label164;
+        public ComboBox cbRacialTraitsSubRaces;
+        public Label label163;
+        public ComboBox cbRaceSubRaces;
+        public Label label162;
+        public ComboBox cbLanguageOptionsSubRaces;
+        public Label label161;
+        public ComboBox cbAbilityBonusesSubRaces;
+        public Button btInsertarSubRaces;
+        public Label label173;
+        public Label label174;
+        public ComboBox cbSubracesTraits;
+        public ComboBox cbTraitSpecificTraits;
+        public Label label168;
+        public Label label169;
+        public Label label170;
+        public Label label171;
+        public Label label172;
+        public ComboBox cbProficiencyChoicesTraits;
+        public ComboBox cbParentTraits;
+        public ComboBox cbProficienciesTraits;
+        public ComboBox cbRacesTraits;
+        public ComboBox cbLanguageOptionsTraits;
+        public Button btInsertarTraits;
+        public RichTextBox richTextBox1;
+        public RichTextBox rtbDescriptionWeaponProperties;
+        public RichTextBox rtbDescriptionConditions;
+        public RichTextBox rtbDescriptionDamageType;
+        public RichTextBox rtbDescriptionFeats;
+        public RichTextBox rtbDescriptionFeatures;
+        public RichTextBox rtbTypicalSpeakersLanguages;
+        public RichTextBox rtbDescriptionMagicItems;
+        public RichTextBox rtbDescriptionMagicSchools;
+        public RichTextBox rtbDescriptionSkills;
     }
 }
 

@@ -30,6 +30,10 @@
         {
             tabControl1 = new TabControl();
             AbilityScore = new TabPage();
+            btEliminarAbilityScore = new Button();
+            label176 = new Label();
+            dgvAbilityScore = new DataGridView();
+            btModificarAbilityScore = new Button();
             btBuscarAbilityScore = new Button();
             tbFiltrarAbilityScore = new TextBox();
             rtbDescriptionAbilityScore = new RichTextBox();
@@ -433,9 +437,9 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btModificarAbilityScore = new Button();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
             Alignments.SuspendLayout();
             WeaponProperties.SuspendLayout();
             Classes.SuspendLayout();
@@ -492,6 +496,9 @@
             // 
             // AbilityScore
             // 
+            AbilityScore.Controls.Add(btEliminarAbilityScore);
+            AbilityScore.Controls.Add(label176);
+            AbilityScore.Controls.Add(dgvAbilityScore);
             AbilityScore.Controls.Add(btModificarAbilityScore);
             AbilityScore.Controls.Add(btBuscarAbilityScore);
             AbilityScore.Controls.Add(tbFiltrarAbilityScore);
@@ -516,27 +523,69 @@
             AbilityScore.UseVisualStyleBackColor = true;
             AbilityScore.Click += AbilityScore_Click;
             // 
+            // btEliminarAbilityScore
+            // 
+            btEliminarAbilityScore.Location = new Point(1350, 610);
+            btEliminarAbilityScore.Name = "btEliminarAbilityScore";
+            btEliminarAbilityScore.Size = new Size(94, 29);
+            btEliminarAbilityScore.TabIndex = 27;
+            btEliminarAbilityScore.Text = "Eliminar";
+            btEliminarAbilityScore.UseVisualStyleBackColor = true;
+            // 
+            // label176
+            // 
+            label176.AutoSize = true;
+            label176.Location = new Point(16, 197);
+            label176.Name = "label176";
+            label176.Size = new Size(95, 20);
+            label176.TabIndex = 26;
+            label176.Text = "AbilityScores";
+            // 
+            // dgvAbilityScore
+            // 
+            dgvAbilityScore.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityScore.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityScore.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityScore.Location = new Point(16, 220);
+            dgvAbilityScore.MultiSelect = false;
+            dgvAbilityScore.Name = "dgvAbilityScore";
+            dgvAbilityScore.ReadOnly = true;
+            dgvAbilityScore.RowHeadersWidth = 51;
+            dgvAbilityScore.RowTemplate.Height = 29;
+            dgvAbilityScore.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityScore.Size = new Size(554, 267);
+            dgvAbilityScore.TabIndex = 25;
+            // 
+            // btModificarAbilityScore
+            // 
+            btModificarAbilityScore.Location = new Point(1250, 610);
+            btModificarAbilityScore.Name = "btModificarAbilityScore";
+            btModificarAbilityScore.Size = new Size(94, 29);
+            btModificarAbilityScore.TabIndex = 24;
+            btModificarAbilityScore.Text = "Modificar";
+            btModificarAbilityScore.UseVisualStyleBackColor = true;
+            // 
             // btBuscarAbilityScore
             // 
-            btBuscarAbilityScore.Location = new Point(1350, 566);
+            btBuscarAbilityScore.Location = new Point(1250, 563);
             btBuscarAbilityScore.Name = "btBuscarAbilityScore";
-            btBuscarAbilityScore.Size = new Size(94, 29);
+            btBuscarAbilityScore.Size = new Size(194, 29);
             btBuscarAbilityScore.TabIndex = 23;
-            btBuscarAbilityScore.Text = "Buscar";
+            btBuscarAbilityScore.Text = "Buscar por Index";
             btBuscarAbilityScore.UseVisualStyleBackColor = true;
             // 
             // tbFiltrarAbilityScore
             // 
-            tbFiltrarAbilityScore.Location = new Point(1219, 566);
+            tbFiltrarAbilityScore.Location = new Point(1119, 563);
             tbFiltrarAbilityScore.Name = "tbFiltrarAbilityScore";
             tbFiltrarAbilityScore.Size = new Size(125, 27);
             tbFiltrarAbilityScore.TabIndex = 22;
             // 
             // rtbDescriptionAbilityScore
             // 
-            rtbDescriptionAbilityScore.Location = new Point(626, 31);
+            rtbDescriptionAbilityScore.Location = new Point(799, 31);
             rtbDescriptionAbilityScore.Name = "rtbDescriptionAbilityScore";
-            rtbDescriptionAbilityScore.Size = new Size(569, 45);
+            rtbDescriptionAbilityScore.Size = new Size(569, 123);
             rtbDescriptionAbilityScore.TabIndex = 21;
             rtbDescriptionAbilityScore.Text = "";
             // 
@@ -546,7 +595,7 @@
             btInsertarAbilityScore.Name = "btInsertarAbilityScore";
             btInsertarAbilityScore.Size = new Size(94, 35);
             btInsertarAbilityScore.TabIndex = 20;
-            btInsertarAbilityScore.Text = "Instertar";
+            btInsertarAbilityScore.Text = "Insertar";
             btInsertarAbilityScore.UseVisualStyleBackColor = true;
             // 
             // label5
@@ -561,7 +610,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(93, 8);
+            label4.Location = new Point(266, 8);
             label4.Name = "label4";
             label4.Size = new Size(49, 20);
             label4.TabIndex = 18;
@@ -570,7 +619,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 8);
+            label3.Location = new Point(13, 8);
             label3.Name = "label3";
             label3.Size = new Size(45, 20);
             label3.TabIndex = 17;
@@ -579,7 +628,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(335, 8);
+            label2.Location = new Point(508, 8);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 16;
@@ -588,7 +637,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(626, 8);
+            label1.Location = new Point(799, 8);
             label1.Name = "label1";
             label1.Size = new Size(85, 20);
             label1.TabIndex = 15;
@@ -605,7 +654,7 @@
             // 
             // tbNameAbilityScore
             // 
-            tbNameAbilityScore.Location = new Point(96, 31);
+            tbNameAbilityScore.Location = new Point(269, 31);
             tbNameAbilityScore.Margin = new Padding(3, 4, 3, 4);
             tbNameAbilityScore.Name = "tbNameAbilityScore";
             tbNameAbilityScore.Size = new Size(199, 27);
@@ -613,15 +662,15 @@
             // 
             // tbIndexAbilityScore
             // 
-            tbIndexAbilityScore.Location = new Point(19, 31);
+            tbIndexAbilityScore.Location = new Point(16, 31);
             tbIndexAbilityScore.Margin = new Padding(3, 4, 3, 4);
             tbIndexAbilityScore.Name = "tbIndexAbilityScore";
-            tbIndexAbilityScore.Size = new Size(41, 27);
+            tbIndexAbilityScore.Size = new Size(220, 27);
             tbIndexAbilityScore.TabIndex = 12;
             // 
             // tbFullNameAbilityScore
             // 
-            tbFullNameAbilityScore.Location = new Point(338, 31);
+            tbFullNameAbilityScore.Location = new Point(511, 31);
             tbFullNameAbilityScore.Margin = new Padding(3, 4, 3, 4);
             tbFullNameAbilityScore.Name = "tbFullNameAbilityScore";
             tbFullNameAbilityScore.Size = new Size(252, 27);
@@ -4463,15 +4512,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // btModificarAbilityScore
-            // 
-            btModificarAbilityScore.Location = new Point(1350, 610);
-            btModificarAbilityScore.Name = "btModificarAbilityScore";
-            btModificarAbilityScore.Size = new Size(94, 29);
-            btModificarAbilityScore.TabIndex = 24;
-            btModificarAbilityScore.Text = "Modificar";
-            btModificarAbilityScore.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -4485,6 +4525,7 @@
             tabControl1.ResumeLayout(false);
             AbilityScore.ResumeLayout(false);
             AbilityScore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).EndInit();
             Alignments.ResumeLayout(false);
             Alignments.PerformLayout();
             WeaponProperties.ResumeLayout(false);
@@ -4938,6 +4979,9 @@
         public Button btBuscarAbilityScore;
         public TextBox tbFiltrarAbilityScore;
         public Button btModificarAbilityScore;
+        private Label label176;
+        public DataGridView dgvAbilityScore;
+        public Button btEliminarAbilityScore;
     }
 }
 

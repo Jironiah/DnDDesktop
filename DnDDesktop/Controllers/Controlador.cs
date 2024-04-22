@@ -8,7 +8,6 @@ namespace DnDDesktop.Controllers
     public class Controlador
     {
         Form1 f = new Form1();
-        AbilityScore_Skills abilityScore_Skills = new AbilityScore_Skills();
 
         AbilityScoreRepository abilityScoreRepository = new AbilityScoreRepository();
         AlignmentsRepository alignmentsRepository = new AlignmentsRepository();
@@ -17,6 +16,7 @@ namespace DnDDesktop.Controllers
 
         //Listas
         List<From> listaAbilityScoreSkills = new List<From>();
+        List<AbilityScore> abilityScores = new List<AbilityScore>();
         public Controlador()
         {
             LoadData();
@@ -26,9 +26,16 @@ namespace DnDDesktop.Controllers
 
         private void LoadData()
         {
+            LoadDataAbilityScore();
+        }
+
+        private void LoadDataAbilityScore()
+        {
             listaAbilityScoreSkills = abilityScoreRepository.GetAbilityScores().SelectMany(a => a.Skills).ToList();
             f.cbSkillsAbilityScore.DataSource = listaAbilityScoreSkills;
             f.cbSkillsAbilityScore.DisplayMember = "Name";
+            abilityScores = abilityScoreRepository.GetAbilityScores();
+            f.dgvAbilityScore.DataSource = abilityScores;
         }
 
         private void InitListeners()
@@ -37,6 +44,8 @@ namespace DnDDesktop.Controllers
             f.btInsertarAbilityScore.Click += BtInsertarAbilityScore_Click;
             f.cbSkillsAbilityScore.MouseUp += CbSkillsAbilityScore_MouseUp;
             f.btBuscarAbilityScore.Click += BtBuscarAbilityScore_Click;
+            f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
+            f.dgvAbilityScore.SelectionChanged += DgvAbilityScore_SelectionChanged;
             //Alignments
             f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
             //WeaponProperties
@@ -44,6 +53,21 @@ namespace DnDDesktop.Controllers
         }
 
         //AbilityScore
+
+        private void DgvAbilityScore_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvAbilityScore.CurrentRow;
+            if (row != null)
+            {
+                AbilityScore absc = (AbilityScore)row.DataBoundItem;
+                f.tbIndexAbilityScore.Text = absc.Index;
+                f.tbNameAbilityScore.Text = absc.Name;
+                f.tbFullNameAbilityScore.Text = absc.FullName;
+                f.rtbDescriptionAbilityScore.Text = absc.Description.FirstOrDefault();
+                //f.cbSkillsAbilityScore.DataSource = absc.Skills;
+            }
+        }
+
         private void BtInsertarAbilityScore_Click(object? sender, EventArgs e)
         {
             try
@@ -124,33 +148,23 @@ namespace DnDDesktop.Controllers
 
         private void BtBuscarAbilityScore_Click(object? sender, EventArgs e)
         {
-            AbilityScore abilityScore = new AbilityScore();
             try
             {
-                AbilityScore score = new AbilityScore();
-                string index = f.tbIndexAbilityScore.Text.ToString();
-                string name = f.tbNameAbilityScore.Text.ToString();
-                string fullName = f.tbFullNameAbilityScore.Text.ToString();
-                string[] description = new string[] { f.rtbDescriptionAbilityScore.Text };
-
-                From selectedSkill = (From)f.cbSkillsAbilityScore.SelectedItem;
-
-                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(fullName))
+                if (!string.IsNullOrEmpty(f.tbFiltrarAbilityScore.Text))
                 {
-                    score.Index = index;
-                    score.Name = name;
-                    score.FullName = fullName;
-                    score.Description = description;
-                    if (selectedSkill != null)
-                    {
-                        score.Skills = new From[] { selectedSkill };
-                    }
-                    abilityScoreRepository.CreateAbilityScore(score);
-                    MessageBox.Show("AbilityScore introducido");
+                    string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    MessageBox.Show(idBuscar);
+                    AbilityScore newAbilityScore = abilityScoreRepository.GetAbilityScore(idBuscar.ToString());
+                    f.tbIndexAbilityScore.Text = newAbilityScore.Index;
+                    f.tbNameAbilityScore.Text = newAbilityScore.Name;
+                    f.tbFullNameAbilityScore.Text = newAbilityScore.FullName;
+                    f.rtbDescriptionAbilityScore.Text += newAbilityScore.Description.FirstOrDefault();
+                    f.cbSkillsAbilityScore.DataSource = newAbilityScore.Skills;
                 }
                 else
                 {
-                    MessageBox.Show("No puedes dejar espacios vacíos");
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
             }
             catch (Exception ex)
@@ -159,6 +173,30 @@ namespace DnDDesktop.Controllers
             }
 
         }
+
+        private void BtEliminarAbilityScore_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarAbilityScore.Text))
+                {
+                    string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    abilityScoreRepository.DeleteAbilityScore(idBuscar);
+                    MessageBox.Show(f.tbFiltrarAbilityScore.Text.ToString() + " eliminado");
+                    LoadDataAbilityScore();
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+
 
         //Alignments
         private void BtInsertarAlignments_Click(object? sender, EventArgs e)

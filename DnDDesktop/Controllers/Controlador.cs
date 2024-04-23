@@ -1,11 +1,7 @@
 ﻿using DnDDesktop.Models;
 using DnDDesktop.Models.Commons;
 using DnDDesktop.Models.Repository;
-using DnDDesktop.Views.ViewsPopup;
-using System.Xml.Linq;
-using System;
-using static System.Formats.Asn1.AsnWriter;
-using System.Reflection;
+using DnDDesktop.Models.SubModels;
 
 namespace DnDDesktop.Controllers
 {
@@ -16,7 +12,7 @@ namespace DnDDesktop.Controllers
         AbilityScoreRepository abilityScoreRepository = new AbilityScoreRepository();
         AlignmentsRepository alignmentsRepository = new AlignmentsRepository();
         WeaponPropertiesRepository weaponPropertiesRepository = new WeaponPropertiesRepository();
-
+        ClassesRepository classesRepository = new ClassesRepository();
 
         //Listas
 
@@ -30,6 +26,18 @@ namespace DnDDesktop.Controllers
         //WeaponProperties
         List<WeaponProperty> weapons = new List<WeaponProperty>();
 
+
+        //Classes
+        List<Classes> classes = new List<Classes>();
+        List<MultiClassing> listaclassesMultiClassings = new List<MultiClassing>();
+        List<From> listaclassesProficiencies = new List<From>();
+        List<ProficiencyChoiceClasses> listaclassesProficiencyChoice = new List<ProficiencyChoiceClasses>();
+        List<From> listaclassesSavingThrows = new List<From>();
+        List<SpellcastingClass> listaclassesSpellcasting = new List<SpellcastingClass>();
+        List<StartingEquipmentClasses> listaclassesStartingEquipment = new List<StartingEquipmentClasses>();
+        List<StartingEquipmentOptionClasses> listaclassesStartingEquipmentOption = new List<StartingEquipmentOptionClasses>();
+        List<From> listaclassesSubclasses = new List<From>();
+
         public Controlador()
         {
             LoadData();
@@ -42,6 +50,7 @@ namespace DnDDesktop.Controllers
             LoadDataAbilityScore();
             LoadDataAlignments();
             LoadDataWeaponProperties();
+            LoadDataClasses();
         }
 
         private void LoadDataAbilityScore()
@@ -65,11 +74,25 @@ namespace DnDDesktop.Controllers
             f.dgvWeaponProperties.DataSource = weapons;
         }
 
+        private void LoadDataClasses()
+        {
+            classes = classesRepository.GetClasses();
+            f.dgvClasses.DataSource = classes;
+            listaclassesMultiClassings = classesRepository.GetClasses().Select(a => a.MultiClassing).ToList();
+            listaclassesProficiencies = classesRepository.GetClasses().SelectMany(a => a.Proficiencies).ToList();
+            listaclassesProficiencyChoice = classesRepository.GetClasses().SelectMany(a => a.ProficienciesChoices).ToList();
+            listaclassesSavingThrows = classesRepository.GetClasses().SelectMany(a => a.SavingThrows).ToList();
+            listaclassesSpellcasting = classesRepository.GetClasses().Select(a => a.Spellcasting).ToList();
+            listaclassesStartingEquipment = classesRepository.GetClasses().SelectMany(a => a.StartingEquipment).ToList();
+            listaclassesStartingEquipmentOption = classesRepository.GetClasses().SelectMany(a => a.StartingEquipmentOption).ToList();
+            listaclassesSubclasses = classesRepository.GetClasses().SelectMany(a => a.Subclasses).ToList();
+        }
+
         private void InitListeners()
         {
             //AbilityScore
             f.btInsertarAbilityScore.Click += BtInsertarAbilityScore_Click;
-            f.cbSkillsAbilityScore.MouseUp += CbSkillsAbilityScore_MouseUp;
+            f.btInsertarAbilityScore.MouseUp += btInsertarAbilityScore_MouseUp;
             f.btBuscarAbilityScore.Click += BtBuscarAbilityScore_Click;
             f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
             f.btModificarAbilityScore.Click += BtModificarAbilityScore_Click;
@@ -86,6 +109,13 @@ namespace DnDDesktop.Controllers
             f.btEliminarWeaponProperties.Click += BtEliminarWeaponProperties_Click;
             f.btModificarWeaponProperties.Click += BtModificarWeaponProperties_Click;
             f.dgvWeaponProperties.SelectionChanged += DgvWeaponProperties_SelectionChanged;
+            //Classes
+            f.btInsertarClasses.Click += BtInsertarClasses_Click;
+            f.btInsertarClasses.MouseUp += BtInsertarClasses_MouseUp;
+            f.btBuscarClasses.Click += BtBuscarClasses_Click;
+            f.btEliminarClasses.Click += BtEliminarClasses_Click;
+            f.btModificarClasses.Click += BtModificarClasses_Click;
+            f.dgvClasses.SelectionChanged += DgvClasses_SelectionChanged;
         }
 
         //AbilityScore
@@ -100,7 +130,7 @@ namespace DnDDesktop.Controllers
                 f.tbNameAbilityScore.Text = absc.Name;
                 f.tbFullNameAbilityScore.Text = absc.FullName;
                 f.rtbDescriptionAbilityScore.Text = absc.Description.FirstOrDefault();
-                //f.cbSkillsAbilityScore.DataSource = absc.Skills;
+                f.cbSkillsAbilityScore.DataSource = absc.Skills;
             }
         }
 
@@ -141,7 +171,7 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        private void CbSkillsAbilityScore_MouseUp(object sender, MouseEventArgs e)
+        private void btInsertarAbilityScore_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
             {
@@ -574,7 +604,63 @@ namespace DnDDesktop.Controllers
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
 
+        //Classes
+        private void DgvClasses_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvClasses.CurrentRow;
+            if (row != null)
+            {
+                Classes classes = (Classes)row.DataBoundItem;
+                f.dgvClasses.Columns["MultiClassing"].Visible = false;
+                f.dgvClasses.Columns["Spellcasting"].Visible = false;
+                f.tbIndexClasses.Text = classes.Index;
+                f.tbNameClasses.Text = classes.Name;
+                f.tbHitDieClasses.Text = classes.HitDie.ToString();
+                f.dgvMultiClassingPrerequisitesClasses.DataSource = classes.MultiClassing?.Prerequisites.Select(a => new ClassesMultiClassingDAO(a)).ToList();
+                f.dgvMultiClassingProficienciesClasses.DataSource = classes.MultiClassing?.Proficiencies;
+                f.cbProficienciesClasses.DataSource = classes.Proficiencies;
+                f.dgvProficiencyChoicesClasses.DataSource = classes.ProficienciesChoices;
+                f.cbSavingThrowsClasses.DataSource = classes.SavingThrows;
+                f.tbSpellCastingAbilityClasses.Text = classes.Spellcasting?.SpellcastingAbility.Name;
+                f.dgvSpellCastingInfoNameClasses.DataSource = classes.Spellcasting?.Info.Select(a=>a.Name).ToList();
+                f.rtbSpellCastingInfoDescClasses.Text = classes.Spellcasting?.Info.SelectMany(a=>a.Description).FirstOrDefault();
+                f.cbStartingEquipmentClasses.DataSource = classes.StartingEquipment;
+                f.cbStartingEquipmentOptionsClasses.DataSource = classes.StartingEquipmentOption;
+                f.cbSubclassesClasses.DataSource = classes.Subclasses;
+
+                f.cbProficienciesClasses.DisplayMember = "Name";
+                f.cbSavingThrowsClasses.DisplayMember = "";
+                f.cbStartingEquipmentClasses.DisplayMember = "";
+                f.cbStartingEquipmentOptionsClasses.DisplayMember = "";
+                f.cbSubclassesClasses.DisplayMember = "";
+            }
+        }
+
+        private void BtModificarClasses_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtEliminarClasses_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtBuscarClasses_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtInsertarClasses_MouseUp(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtInsertarClasses_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

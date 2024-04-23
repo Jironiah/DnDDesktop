@@ -76,6 +76,21 @@
             tbIndexWeaponProperties = new TextBox();
             tbNameWeaponProperties = new TextBox();
             Classes = new TabPage();
+            dgvProficiencyChoicesClasses = new DataGridView();
+            dgvSpellCastingInfoNameClasses = new DataGridView();
+            tbSpellCastingAbilityClasses = new TextBox();
+            label179 = new Label();
+            rtbSpellCastingInfoDescClasses = new RichTextBox();
+            label178 = new Label();
+            label23 = new Label();
+            dgvMultiClassingProficienciesClasses = new DataGridView();
+            label177 = new Label();
+            dgvMultiClassingPrerequisitesClasses = new DataGridView();
+            dgvClasses = new DataGridView();
+            btEliminarClasses = new Button();
+            btModificarClasses = new Button();
+            btBuscarClasses = new Button();
+            tbFiltrarClasses = new TextBox();
             btInsertarClasses = new Button();
             cbSubclassesClasses = new ComboBox();
             label16 = new Label();
@@ -83,22 +98,18 @@
             Sa = new Label();
             cbStartingEquipmentClasses = new ComboBox();
             label22 = new Label();
-            cbSpellcastingClasses = new ComboBox();
-            label23 = new Label();
             cbSavingThrowsClasses = new ComboBox();
             label19 = new Label();
-            cbProficiencyChoicesClasses = new ComboBox();
             label20 = new Label();
             cbProficienciesClasses = new ComboBox();
             label18 = new Label();
-            cbMultiClassingClasses = new ComboBox();
             label17 = new Label();
             label6 = new Label();
             label14 = new Label();
             label15 = new Label();
             tbHitDieClasses = new TextBox();
-            textBox2 = new TextBox();
-            tbName = new TextBox();
+            tbIndexClasses = new TextBox();
+            tbNameClasses = new TextBox();
             Backgrounds = new TabPage();
             btInsertarBackgrounds = new Button();
             label34 = new Label();
@@ -455,6 +466,11 @@
             WeaponProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).BeginInit();
             Classes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProficiencyChoicesClasses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpellCastingInfoNameClasses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMultiClassingProficienciesClasses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMultiClassingPrerequisitesClasses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClasses).BeginInit();
             Backgrounds.SuspendLayout();
             Conditions.SuspendLayout();
             DamageType.SuspendLayout();
@@ -975,6 +991,21 @@
             // 
             // Classes
             // 
+            Classes.Controls.Add(dgvProficiencyChoicesClasses);
+            Classes.Controls.Add(dgvSpellCastingInfoNameClasses);
+            Classes.Controls.Add(tbSpellCastingAbilityClasses);
+            Classes.Controls.Add(label179);
+            Classes.Controls.Add(rtbSpellCastingInfoDescClasses);
+            Classes.Controls.Add(label178);
+            Classes.Controls.Add(label23);
+            Classes.Controls.Add(dgvMultiClassingProficienciesClasses);
+            Classes.Controls.Add(label177);
+            Classes.Controls.Add(dgvMultiClassingPrerequisitesClasses);
+            Classes.Controls.Add(dgvClasses);
+            Classes.Controls.Add(btEliminarClasses);
+            Classes.Controls.Add(btModificarClasses);
+            Classes.Controls.Add(btBuscarClasses);
+            Classes.Controls.Add(tbFiltrarClasses);
             Classes.Controls.Add(btInsertarClasses);
             Classes.Controls.Add(cbSubclassesClasses);
             Classes.Controls.Add(label16);
@@ -982,22 +1013,18 @@
             Classes.Controls.Add(Sa);
             Classes.Controls.Add(cbStartingEquipmentClasses);
             Classes.Controls.Add(label22);
-            Classes.Controls.Add(cbSpellcastingClasses);
-            Classes.Controls.Add(label23);
             Classes.Controls.Add(cbSavingThrowsClasses);
             Classes.Controls.Add(label19);
-            Classes.Controls.Add(cbProficiencyChoicesClasses);
             Classes.Controls.Add(label20);
             Classes.Controls.Add(cbProficienciesClasses);
             Classes.Controls.Add(label18);
-            Classes.Controls.Add(cbMultiClassingClasses);
             Classes.Controls.Add(label17);
             Classes.Controls.Add(label6);
             Classes.Controls.Add(label14);
             Classes.Controls.Add(label15);
             Classes.Controls.Add(tbHitDieClasses);
-            Classes.Controls.Add(textBox2);
-            Classes.Controls.Add(tbName);
+            Classes.Controls.Add(tbIndexClasses);
+            Classes.Controls.Add(tbNameClasses);
             Classes.Location = new Point(4, 29);
             Classes.Margin = new Padding(3, 4, 3, 4);
             Classes.Name = "Classes";
@@ -1008,19 +1035,177 @@
             Classes.UseVisualStyleBackColor = true;
             Classes.Click += Classes_Click;
             // 
+            // dgvProficiencyChoicesClasses
+            // 
+            dgvProficiencyChoicesClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProficiencyChoicesClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProficiencyChoicesClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProficiencyChoicesClasses.Location = new Point(542, 364);
+            dgvProficiencyChoicesClasses.MultiSelect = false;
+            dgvProficiencyChoicesClasses.Name = "dgvProficiencyChoicesClasses";
+            dgvProficiencyChoicesClasses.ReadOnly = true;
+            dgvProficiencyChoicesClasses.RowHeadersWidth = 51;
+            dgvProficiencyChoicesClasses.RowTemplate.Height = 29;
+            dgvProficiencyChoicesClasses.Size = new Size(374, 188);
+            dgvProficiencyChoicesClasses.TabIndex = 108;
+            // 
+            // dgvSpellCastingInfoNameClasses
+            // 
+            dgvSpellCastingInfoNameClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSpellCastingInfoNameClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSpellCastingInfoNameClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSpellCastingInfoNameClasses.Location = new Point(943, 199);
+            dgvSpellCastingInfoNameClasses.MultiSelect = false;
+            dgvSpellCastingInfoNameClasses.Name = "dgvSpellCastingInfoNameClasses";
+            dgvSpellCastingInfoNameClasses.ReadOnly = true;
+            dgvSpellCastingInfoNameClasses.RowHeadersWidth = 51;
+            dgvSpellCastingInfoNameClasses.RowTemplate.Height = 29;
+            dgvSpellCastingInfoNameClasses.Size = new Size(142, 188);
+            dgvSpellCastingInfoNameClasses.TabIndex = 107;
+            // 
+            // tbSpellCastingAbilityClasses
+            // 
+            tbSpellCastingAbilityClasses.Location = new Point(705, 202);
+            tbSpellCastingAbilityClasses.Name = "tbSpellCastingAbilityClasses";
+            tbSpellCastingAbilityClasses.Size = new Size(188, 27);
+            tbSpellCastingAbilityClasses.TabIndex = 106;
+            // 
+            // label179
+            // 
+            label179.AutoSize = true;
+            label179.Location = new Point(1182, 178);
+            label179.Name = "label179";
+            label179.Size = new Size(149, 20);
+            label179.TabIndex = 105;
+            label179.Text = "SpellCastingInfoDesc";
+            // 
+            // rtbSpellCastingInfoDescClasses
+            // 
+            rtbSpellCastingInfoDescClasses.Location = new Point(1182, 199);
+            rtbSpellCastingInfoDescClasses.Name = "rtbSpellCastingInfoDescClasses";
+            rtbSpellCastingInfoDescClasses.Size = new Size(287, 298);
+            rtbSpellCastingInfoDescClasses.TabIndex = 104;
+            rtbSpellCastingInfoDescClasses.Text = "";
+            // 
+            // label178
+            // 
+            label178.AutoSize = true;
+            label178.Location = new Point(943, 178);
+            label178.Name = "label178";
+            label178.Size = new Size(157, 20);
+            label178.TabIndex = 103;
+            label178.Text = "SpellCastingInfoName";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(705, 178);
+            label23.Name = "label23";
+            label23.Size = new Size(134, 20);
+            label23.TabIndex = 100;
+            label23.Text = "SpellCastingAbility";
+            // 
+            // dgvMultiClassingProficienciesClasses
+            // 
+            dgvMultiClassingProficienciesClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvMultiClassingProficienciesClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMultiClassingProficienciesClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMultiClassingProficienciesClasses.Location = new Point(1182, 37);
+            dgvMultiClassingProficienciesClasses.MultiSelect = false;
+            dgvMultiClassingProficienciesClasses.Name = "dgvMultiClassingProficienciesClasses";
+            dgvMultiClassingProficienciesClasses.ReadOnly = true;
+            dgvMultiClassingProficienciesClasses.RowHeadersWidth = 51;
+            dgvMultiClassingProficienciesClasses.RowTemplate.Height = 29;
+            dgvMultiClassingProficienciesClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMultiClassingProficienciesClasses.Size = new Size(350, 122);
+            dgvMultiClassingProficienciesClasses.TabIndex = 99;
+            // 
+            // label177
+            // 
+            label177.AutoSize = true;
+            label177.Location = new Point(1182, 13);
+            label177.Name = "label177";
+            label177.Size = new Size(180, 20);
+            label177.TabIndex = 98;
+            label177.Text = "MultiClassingProficiencies";
+            // 
+            // dgvMultiClassingPrerequisitesClasses
+            // 
+            dgvMultiClassingPrerequisitesClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvMultiClassingPrerequisitesClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMultiClassingPrerequisitesClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMultiClassingPrerequisitesClasses.Location = new Point(705, 37);
+            dgvMultiClassingPrerequisitesClasses.MultiSelect = false;
+            dgvMultiClassingPrerequisitesClasses.Name = "dgvMultiClassingPrerequisitesClasses";
+            dgvMultiClassingPrerequisitesClasses.ReadOnly = true;
+            dgvMultiClassingPrerequisitesClasses.RowHeadersWidth = 51;
+            dgvMultiClassingPrerequisitesClasses.RowTemplate.Height = 29;
+            dgvMultiClassingPrerequisitesClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMultiClassingPrerequisitesClasses.Size = new Size(350, 122);
+            dgvMultiClassingPrerequisitesClasses.TabIndex = 97;
+            // 
+            // dgvClasses
+            // 
+            dgvClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClasses.Location = new Point(17, 364);
+            dgvClasses.MultiSelect = false;
+            dgvClasses.Name = "dgvClasses";
+            dgvClasses.ReadOnly = true;
+            dgvClasses.RowHeadersWidth = 51;
+            dgvClasses.RowTemplate.Height = 29;
+            dgvClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClasses.Size = new Size(479, 267);
+            dgvClasses.TabIndex = 96;
+            // 
+            // btEliminarClasses
+            // 
+            btEliminarClasses.Location = new Point(1344, 599);
+            btEliminarClasses.Name = "btEliminarClasses";
+            btEliminarClasses.Size = new Size(94, 29);
+            btEliminarClasses.TabIndex = 95;
+            btEliminarClasses.Text = "Eliminar";
+            btEliminarClasses.UseVisualStyleBackColor = true;
+            // 
+            // btModificarClasses
+            // 
+            btModificarClasses.Location = new Point(1244, 599);
+            btModificarClasses.Name = "btModificarClasses";
+            btModificarClasses.Size = new Size(94, 29);
+            btModificarClasses.TabIndex = 94;
+            btModificarClasses.Text = "Modificar";
+            btModificarClasses.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarClasses
+            // 
+            btBuscarClasses.Location = new Point(1244, 552);
+            btBuscarClasses.Name = "btBuscarClasses";
+            btBuscarClasses.Size = new Size(194, 29);
+            btBuscarClasses.TabIndex = 93;
+            btBuscarClasses.Text = "Buscar por Index";
+            btBuscarClasses.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarClasses
+            // 
+            tbFiltrarClasses.Location = new Point(1113, 552);
+            tbFiltrarClasses.Name = "tbFiltrarClasses";
+            tbFiltrarClasses.Size = new Size(125, 27);
+            tbFiltrarClasses.TabIndex = 92;
+            // 
             // btInsertarClasses
             // 
-            btInsertarClasses.Location = new Point(1163, 448);
+            btInsertarClasses.Location = new Point(1460, 596);
             btInsertarClasses.Name = "btInsertarClasses";
             btInsertarClasses.Size = new Size(94, 35);
-            btInsertarClasses.TabIndex = 53;
-            btInsertarClasses.Text = "Instertar";
+            btInsertarClasses.TabIndex = 91;
+            btInsertarClasses.Text = "Insertar";
             btInsertarClasses.UseVisualStyleBackColor = true;
             // 
             // cbSubclassesClasses
             // 
             cbSubclassesClasses.FormattingEnabled = true;
-            cbSubclassesClasses.Location = new Point(485, 131);
+            cbSubclassesClasses.Location = new Point(361, 121);
             cbSubclassesClasses.Margin = new Padding(3, 4, 3, 4);
             cbSubclassesClasses.Name = "cbSubclassesClasses";
             cbSubclassesClasses.Size = new Size(121, 28);
@@ -1029,7 +1214,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(482, 108);
+            label16.Location = new Point(361, 97);
             label16.Name = "label16";
             label16.Size = new Size(79, 20);
             label16.TabIndex = 51;
@@ -1039,7 +1224,7 @@
             // cbStartingEquipmentOptionsClasses
             // 
             cbStartingEquipmentOptionsClasses.FormattingEnabled = true;
-            cbStartingEquipmentOptionsClasses.Location = new Point(303, 131);
+            cbStartingEquipmentOptionsClasses.Location = new Point(160, 120);
             cbStartingEquipmentOptionsClasses.Margin = new Padding(3, 4, 3, 4);
             cbStartingEquipmentOptionsClasses.Name = "cbStartingEquipmentOptionsClasses";
             cbStartingEquipmentOptionsClasses.Size = new Size(159, 28);
@@ -1048,7 +1233,7 @@
             // Sa
             // 
             Sa.AutoSize = true;
-            Sa.Location = new Point(299, 108);
+            Sa.Location = new Point(160, 97);
             Sa.Name = "Sa";
             Sa.Size = new Size(185, 20);
             Sa.TabIndex = 49;
@@ -1057,7 +1242,7 @@
             // cbStartingEquipmentClasses
             // 
             cbStartingEquipmentClasses.FormattingEnabled = true;
-            cbStartingEquipmentClasses.Location = new Point(160, 131);
+            cbStartingEquipmentClasses.Location = new Point(17, 120);
             cbStartingEquipmentClasses.Margin = new Padding(3, 4, 3, 4);
             cbStartingEquipmentClasses.Name = "cbStartingEquipmentClasses";
             cbStartingEquipmentClasses.Size = new Size(121, 28);
@@ -1066,34 +1251,16 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(157, 108);
+            label22.Location = new Point(17, 97);
             label22.Name = "label22";
             label22.Size = new Size(133, 20);
             label22.TabIndex = 47;
             label22.Text = "StartingEquipment";
             // 
-            // cbSpellcastingClasses
-            // 
-            cbSpellcastingClasses.FormattingEnabled = true;
-            cbSpellcastingClasses.Location = new Point(17, 131);
-            cbSpellcastingClasses.Margin = new Padding(3, 4, 3, 4);
-            cbSpellcastingClasses.Name = "cbSpellcastingClasses";
-            cbSpellcastingClasses.Size = new Size(121, 28);
-            cbSpellcastingClasses.TabIndex = 46;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Location = new Point(14, 108);
-            label23.Name = "label23";
-            label23.Size = new Size(89, 20);
-            label23.TabIndex = 45;
-            label23.Text = "Spellcasting";
-            // 
             // cbSavingThrowsClasses
             // 
             cbSavingThrowsClasses.FormattingEnabled = true;
-            cbSavingThrowsClasses.Location = new Point(1038, 37);
+            cbSavingThrowsClasses.Location = new Point(303, 226);
             cbSavingThrowsClasses.Margin = new Padding(3, 4, 3, 4);
             cbSavingThrowsClasses.Name = "cbSavingThrowsClasses";
             cbSavingThrowsClasses.Size = new Size(121, 28);
@@ -1102,26 +1269,17 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(1035, 13);
+            label19.Location = new Point(303, 202);
             label19.Name = "label19";
             label19.Size = new Size(100, 20);
             label19.TabIndex = 43;
             label19.Text = "SavingThrows";
             label19.Click += label19_Click;
             // 
-            // cbProficiencyChoicesClasses
-            // 
-            cbProficiencyChoicesClasses.FormattingEnabled = true;
-            cbProficiencyChoicesClasses.Location = new Point(895, 37);
-            cbProficiencyChoicesClasses.Margin = new Padding(3, 4, 3, 4);
-            cbProficiencyChoicesClasses.Name = "cbProficiencyChoicesClasses";
-            cbProficiencyChoicesClasses.Size = new Size(121, 28);
-            cbProficiencyChoicesClasses.TabIndex = 42;
-            // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(891, 13);
+            label20.Location = new Point(542, 341);
             label20.Name = "label20";
             label20.Size = new Size(132, 20);
             label20.TabIndex = 41;
@@ -1131,7 +1289,7 @@
             // cbProficienciesClasses
             // 
             cbProficienciesClasses.FormattingEnabled = true;
-            cbProficienciesClasses.Location = new Point(752, 37);
+            cbProficienciesClasses.Location = new Point(17, 226);
             cbProficienciesClasses.Margin = new Padding(3, 4, 3, 4);
             cbProficienciesClasses.Name = "cbProficienciesClasses";
             cbProficienciesClasses.Size = new Size(121, 28);
@@ -1140,36 +1298,27 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(749, 13);
+            label18.Location = new Point(17, 202);
             label18.Name = "label18";
             label18.Size = new Size(92, 20);
             label18.TabIndex = 39;
             label18.Text = "Proficiencies";
             label18.Click += label18_Click;
             // 
-            // cbMultiClassingClasses
-            // 
-            cbMultiClassingClasses.FormattingEnabled = true;
-            cbMultiClassingClasses.Location = new Point(609, 37);
-            cbMultiClassingClasses.Margin = new Padding(3, 4, 3, 4);
-            cbMultiClassingClasses.Name = "cbMultiClassingClasses";
-            cbMultiClassingClasses.Size = new Size(121, 28);
-            cbMultiClassingClasses.TabIndex = 38;
-            // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(606, 13);
+            label17.Location = new Point(705, 13);
             label17.Name = "label17";
-            label17.Size = new Size(97, 20);
+            label17.Size = new Size(181, 20);
             label17.TabIndex = 37;
-            label17.Text = "MultiClassing";
+            label17.Text = "MultiClassingPrerequisites";
             label17.Click += label17_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(89, 13);
+            label6.Location = new Point(158, 13);
             label6.Name = "label6";
             label6.Size = new Size(58, 20);
             label6.TabIndex = 36;
@@ -1187,7 +1336,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(331, 13);
+            label15.Location = new Point(400, 13);
             label15.Name = "label15";
             label15.Size = new Size(49, 20);
             label15.TabIndex = 34;
@@ -1195,27 +1344,27 @@
             // 
             // tbHitDieClasses
             // 
-            tbHitDieClasses.Location = new Point(91, 37);
+            tbHitDieClasses.Location = new Point(160, 37);
             tbHitDieClasses.Margin = new Padding(3, 4, 3, 4);
             tbHitDieClasses.Name = "tbHitDieClasses";
             tbHitDieClasses.Size = new Size(199, 27);
             tbHitDieClasses.TabIndex = 32;
             // 
-            // textBox2
+            // tbIndexClasses
             // 
-            textBox2.Location = new Point(15, 37);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(41, 27);
-            textBox2.TabIndex = 31;
+            tbIndexClasses.Location = new Point(15, 37);
+            tbIndexClasses.Margin = new Padding(3, 4, 3, 4);
+            tbIndexClasses.Name = "tbIndexClasses";
+            tbIndexClasses.Size = new Size(110, 27);
+            tbIndexClasses.TabIndex = 31;
             // 
-            // tbName
+            // tbNameClasses
             // 
-            tbName.Location = new Point(334, 37);
-            tbName.Margin = new Padding(3, 4, 3, 4);
-            tbName.Name = "tbName";
-            tbName.Size = new Size(252, 27);
-            tbName.TabIndex = 30;
+            tbNameClasses.Location = new Point(403, 37);
+            tbNameClasses.Margin = new Padding(3, 4, 3, 4);
+            tbNameClasses.Name = "tbNameClasses";
+            tbNameClasses.Size = new Size(252, 27);
+            tbNameClasses.TabIndex = 30;
             // 
             // Backgrounds
             // 
@@ -4654,6 +4803,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).EndInit();
             Classes.ResumeLayout(false);
             Classes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProficiencyChoicesClasses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpellCastingInfoNameClasses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMultiClassingProficienciesClasses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMultiClassingPrerequisitesClasses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClasses).EndInit();
             Backgrounds.ResumeLayout(false);
             Backgrounds.PerformLayout();
             Conditions.ResumeLayout(false);
@@ -4741,11 +4895,10 @@
         public System.Windows.Forms.Label label14;
         public System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox tbHitDieClasses;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox tbName;
+        public System.Windows.Forms.TextBox tbIndexClasses;
+        public System.Windows.Forms.TextBox tbNameClasses;
         public System.Windows.Forms.ComboBox cbSavingThrowsClasses;
         public System.Windows.Forms.Label label19;
-        public System.Windows.Forms.ComboBox cbProficiencyChoicesClasses;
         public System.Windows.Forms.Label label20;
         public System.Windows.Forms.ComboBox cbProficienciesClasses;
         public System.Windows.Forms.Label label18;
@@ -4755,9 +4908,6 @@
         public System.Windows.Forms.Label Sa;
         public System.Windows.Forms.ComboBox cbStartingEquipmentClasses;
         public System.Windows.Forms.Label label22;
-        public System.Windows.Forms.ComboBox cbSpellcastingClasses;
-        public System.Windows.Forms.Label label23;
-        public System.Windows.Forms.ComboBox cbMultiClassingClasses;
         public System.Windows.Forms.Label label17;
         public System.Windows.Forms.ComboBox cbStartingProficienciesBackgrounds;
         public System.Windows.Forms.Label label21;
@@ -4970,7 +5120,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarClasses;
         public Button btInsertarBackgrounds;
         public Button btInsertarConditions;
         public Button btInsertarDamageType;
@@ -5114,6 +5263,22 @@
         public Button btBuscarWeaponProperties;
         public TextBox tbFiltrarWeaponProperties;
         public Button btInsertarWeaponProperties;
+        public DataGridView dgvClasses;
+        public Button btEliminarClasses;
+        public Button btModificarClasses;
+        public Button btBuscarClasses;
+        public TextBox tbFiltrarClasses;
+        public Button btInsertarClasses;
+        public Label label177;
+        public DataGridView dgvMultiClassingPrerequisitesClasses;
+        public DataGridView dgvMultiClassingProficienciesClasses;
+        public Label label179;
+        public Label label178;
+        public Label label23;
+        public RichTextBox rtbSpellCastingInfoDescClasses;
+        public TextBox tbSpellCastingAbilityClasses;
+        public DataGridView dgvSpellCastingInfoNameClasses;
+        public DataGridView dgvProficiencyChoicesClasses;
     }
 }
 

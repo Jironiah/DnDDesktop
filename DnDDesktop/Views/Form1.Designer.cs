@@ -63,6 +63,12 @@
             tbIndexAlignments = new TextBox();
             tbNameAlignments = new TextBox();
             WeaponProperties = new TabPage();
+            dgvWeaponProperties = new DataGridView();
+            btEliminarWeaponProperties = new Button();
+            btModificarWeaponProperties = new Button();
+            btBuscarWeaponProperties = new Button();
+            tbFiltrarWeaponProperties = new TextBox();
+            btInsertarWeaponProperties = new Button();
             rtbDescriptionWeaponProperties = new RichTextBox();
             label13 = new Label();
             label11 = new Label();
@@ -441,18 +447,13 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            dgvWeaponProperties = new DataGridView();
-            btEliminarWeaponProperties = new Button();
-            btModificarWeaponProperties = new Button();
-            btBuscarWeaponProperties = new Button();
-            tbFiltrarWeaponProperties = new TextBox();
-            btInsertarWeaponProperties = new Button();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
             Alignments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlignments).BeginInit();
             WeaponProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).BeginInit();
             Classes.SuspendLayout();
             Backgrounds.SuspendLayout();
             Conditions.SuspendLayout();
@@ -472,7 +473,6 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -862,6 +862,64 @@
             WeaponProperties.Text = "Weapon Properties";
             WeaponProperties.UseVisualStyleBackColor = true;
             WeaponProperties.Click += tabPage3_Click;
+            // 
+            // dgvWeaponProperties
+            // 
+            dgvWeaponProperties.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvWeaponProperties.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvWeaponProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvWeaponProperties.Location = new Point(16, 372);
+            dgvWeaponProperties.MultiSelect = false;
+            dgvWeaponProperties.Name = "dgvWeaponProperties";
+            dgvWeaponProperties.ReadOnly = true;
+            dgvWeaponProperties.RowHeadersWidth = 51;
+            dgvWeaponProperties.RowTemplate.Height = 29;
+            dgvWeaponProperties.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvWeaponProperties.Size = new Size(479, 267);
+            dgvWeaponProperties.TabIndex = 90;
+            // 
+            // btEliminarWeaponProperties
+            // 
+            btEliminarWeaponProperties.Location = new Point(1343, 607);
+            btEliminarWeaponProperties.Name = "btEliminarWeaponProperties";
+            btEliminarWeaponProperties.Size = new Size(94, 29);
+            btEliminarWeaponProperties.TabIndex = 89;
+            btEliminarWeaponProperties.Text = "Eliminar";
+            btEliminarWeaponProperties.UseVisualStyleBackColor = true;
+            // 
+            // btModificarWeaponProperties
+            // 
+            btModificarWeaponProperties.Location = new Point(1243, 607);
+            btModificarWeaponProperties.Name = "btModificarWeaponProperties";
+            btModificarWeaponProperties.Size = new Size(94, 29);
+            btModificarWeaponProperties.TabIndex = 88;
+            btModificarWeaponProperties.Text = "Modificar";
+            btModificarWeaponProperties.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarWeaponProperties
+            // 
+            btBuscarWeaponProperties.Location = new Point(1243, 560);
+            btBuscarWeaponProperties.Name = "btBuscarWeaponProperties";
+            btBuscarWeaponProperties.Size = new Size(194, 29);
+            btBuscarWeaponProperties.TabIndex = 87;
+            btBuscarWeaponProperties.Text = "Buscar por Index";
+            btBuscarWeaponProperties.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarWeaponProperties
+            // 
+            tbFiltrarWeaponProperties.Location = new Point(1112, 560);
+            tbFiltrarWeaponProperties.Name = "tbFiltrarWeaponProperties";
+            tbFiltrarWeaponProperties.Size = new Size(125, 27);
+            tbFiltrarWeaponProperties.TabIndex = 86;
+            // 
+            // btInsertarWeaponProperties
+            // 
+            btInsertarWeaponProperties.Location = new Point(1459, 604);
+            btInsertarWeaponProperties.Name = "btInsertarWeaponProperties";
+            btInsertarWeaponProperties.Size = new Size(94, 35);
+            btInsertarWeaponProperties.TabIndex = 85;
+            btInsertarWeaponProperties.Text = "Insertar";
+            btInsertarWeaponProperties.UseVisualStyleBackColor = true;
             // 
             // rtbDescriptionWeaponProperties
             // 
@@ -4574,64 +4632,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // dgvWeaponProperties
-            // 
-            dgvWeaponProperties.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvWeaponProperties.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvWeaponProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvWeaponProperties.Location = new Point(16, 372);
-            dgvWeaponProperties.MultiSelect = false;
-            dgvWeaponProperties.Name = "dgvWeaponProperties";
-            dgvWeaponProperties.ReadOnly = true;
-            dgvWeaponProperties.RowHeadersWidth = 51;
-            dgvWeaponProperties.RowTemplate.Height = 29;
-            dgvWeaponProperties.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvWeaponProperties.Size = new Size(843, 267);
-            dgvWeaponProperties.TabIndex = 90;
-            // 
-            // btEliminarWeaponProperties
-            // 
-            btEliminarWeaponProperties.Location = new Point(1343, 607);
-            btEliminarWeaponProperties.Name = "btEliminarWeaponProperties";
-            btEliminarWeaponProperties.Size = new Size(94, 29);
-            btEliminarWeaponProperties.TabIndex = 89;
-            btEliminarWeaponProperties.Text = "Eliminar";
-            btEliminarWeaponProperties.UseVisualStyleBackColor = true;
-            // 
-            // btModificarWeaponProperties
-            // 
-            btModificarWeaponProperties.Location = new Point(1243, 607);
-            btModificarWeaponProperties.Name = "btModificarWeaponProperties";
-            btModificarWeaponProperties.Size = new Size(94, 29);
-            btModificarWeaponProperties.TabIndex = 88;
-            btModificarWeaponProperties.Text = "Modificar";
-            btModificarWeaponProperties.UseVisualStyleBackColor = true;
-            // 
-            // btBuscarWeaponProperties
-            // 
-            btBuscarWeaponProperties.Location = new Point(1243, 560);
-            btBuscarWeaponProperties.Name = "btBuscarWeaponProperties";
-            btBuscarWeaponProperties.Size = new Size(194, 29);
-            btBuscarWeaponProperties.TabIndex = 87;
-            btBuscarWeaponProperties.Text = "Buscar por Index";
-            btBuscarWeaponProperties.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarWeaponProperties
-            // 
-            tbFiltrarWeaponProperties.Location = new Point(1112, 560);
-            tbFiltrarWeaponProperties.Name = "tbFiltrarWeaponProperties";
-            tbFiltrarWeaponProperties.Size = new Size(125, 27);
-            tbFiltrarWeaponProperties.TabIndex = 86;
-            // 
-            // btInsertarWeaponProperties
-            // 
-            btInsertarWeaponProperties.Location = new Point(1459, 604);
-            btInsertarWeaponProperties.Name = "btInsertarWeaponProperties";
-            btInsertarWeaponProperties.Size = new Size(94, 35);
-            btInsertarWeaponProperties.TabIndex = 85;
-            btInsertarWeaponProperties.Text = "Insertar";
-            btInsertarWeaponProperties.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -4651,6 +4651,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvAlignments).EndInit();
             WeaponProperties.ResumeLayout(false);
             WeaponProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).EndInit();
             Classes.ResumeLayout(false);
             Classes.PerformLayout();
             Backgrounds.ResumeLayout(false);
@@ -4689,7 +4690,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).EndInit();
             ResumeLayout(false);
         }
 

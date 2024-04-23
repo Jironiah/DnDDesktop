@@ -27,6 +27,9 @@ namespace DnDDesktop.Controllers
         //Alignments
         List<Alignment> alignments = new List<Alignment>();
 
+        //WeaponProperties
+        List<WeaponProperty> weapons = new List<WeaponProperty>();
+
         public Controlador()
         {
             LoadData();
@@ -38,6 +41,7 @@ namespace DnDDesktop.Controllers
         {
             LoadDataAbilityScore();
             LoadDataAlignments();
+            LoadDataWeaponProperties();
         }
 
         private void LoadDataAbilityScore()
@@ -55,6 +59,12 @@ namespace DnDDesktop.Controllers
             f.dgvAlignments.DataSource = alignments;
         }
 
+        private void LoadDataWeaponProperties()
+        {
+            weapons = weaponPropertiesRepository.GetWeaponProperties();
+            f.dgvWeaponProperties.DataSource = weapons;
+        }
+
         private void InitListeners()
         {
             //AbilityScore
@@ -70,6 +80,12 @@ namespace DnDDesktop.Controllers
             f.btEliminarAlignments.Click += BtEliminarAlignments_Click;
             f.btModificarAlignments.Click += BtModificarAlignment_Click;
             f.dgvAlignments.SelectionChanged += DgvAlignments_SelectionChanged;
+            ////WeaponProperties
+            f.btInsertarWeaponProperties.Click += BtInsertarWeaponProperties_Click;
+            f.btBuscarWeaponProperties.Click += BtBuscarWeaponProperties_Click;
+            f.btEliminarWeaponProperties.Click += BtEliminarWeaponProperties_Click;
+            f.btModificarWeaponProperties.Click += BtModificarWeaponProperties_Click;
+            f.dgvWeaponProperties.SelectionChanged += DgvWeaponProperties_SelectionChanged;
         }
 
         //AbilityScore
@@ -425,6 +441,140 @@ namespace DnDDesktop.Controllers
                 f.tbNameAlignments.Text = alig.Name;
                 f.rtbDescriptionAlignments.Text = alig.Description;
             }
+        }
+
+        //WeaponProperties
+        private void DgvWeaponProperties_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvWeaponProperties.CurrentRow;
+            if (row != null)
+            {
+                WeaponProperty weapon = (WeaponProperty)row.DataBoundItem;
+                f.tbIndexWeaponProperties.Text = weapon.Index;
+                f.tbNameWeaponProperties.Text = weapon.Name;
+                f.rtbDescriptionWeaponProperties.Text = weapon.Description.FirstOrDefault();
+            }
+        }
+        private void BtInsertarWeaponProperties_Click(object? sender, EventArgs e)
+        {
+            WeaponProperty weaponProperty = new WeaponProperty();
+            string index = f.tbIndexWeaponProperties.Text.ToString();
+            string name = f.tbNameWeaponProperties.Text.ToString();
+            string[] description = new string[] { f.rtbDescriptionWeaponProperties.Text };
+
+            if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name))
+            {
+                weaponProperty.Index = index;
+                weaponProperty.Name = name;
+                weaponProperty.Description = description;
+                weaponPropertiesRepository.CreateWeaponProperty(weaponProperty);
+                MessageBox.Show("WeaponPropierties introducido");
+                LoadDataWeaponProperties();
+            }
+            else
+            {
+                MessageBox.Show("No puedes dejar espacios vacíos");
+            }
+        }
+
+        private void BtBuscarWeaponProperties_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarWeaponProperties.Text))
+                {
+                    string idBuscar = weapons.Where(a => a.Index.Equals(f.tbFiltrarWeaponProperties.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        WeaponProperty newWeaponProperty = weaponPropertiesRepository.GetWeaponProperty(idBuscar.ToString());
+                        f.tbIndexWeaponProperties.Text = newWeaponProperty.Index;
+                        f.tbNameWeaponProperties.Text = newWeaponProperty.Name;
+                        f.rtbDescriptionWeaponProperties.Text = newWeaponProperty.Description.FirstOrDefault();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+
+        private void BtEliminarWeaponProperties_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarWeaponProperties.Text))
+                {
+                    string idBuscar = weapons.Where(a => a.Index.Equals(f.tbFiltrarWeaponProperties.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        weaponPropertiesRepository.DeleteWeaponProperty(idBuscar);
+                        MessageBox.Show(f.tbFiltrarWeaponProperties.Text.ToString() + " eliminado");
+                        LoadDataWeaponProperties();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+
+        private void BtModificarWeaponProperties_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                string index = f.tbIndexWeaponProperties.Text.ToString();
+                string name = f.tbNameWeaponProperties.Text.ToString();
+                string[] description = new string[] { f.rtbDescriptionWeaponProperties.Text };
+                WeaponProperty weaponPropertiesModificar = new WeaponProperty();
+
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name))
+                {
+                    string idBuscar = weapons.Where(a => a.Index.Equals(f.tbFiltrarWeaponProperties.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        weaponPropertiesModificar.Id = idBuscar;
+                        weaponPropertiesModificar.Index = index;
+                        weaponPropertiesModificar.Name = name;
+                        weaponPropertiesModificar.Description = description;
+                        weaponPropertiesRepository.UpdateWeaponProperty(weaponPropertiesModificar);
+                        MessageBox.Show("Modificado correctamente");
+                        LoadDataWeaponProperties();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
     }
 }

@@ -5,6 +5,7 @@ using DnDDesktop.Views.ViewsPopup;
 using System.Xml.Linq;
 using System;
 using static System.Formats.Asn1.AsnWriter;
+using System.Reflection;
 
 namespace DnDDesktop.Controllers
 {
@@ -18,8 +19,14 @@ namespace DnDDesktop.Controllers
 
 
         //Listas
+
+        //AbilityScores
         List<From> listaAbilityScoreSkills = new List<From>();
         List<AbilityScore> abilityScores = new List<AbilityScore>();
+
+        //Alignments
+        List<Alignment> alignments = new List<Alignment>();
+
         public Controlador()
         {
             LoadData();
@@ -30,6 +37,7 @@ namespace DnDDesktop.Controllers
         private void LoadData()
         {
             LoadDataAbilityScore();
+            LoadDataAlignments();
         }
 
         private void LoadDataAbilityScore()
@@ -41,6 +49,12 @@ namespace DnDDesktop.Controllers
             f.dgvAbilityScore.DataSource = abilityScores;
         }
 
+        private void LoadDataAlignments()
+        {
+            alignments = alignmentsRepository.GetAlignments();
+            f.dgvAlignments.DataSource = alignments;
+        }
+
         private void InitListeners()
         {
             //AbilityScore
@@ -50,10 +64,12 @@ namespace DnDDesktop.Controllers
             f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
             f.btModificarAbilityScore.Click += BtModificarAbilityScore_Click;
             f.dgvAbilityScore.SelectionChanged += DgvAbilityScore_SelectionChanged;
-            ////Alignments
-            //f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
-            ////WeaponProperties
-            //f.btInsertarWeaponProperties.Click += BtInsertarWeaponProperties_Click;
+            //Alignments
+            f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
+            f.btBuscarAlignments.Click += BtBuscarAlignments_Click;
+            f.btEliminarAlignments.Click += BtEliminarAlignments_Click;
+            f.btModificarAlignments.Click += BtModificarAlignment_Click;
+            f.dgvAlignments.SelectionChanged += DgvAlignments_SelectionChanged;
         }
 
         //AbilityScore
@@ -160,13 +176,20 @@ namespace DnDDesktop.Controllers
                 {
                     string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
-                    MessageBox.Show(idBuscar);
-                    AbilityScore newAbilityScore = abilityScoreRepository.GetAbilityScore(idBuscar.ToString());
-                    f.tbIndexAbilityScore.Text = newAbilityScore.Index;
-                    f.tbNameAbilityScore.Text = newAbilityScore.Name;
-                    f.tbFullNameAbilityScore.Text = newAbilityScore.FullName;
-                    f.rtbDescriptionAbilityScore.Text += newAbilityScore.Description.FirstOrDefault();
-                    f.cbSkillsAbilityScore.DataSource = newAbilityScore.Skills;
+                    if (idBuscar != null)
+                    {
+                        AbilityScore newAbilityScore = abilityScoreRepository.GetAbilityScore(idBuscar.ToString());
+                        f.tbIndexAbilityScore.Text = newAbilityScore.Index;
+                        f.tbNameAbilityScore.Text = newAbilityScore.Name;
+                        f.tbFullNameAbilityScore.Text = newAbilityScore.FullName;
+                        f.rtbDescriptionAbilityScore.Text += newAbilityScore.Description.FirstOrDefault();
+                        f.cbSkillsAbilityScore.DataSource = newAbilityScore.Skills;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
                 }
                 else
                 {
@@ -177,7 +200,6 @@ namespace DnDDesktop.Controllers
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-
         }
 
         private void BtEliminarAbilityScore_Click(object? sender, EventArgs e)
@@ -187,9 +209,17 @@ namespace DnDDesktop.Controllers
                 if (!string.IsNullOrEmpty(f.tbFiltrarAbilityScore.Text))
                 {
                     string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
-                    abilityScoreRepository.DeleteAbilityScore(idBuscar);
-                    MessageBox.Show(f.tbFiltrarAbilityScore.Text.ToString() + " eliminado");
-                    LoadDataAbilityScore();
+                    if (idBuscar != null)
+                    {
+                        abilityScoreRepository.DeleteAbilityScore(idBuscar);
+                        MessageBox.Show(f.tbFiltrarAbilityScore.Text.ToString() + " eliminado");
+                        LoadDataAbilityScore();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
                 }
                 else
                 {
@@ -216,18 +246,26 @@ namespace DnDDesktop.Controllers
                 {
                     From selectedSkill = (From)f.cbSkillsAbilityScore.SelectedItem;
                     string idBuscar = abilityScores.Where(a => a.Index.Equals(f.tbFiltrarAbilityScore.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
-                    abilityScoreModificar.Id = idBuscar;
-                    abilityScoreModificar.Index = index;
-                    abilityScoreModificar.Name = name;
-                    abilityScoreModificar.FullName = fullName;
-                    abilityScoreModificar.Description = description;
-                    if (selectedSkill != null)
+                    if (idBuscar != null)
                     {
-                        abilityScoreModificar.Skills = new From[] { selectedSkill };
+                        abilityScoreModificar.Id = idBuscar;
+                        abilityScoreModificar.Index = index;
+                        abilityScoreModificar.Name = name;
+                        abilityScoreModificar.FullName = fullName;
+                        abilityScoreModificar.Description = description;
+                        if (selectedSkill != null)
+                        {
+                            abilityScoreModificar.Skills = new From[] { selectedSkill };
+                        }
+                        abilityScoreRepository.UpdateAbilityScore(abilityScoreModificar);
+                        MessageBox.Show("Modificado correctamente");
+                        LoadDataAbilityScore();
                     }
-                    abilityScoreRepository.UpdateAbilityScore(abilityScoreModificar);
-                    MessageBox.Show("Modificado correctamente");
-                    LoadDataAbilityScore();
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -236,28 +274,157 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        ////Alignments
-        //private void BtInsertarAlignments_Click(object? sender, EventArgs e)
-        //{
-        //    Alignment alignment = new Alignment();
-        //    alignment.Index = f.tbIndexAlignments.Text.ToString();
-        //    alignment.Name = f.tbNameAlignments.Text.ToString();
-        //    alignment.Abbreviation = f.tbAbbreviationAlignments.Text.ToString();
-        //    alignment.Description = f.rtbDescriptionAlignments.Text.ToString();
+        //Alignments
+        private void BtInsertarAlignments_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Alignment alignment = new Alignment();
+                string index = f.tbIndexAlignments.Text.ToString();
+                string name = f.tbNameAlignments.Text.ToString();
+                string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
+                string description = f.rtbDescriptionAlignments.Text;
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(abbreviation))
+                {
+                    alignment.Index = index;
+                    alignment.Name = name;
+                    alignment.Abbreviation = abbreviation;
+                    alignment.Description = description;
 
-        //    alignmentsRepository.CreateAlignment(alignment);
-        //    MessageBox.Show("Alignments introducido");
-        //}
+                    alignmentsRepository.CreateAlignment(alignment);
+                    MessageBox.Show("Alignments introducido");
+                    LoadDataAlignments();
+                }
+                else
+                {
+                    MessageBox.Show("No puedes dejar espacios vacíos");
+                }
 
-        ////WeaponProperties
-        //private void BtInsertarWeaponProperties_Click(object? sender, EventArgs e)
-        //{
-        //    WeaponProperty weaponProperty = new WeaponProperty();
-        //    weaponProperty.Index = f.tbIndexWeaponProperties.Text.ToString();
-        //    weaponProperty.Name = f.tbNameWeaponProperties.Text.ToString();
-        //    weaponProperty.Description = new string[] { f.rtbDescriptionWeaponProperties.Text };
-        //    weaponPropertiesRepository.CreateWeaponProperty(weaponProperty);
-        //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
 
+        }
+
+        private void BtBuscarAlignments_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarAlignments.Text))
+                {
+                    string idBuscar = alignments.Where(a => a.Index.Equals(f.tbFiltrarAlignments.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    //MessageBox.Show(idBuscar);
+                    if (idBuscar != null)
+                    {
+                        Alignment newAlignments = alignmentsRepository.GetAlignment(idBuscar.ToString());
+                        f.tbIndexAlignments.Text = newAlignments.Index;
+                        f.tbNameAlignments.Text = newAlignments.Name;
+                        f.tbAbbreviationAlignments.Text = newAlignments.Abbreviation;
+                        f.rtbDescriptionAlignments.Text = newAlignments.Description;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void BtEliminarAlignments_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarAlignments.Text))
+                {
+                    string idBuscar = alignments.Where(a => a.Index.Equals(f.tbFiltrarAlignments.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        alignmentsRepository.DeleteAlignment(idBuscar);
+                        MessageBox.Show(f.tbFiltrarAlignments.Text.ToString() + " eliminado");
+                        LoadDataAlignments();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lo que quieres eliminar no puede estar vacío o no existe");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+
+        private void BtModificarAlignment_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                string index = f.tbIndexAlignments.Text.ToString();
+                string name = f.tbNameAlignments.Text.ToString();
+                string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
+                string description = f.rtbDescriptionAlignments.Text;
+
+                Alignment alignmentModificar = new Alignment();
+
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(abbreviation))
+                {
+                    string idBuscar = alignments.Where(a => a.Index.Equals(f.tbFiltrarAlignments.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        alignmentModificar.Id = idBuscar;
+                        alignmentModificar.Index = index;
+                        alignmentModificar.Name = name;
+                        alignmentModificar.Abbreviation = abbreviation;
+                        alignmentModificar.Description = description;
+
+                        alignmentsRepository.UpdateAlignment(alignmentModificar);
+                        MessageBox.Show("Modificado correctamente");
+                        LoadDataAlignments();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No puedes dejar espacíos vacíos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void DgvAlignments_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvAlignments.CurrentRow;
+            if (row != null)
+            {
+                Alignment alig = (Alignment)row.DataBoundItem;
+                f.tbIndexAlignments.Text = alig.Index;
+                f.tbAbbreviationAlignments.Text = alig.Abbreviation;
+                f.tbNameAlignments.Text = alig.Name;
+                f.rtbDescriptionAlignments.Text = alig.Description;
+            }
+        }
     }
 }

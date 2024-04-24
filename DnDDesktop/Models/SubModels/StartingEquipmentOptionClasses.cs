@@ -1,5 +1,4 @@
-﻿using DnDDesktop.Models.Commons;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace DnDDesktop.Models.SubModels
 {

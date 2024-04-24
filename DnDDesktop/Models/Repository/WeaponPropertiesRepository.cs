@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class WeaponPropertiesRepository
     {
-        string urlWeaponProperties = "https://localhost:7153/api/WeaponProperty/";
+        string urlWeaponProperties = "https://localhost:44349/api/WeaponProperty/";
 
         public List<WeaponProperty> GetWeaponProperties()
         {

@@ -76,6 +76,9 @@
             tbIndexWeaponProperties = new TextBox();
             tbNameWeaponProperties = new TextBox();
             Classes = new TabPage();
+            dgvStartingEquipmentOptionsFromClasses = new DataGridView();
+            label180 = new Label();
+            dgvStartingEquipmentOptionsChooseDescClasses = new DataGridView();
             dgvProficiencyChoicesClasses = new DataGridView();
             dgvSpellCastingInfoNameClasses = new DataGridView();
             tbSpellCastingAbilityClasses = new TextBox();
@@ -94,7 +97,6 @@
             btInsertarClasses = new Button();
             cbSubclassesClasses = new ComboBox();
             label16 = new Label();
-            cbStartingEquipmentOptionsClasses = new ComboBox();
             Sa = new Label();
             cbStartingEquipmentClasses = new ComboBox();
             label22 = new Label();
@@ -466,6 +468,8 @@
             WeaponProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).BeginInit();
             Classes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingEquipmentOptionsFromClasses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingEquipmentOptionsChooseDescClasses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProficiencyChoicesClasses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSpellCastingInfoNameClasses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMultiClassingProficienciesClasses).BeginInit();
@@ -519,7 +523,7 @@
             tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1585, 693);
+            tabControl1.Size = new Size(1786, 943);
             tabControl1.TabIndex = 0;
             // 
             // AbilityScore
@@ -545,7 +549,7 @@
             AbilityScore.Margin = new Padding(3, 4, 3, 4);
             AbilityScore.Name = "AbilityScore";
             AbilityScore.Padding = new Padding(3, 4, 3, 4);
-            AbilityScore.Size = new Size(1577, 660);
+            AbilityScore.Size = new Size(1778, 910);
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
             AbilityScore.UseVisualStyleBackColor = true;
@@ -724,7 +728,7 @@
             Alignments.Margin = new Padding(3, 4, 3, 4);
             Alignments.Name = "Alignments";
             Alignments.Padding = new Padding(3, 4, 3, 4);
-            Alignments.Size = new Size(1577, 660);
+            Alignments.Size = new Size(1778, 910);
             Alignments.TabIndex = 1;
             Alignments.Text = "Alignments";
             Alignments.UseVisualStyleBackColor = true;
@@ -873,7 +877,7 @@
             WeaponProperties.Margin = new Padding(3, 4, 3, 4);
             WeaponProperties.Name = "WeaponProperties";
             WeaponProperties.Padding = new Padding(3, 4, 3, 4);
-            WeaponProperties.Size = new Size(1577, 660);
+            WeaponProperties.Size = new Size(1778, 910);
             WeaponProperties.TabIndex = 2;
             WeaponProperties.Text = "Weapon Properties";
             WeaponProperties.UseVisualStyleBackColor = true;
@@ -991,6 +995,9 @@
             // 
             // Classes
             // 
+            Classes.Controls.Add(dgvStartingEquipmentOptionsFromClasses);
+            Classes.Controls.Add(label180);
+            Classes.Controls.Add(dgvStartingEquipmentOptionsChooseDescClasses);
             Classes.Controls.Add(dgvProficiencyChoicesClasses);
             Classes.Controls.Add(dgvSpellCastingInfoNameClasses);
             Classes.Controls.Add(tbSpellCastingAbilityClasses);
@@ -1009,7 +1016,6 @@
             Classes.Controls.Add(btInsertarClasses);
             Classes.Controls.Add(cbSubclassesClasses);
             Classes.Controls.Add(label16);
-            Classes.Controls.Add(cbStartingEquipmentOptionsClasses);
             Classes.Controls.Add(Sa);
             Classes.Controls.Add(cbStartingEquipmentClasses);
             Classes.Controls.Add(label22);
@@ -1029,23 +1035,63 @@
             Classes.Margin = new Padding(3, 4, 3, 4);
             Classes.Name = "Classes";
             Classes.Padding = new Padding(3, 4, 3, 4);
-            Classes.Size = new Size(1577, 660);
+            Classes.Size = new Size(1778, 910);
             Classes.TabIndex = 3;
             Classes.Text = "Classes";
             Classes.UseVisualStyleBackColor = true;
             Classes.Click += Classes_Click;
+            // 
+            // dgvStartingEquipmentOptionsFromClasses
+            // 
+            dgvStartingEquipmentOptionsFromClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvStartingEquipmentOptionsFromClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvStartingEquipmentOptionsFromClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStartingEquipmentOptionsFromClasses.Location = new Point(349, 199);
+            dgvStartingEquipmentOptionsFromClasses.MultiSelect = false;
+            dgvStartingEquipmentOptionsFromClasses.Name = "dgvStartingEquipmentOptionsFromClasses";
+            dgvStartingEquipmentOptionsFromClasses.ReadOnly = true;
+            dgvStartingEquipmentOptionsFromClasses.RowHeadersWidth = 51;
+            dgvStartingEquipmentOptionsFromClasses.RowTemplate.Height = 29;
+            dgvStartingEquipmentOptionsFromClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStartingEquipmentOptionsFromClasses.Size = new Size(322, 188);
+            dgvStartingEquipmentOptionsFromClasses.TabIndex = 111;
+            // 
+            // label180
+            // 
+            label180.AutoSize = true;
+            label180.Location = new Point(351, 176);
+            label180.Name = "label180";
+            label180.Size = new Size(251, 20);
+            label180.TabIndex = 110;
+            label180.Text = "StartingEquipmentOptionsFromDesc";
+            // 
+            // dgvStartingEquipmentOptionsChooseDescClasses
+            // 
+            dgvStartingEquipmentOptionsChooseDescClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvStartingEquipmentOptionsChooseDescClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvStartingEquipmentOptionsChooseDescClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStartingEquipmentOptionsChooseDescClasses.Location = new Point(11, 199);
+            dgvStartingEquipmentOptionsChooseDescClasses.MultiSelect = false;
+            dgvStartingEquipmentOptionsChooseDescClasses.Name = "dgvStartingEquipmentOptionsChooseDescClasses";
+            dgvStartingEquipmentOptionsChooseDescClasses.ReadOnly = true;
+            dgvStartingEquipmentOptionsChooseDescClasses.RowHeadersWidth = 51;
+            dgvStartingEquipmentOptionsChooseDescClasses.RowTemplate.Height = 29;
+            dgvStartingEquipmentOptionsChooseDescClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStartingEquipmentOptionsChooseDescClasses.Size = new Size(291, 188);
+            dgvStartingEquipmentOptionsChooseDescClasses.TabIndex = 109;
             // 
             // dgvProficiencyChoicesClasses
             // 
             dgvProficiencyChoicesClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProficiencyChoicesClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProficiencyChoicesClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProficiencyChoicesClasses.Location = new Point(542, 364);
+            dgvProficiencyChoicesClasses.Location = new Point(551, 522);
             dgvProficiencyChoicesClasses.MultiSelect = false;
             dgvProficiencyChoicesClasses.Name = "dgvProficiencyChoicesClasses";
             dgvProficiencyChoicesClasses.ReadOnly = true;
             dgvProficiencyChoicesClasses.RowHeadersWidth = 51;
             dgvProficiencyChoicesClasses.RowTemplate.Height = 29;
+            dgvProficiencyChoicesClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProficiencyChoicesClasses.Size = new Size(374, 188);
             dgvProficiencyChoicesClasses.TabIndex = 108;
             // 
@@ -1060,6 +1106,7 @@
             dgvSpellCastingInfoNameClasses.ReadOnly = true;
             dgvSpellCastingInfoNameClasses.RowHeadersWidth = 51;
             dgvSpellCastingInfoNameClasses.RowTemplate.Height = 29;
+            dgvSpellCastingInfoNameClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSpellCastingInfoNameClasses.Size = new Size(142, 188);
             dgvSpellCastingInfoNameClasses.TabIndex = 107;
             // 
@@ -1149,7 +1196,7 @@
             dgvClasses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvClasses.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClasses.Location = new Point(17, 364);
+            dgvClasses.Location = new Point(26, 522);
             dgvClasses.MultiSelect = false;
             dgvClasses.Name = "dgvClasses";
             dgvClasses.ReadOnly = true;
@@ -1205,7 +1252,7 @@
             // cbSubclassesClasses
             // 
             cbSubclassesClasses.FormattingEnabled = true;
-            cbSubclassesClasses.Location = new Point(361, 121);
+            cbSubclassesClasses.Location = new Point(167, 451);
             cbSubclassesClasses.Margin = new Padding(3, 4, 3, 4);
             cbSubclassesClasses.Name = "cbSubclassesClasses";
             cbSubclassesClasses.Size = new Size(121, 28);
@@ -1214,35 +1261,26 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(361, 97);
+            label16.Location = new Point(167, 427);
             label16.Name = "label16";
             label16.Size = new Size(79, 20);
             label16.TabIndex = 51;
             label16.Text = "Subclasses";
             label16.Click += label16_Click;
             // 
-            // cbStartingEquipmentOptionsClasses
-            // 
-            cbStartingEquipmentOptionsClasses.FormattingEnabled = true;
-            cbStartingEquipmentOptionsClasses.Location = new Point(160, 120);
-            cbStartingEquipmentOptionsClasses.Margin = new Padding(3, 4, 3, 4);
-            cbStartingEquipmentOptionsClasses.Name = "cbStartingEquipmentOptionsClasses";
-            cbStartingEquipmentOptionsClasses.Size = new Size(159, 28);
-            cbStartingEquipmentOptionsClasses.TabIndex = 50;
-            // 
             // Sa
             // 
             Sa.AutoSize = true;
-            Sa.Location = new Point(160, 97);
+            Sa.Location = new Point(13, 176);
             Sa.Name = "Sa";
-            Sa.Size = new Size(185, 20);
+            Sa.Size = new Size(266, 20);
             Sa.TabIndex = 49;
-            Sa.Text = "StartingEquipmentOptions";
+            Sa.Text = "StartingEquipmentOptionsChooseDesc";
             // 
             // cbStartingEquipmentClasses
             // 
             cbStartingEquipmentClasses.FormattingEnabled = true;
-            cbStartingEquipmentClasses.Location = new Point(17, 120);
+            cbStartingEquipmentClasses.Location = new Point(11, 122);
             cbStartingEquipmentClasses.Margin = new Padding(3, 4, 3, 4);
             cbStartingEquipmentClasses.Name = "cbStartingEquipmentClasses";
             cbStartingEquipmentClasses.Size = new Size(121, 28);
@@ -1251,7 +1289,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(17, 97);
+            label22.Location = new Point(11, 98);
             label22.Name = "label22";
             label22.Size = new Size(133, 20);
             label22.TabIndex = 47;
@@ -1260,7 +1298,7 @@
             // cbSavingThrowsClasses
             // 
             cbSavingThrowsClasses.FormattingEnabled = true;
-            cbSavingThrowsClasses.Location = new Point(303, 226);
+            cbSavingThrowsClasses.Location = new Point(314, 451);
             cbSavingThrowsClasses.Margin = new Padding(3, 4, 3, 4);
             cbSavingThrowsClasses.Name = "cbSavingThrowsClasses";
             cbSavingThrowsClasses.Size = new Size(121, 28);
@@ -1269,7 +1307,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(303, 202);
+            label19.Location = new Point(314, 427);
             label19.Name = "label19";
             label19.Size = new Size(100, 20);
             label19.TabIndex = 43;
@@ -1279,7 +1317,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(542, 341);
+            label20.Location = new Point(551, 499);
             label20.Name = "label20";
             label20.Size = new Size(132, 20);
             label20.TabIndex = 41;
@@ -1289,7 +1327,7 @@
             // cbProficienciesClasses
             // 
             cbProficienciesClasses.FormattingEnabled = true;
-            cbProficienciesClasses.Location = new Point(17, 226);
+            cbProficienciesClasses.Location = new Point(20, 451);
             cbProficienciesClasses.Margin = new Padding(3, 4, 3, 4);
             cbProficienciesClasses.Name = "cbProficienciesClasses";
             cbProficienciesClasses.Size = new Size(121, 28);
@@ -1298,7 +1336,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(17, 202);
+            label18.Location = new Point(20, 427);
             label18.Name = "label18";
             label18.Size = new Size(92, 20);
             label18.TabIndex = 39;
@@ -1396,7 +1434,7 @@
             Backgrounds.Location = new Point(4, 29);
             Backgrounds.Margin = new Padding(3, 4, 3, 4);
             Backgrounds.Name = "Backgrounds";
-            Backgrounds.Size = new Size(1577, 660);
+            Backgrounds.Size = new Size(1778, 910);
             Backgrounds.TabIndex = 4;
             Backgrounds.Text = "Backgrounds";
             Backgrounds.UseVisualStyleBackColor = true;
@@ -1634,7 +1672,7 @@
             Conditions.Location = new Point(4, 29);
             Conditions.Margin = new Padding(3, 4, 3, 4);
             Conditions.Name = "Conditions";
-            Conditions.Size = new Size(1577, 660);
+            Conditions.Size = new Size(1778, 910);
             Conditions.TabIndex = 5;
             Conditions.Text = "Conditions";
             Conditions.UseVisualStyleBackColor = true;
@@ -1712,7 +1750,7 @@
             DamageType.Location = new Point(4, 29);
             DamageType.Margin = new Padding(3, 4, 3, 4);
             DamageType.Name = "DamageType";
-            DamageType.Size = new Size(1577, 660);
+            DamageType.Size = new Size(1778, 910);
             DamageType.TabIndex = 6;
             DamageType.Text = "DamageType";
             DamageType.UseVisualStyleBackColor = true;
@@ -1834,7 +1872,7 @@
             Equipment.Location = new Point(4, 29);
             Equipment.Margin = new Padding(3, 4, 3, 4);
             Equipment.Name = "Equipment";
-            Equipment.Size = new Size(1577, 660);
+            Equipment.Size = new Size(1778, 910);
             Equipment.TabIndex = 7;
             Equipment.Text = "Equipment";
             Equipment.UseVisualStyleBackColor = true;
@@ -2299,7 +2337,7 @@
             EquipmentCategories.Location = new Point(4, 29);
             EquipmentCategories.Margin = new Padding(3, 4, 3, 4);
             EquipmentCategories.Name = "EquipmentCategories";
-            EquipmentCategories.Size = new Size(1577, 660);
+            EquipmentCategories.Size = new Size(1778, 910);
             EquipmentCategories.TabIndex = 8;
             EquipmentCategories.Text = "EquipmentCategories";
             EquipmentCategories.UseVisualStyleBackColor = true;
@@ -2379,7 +2417,7 @@
             Feats.Location = new Point(4, 29);
             Feats.Margin = new Padding(3, 4, 3, 4);
             Feats.Name = "Feats";
-            Feats.Size = new Size(1577, 660);
+            Feats.Size = new Size(1778, 910);
             Feats.TabIndex = 9;
             Feats.Text = "Feats";
             Feats.UseVisualStyleBackColor = true;
@@ -2487,7 +2525,7 @@
             Features.Location = new Point(4, 29);
             Features.Margin = new Padding(3, 4, 3, 4);
             Features.Name = "Features";
-            Features.Size = new Size(1577, 660);
+            Features.Size = new Size(1778, 910);
             Features.TabIndex = 10;
             Features.Text = "Features";
             // 
@@ -2677,7 +2715,7 @@
             Languages.Location = new Point(4, 29);
             Languages.Margin = new Padding(3, 4, 3, 4);
             Languages.Name = "Languages";
-            Languages.Size = new Size(1577, 660);
+            Languages.Size = new Size(1778, 910);
             Languages.TabIndex = 11;
             Languages.Text = "Languages";
             Languages.UseVisualStyleBackColor = true;
@@ -2822,7 +2860,7 @@
             Levels.Location = new Point(4, 29);
             Levels.Margin = new Padding(3, 4, 3, 4);
             Levels.Name = "Levels";
-            Levels.Size = new Size(1577, 660);
+            Levels.Size = new Size(1778, 910);
             Levels.TabIndex = 12;
             Levels.Text = "Levels";
             Levels.UseVisualStyleBackColor = true;
@@ -3032,7 +3070,7 @@
             MagicItems.Location = new Point(4, 29);
             MagicItems.Margin = new Padding(3, 4, 3, 4);
             MagicItems.Name = "MagicItems";
-            MagicItems.Size = new Size(1577, 660);
+            MagicItems.Size = new Size(1778, 910);
             MagicItems.TabIndex = 13;
             MagicItems.Text = "MagicItems";
             MagicItems.UseVisualStyleBackColor = true;
@@ -3183,7 +3221,7 @@
             MagicSchools.Location = new Point(4, 29);
             MagicSchools.Margin = new Padding(3, 4, 3, 4);
             MagicSchools.Name = "MagicSchools";
-            MagicSchools.Size = new Size(1577, 660);
+            MagicSchools.Size = new Size(1778, 910);
             MagicSchools.TabIndex = 14;
             MagicSchools.Text = "MagicSchools";
             MagicSchools.UseVisualStyleBackColor = true;
@@ -3267,7 +3305,7 @@
             Proficiencies.Location = new Point(4, 29);
             Proficiencies.Margin = new Padding(3, 4, 3, 4);
             Proficiencies.Name = "Proficiencies";
-            Proficiencies.Size = new Size(1577, 660);
+            Proficiencies.Size = new Size(1778, 910);
             Proficiencies.TabIndex = 16;
             Proficiencies.Text = "Proficiencies";
             Proficiencies.UseVisualStyleBackColor = true;
@@ -3424,7 +3462,7 @@
             Races.Location = new Point(4, 29);
             Races.Margin = new Padding(3, 4, 3, 4);
             Races.Name = "Races";
-            Races.Size = new Size(1577, 660);
+            Races.Size = new Size(1778, 910);
             Races.TabIndex = 17;
             Races.Text = "Races";
             Races.UseVisualStyleBackColor = true;
@@ -3734,7 +3772,7 @@
             Skills.Location = new Point(4, 29);
             Skills.Margin = new Padding(3, 4, 3, 4);
             Skills.Name = "Skills";
-            Skills.Size = new Size(1577, 660);
+            Skills.Size = new Size(1778, 910);
             Skills.TabIndex = 18;
             Skills.Text = "Skills";
             Skills.UseVisualStyleBackColor = true;
@@ -3862,7 +3900,7 @@
             Spells.Location = new Point(4, 29);
             Spells.Margin = new Padding(3, 4, 3, 4);
             Spells.Name = "Spells";
-            Spells.Size = new Size(1577, 660);
+            Spells.Size = new Size(1778, 910);
             Spells.TabIndex = 19;
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
@@ -4228,7 +4266,7 @@
             Subclasses.Location = new Point(4, 29);
             Subclasses.Margin = new Padding(3, 4, 3, 4);
             Subclasses.Name = "Subclasses";
-            Subclasses.Size = new Size(1577, 660);
+            Subclasses.Size = new Size(1778, 910);
             Subclasses.TabIndex = 20;
             Subclasses.Text = "Subclasses";
             Subclasses.UseVisualStyleBackColor = true;
@@ -4389,7 +4427,7 @@
             SubRaces.Location = new Point(4, 29);
             SubRaces.Margin = new Padding(3, 4, 3, 4);
             SubRaces.Name = "SubRaces";
-            SubRaces.Size = new Size(1577, 660);
+            SubRaces.Size = new Size(1778, 910);
             SubRaces.TabIndex = 21;
             SubRaces.Text = "SubRaces";
             SubRaces.UseVisualStyleBackColor = true;
@@ -4588,7 +4626,7 @@
             Traits.Location = new Point(4, 29);
             Traits.Margin = new Padding(3, 4, 3, 4);
             Traits.Name = "Traits";
-            Traits.Size = new Size(1577, 660);
+            Traits.Size = new Size(1778, 910);
             Traits.TabIndex = 22;
             Traits.Text = "Traits";
             Traits.UseVisualStyleBackColor = true;
@@ -4785,7 +4823,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1610, 722);
+            ClientSize = new Size(1822, 972);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
@@ -4803,6 +4841,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvWeaponProperties).EndInit();
             Classes.ResumeLayout(false);
             Classes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingEquipmentOptionsFromClasses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingEquipmentOptionsChooseDescClasses).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProficiencyChoicesClasses).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvSpellCastingInfoNameClasses).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMultiClassingProficienciesClasses).EndInit();
@@ -4904,7 +4944,6 @@
         public System.Windows.Forms.Label label18;
         public System.Windows.Forms.ComboBox cbSubclassesClasses;
         public System.Windows.Forms.Label label16;
-        public System.Windows.Forms.ComboBox cbStartingEquipmentOptionsClasses;
         public System.Windows.Forms.Label Sa;
         public System.Windows.Forms.ComboBox cbStartingEquipmentClasses;
         public System.Windows.Forms.Label label22;
@@ -5279,6 +5318,9 @@
         public TextBox tbSpellCastingAbilityClasses;
         public DataGridView dgvSpellCastingInfoNameClasses;
         public DataGridView dgvProficiencyChoicesClasses;
+        public Label label180;
+        public DataGridView dgvStartingEquipmentOptionsChooseDescClasses;
+        public DataGridView dgvStartingEquipmentOptionsFromClasses;
     }
 }
 

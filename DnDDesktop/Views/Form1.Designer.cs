@@ -557,7 +557,7 @@
             // 
             // btEliminarAbilityScore
             // 
-            btEliminarAbilityScore.Location = new Point(1350, 610);
+            btEliminarAbilityScore.Location = new Point(1526, 831);
             btEliminarAbilityScore.Name = "btEliminarAbilityScore";
             btEliminarAbilityScore.Size = new Size(94, 29);
             btEliminarAbilityScore.TabIndex = 27;
@@ -590,7 +590,7 @@
             // 
             // btModificarAbilityScore
             // 
-            btModificarAbilityScore.Location = new Point(1250, 610);
+            btModificarAbilityScore.Location = new Point(1426, 831);
             btModificarAbilityScore.Name = "btModificarAbilityScore";
             btModificarAbilityScore.Size = new Size(94, 29);
             btModificarAbilityScore.TabIndex = 24;
@@ -599,7 +599,7 @@
             // 
             // btBuscarAbilityScore
             // 
-            btBuscarAbilityScore.Location = new Point(1250, 563);
+            btBuscarAbilityScore.Location = new Point(1426, 784);
             btBuscarAbilityScore.Name = "btBuscarAbilityScore";
             btBuscarAbilityScore.Size = new Size(194, 29);
             btBuscarAbilityScore.TabIndex = 23;
@@ -608,7 +608,7 @@
             // 
             // tbFiltrarAbilityScore
             // 
-            tbFiltrarAbilityScore.Location = new Point(1119, 563);
+            tbFiltrarAbilityScore.Location = new Point(1295, 784);
             tbFiltrarAbilityScore.Name = "tbFiltrarAbilityScore";
             tbFiltrarAbilityScore.Size = new Size(125, 27);
             tbFiltrarAbilityScore.TabIndex = 22;
@@ -623,7 +623,7 @@
             // 
             // btInsertarAbilityScore
             // 
-            btInsertarAbilityScore.Location = new Point(1466, 607);
+            btInsertarAbilityScore.Location = new Point(1642, 828);
             btInsertarAbilityScore.Name = "btInsertarAbilityScore";
             btInsertarAbilityScore.Size = new Size(94, 35);
             btInsertarAbilityScore.TabIndex = 20;
@@ -677,6 +677,7 @@
             // 
             // cbSkillsAbilityScore
             // 
+            cbSkillsAbilityScore.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSkillsAbilityScore.FormattingEnabled = true;
             cbSkillsAbilityScore.Location = new Point(16, 123);
             cbSkillsAbilityScore.Margin = new Padding(3, 4, 3, 4);
@@ -750,7 +751,7 @@
             // 
             // btEliminarAlignments
             // 
-            btEliminarAlignments.Location = new Point(1341, 593);
+            btEliminarAlignments.Location = new Point(1534, 831);
             btEliminarAlignments.Name = "btEliminarAlignments";
             btEliminarAlignments.Size = new Size(94, 29);
             btEliminarAlignments.TabIndex = 34;
@@ -759,7 +760,7 @@
             // 
             // btModificarAlignments
             // 
-            btModificarAlignments.Location = new Point(1241, 593);
+            btModificarAlignments.Location = new Point(1434, 831);
             btModificarAlignments.Name = "btModificarAlignments";
             btModificarAlignments.Size = new Size(94, 29);
             btModificarAlignments.TabIndex = 33;
@@ -768,7 +769,7 @@
             // 
             // btBuscarAlignments
             // 
-            btBuscarAlignments.Location = new Point(1241, 546);
+            btBuscarAlignments.Location = new Point(1434, 784);
             btBuscarAlignments.Name = "btBuscarAlignments";
             btBuscarAlignments.Size = new Size(194, 29);
             btBuscarAlignments.TabIndex = 32;
@@ -777,14 +778,14 @@
             // 
             // tbFiltrarAlignments
             // 
-            tbFiltrarAlignments.Location = new Point(1110, 546);
+            tbFiltrarAlignments.Location = new Point(1303, 784);
             tbFiltrarAlignments.Name = "tbFiltrarAlignments";
             tbFiltrarAlignments.Size = new Size(125, 27);
             tbFiltrarAlignments.TabIndex = 31;
             // 
             // btInsertarAlignments
             // 
-            btInsertarAlignments.Location = new Point(1457, 590);
+            btInsertarAlignments.Location = new Point(1650, 828);
             btInsertarAlignments.Name = "btInsertarAlignments";
             btInsertarAlignments.Size = new Size(94, 35);
             btInsertarAlignments.TabIndex = 30;
@@ -900,7 +901,7 @@
             // 
             // btEliminarWeaponProperties
             // 
-            btEliminarWeaponProperties.Location = new Point(1343, 607);
+            btEliminarWeaponProperties.Location = new Point(1530, 841);
             btEliminarWeaponProperties.Name = "btEliminarWeaponProperties";
             btEliminarWeaponProperties.Size = new Size(94, 29);
             btEliminarWeaponProperties.TabIndex = 89;
@@ -909,7 +910,7 @@
             // 
             // btModificarWeaponProperties
             // 
-            btModificarWeaponProperties.Location = new Point(1243, 607);
+            btModificarWeaponProperties.Location = new Point(1430, 841);
             btModificarWeaponProperties.Name = "btModificarWeaponProperties";
             btModificarWeaponProperties.Size = new Size(94, 29);
             btModificarWeaponProperties.TabIndex = 88;
@@ -918,7 +919,7 @@
             // 
             // btBuscarWeaponProperties
             // 
-            btBuscarWeaponProperties.Location = new Point(1243, 560);
+            btBuscarWeaponProperties.Location = new Point(1430, 794);
             btBuscarWeaponProperties.Name = "btBuscarWeaponProperties";
             btBuscarWeaponProperties.Size = new Size(194, 29);
             btBuscarWeaponProperties.TabIndex = 87;
@@ -927,14 +928,14 @@
             // 
             // tbFiltrarWeaponProperties
             // 
-            tbFiltrarWeaponProperties.Location = new Point(1112, 560);
+            tbFiltrarWeaponProperties.Location = new Point(1299, 794);
             tbFiltrarWeaponProperties.Name = "tbFiltrarWeaponProperties";
             tbFiltrarWeaponProperties.Size = new Size(125, 27);
             tbFiltrarWeaponProperties.TabIndex = 86;
             // 
             // btInsertarWeaponProperties
             // 
-            btInsertarWeaponProperties.Location = new Point(1459, 604);
+            btInsertarWeaponProperties.Location = new Point(1646, 838);
             btInsertarWeaponProperties.Name = "btInsertarWeaponProperties";
             btInsertarWeaponProperties.Size = new Size(94, 35);
             btInsertarWeaponProperties.TabIndex = 85;
@@ -1208,7 +1209,7 @@
             // 
             // btEliminarClasses
             // 
-            btEliminarClasses.Location = new Point(1344, 599);
+            btEliminarClasses.Location = new Point(1528, 843);
             btEliminarClasses.Name = "btEliminarClasses";
             btEliminarClasses.Size = new Size(94, 29);
             btEliminarClasses.TabIndex = 95;
@@ -1217,7 +1218,7 @@
             // 
             // btModificarClasses
             // 
-            btModificarClasses.Location = new Point(1244, 599);
+            btModificarClasses.Location = new Point(1428, 843);
             btModificarClasses.Name = "btModificarClasses";
             btModificarClasses.Size = new Size(94, 29);
             btModificarClasses.TabIndex = 94;
@@ -1226,7 +1227,7 @@
             // 
             // btBuscarClasses
             // 
-            btBuscarClasses.Location = new Point(1244, 552);
+            btBuscarClasses.Location = new Point(1428, 796);
             btBuscarClasses.Name = "btBuscarClasses";
             btBuscarClasses.Size = new Size(194, 29);
             btBuscarClasses.TabIndex = 93;
@@ -1235,14 +1236,14 @@
             // 
             // tbFiltrarClasses
             // 
-            tbFiltrarClasses.Location = new Point(1113, 552);
+            tbFiltrarClasses.Location = new Point(1297, 796);
             tbFiltrarClasses.Name = "tbFiltrarClasses";
             tbFiltrarClasses.Size = new Size(125, 27);
             tbFiltrarClasses.TabIndex = 92;
             // 
             // btInsertarClasses
             // 
-            btInsertarClasses.Location = new Point(1460, 596);
+            btInsertarClasses.Location = new Point(1644, 840);
             btInsertarClasses.Name = "btInsertarClasses";
             btInsertarClasses.Size = new Size(94, 35);
             btInsertarClasses.TabIndex = 91;
@@ -1251,6 +1252,7 @@
             // 
             // cbSubclassesClasses
             // 
+            cbSubclassesClasses.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSubclassesClasses.FormattingEnabled = true;
             cbSubclassesClasses.Location = new Point(167, 451);
             cbSubclassesClasses.Margin = new Padding(3, 4, 3, 4);
@@ -1279,6 +1281,7 @@
             // 
             // cbStartingEquipmentClasses
             // 
+            cbStartingEquipmentClasses.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStartingEquipmentClasses.FormattingEnabled = true;
             cbStartingEquipmentClasses.Location = new Point(11, 122);
             cbStartingEquipmentClasses.Margin = new Padding(3, 4, 3, 4);
@@ -1297,6 +1300,7 @@
             // 
             // cbSavingThrowsClasses
             // 
+            cbSavingThrowsClasses.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSavingThrowsClasses.FormattingEnabled = true;
             cbSavingThrowsClasses.Location = new Point(314, 451);
             cbSavingThrowsClasses.Margin = new Padding(3, 4, 3, 4);
@@ -1326,6 +1330,7 @@
             // 
             // cbProficienciesClasses
             // 
+            cbProficienciesClasses.DropDownStyle = ComboBoxStyle.DropDownList;
             cbProficienciesClasses.FormattingEnabled = true;
             cbProficienciesClasses.Location = new Point(20, 451);
             cbProficienciesClasses.Margin = new Padding(3, 4, 3, 4);

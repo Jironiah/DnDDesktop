@@ -618,7 +618,7 @@ namespace DnDDesktop.Controllers
                 f.tbIndexClasses.Text = classes.Index;
                 f.tbNameClasses.Text = classes.Name;
                 f.tbHitDieClasses.Text = classes.HitDie.ToString();
-                f.dgvMultiClassingPrerequisitesClasses.DataSource = classes.MultiClassing?.Prerequisites/*.Select(a => new ClassesMultiClassingDAO(a))*/.ToList();
+                f.dgvMultiClassingPrerequisitesClasses.DataSource = classes.MultiClassing?.Prerequisites.Select(a => new ClassesMultiClassingDAO(a)).ToList();
                 f.dgvMultiClassingProficienciesClasses.DataSource = classes.MultiClassing?.Proficiencies;
                 f.cbProficienciesClasses.DataSource = classes.Proficiencies;
                 f.dgvProficiencyChoicesClasses.DataSource = classes.ProficienciesChoices;
@@ -652,7 +652,7 @@ namespace DnDDesktop.Controllers
                         f.tbIndexClasses.Text = newClasses.Index;
                         f.tbNameClasses.Text = newClasses.Name;
                         f.tbHitDieClasses.Text = newClasses.HitDie.ToString();
-                        f.dgvMultiClassingPrerequisitesClasses.DataSource = newClasses.MultiClassing?.Prerequisites/*.Select(a => new ClassesMultiClassingDAO(a))*/.ToList();
+                        f.dgvMultiClassingPrerequisitesClasses.DataSource = newClasses.MultiClassing?.Prerequisites.Select(a => new ClassesMultiClassingDAO(a)).ToList();
                         f.dgvMultiClassingProficienciesClasses.DataSource = newClasses.MultiClassing?.Proficiencies;
                         f.cbProficienciesClasses.DataSource = newClasses.Proficiencies;
                         f.dgvProficiencyChoicesClasses.DataSource = newClasses.ProficienciesChoices;
@@ -687,110 +687,451 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
         private void BtInsertarClasses_Click(object? sender, EventArgs e)
         {
             try
             {
                 Classes classeInsertar = new Classes();
 
-                //Rows de todos los datagridviews
-                DataGridViewRow rowMultiClassingPrerequisitesClasses = f.dgvMultiClassingPrerequisitesClasses.CurrentRow;
-                DataGridViewRow rowMultiClassingProficienciesClasses = f.dgvMultiClassingProficienciesClasses.CurrentRow;
-                DataGridViewRow rowProficiencyChoicesClasses = f.dgvProficiencyChoicesClasses.CurrentRow;
-                DataGridViewRow rowSpellCastingInfoNameClasses = f.dgvSpellCastingInfoNameClasses.CurrentRow;
-                DataGridViewRow rowStartingEquipmentOptionsChooseDescClasses = f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow;
-                DataGridViewRow rowStartingEquipmentOptionsFromClasses = f.dgvStartingEquipmentOptionsFromClasses.CurrentRow;
+                // Asignación de valores básicos
+                classeInsertar.Index = f.tbIndexClasses.Text;
+                classeInsertar.Name = f.tbNameClasses.Text;
+                classeInsertar.HitDie = int.Parse(f.tbHitDieClasses.Text);
 
-                //Elementos de todos los combobox
-                From? selectedProficiencies = (From?)f.cbProficienciesClasses.SelectedItem;
-                From? selectedSavingThrows = (From?)f.cbSavingThrowsClasses.SelectedItem;
-                From? selectedStartingEquipment = (From?)f.cbStartingEquipmentClasses.SelectedItem;
-                From? selectedSubclasses = (From?)f.cbSubclassesClasses.SelectedItem;
+                // Proficiencies
+                From selectedProficiencies = (From)f.cbProficienciesClasses.SelectedItem;
+                classeInsertar.Proficiencies = new From[] { selectedProficiencies };
 
-                if (/*Comprobacion null dgv*/rowMultiClassingPrerequisitesClasses != null && rowMultiClassingProficienciesClasses != null && rowProficiencyChoicesClasses != null &&
-                    rowSpellCastingInfoNameClasses != null && rowStartingEquipmentOptionsChooseDescClasses != null && rowStartingEquipmentOptionsFromClasses != null
-                    /*Comprobacion null cb*/&& selectedProficiencies != null && selectedSavingThrows != null && selectedStartingEquipment != null && selectedSubclasses != null)
+                // SavingThrows
+                From selectedSavingThrows = (From)f.cbSavingThrowsClasses.SelectedItem;
+                classeInsertar.SavingThrows = new From[] { selectedSavingThrows };
+
+                // StartingEquipment
+                From selectedStartingEquipment = (From)f.cbStartingEquipmentClasses.SelectedItem;
+                classeInsertar.StartingEquipment = new StartingEquipmentClasses[]
                 {
-                    //DGV
-                    Prerequisites MultiClassingPrerequisites = (Prerequisites)rowMultiClassingPrerequisitesClasses.DataBoundItem;//Esta clase es DTO
-                    From MultiClassingProficiencies = (From)rowMultiClassingProficienciesClasses.DataBoundItem;
-                    ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)rowProficiencyChoicesClasses.DataBoundItem;
-                    InfoClasses SpellCastingInfoName = (InfoClasses)rowSpellCastingInfoNameClasses.DataBoundItem;
-                    StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)rowStartingEquipmentOptionsChooseDescClasses.DataBoundItem;
-                    OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)rowStartingEquipmentOptionsFromClasses.DataBoundItem;
+            new StartingEquipmentClasses
+            {
+                Equipment = selectedStartingEquipment,
+                quantity = 1  // Ajusta la cantidad según tu lógica
+            }
+                };
 
+                // Subclasses
+                From selectedSubclasses = (From)f.cbSubclassesClasses.SelectedItem;
+                classeInsertar.Subclasses = new From[] { selectedSubclasses };
 
-                    //Transformacion objetos para insertar
+                // MultiClassingPrerequisites
+                ClassesMultiClassingDAO selectedMultiClassingPrerequisite = (ClassesMultiClassingDAO)f.dgvMultiClassingPrerequisitesClasses.CurrentRow.DataBoundItem;
+                Prerequisites MultiClassingPrerequisites = new Prerequisites
+                {
+                    AbilityScore = new From
+                    {
+                        Index = selectedMultiClassingPrerequisite.index,
+                        Name = selectedMultiClassingPrerequisite.name
+                    },
+                    MinimumScore = selectedMultiClassingPrerequisite.minimum_score
+                };
+                classeInsertar.MultiClassing = new MultiClassing
+                {
+                    Prerequisites = new Prerequisites[] { MultiClassingPrerequisites }
+                };
 
-                    //Proficiencies
-                    List<From> proficiencies = new List<From>();
-                    proficiencies.Add(selectedProficiencies);
-                    classeInsertar.Proficiencies = proficiencies.ToArray();
-                    //SavingThrows
-                    List<From> savingThrows = new List<From>();
-                    savingThrows.Add(selectedSavingThrows);
-                    classeInsertar.SavingThrows = savingThrows.ToArray();
-                    //StartingEquipment
-                    List<StartingEquipmentClasses> startingEquipment = new List<StartingEquipmentClasses>();
-                    StartingEquipmentClasses startingEquipmentClasses = new StartingEquipmentClasses();
-                    startingEquipmentClasses.Equipment = selectedStartingEquipment;
-                    startingEquipment.Add(startingEquipmentClasses);
-                    classeInsertar.StartingEquipment = startingEquipment.ToArray();
-                    //Subclasses
-                    List<From> subclasses = new List<From>();
-                    subclasses.Add(selectedSubclasses);
-                    classeInsertar.Subclasses = subclasses.ToArray();
+                // MultiClassingProficiencies
+                From MultiClassingProficiencies = (From)f.dgvMultiClassingProficienciesClasses.CurrentRow.DataBoundItem;
+                classeInsertar.MultiClassing.Proficiencies = new From[] { MultiClassingProficiencies };
 
-                    //MultiClassingPrerequisites/Proficiencies
-                    List<Prerequisites> multiClassingPrerequisites = new List<Prerequisites>();
-                    Prerequisites prerequisites = new Prerequisites();
-                    From abScore = new From();
-                    abScore = MultiClassingPrerequisites.AbilityScore;
-                    prerequisites.AbilityScore = abScore;
-                    prerequisites = MultiClassingPrerequisites;
-                    //prerequisites.AbilityScore = multiClassingPrerequisites.Select(a=>a.AbilityScore).FirstOrDefault();
-                    multiClassingPrerequisites.Add(prerequisites);
-                    MultiClassing multiClassing = new MultiClassing();
-                    multiClassing.Prerequisites = multiClassingPrerequisites.ToArray();
-                    //MultiClassingProficiencies
-                    List<From> multiClassingProficiencies = new List<From>();
-                    From proficiency = new From();
-                    proficiency.Index = MultiClassingProficiencies.Index;
-                    proficiency.Name = MultiClassingProficiencies.Name;
-                    multiClassing.Proficiencies = multiClassingProficiencies.ToArray();
-                    //ProficiencyChoices
-                    List<ProficiencyChoiceClasses> proficiencyChoices = new List<ProficiencyChoiceClasses>();
-                    proficiencyChoices.Add(ProficiencyChoices);
-                    classeInsertar.ProficienciesChoices = proficiencyChoices.ToArray();
-                    //SpellCasting
-                    //SpellCastingInfoName
-                    List<SpellcastingClass> spellcastingInfo = new List<SpellcastingClass>();
-                    SpellcastingClass spellcastingClass = new SpellcastingClass();
-                    MessageBox.Show(spellcastingClass.Info.Length.ToString());
-                    spellcastingClass.Info.Append(SpellCastingInfoName);
-                    MessageBox.Show(spellcastingClass.Info.Length.ToString());
-                    spellcastingInfo.Add(spellcastingClass);
-                }
+                // ProficiencyChoices
+                ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)f.dgvProficiencyChoicesClasses.CurrentRow.DataBoundItem;
+                classeInsertar.ProficienciesChoices = new ProficiencyChoiceClasses[] { ProficiencyChoices };
+
+                // SpellCasting
+                InfoClasses SpellCastingInfoName = (InfoClasses)f.dgvSpellCastingInfoNameClasses.CurrentRow.DataBoundItem;
+                classeInsertar.Spellcasting = new SpellcastingClass
+                {
+                    Info = new InfoClasses[] { SpellCastingInfoName },
+                    SpellcastingAbility = new From { Name = f.tbSpellCastingAbilityClasses.Text } // Asignación del SpellcastingAbility
+                };
+
+                // StartingEquipmentOptionsChooseDesc
+                StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow.DataBoundItem;
+                classeInsertar.StartingEquipmentOption = new StartingEquipmentOptionClasses[] { StartingEquipmentOptionsChooseDesc };
+
+                // StartingEquipmentOptionsFrom
+                OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)f.dgvStartingEquipmentOptionsFromClasses.CurrentRow.DataBoundItem;
+                classeInsertar.StartingEquipmentOption[0].From = new List<OptionItemClasses[]>
+        {
+            new OptionItemClasses[] { StartingEquipmentOptionsFrom }
+        };
+
+                classesRepository.CreateClass(classeInsertar);
+                MessageBox.Show("Classes introducido");
+                LoadDataClasses();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+
+
+        //private void BtInsertarClasses_Click(object? sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        Classes classeInsertar = new Classes();
+
+        //        //Rows de todos los datagridviews
+        //        DataGridViewRow rowMultiClassingPrerequisitesClasses = f.dgvMultiClassingPrerequisitesClasses.CurrentRow;
+        //        DataGridViewRow rowMultiClassingProficienciesClasses = f.dgvMultiClassingProficienciesClasses.CurrentRow;
+        //        DataGridViewRow rowProficiencyChoicesClasses = f.dgvProficiencyChoicesClasses.CurrentRow;
+        //        DataGridViewRow rowSpellCastingInfoNameClasses = f.dgvSpellCastingInfoNameClasses.CurrentRow;
+        //        DataGridViewRow rowStartingEquipmentOptionsChooseDescClasses = f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow;
+        //        DataGridViewRow rowStartingEquipmentOptionsFromClasses = f.dgvStartingEquipmentOptionsFromClasses.CurrentRow;
+
+        //        //Elementos de todos los combobox
+        //        From? selectedProficiencies = (From?)f.cbProficienciesClasses.SelectedItem;
+        //        From? selectedSavingThrows = (From?)f.cbSavingThrowsClasses.SelectedItem;
+        //        From? selectedStartingEquipment = (From?)f.cbStartingEquipmentClasses.SelectedItem;
+        //        From? selectedSubclasses = (From?)f.cbSubclassesClasses.SelectedItem;
+
+        //        if (/*Comprobacion null dgv*/rowMultiClassingPrerequisitesClasses != null && rowMultiClassingProficienciesClasses != null && rowProficiencyChoicesClasses != null &&
+        //            rowSpellCastingInfoNameClasses != null && rowStartingEquipmentOptionsChooseDescClasses != null && rowStartingEquipmentOptionsFromClasses != null
+        //            /*Comprobacion null cb*/&& selectedProficiencies != null && selectedSavingThrows != null && selectedStartingEquipment != null && selectedSubclasses != null)
+        //        {
+        //            //DGV
+        //            ClassesMultiClassingDAO MultiClassingPrerequisites = (ClassesMultiClassingDAO)rowMultiClassingPrerequisitesClasses.DataBoundItem;//Esta clase es DTO
+        //            From MultiClassingProficiencies = (From)rowMultiClassingProficienciesClasses.DataBoundItem;
+        //            ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)rowProficiencyChoicesClasses.DataBoundItem;
+        //            InfoClasses SpellCastingInfoName = (InfoClasses)rowSpellCastingInfoNameClasses.DataBoundItem;
+        //            StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)rowStartingEquipmentOptionsChooseDescClasses.DataBoundItem;
+        //            OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)rowStartingEquipmentOptionsFromClasses.DataBoundItem;
+
+        //            //Transformacion objetos para insertar
+
+        //            //Proficiencies
+        //            List<From> proficiencies = new List<From>();
+        //            proficiencies.Add(selectedProficiencies);
+        //            classeInsertar.Proficiencies = proficiencies.ToArray();
+        //            //SavingThrows
+        //            List<From> savingThrows = new List<From>();
+        //            savingThrows.Add(selectedSavingThrows);
+        //            classeInsertar.SavingThrows = savingThrows.ToArray();
+        //            //StartingEquipment
+        //            List<StartingEquipmentClasses> startingEquipment = new List<StartingEquipmentClasses>();
+        //            StartingEquipmentClasses startingEquipmentClasses = new StartingEquipmentClasses();
+        //            startingEquipmentClasses.Equipment = selectedStartingEquipment;
+        //            startingEquipment.Add(startingEquipmentClasses);
+        //            classeInsertar.StartingEquipment = startingEquipment.ToArray();
+        //            //Subclasses
+        //            List<From> subclasses = new List<From>();
+        //            subclasses.Add(selectedSubclasses);
+        //            classeInsertar.Subclasses = subclasses.ToArray();
+
+        //            //MultiClassingPrerequisites/Proficiencies
+        //            List<Prerequisites> multiClassingPrerequisites = new List<Prerequisites>();
+        //            Prerequisites prerequisites = new Prerequisites();
+        //            From abScore = new From();
+        //            abScore.Name = MultiClassingPrerequisites.name;
+        //            abScore.Index = MultiClassingPrerequisites.index;
+        //            prerequisites.AbilityScore = abScore;
+        //            prerequisites = MultiClassingPrerequisites;
+        //            //prerequisites.AbilityScore = multiClassingPrerequisites.Select(a=>a.AbilityScore).FirstOrDefault();
+        //            multiClassingPrerequisites.Add(prerequisites);
+        //            MultiClassing multiClassing = new MultiClassing();
+        //            multiClassing.Prerequisites = multiClassingPrerequisites.ToArray();
+        //            //MultiClassingProficiencies
+        //            List<From> multiClassingProficiencies = new List<From>();
+        //            From proficiency = new From();
+        //            proficiency.Index = MultiClassingProficiencies.Index;
+        //            proficiency.Name = MultiClassingProficiencies.Name;
+        //            multiClassing.Proficiencies = multiClassingProficiencies.ToArray();
+        //            //ProficiencyChoices
+        //            List<ProficiencyChoiceClasses> proficiencyChoices = new List<ProficiencyChoiceClasses>();
+        //            proficiencyChoices.Add(ProficiencyChoices);
+        //            classeInsertar.ProficienciesChoices = proficiencyChoices.ToArray();
+        //            //SpellCasting
+        //            //SpellCastingInfoName
+        //            List<SpellcastingClass> spellcastingInfo = new List<SpellcastingClass>();
+        //            List<InfoClasses> spellcastingClasses = new List<InfoClasses>();
+        //            SpellcastingClass spellcastingClass = new SpellcastingClass();
+        //            spellcastingClasses.Add(SpellCastingInfoName);
+        //            spellcastingClass.Info = spellcastingClasses.ToArray();
+        //            spellcastingInfo.Add(spellcastingClass);
+        //            classeInsertar.Spellcasting = spellcastingClass;
+        //            //StartingEquipmentOptionsChooseDesc
+        //            List<StartingEquipmentOptionClasses> startingEquipmentOptionClassesList = new List<StartingEquipmentOptionClasses>();
+        //            StartingEquipmentOptionClasses startingEquipmentOptionClasses = new StartingEquipmentOptionClasses();
+        //            classeInsertar.StartingEquipmentOption = startingEquipmentOptionClassesList.ToArray();
+        //            //StartingEquipmentOptionsFrom
+        //            List<OptionItemClasses> optionItemClasses = new List<OptionItemClasses>();
+        //            OptionItemClasses optionItemClass = new OptionItemClasses();
+        //            optionItemClass = StartingEquipmentOptionsFrom;
+        //            optionItemClasses.Add(optionItemClass);
+        //            startingEquipmentOptionClasses = StartingEquipmentOptionsChooseDesc;
+        //            startingEquipmentOptionClasses.From.Add(optionItemClasses.ToArray());
+
+        //            classeInsertar.Index = f.tbIndexClasses.Text;
+        //            classeInsertar.Name = f.tbNameClasses.Text;
+        //            classeInsertar.HitDie = int.Parse(f.tbHitDieClasses.Text);
+        //            //classeInsertar.Spellcasting.SpellcastingAbility.Name = f.tbSpellCastingAbilityClasses.Text;
+        //            classeInsertar.Spellcasting.Info = spellcastingClass.Info;
+
+        //            classesRepository.CreateClass(classeInsertar);
+        //            MessageBox.Show("Classes introducido");
+        //            LoadDataClasses();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(Extensions.GetaAllMessages(ex));
+        //    }
+        //}
         //private void BtInsertarClasses_MouseUp(object? sender, MouseEventArgs e)
         //{
-        //    throw new NotImplementedException();
+        //    try
+        //    {
+        //        Classes classeInsertar = new Classes();
+
+        //        //Rows de todos los datagridviews
+        //        DataGridViewRow rowMultiClassingPrerequisitesClasses = f.dgvMultiClassingPrerequisitesClasses.CurrentRow;
+        //        DataGridViewRow rowMultiClassingProficienciesClasses = f.dgvMultiClassingProficienciesClasses.CurrentRow;
+        //        DataGridViewRow rowProficiencyChoicesClasses = f.dgvProficiencyChoicesClasses.CurrentRow;
+        //        DataGridViewRow rowSpellCastingInfoNameClasses = f.dgvSpellCastingInfoNameClasses.CurrentRow;
+        //        DataGridViewRow rowStartingEquipmentOptionsChooseDescClasses = f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow;
+        //        DataGridViewRow rowStartingEquipmentOptionsFromClasses = f.dgvStartingEquipmentOptionsFromClasses.CurrentRow;
+
+        //        //Elementos de todos los combobox
+        //        From? selectedProficiencies = (From?)f.cbProficienciesClasses.SelectedItem;
+        //        From? selectedSavingThrows = (From?)f.cbSavingThrowsClasses.SelectedItem;
+        //        From? selectedStartingEquipment = (From?)f.cbStartingEquipmentClasses.SelectedItem;
+        //        From? selectedSubclasses = (From?)f.cbSubclassesClasses.SelectedItem;
+
+        //        if (/*Comprobacion null dgv*/rowMultiClassingPrerequisitesClasses != null && rowMultiClassingProficienciesClasses != null && rowProficiencyChoicesClasses != null &&
+        //            rowSpellCastingInfoNameClasses != null && rowStartingEquipmentOptionsChooseDescClasses != null && rowStartingEquipmentOptionsFromClasses != null
+        //            /*Comprobacion null cb*/&& selectedProficiencies != null && selectedSavingThrows != null && selectedStartingEquipment != null && selectedSubclasses != null)
+        //        {
+        //            //DGV
+        //            Prerequisites MultiClassingPrerequisites = (Prerequisites)rowMultiClassingPrerequisitesClasses.DataBoundItem;//Esta clase es DTO
+        //            From MultiClassingProficiencies = (From)rowMultiClassingProficienciesClasses.DataBoundItem;
+        //            ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)rowProficiencyChoicesClasses.DataBoundItem;
+        //            InfoClasses SpellCastingInfoName = (InfoClasses)rowSpellCastingInfoNameClasses.DataBoundItem;
+        //            StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)rowStartingEquipmentOptionsChooseDescClasses.DataBoundItem;
+        //            OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)rowStartingEquipmentOptionsFromClasses.DataBoundItem;
+
+        //            //Transformacion objetos para insertar
+
+        //            //Proficiencies
+        //            List<From> proficiencies = new List<From>();
+        //            proficiencies.Add(selectedProficiencies);
+        //            classeInsertar.Proficiencies = proficiencies.ToArray();
+        //            //SavingThrows
+        //            List<From> savingThrows = new List<From>();
+        //            savingThrows.Add(selectedSavingThrows);
+        //            classeInsertar.SavingThrows = savingThrows.ToArray();
+        //            //StartingEquipment
+        //            List<StartingEquipmentClasses> startingEquipment = new List<StartingEquipmentClasses>();
+        //            StartingEquipmentClasses startingEquipmentClasses = new StartingEquipmentClasses();
+        //            startingEquipmentClasses.Equipment = selectedStartingEquipment;
+        //            startingEquipment.Add(startingEquipmentClasses);
+        //            classeInsertar.StartingEquipment = startingEquipment.ToArray();
+        //            //Subclasses
+        //            List<From> subclasses = new List<From>();
+        //            subclasses.Add(selectedSubclasses);
+        //            classeInsertar.Subclasses = subclasses.ToArray();
+
+        //            //MultiClassingPrerequisites/Proficiencies
+        //            List<Prerequisites> multiClassingPrerequisites = new List<Prerequisites>();
+        //            Prerequisites prerequisites = new Prerequisites();
+        //            From abScore = new From();
+        //            abScore = MultiClassingPrerequisites.AbilityScore;
+        //            prerequisites.AbilityScore = abScore;
+        //            prerequisites = MultiClassingPrerequisites;
+        //            //prerequisites.AbilityScore = multiClassingPrerequisites.Select(a=>a.AbilityScore).FirstOrDefault();
+        //            multiClassingPrerequisites.Add(prerequisites);
+        //            MultiClassing multiClassing = new MultiClassing();
+        //            multiClassing.Prerequisites = multiClassingPrerequisites.ToArray();
+        //            //MultiClassingProficiencies
+        //            List<From> multiClassingProficiencies = new List<From>();
+        //            From proficiency = new From();
+        //            proficiency.Index = MultiClassingProficiencies.Index;
+        //            proficiency.Name = MultiClassingProficiencies.Name;
+        //            multiClassing.Proficiencies = multiClassingProficiencies.ToArray();
+        //            //ProficiencyChoices
+        //            List<ProficiencyChoiceClasses> proficiencyChoices = new List<ProficiencyChoiceClasses>();
+        //            proficiencyChoices.Add(ProficiencyChoices);
+        //            classeInsertar.ProficienciesChoices = proficiencyChoices.ToArray();
+        //            //SpellCasting
+        //            //SpellCastingInfoName
+        //            List<SpellcastingClass> spellcastingInfo = new List<SpellcastingClass>();
+        //            List<InfoClasses> spellcastingClasses = new List<InfoClasses>();
+        //            SpellcastingClass spellcastingClass = new SpellcastingClass();
+        //            spellcastingClasses.Add(SpellCastingInfoName);
+        //            spellcastingClass.Info = spellcastingClasses.ToArray();
+        //            spellcastingInfo.Add(spellcastingClass);
+        //            classeInsertar.Spellcasting = spellcastingClass;
+        //            //StartingEquipmentOptionsChooseDesc
+        //            List<StartingEquipmentOptionClasses> startingEquipmentOptionClassesList = new List<StartingEquipmentOptionClasses>();
+        //            StartingEquipmentOptionClasses startingEquipmentOptionClasses = new StartingEquipmentOptionClasses();
+        //            classeInsertar.StartingEquipmentOption = startingEquipmentOptionClassesList.ToArray();
+        //            //StartingEquipmentOptionsFrom
+        //            List<OptionItemClasses> optionItemClasses = new List<OptionItemClasses>();
+        //            OptionItemClasses optionItemClass = new OptionItemClasses();
+        //            optionItemClass = StartingEquipmentOptionsFrom;
+        //            startingEquipmentOptionClasses.From.Add(optionItemClasses.ToArray());
+        //            startingEquipmentOptionClasses = StartingEquipmentOptionsChooseDesc;
+        //            classesRepository.CreateClass(classeInsertar);
+        //            MessageBox.Show("Classes introducido");
+        //            LoadDataClasses();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(Extensions.GetaAllMessages(ex));
+        //    }
         //}
+
         private void BtModificarClasses_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarClasses.Text))
+                {
+                    string idBuscar = classes.Where(a => a.Index.Equals(f.tbFiltrarClasses.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+
+                        Classes classeOld = new Classes();
+
+                        // Asignación de valores básicos
+                        classeOld.Index = f.tbIndexClasses.Text;
+                        classeOld.Name = f.tbNameClasses.Text;
+                        classeOld.HitDie = int.Parse(f.tbHitDieClasses.Text);
+
+                        // Proficiencies
+                        From selectedProficiencies = (From)f.cbProficienciesClasses.SelectedItem;
+                        classeOld.Proficiencies = new From[] { selectedProficiencies };
+
+                        // SavingThrows
+                        From selectedSavingThrows = (From)f.cbSavingThrowsClasses.SelectedItem;
+                        classeOld.SavingThrows = new From[] { selectedSavingThrows };
+
+                        // StartingEquipment
+                        From selectedStartingEquipment = (From)f.cbStartingEquipmentClasses.SelectedItem;
+                        classeOld.StartingEquipment = new StartingEquipmentClasses[]
+                        {
+                            new StartingEquipmentClasses
+                            {
+                                Equipment = selectedStartingEquipment,
+                                quantity = 1  // Ajusta la cantidad según tu lógica
+                            }
+                        };
+
+                        // Subclasses
+                        From selectedSubclasses = (From)f.cbSubclassesClasses.SelectedItem;
+                        classeOld.Subclasses = new From[] { selectedSubclasses };
+
+                        // MultiClassingPrerequisites
+                        ClassesMultiClassingDAO selectedMultiClassingPrerequisite = (ClassesMultiClassingDAO)f.dgvMultiClassingPrerequisitesClasses.CurrentRow.DataBoundItem;
+                        Prerequisites MultiClassingPrerequisites = new Prerequisites
+                        {
+                            AbilityScore = new From
+                            {
+                                Index = selectedMultiClassingPrerequisite.index,
+                                Name = selectedMultiClassingPrerequisite.name
+                            },
+                            MinimumScore = selectedMultiClassingPrerequisite.minimum_score
+                        };
+                        classeOld.MultiClassing = new MultiClassing
+                        {
+                            Prerequisites = new Prerequisites[] { MultiClassingPrerequisites }
+                        };
+
+                        // MultiClassingProficiencies
+                        From MultiClassingProficiencies = (From)f.dgvMultiClassingProficienciesClasses.CurrentRow.DataBoundItem;
+                        classeOld.MultiClassing.Proficiencies = new From[] { MultiClassingProficiencies };
+
+                        // ProficiencyChoices
+                        ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)f.dgvProficiencyChoicesClasses.CurrentRow.DataBoundItem;
+                        classeOld.ProficienciesChoices = new ProficiencyChoiceClasses[] { ProficiencyChoices };
+
+                        // SpellCasting
+                        InfoClasses SpellCastingInfoName = (InfoClasses)f.dgvSpellCastingInfoNameClasses.CurrentRow.DataBoundItem;
+                        classeOld.Spellcasting = new SpellcastingClass
+                        {
+                            Info = new InfoClasses[] { SpellCastingInfoName },
+                            SpellcastingAbility = new From { Name = f.tbSpellCastingAbilityClasses.Text } // Asignación del SpellcastingAbility
+                        };
+
+                        // StartingEquipmentOptionsChooseDesc
+                        StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow.DataBoundItem;
+                        classeOld.StartingEquipmentOption = new StartingEquipmentOptionClasses[] { StartingEquipmentOptionsChooseDesc };
+
+                        // StartingEquipmentOptionsFrom
+                        OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)f.dgvStartingEquipmentOptionsFromClasses.CurrentRow.DataBoundItem;
+                        classeOld.StartingEquipmentOption[0].From = new List<OptionItemClasses[]>
+                        {
+                            new OptionItemClasses[] { StartingEquipmentOptionsFrom }
+                        };
+
+
+
+                        Classes classeModificar = classeOld;
+                        classeModificar.Id = idBuscar;
+                        // Actualizar el objeto Classes en la base de datos
+                        classesRepository.UpdateClass(classeModificar);
+                        MessageBox.Show("Classes modificado correctamente");
+                        LoadDataClasses();
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
 
         private void BtEliminarClasses_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarClasses.Text))
+                {
+                    string idBuscar = classes.Where(a => a.Index.Equals(f.tbFiltrarClasses.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        classesRepository.DeleteClass(idBuscar);
+                        MessageBox.Show(f.tbFiltrarClasses.Text.ToString() + " eliminado");
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
-
-
     }
 }

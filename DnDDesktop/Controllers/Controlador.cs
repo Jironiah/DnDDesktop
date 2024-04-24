@@ -626,15 +626,15 @@ namespace DnDDesktop.Controllers
                 f.tbSpellCastingAbilityClasses.Text = classes.Spellcasting?.SpellcastingAbility.Name;
                 f.dgvSpellCastingInfoNameClasses.DataSource = classes.Spellcasting?.Info.Select(a=>a.Name).ToList();
                 f.rtbSpellCastingInfoDescClasses.Text = classes.Spellcasting?.Info.SelectMany(a=>a.Description).FirstOrDefault();
-                f.cbStartingEquipmentClasses.DataSource = classes.StartingEquipment;
-                f.cbStartingEquipmentOptionsClasses.DataSource = classes.StartingEquipmentOption;
+                f.cbStartingEquipmentClasses.DataSource = classes.StartingEquipment.Select(a=>a.Equipment).ToList();
+                f.dgvStartingEquipmentOptionsChooseDescClasses.DataSource = classes.StartingEquipmentOption;
+                f.dgvStartingEquipmentOptionsFromClasses.DataSource = classes.StartingEquipmentOption.SelectMany(a=>a.From.SelectMany(a => a).ToList()).ToList();
                 f.cbSubclassesClasses.DataSource = classes.Subclasses;
 
                 f.cbProficienciesClasses.DisplayMember = "Name";
-                f.cbSavingThrowsClasses.DisplayMember = "";
-                f.cbStartingEquipmentClasses.DisplayMember = "";
-                f.cbStartingEquipmentOptionsClasses.DisplayMember = "";
-                f.cbSubclassesClasses.DisplayMember = "";
+                f.cbSavingThrowsClasses.DisplayMember = "Name";
+                f.cbStartingEquipmentClasses.DisplayMember = "Name";
+                f.cbSubclassesClasses.DisplayMember = "Name";
             }
         }
 

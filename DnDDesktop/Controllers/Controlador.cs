@@ -2,6 +2,9 @@
 using DnDDesktop.Models.Commons;
 using DnDDesktop.Models.Repository;
 using DnDDesktop.Models.SubModels;
+using System.Xml.Linq;
+using System;
+using Extensions = DnDDesktop.Models.Extensions;
 
 namespace DnDDesktop.Controllers
 {
@@ -9,11 +12,13 @@ namespace DnDDesktop.Controllers
     {
         Form1 f = new Form1();
 
+        //Repositories
         AbilityScoreRepository abilityScoreRepository = new AbilityScoreRepository();
         AlignmentsRepository alignmentsRepository = new AlignmentsRepository();
         WeaponPropertiesRepository weaponPropertiesRepository = new WeaponPropertiesRepository();
         ClassesRepository classesRepository = new ClassesRepository();
         BackgroundsRepository backgroundsRepository = new BackgroundsRepository();
+        ConditionsRepository conditionsRepository = new ConditionsRepository();
 
         //Listas
 
@@ -30,17 +35,12 @@ namespace DnDDesktop.Controllers
 
         //Classes
         List<Classes> classes = new List<Classes>();
-        List<MultiClassing> listaclassesMultiClassings = new List<MultiClassing>();
-        List<From> listaclassesProficiencies = new List<From>();
-        List<ProficiencyChoiceClasses> listaclassesProficiencyChoice = new List<ProficiencyChoiceClasses>();
-        List<From> listaclassesSavingThrows = new List<From>();
-        List<SpellcastingClass> listaclassesSpellcasting = new List<SpellcastingClass>();
-        List<StartingEquipmentClasses> listaclassesStartingEquipment = new List<StartingEquipmentClasses>();
-        List<StartingEquipmentOptionClasses> listaclassesStartingEquipmentOption = new List<StartingEquipmentOptionClasses>();
-        List<From> listaclassesSubclasses = new List<From>();
 
         //Backgrounds
         List<Background> backgrounds = new List<Background>();
+
+        //Conditions
+        List<Conditions> conditions = new List<Conditions>();
         public Controlador()
         {
             LoadData();
@@ -55,6 +55,7 @@ namespace DnDDesktop.Controllers
             LoadDataWeaponProperties();
             LoadDataClasses();
             LoadDataBackgrounds();
+            LoadDataConditions();
         }
 
         private void LoadDataAbilityScore()
@@ -82,14 +83,14 @@ namespace DnDDesktop.Controllers
         {
             classes = classesRepository.GetClasses();
             f.dgvClasses.DataSource = classes;
-            listaclassesMultiClassings = classesRepository.GetClasses().Select(a => a.MultiClassing).ToList();
-            listaclassesProficiencies = classesRepository.GetClasses().SelectMany(a => a.Proficiencies).ToList();
-            listaclassesProficiencyChoice = classesRepository.GetClasses().SelectMany(a => a.ProficienciesChoices).ToList();
-            listaclassesSavingThrows = classesRepository.GetClasses().SelectMany(a => a.SavingThrows).ToList();
-            listaclassesSpellcasting = classesRepository.GetClasses().Select(a => a.Spellcasting).ToList();
-            listaclassesStartingEquipment = classesRepository.GetClasses().SelectMany(a => a.StartingEquipment).ToList();
-            listaclassesStartingEquipmentOption = classesRepository.GetClasses().SelectMany(a => a.StartingEquipmentOption).ToList();
-            listaclassesSubclasses = classesRepository.GetClasses().SelectMany(a => a.Subclasses).ToList();
+            //listaclassesMultiClassings = classesRepository.GetClasses().Select(a => a.MultiClassing).ToList();
+            //listaclassesProficiencies = classesRepository.GetClasses().SelectMany(a => a.Proficiencies).ToList();
+            //listaclassesProficiencyChoice = classesRepository.GetClasses().SelectMany(a => a.ProficienciesChoices).ToList();
+            //listaclassesSavingThrows = classesRepository.GetClasses().SelectMany(a => a.SavingThrows).ToList();
+            //listaclassesSpellcasting = classesRepository.GetClasses().Select(a => a.Spellcasting).ToList();
+            //listaclassesStartingEquipment = classesRepository.GetClasses().SelectMany(a => a.StartingEquipment).ToList();
+            //listaclassesStartingEquipmentOption = classesRepository.GetClasses().SelectMany(a => a.StartingEquipmentOption).ToList();
+            //listaclassesSubclasses = classesRepository.GetClasses().SelectMany(a => a.Subclasses).ToList();
         }
         private void LoadDataBackgrounds()
         {
@@ -99,6 +100,11 @@ namespace DnDDesktop.Controllers
             f.dgvBackgrounds.Columns["startingEquipmentEquipment"].Visible = false;
             f.dgvBackgrounds.Columns["startingEquipmentOptionsFrom"].Visible = false;
             f.dgvBackgrounds.Columns["startingEquipmentOptionsType"].Visible = false;
+        }
+        private void LoadDataConditions()
+        {
+            conditions = conditionsRepository.GetConditions();
+            f.dgvConditions.DataSource = conditions;
         }
         private void InitListeners()
         {
@@ -135,6 +141,12 @@ namespace DnDDesktop.Controllers
             f.btEliminarBackgrounds.Click += BtEliminarBackgrounds_Click;
             f.btModificarBackgrounds.Click += BtModificarBackgrounds_Click;
             f.dgvBackgrounds.SelectionChanged += DgvBackgrounds_SelectionChanged;
+            //Conditions
+            f.dgvConditions.SelectionChanged += DgvConditions_SelectionChanged;
+            f.btInsertarConditions.Click += BtInsertarConditions_Click;
+            f.btBuscarConditions.Click += BtBuscarConditions_Click;
+            f.btEliminarConditions.Click += BtEliminarConditions_Click;
+            f.btModificarConditions.Click += BtModificarConditions_Click;
         }
 
         //AbilityScore
@@ -793,8 +805,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
-
 
         //private void BtInsertarClasses_Click(object? sender, EventArgs e)
         //{
@@ -1458,5 +1468,120 @@ namespace DnDDesktop.Controllers
             }
 
         }
+
+        //Conditions
+        private void DgvConditions_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvConditions.CurrentRow;
+            if (row != null)
+            {
+                Conditions condition = (Conditions)row.DataBoundItem;
+                f.tbIndexConditions.Text = condition.Index;
+                f.tbNameConditions.Text = condition.Name;
+                f.rtbDescriptionConditions.Text = condition.Desc.FirstOrDefault();
+            }
+        }
+        private void BtBuscarConditions_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarConditions.Text))
+                {
+                    string idBuscar = conditions.Where(a => a.Index.Equals(f.tbFiltrarConditions.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        Conditions conditions = conditionsRepository.GetCondition(idBuscar);
+                        f.tbIndexConditions.Text = conditions.Index;
+                        f.tbNameConditions.Text = conditions.Name;
+                        f.rtbDescriptionConditions.Text = conditions.Desc.FirstOrDefault();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtInsertarConditions_Click(object? sender, EventArgs e)
+        {
+            Conditions conditions = new Conditions();
+            string index = f.tbIndexConditions.Text;
+            string name = f.tbNameConditions.Text;
+            string[] des = new string[] { f.rtbDescriptionConditions.Text };
+
+            if (!string.IsNullOrEmpty(index) != null && !string.IsNullOrEmpty(name) != null && des.Length > 0)
+            {
+                conditions.Index = index;
+                conditions.Name = name;
+                conditions.Desc = des;
+                conditionsRepository.CreateCondition(conditions);
+                LoadDataConditions();
+                MessageBox.Show("Conditions introducido");
+            }
+            else
+            {
+                MessageBox.Show("No puedes dejar espacios vacíos");
+            }
+        }
+        private void BtEliminarConditions_Click(object? sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(f.tbFiltrarConditions.Text))
+            {
+                string idBuscar = conditions.Where(a => a.Index.Equals(f.tbFiltrarConditions.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                if (idBuscar != null)
+                {
+                    conditionsRepository.DeleteCondition(idBuscar);
+                    MessageBox.Show(f.tbFiltrarConditions.Text + " eliminado");
+                    LoadDataConditions();
+                }
+                else
+                {
+                    MessageBox.Show("No existe una referencia con ese index");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+            }
+        }
+        private void BtModificarConditions_Click(object? sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(f.tbFiltrarConditions.Text))
+            {
+                string idBuscar = conditions.Where(a => a.Index.Equals(f.tbFiltrarConditions.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                if (idBuscar != null)
+                {
+                    Conditions conditions = conditionsRepository.GetCondition(idBuscar);
+                    conditions.Index = f.tbIndexConditions.Text;
+                    conditions.Name = f.tbNameConditions.Text;
+                    conditions.Desc = new string[] { f.rtbDescriptionConditions.Text };
+                    conditionsRepository.UpdateCondition(conditions);
+                    MessageBox.Show("Modificado correctamente");
+                    LoadDataConditions();
+                }
+                else
+                {
+                    MessageBox.Show("No existe una referencia con ese index");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+            }
+        }
+
+
+
+
     }
 }

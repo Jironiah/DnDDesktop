@@ -13,6 +13,7 @@ namespace DnDDesktop.Controllers
         AlignmentsRepository alignmentsRepository = new AlignmentsRepository();
         WeaponPropertiesRepository weaponPropertiesRepository = new WeaponPropertiesRepository();
         ClassesRepository classesRepository = new ClassesRepository();
+        BackgroundsRepository backgroundsRepository = new BackgroundsRepository();
 
         //Listas
 
@@ -38,6 +39,8 @@ namespace DnDDesktop.Controllers
         List<StartingEquipmentOptionClasses> listaclassesStartingEquipmentOption = new List<StartingEquipmentOptionClasses>();
         List<From> listaclassesSubclasses = new List<From>();
 
+        //Backgrounds
+        List<Background> backgrounds = new List<Background>();
         public Controlador()
         {
             LoadData();
@@ -51,6 +54,7 @@ namespace DnDDesktop.Controllers
             LoadDataAlignments();
             LoadDataWeaponProperties();
             LoadDataClasses();
+            LoadDataBackgrounds();
         }
 
         private void LoadDataAbilityScore()
@@ -87,7 +91,11 @@ namespace DnDDesktop.Controllers
             listaclassesStartingEquipmentOption = classesRepository.GetClasses().SelectMany(a => a.StartingEquipmentOption).ToList();
             listaclassesSubclasses = classesRepository.GetClasses().SelectMany(a => a.Subclasses).ToList();
         }
-
+        private void LoadDataBackgrounds()
+        {
+            backgrounds = backgroundsRepository.GetBackgrounds();
+            f.dgvBackgrounds.DataSource = backgrounds;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -116,6 +124,13 @@ namespace DnDDesktop.Controllers
             f.btEliminarClasses.Click += BtEliminarClasses_Click;
             f.btModificarClasses.Click += BtModificarClasses_Click;
             f.dgvClasses.SelectionChanged += DgvClasses_SelectionChanged;
+            //Backgrounds
+            f.btInsertarBackgrounds.Click += BtInsertarBackgrounds_Click;
+            f.btInsertarBackgrounds.MouseUp += BtInsertarBackgrounds_MouseUp;
+            f.btBuscarBackgrounds.Click += BtBuscarBackgrounds_Click;
+            f.btEliminarBackgrounds.Click += BtEliminarBackgrounds_Click;
+            f.btModificarBackgrounds.Click += BtModificarBackgrounds_Click;
+            f.dgvBackgrounds.SelectionChanged += DgvBackgrounds_SelectionChanged;
         }
 
         //AbilityScore
@@ -1132,6 +1147,52 @@ namespace DnDDesktop.Controllers
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        //Backgrounds
+        private void DgvBackgrounds_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvBackgrounds.CurrentRow;
+            if (row != null)
+            {
+                Background background = (Background)row.DataBoundItem;
+                f.tbIndexBackgrounds.Text = background.Index;
+                f.tbNameBackgrounds.Text = background.Name;
+                f.tbLanguageOptionsBackgrounds.Text = background.LanguageOptions.ToString();
+                f.cbPersonalityTraitsBackgrounds.DataSource = background.PersonalityTraits.From;
+                f.cbStartingEquipmentBackgrounds.DataSource = background.StartingEquipment;
+                f.cbStartingEquipmentOptionsBackgrounds.DataSource = background.StartingEquipmentOption;
+                f.cbStartingProficienciesBackgrounds.DataSource = background.StartingProficiencies;
+                f.cbBondsBackgrounds.DataSource = background.Bonds.From;
+                f.cbFeatureBackgrounds.DataSource = background.Feature.Description;
+                f.cbFlawsBackgrounds.DataSource = background.Flaws.From;
+                f.cbIdealsBackgrounds.DataSource = background.Ideals.From;
+            }
+        }
+
+        private void BtModificarBackgrounds_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtEliminarBackgrounds_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtBuscarBackgrounds_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtInsertarBackgrounds_MouseUp(object? sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtInsertarBackgrounds_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

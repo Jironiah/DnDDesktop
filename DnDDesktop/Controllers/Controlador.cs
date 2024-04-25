@@ -94,7 +94,11 @@ namespace DnDDesktop.Controllers
         private void LoadDataBackgrounds()
         {
             backgrounds = backgroundsRepository.GetBackgrounds();
-            f.dgvBackgrounds.DataSource = backgrounds;
+            f.dgvBackgrounds.DataSource = backgrounds.Select(a => new BackgroundsDAO(a)).ToList();
+            f.dgvBackgrounds.Columns["ideals"].Visible = false;
+            f.dgvBackgrounds.Columns["startingEquipmentEquipment"].Visible = false;
+            f.dgvBackgrounds.Columns["startingEquipmentOptionsFrom"].Visible = false;
+            f.dgvBackgrounds.Columns["startingEquipmentOptionsType"].Visible = false;
         }
         private void InitListeners()
         {
@@ -1155,44 +1159,304 @@ namespace DnDDesktop.Controllers
             DataGridViewRow row = f.dgvBackgrounds.CurrentRow;
             if (row != null)
             {
-                Background background = (Background)row.DataBoundItem;
-                f.tbIndexBackgrounds.Text = background.Index;
-                f.tbNameBackgrounds.Text = background.Name;
-                f.tbLanguageOptionsBackgrounds.Text = background.LanguageOptions.ToString();
-                f.cbPersonalityTraitsBackgrounds.DataSource = background.PersonalityTraits.From;
-                f.cbStartingEquipmentBackgrounds.DataSource = background.StartingEquipment;
-                f.cbStartingEquipmentOptionsBackgrounds.DataSource = background.StartingEquipmentOption;
-                f.cbStartingProficienciesBackgrounds.DataSource = background.StartingProficiencies;
-                f.cbBondsBackgrounds.DataSource = background.Bonds.From;
-                f.cbFeatureBackgrounds.DataSource = background.Feature.Description;
-                f.cbFlawsBackgrounds.DataSource = background.Flaws.From;
-                f.cbIdealsBackgrounds.DataSource = background.Ideals.From;
+                BackgroundsDAO backgroundsDAO = (BackgroundsDAO)row.DataBoundItem;
+
+                f.tbIndexBackgrounds.Text = backgroundsDAO.index;
+                f.tbNameBackgrounds.Text = backgroundsDAO.name;
+                f.tbLanguageOptionsBackgrounds.Text = backgroundsDAO.languageOptions.ToString();
+
+                ChooseFrom personalityTraits = new ChooseFrom();
+                personalityTraits.From = backgroundsDAO.personalityTraitsFrom;
+                personalityTraits.Choose = backgroundsDAO.personalityTraitsChoose;
+                List<ChooseFrom> añadirpersonalityTraits = new List<ChooseFrom>();
+                añadirpersonalityTraits.Add(personalityTraits);
+                f.cbPersonalityTraitsBackgrounds.DataSource = añadirpersonalityTraits;
+                f.cbPersonalityTraitsBackgrounds.DisplayMember = "Choose";
+
+                StartingEquipmentBa startingEquipment = new StartingEquipmentBa();
+                startingEquipment.Equipment = backgroundsDAO.startingEquipmentEquipment;
+                startingEquipment.Quantity = backgroundsDAO.startingEquipmentQuantity;
+                List<StartingEquipmentBa> añadirstartingEquipment = new List<StartingEquipmentBa>();
+                añadirstartingEquipment.Add(startingEquipment);
+                f.cbStartingEquipmentBackgrounds.DataSource = añadirstartingEquipment;
+                f.cbStartingEquipmentBackgrounds.DisplayMember = "Quantity";
+
+                StartingEquipmentOptionBa startingEquipmentOptionBa = new StartingEquipmentOptionBa();
+                startingEquipmentOptionBa.Choose = backgroundsDAO.startingEquipmentOptionsChoose;
+                startingEquipmentOptionBa.From = backgroundsDAO.startingEquipmentOptionsFrom;
+                startingEquipmentOptionBa.Type = backgroundsDAO.startingEquipmentOptionsType;
+                List<StartingEquipmentOptionBa> añadirStartingEquipmentOptionBa = new List<StartingEquipmentOptionBa>();
+                añadirStartingEquipmentOptionBa.Add(startingEquipmentOptionBa);
+                f.cbStartingEquipmentOptionsBackgrounds.DataSource = añadirStartingEquipmentOptionBa;
+                f.cbStartingEquipmentOptionsBackgrounds.DisplayMember = "Choose";
+
+                From startingProficiencies = new From();
+                startingProficiencies.Index = backgroundsDAO.startingProficienciesIndex;
+                startingProficiencies.Name = backgroundsDAO.startingProficienciesName;
+                List<From> añadirStartingProficiencies = new List<From>();
+                añadirStartingProficiencies.Add(startingProficiencies);
+                f.cbStartingProficienciesBackgrounds.DataSource = añadirStartingProficiencies;
+                f.cbStartingProficienciesBackgrounds.DisplayMember = "Name";
+
+                ChooseFrom bonds = new ChooseFrom();
+                bonds.Choose = backgroundsDAO.bondsChoose;
+                bonds.From = backgroundsDAO.bondsFrom;
+                List<ChooseFrom> añadirBonds = new List<ChooseFrom>();
+                añadirBonds.Add(bonds);
+                f.cbBondsBackgrounds.DataSource = añadirBonds;
+                f.cbBondsBackgrounds.DisplayMember = "Choose";
+
+                FeatureBackground features = new FeatureBackground();
+                features.Description = backgroundsDAO.featureDesc;
+                features.Name = backgroundsDAO.featureName;
+                List<FeatureBackground> añadirFeatures = new List<FeatureBackground>();
+                añadirFeatures.Add(features);
+                f.cbFeatureBackgrounds.DataSource = añadirFeatures;
+                f.cbFeatureBackgrounds.DisplayMember = "Name";
+
+                ChooseFrom flaws = new ChooseFrom();
+                flaws.Choose = backgroundsDAO.flawsChoose;
+                flaws.From = backgroundsDAO.flawsFrom;
+                List<ChooseFrom> añadirFlaws = new List<ChooseFrom>();
+                añadirFlaws.Add(flaws);
+                f.cbFlawsBackgrounds.DataSource = añadirFlaws;
+                f.cbFlawsBackgrounds.DisplayMember = "Choose";
+
+                IdealsBackground ideals = new IdealsBackground();
+                List<IdealsBackground> añadirIdeals = new List<IdealsBackground>();
+                ideals = backgroundsDAO.ideals;
+                añadirIdeals.Add(ideals);
+                f.cbIdealsBackgrounds.DataSource = añadirIdeals;
+                f.cbIdealsBackgrounds.DisplayMember = "Choose";
             }
         }
 
         private void BtModificarBackgrounds_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Background background = new Background();
+            List<ChooseFrom> listPersonalityTraits = new List<ChooseFrom>();
+            List<StartingEquipmentBa> listStartingEquipmentBa = new List<StartingEquipmentBa>();
+            List<StartingEquipmentOptionBa> listStartingEquipmentOptionBa = new List<StartingEquipmentOptionBa>();
+            List<From> listStartingProficiencies = new List<From>();
+            List<ChooseFrom> listBonds = new List<ChooseFrom>();
+            List<FeatureBackground> listFeatureBackground = new List<FeatureBackground>();
+            List<ChooseFrom> listFlaws = new List<ChooseFrom>();
+            List<IdealsBackground> listIdealsBackground = new List<IdealsBackground>();
+
+            string index = f.tbIndexBackgrounds.Text;
+            string name = f.tbNameBackgrounds.Text;
+            int languageOptions = int.Parse(f.tbLanguageOptionsBackgrounds.Text);
+            ChooseFrom PersonalityTraits = (ChooseFrom)f.cbPersonalityTraitsBackgrounds.SelectedItem;
+            StartingEquipmentBa StartingEquipment = (StartingEquipmentBa)f.cbStartingEquipmentBackgrounds.SelectedItem;
+            StartingEquipmentOptionBa StartingEquipmentOptions = (StartingEquipmentOptionBa)f.cbStartingEquipmentOptionsBackgrounds.SelectedItem;
+            From StartingProficiencies = (From)f.cbStartingProficienciesBackgrounds.SelectedItem;
+            ChooseFrom Bonds = (ChooseFrom)f.cbBondsBackgrounds.SelectedItem;
+            FeatureBackground Feature = (FeatureBackground)f.cbFeatureBackgrounds.SelectedItem;
+            ChooseFrom Flaws = (ChooseFrom)f.cbFlawsBackgrounds.SelectedItem;
+            IdealsBackground Ideals = (IdealsBackground)f.cbIdealsBackgrounds.SelectedItem;
+
+            if (!string.IsNullOrEmpty(f.tbFiltrarBackgrounds.Text))
+            {
+                string idBuscar = backgrounds.Where(a => a.Index.Equals(f.tbFiltrarBackgrounds.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                if (idBuscar != null)
+                {
+                    if (PersonalityTraits != null && StartingEquipment != null && StartingEquipmentOptions != null && StartingProficiencies != null && Bonds != null && Feature != null &&
+                    Flaws != null && Ideals != null)
+                    {
+
+                        listStartingEquipmentBa.Add(StartingEquipment);
+                        listStartingEquipmentOptionBa.Add(StartingEquipmentOptions);
+                        listStartingProficiencies.Add(StartingProficiencies);
+                        listBonds.Add(Bonds);
+                        listFeatureBackground.Add(Feature);
+                        listFlaws.Add(Flaws);
+                        listIdealsBackground.Add(Ideals);
+                        background.Id = idBuscar;
+                        background.Index = index;
+                        background.Name = name;
+                        background.LanguageOptions = languageOptions;
+                        background.PersonalityTraits = PersonalityTraits;
+                        background.StartingEquipment = listStartingEquipmentBa.ToArray();
+                        background.StartingEquipmentOption = listStartingEquipmentOptionBa.ToArray();
+                        background.StartingProficiencies = listStartingProficiencies;
+                        background.Bonds = Bonds;
+                        background.Feature = Feature;
+                        background.Flaws = Flaws;
+                        background.Ideals = Ideals;
+
+                        backgroundsRepository.UpdateBackground(background);
+                        MessageBox.Show("Background introducido");
+                        LoadDataBackgrounds();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("No existe una referencia con ese index");
+                }
+
+            }
+            {
+                MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+            }
+
         }
 
         private void BtEliminarBackgrounds_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarBackgrounds.Text))
+                {
+                    string idBuscar = backgrounds.Where(a => a.Index.Equals(f.tbFiltrarBackgrounds.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        backgroundsRepository.DeleteBackground(idBuscar);
+                        MessageBox.Show(f.tbFiltrarBackgrounds.Text.ToString() + " eliminado");
+                        LoadDataBackgrounds();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
 
         private void BtBuscarBackgrounds_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarBackgrounds.Text))
+                {
+                    string idBuscar = backgrounds.Where(a => a.Index.Equals(f.tbFiltrarBackgrounds.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Background newBackground = backgroundsRepository.GetBackground(idBuscar.ToString());
+                        f.tbIndexBackgrounds.Text = newBackground.Index;
+                        f.tbNameBackgrounds.Text = newBackground.Name;
+                        f.tbLanguageOptionsBackgrounds.Text = newBackground.LanguageOptions.ToString();
+
+                        List<ChooseFrom> listPersonalityTraits = new List<ChooseFrom>();
+                        List<StartingEquipmentBa> listStartingEquipmentBa = new List<StartingEquipmentBa>();
+                        List<StartingEquipmentOptionBa> listStartingEquipmentOptionBa = new List<StartingEquipmentOptionBa>();
+                        List<List<From>> listStartingProficiencies = new List<List<From>>();
+                        List<ChooseFrom> listBonds = new List<ChooseFrom>();
+                        List<FeatureBackground> listFeatureBackground = new List<FeatureBackground>();
+                        List<ChooseFrom> listFlaws = new List<ChooseFrom>();
+                        List<IdealsBackground> listIdealsBackground = new List<IdealsBackground>();
+
+                        listPersonalityTraits.Add(newBackground.PersonalityTraits);
+                        listStartingEquipmentBa.Add(newBackground.StartingEquipment.FirstOrDefault());
+                        listStartingEquipmentOptionBa.Add(newBackground.StartingEquipmentOption.FirstOrDefault());
+                        listStartingProficiencies.Add(newBackground.StartingProficiencies);
+                        listBonds.Add(newBackground.Bonds);
+                        listFeatureBackground.Add(newBackground.Feature);
+                        listFlaws.Add(newBackground.Flaws);
+                        listIdealsBackground.Add(newBackground.Ideals);
+
+                        f.cbPersonalityTraitsBackgrounds.DataSource = listPersonalityTraits;
+                        f.cbStartingEquipmentBackgrounds.DataSource = listStartingEquipmentBa;
+                        f.cbStartingEquipmentOptionsBackgrounds.DataSource = listStartingEquipmentOptionBa;
+                        f.cbStartingProficienciesBackgrounds.DataSource = listStartingProficiencies;
+                        f.cbBondsBackgrounds.DataSource = listBonds;
+                        f.cbFeatureBackgrounds.DataSource = listFeatureBackground;
+                        f.cbFlawsBackgrounds.DataSource = listFlaws;
+                        f.cbIdealsBackgrounds.DataSource = listIdealsBackground;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
 
         private void BtInsertarBackgrounds_MouseUp(object? sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void BtInsertarBackgrounds_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Background background = new Background();
+            List<ChooseFrom> listPersonalityTraits = new List<ChooseFrom>();
+            List<StartingEquipmentBa> listStartingEquipmentBa = new List<StartingEquipmentBa>();
+            List<StartingEquipmentOptionBa> listStartingEquipmentOptionBa = new List<StartingEquipmentOptionBa>();
+            List<From> listStartingProficiencies = new List<From>();
+            List<ChooseFrom> listBonds = new List<ChooseFrom>();
+            List<FeatureBackground> listFeatureBackground = new List<FeatureBackground>();
+            List<ChooseFrom> listFlaws = new List<ChooseFrom>();
+            List<IdealsBackground> listIdealsBackground = new List<IdealsBackground>();
+
+            string index = f.tbIndexBackgrounds.Text;
+            string name = f.tbNameBackgrounds.Text;
+            int languageOptions = int.Parse(f.tbLanguageOptionsBackgrounds.Text);
+            ChooseFrom PersonalityTraits = (ChooseFrom)f.cbPersonalityTraitsBackgrounds.SelectedItem;
+            StartingEquipmentBa StartingEquipment = (StartingEquipmentBa)f.cbStartingEquipmentBackgrounds.SelectedItem;
+            StartingEquipmentOptionBa StartingEquipmentOptions = (StartingEquipmentOptionBa)f.cbStartingEquipmentOptionsBackgrounds.SelectedItem;
+            From StartingProficiencies = (From)f.cbStartingProficienciesBackgrounds.SelectedItem;
+            ChooseFrom Bonds = (ChooseFrom)f.cbBondsBackgrounds.SelectedItem;
+            FeatureBackground Feature = (FeatureBackground)f.cbFeatureBackgrounds.SelectedItem;
+            ChooseFrom Flaws = (ChooseFrom)f.cbFlawsBackgrounds.SelectedItem;
+            IdealsBackground Ideals = (IdealsBackground)f.cbIdealsBackgrounds.SelectedItem;
+
+            if (PersonalityTraits != null && StartingEquipment != null && StartingEquipmentOptions != null && StartingProficiencies != null && Bonds != null && Feature != null &&
+                Flaws != null && Ideals != null)
+            {
+
+                //listPersonalityTraits.Add(newBackground.PersonalityTraits);
+                listStartingEquipmentBa.Add(StartingEquipment);
+                listStartingEquipmentOptionBa.Add(StartingEquipmentOptions);
+                listStartingProficiencies.Add(StartingProficiencies);
+                listBonds.Add(Bonds);
+                listFeatureBackground.Add(Feature);
+                listFlaws.Add(Flaws);
+                listIdealsBackground.Add(Ideals);
+                background.Index = index;
+                background.Name = name;
+                background.LanguageOptions = languageOptions;
+                background.PersonalityTraits = PersonalityTraits;
+                background.StartingEquipment = listStartingEquipmentBa.ToArray();
+                background.StartingEquipmentOption = listStartingEquipmentOptionBa.ToArray();
+                background.StartingProficiencies = listStartingProficiencies;
+                background.Bonds = Bonds;
+                background.Feature = Feature;
+                background.Flaws = Flaws;
+                background.Ideals = Ideals;
+
+                backgroundsRepository.CreateBackground(background);
+                MessageBox.Show("Background introducido");
+                LoadDataBackgrounds();
+            }
+            else
+            {
+                MessageBox.Show("No puedes dejar espacios vacíos");
+            }
+
         }
     }
 }

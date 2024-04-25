@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class BackgroundsRepository
     {
-        string ws1 = "https://localhost:44349/api/Background/";
+        string ws1 = "https://localhost:7153/api/Background/";
 
         public List<Background> GetBackgrounds()
         {

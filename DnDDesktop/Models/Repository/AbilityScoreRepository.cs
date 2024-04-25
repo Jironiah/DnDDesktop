@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class AbilityScoreRepository
     {
-        string urlAbilityScore = "https://localhost:44349/api/AbilityScore/";
+        string urlAbilityScore = "https://localhost:7153/api/AbilityScore/";
 
         public List<AbilityScore> GetAbilityScores()
         {

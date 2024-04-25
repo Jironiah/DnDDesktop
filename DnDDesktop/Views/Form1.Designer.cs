@@ -157,7 +157,6 @@
             DamageType = new TabPage();
             rtbDescriptionDamageType = new RichTextBox();
             label40 = new Label();
-            btInsertarDamageType = new Button();
             label35 = new Label();
             label39 = new Label();
             tbIndexDamageType = new TextBox();
@@ -468,6 +467,12 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
+            btEliminarDamageType = new Button();
+            btModificarDamageType = new Button();
+            btBuscarDamageType = new Button();
+            tbFiltrarDamageType = new TextBox();
+            btInsertarDamageType = new Button();
+            dgvDamageType = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -503,6 +508,7 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageType).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -1845,9 +1851,14 @@
             // 
             // DamageType
             // 
+            DamageType.Controls.Add(btEliminarDamageType);
+            DamageType.Controls.Add(btModificarDamageType);
+            DamageType.Controls.Add(btBuscarDamageType);
+            DamageType.Controls.Add(tbFiltrarDamageType);
+            DamageType.Controls.Add(btInsertarDamageType);
+            DamageType.Controls.Add(dgvDamageType);
             DamageType.Controls.Add(rtbDescriptionDamageType);
             DamageType.Controls.Add(label40);
-            DamageType.Controls.Add(btInsertarDamageType);
             DamageType.Controls.Add(label35);
             DamageType.Controls.Add(label39);
             DamageType.Controls.Add(tbIndexDamageType);
@@ -1862,7 +1873,7 @@
             // 
             // rtbDescriptionDamageType
             // 
-            rtbDescriptionDamageType.Location = new Point(381, 44);
+            rtbDescriptionDamageType.Location = new Point(428, 44);
             rtbDescriptionDamageType.Margin = new Padding(3, 4, 3, 4);
             rtbDescriptionDamageType.Name = "rtbDescriptionDamageType";
             rtbDescriptionDamageType.Size = new Size(493, 127);
@@ -1872,20 +1883,11 @@
             // label40
             // 
             label40.AutoSize = true;
-            label40.Location = new Point(381, 20);
+            label40.Location = new Point(428, 20);
             label40.Name = "label40";
             label40.Size = new Size(85, 20);
             label40.TabIndex = 83;
             label40.Text = "Description";
-            // 
-            // btInsertarDamageType
-            // 
-            btInsertarDamageType.Location = new Point(1174, 456);
-            btInsertarDamageType.Name = "btInsertarDamageType";
-            btInsertarDamageType.Size = new Size(94, 35);
-            btInsertarDamageType.TabIndex = 42;
-            btInsertarDamageType.Text = "Instertar";
-            btInsertarDamageType.UseVisualStyleBackColor = true;
             // 
             // label35
             // 
@@ -1899,7 +1901,7 @@
             // label39
             // 
             label39.AutoSize = true;
-            label39.Location = new Point(86, 20);
+            label39.Location = new Point(133, 20);
             label39.Name = "label39";
             label39.Size = new Size(49, 20);
             label39.TabIndex = 40;
@@ -1910,12 +1912,12 @@
             tbIndexDamageType.Location = new Point(21, 44);
             tbIndexDamageType.Margin = new Padding(3, 4, 3, 4);
             tbIndexDamageType.Name = "tbIndexDamageType";
-            tbIndexDamageType.Size = new Size(41, 27);
+            tbIndexDamageType.Size = new Size(72, 27);
             tbIndexDamageType.TabIndex = 38;
             // 
             // tbNameDamageType
             // 
-            tbNameDamageType.Location = new Point(89, 44);
+            tbNameDamageType.Location = new Point(136, 44);
             tbNameDamageType.Margin = new Padding(3, 4, 3, 4);
             tbNameDamageType.Name = "tbNameDamageType";
             tbNameDamageType.Size = new Size(252, 27);
@@ -4924,6 +4926,64 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
+            // btEliminarDamageType
+            // 
+            btEliminarDamageType.Location = new Point(1540, 842);
+            btEliminarDamageType.Name = "btEliminarDamageType";
+            btEliminarDamageType.Size = new Size(94, 29);
+            btEliminarDamageType.TabIndex = 114;
+            btEliminarDamageType.Text = "Eliminar";
+            btEliminarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // btModificarDamageType
+            // 
+            btModificarDamageType.Location = new Point(1441, 842);
+            btModificarDamageType.Name = "btModificarDamageType";
+            btModificarDamageType.Size = new Size(94, 29);
+            btModificarDamageType.TabIndex = 113;
+            btModificarDamageType.Text = "Modificar";
+            btModificarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarDamageType
+            // 
+            btBuscarDamageType.Location = new Point(1441, 795);
+            btBuscarDamageType.Name = "btBuscarDamageType";
+            btBuscarDamageType.Size = new Size(194, 29);
+            btBuscarDamageType.TabIndex = 112;
+            btBuscarDamageType.Text = "Buscar por Index";
+            btBuscarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarDamageType
+            // 
+            tbFiltrarDamageType.Location = new Point(1309, 795);
+            tbFiltrarDamageType.Name = "tbFiltrarDamageType";
+            tbFiltrarDamageType.Size = new Size(125, 27);
+            tbFiltrarDamageType.TabIndex = 111;
+            // 
+            // btInsertarDamageType
+            // 
+            btInsertarDamageType.Location = new Point(1655, 839);
+            btInsertarDamageType.Name = "btInsertarDamageType";
+            btInsertarDamageType.Size = new Size(94, 35);
+            btInsertarDamageType.TabIndex = 110;
+            btInsertarDamageType.Text = "Insertar";
+            btInsertarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // dgvDamageType
+            // 
+            dgvDamageType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageType.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageType.Location = new Point(17, 385);
+            dgvDamageType.MultiSelect = false;
+            dgvDamageType.Name = "dgvDamageType";
+            dgvDamageType.ReadOnly = true;
+            dgvDamageType.RowHeadersWidth = 51;
+            dgvDamageType.RowTemplate.Height = 29;
+            dgvDamageType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageType.Size = new Size(474, 489);
+            dgvDamageType.TabIndex = 109;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -4991,6 +5051,7 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageType).EndInit();
             ResumeLayout(false);
         }
 
@@ -5266,7 +5327,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarDamageType;
         public Button btInsertarEquipment;
         public Button btInsertarEquipmentCategories;
         public Button btInsertarFeats;
@@ -5439,6 +5499,12 @@
         public TextBox tbFiltrarConditions;
         public Button btInsertarConditions;
         public DataGridView dgvConditions;
+        public Button btEliminarDamageType;
+        public Button btModificarDamageType;
+        public Button btBuscarDamageType;
+        public TextBox tbFiltrarDamageType;
+        public Button btInsertarDamageType;
+        public DataGridView dgvDamageType;
     }
 }
 

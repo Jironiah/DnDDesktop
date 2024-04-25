@@ -19,6 +19,7 @@ namespace DnDDesktop.Controllers
         ClassesRepository classesRepository = new ClassesRepository();
         BackgroundsRepository backgroundsRepository = new BackgroundsRepository();
         ConditionsRepository conditionsRepository = new ConditionsRepository();
+        DamageTypeRepository DamageTypeRepository = new DamageTypeRepository();
 
         //Listas
 
@@ -41,6 +42,10 @@ namespace DnDDesktop.Controllers
 
         //Conditions
         List<Conditions> conditions = new List<Conditions>();
+
+        //DamageType
+        List<DamageType> damageTypes = new List<DamageType>();
+
         public Controlador()
         {
             LoadData();
@@ -56,6 +61,7 @@ namespace DnDDesktop.Controllers
             LoadDataClasses();
             LoadDataBackgrounds();
             LoadDataConditions();
+            LoadDataDamageType();
         }
 
         private void LoadDataAbilityScore()
@@ -106,6 +112,11 @@ namespace DnDDesktop.Controllers
             conditions = conditionsRepository.GetConditions();
             f.dgvConditions.DataSource = conditions;
         }
+        private void LoadDataDamageType()
+        {
+            damageTypes = DamageTypeRepository.GetDamageTypes();
+            f.dgvDamageType.DataSource = damageTypes;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -147,6 +158,12 @@ namespace DnDDesktop.Controllers
             f.btBuscarConditions.Click += BtBuscarConditions_Click;
             f.btEliminarConditions.Click += BtEliminarConditions_Click;
             f.btModificarConditions.Click += BtModificarConditions_Click;
+            //DamageType
+            f.btBuscarDamageType.Click += BtBuscarDamageType_Click;
+            f.btInsertarDamageType.Click += BtInsertarDamageType_Click;
+            f.btModificarDamageType.Click += BtModificarDamageType_Click;
+            f.btEliminarDamageType.Click += BtEliminarDamageType_Click;
+            f.dgvDamageType.SelectionChanged += DgvDamageType_SelectionChanged;
         }
 
         //AbilityScore
@@ -1580,7 +1597,139 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        //DamageType
+        private void DgvDamageType_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvDamageType.CurrentRow;
+            if (row != null)
+            {
+                DamageType damageType = (DamageType)row.DataBoundItem;
+                f.tbIndexDamageType.Text = damageType.Index;
+                f.tbNameDamageType.Text = damageType.Name;
+                f.rtbDescriptionDamageType.Text = damageType.Description.FirstOrDefault();
+            }
+        }
+        private void BtInsertarDamageType_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                DamageType damageType = new DamageType();
+                string index = f.tbIndexDamageType.Text;
+                string name = f.tbNameDamageType.Text;
+                string[] description = new string[] { f.rtbDescriptionDamageType.Text };
 
+                if (!string.IsNullOrEmpty(index) != null && !string.IsNullOrEmpty(name) != null && description.Length > 0)
+                {
+                    damageType.Index = index;
+                    damageType.Name = name;
+                    damageType.Description = description;
+                    DamageTypeRepository.CreateDamageType(damageType);
+                    LoadDataDamageType();
+                    MessageBox.Show("DamageType introducido");
+                }
+                else
+                {
+                    MessageBox.Show("No puedes dejar espacios vacíos");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+
+        }
+        private void BtBuscarDamageType_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarDamageType.Text))
+                {
+                    string idBuscar = damageTypes.Where(a => a.Index.Equals(f.tbFiltrarDamageType.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        DamageType damageType = DamageTypeRepository.GetDamageType(idBuscar);
+                        f.tbIndexDamageType.Text = damageType.Index;
+                        f.tbNameDamageType.Text = damageType.Name;
+                        f.rtbDescriptionDamageType.Text = damageType.Description.FirstOrDefault();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarDamageType_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarDamageType.Text))
+                {
+                    string idBuscar = damageTypes.Where(a => a.Index.Equals(f.tbFiltrarDamageType.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        DamageTypeRepository.DeleteDamageType(idBuscar);
+                        MessageBox.Show(f.tbFiltrarDamageType.Text + " eliminado");
+                        LoadDataDamageType();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+
+        }
+        private void BtModificarDamageType_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarDamageType.Text))
+                {
+                    string idBuscar = damageTypes.Where(a => a.Index.Equals(f.tbFiltrarDamageType.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        DamageType damageType = DamageTypeRepository.GetDamageType(idBuscar);
+                        damageType.Index = f.tbIndexDamageType.Text;
+                        damageType.Name = f.tbNameDamageType.Text;
+                        damageType.Description = new string[] { f.rtbDescriptionDamageType.Text };
+                        DamageTypeRepository.UpdateDamageType(damageType);
+                        MessageBox.Show("Modificado correctamente");
+                        LoadDataDamageType();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+
+        }
 
 
     }

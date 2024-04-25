@@ -155,6 +155,12 @@
             tbIndexConditions = new TextBox();
             tbNameConditions = new TextBox();
             DamageType = new TabPage();
+            btEliminarDamageType = new Button();
+            btModificarDamageType = new Button();
+            btBuscarDamageType = new Button();
+            tbFiltrarDamageType = new TextBox();
+            btInsertarDamageType = new Button();
+            dgvDamageType = new DataGridView();
             rtbDescriptionDamageType = new RichTextBox();
             label40 = new Label();
             label35 = new Label();
@@ -162,14 +168,17 @@
             tbIndexDamageType = new TextBox();
             tbNameDamageType = new TextBox();
             Equipment = new TabPage();
+            btEliminarEquipment = new Button();
+            btModificarEquipment = new Button();
+            btBuscarEquipment = new Button();
+            tbFiltrarEquipment = new TextBox();
             btInsertarEquipment = new Button();
+            dgvEquipment = new DataGridView();
             cbTwoHandedDamageEquipment = new ComboBox();
-            cbThrowRangeEquipment = new ComboBox();
             cbSpeedEquipment = new ComboBox();
             label63 = new Label();
             label62 = new Label();
             label61 = new Label();
-            cbRangeEquipment = new ComboBox();
             label49 = new Label();
             cbPropertiesEquipment = new ComboBox();
             label54 = new Label();
@@ -177,7 +186,6 @@
             label55 = new Label();
             cbEquipmentCategoryEquipment = new ComboBox();
             label56 = new Label();
-            cbDamageEquipment = new ComboBox();
             label57 = new Label();
             dbCostEquipment = new ComboBox();
             label58 = new Label();
@@ -207,10 +215,8 @@
             tbSpecialEquipment = new TextBox();
             Capacity = new Label();
             tbCapacityEquipment = new TextBox();
-            label42 = new Label();
             label43 = new Label();
             label44 = new Label();
-            tbArmorClassEquipment = new TextBox();
             tbIndexEquipment = new TextBox();
             tbNameEquipment = new TextBox();
             EquipmentCategories = new TabPage();
@@ -467,12 +473,11 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btEliminarDamageType = new Button();
-            btModificarDamageType = new Button();
-            btBuscarDamageType = new Button();
-            tbFiltrarDamageType = new TextBox();
-            btInsertarDamageType = new Button();
-            dgvDamageType = new DataGridView();
+            dgvArmorClassEquipment = new DataGridView();
+            label42 = new Label();
+            dgvDamageEquipment = new DataGridView();
+            dgvRangeEquipment = new DataGridView();
+            dgvThrowRangeEquipment = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -493,7 +498,9 @@
             Conditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvConditions).BeginInit();
             DamageType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageType).BeginInit();
             Equipment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEquipment).BeginInit();
             EquipmentCategories.SuspendLayout();
             Feats.SuspendLayout();
             Features.SuspendLayout();
@@ -508,7 +515,10 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageType).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvArmorClassEquipment).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageEquipment).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRangeEquipment).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvThrowRangeEquipment).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -1871,6 +1881,64 @@
             DamageType.Text = "DamageType";
             DamageType.UseVisualStyleBackColor = true;
             // 
+            // btEliminarDamageType
+            // 
+            btEliminarDamageType.Location = new Point(1540, 842);
+            btEliminarDamageType.Name = "btEliminarDamageType";
+            btEliminarDamageType.Size = new Size(94, 29);
+            btEliminarDamageType.TabIndex = 114;
+            btEliminarDamageType.Text = "Eliminar";
+            btEliminarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // btModificarDamageType
+            // 
+            btModificarDamageType.Location = new Point(1441, 842);
+            btModificarDamageType.Name = "btModificarDamageType";
+            btModificarDamageType.Size = new Size(94, 29);
+            btModificarDamageType.TabIndex = 113;
+            btModificarDamageType.Text = "Modificar";
+            btModificarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarDamageType
+            // 
+            btBuscarDamageType.Location = new Point(1441, 795);
+            btBuscarDamageType.Name = "btBuscarDamageType";
+            btBuscarDamageType.Size = new Size(194, 29);
+            btBuscarDamageType.TabIndex = 112;
+            btBuscarDamageType.Text = "Buscar por Index";
+            btBuscarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarDamageType
+            // 
+            tbFiltrarDamageType.Location = new Point(1309, 795);
+            tbFiltrarDamageType.Name = "tbFiltrarDamageType";
+            tbFiltrarDamageType.Size = new Size(125, 27);
+            tbFiltrarDamageType.TabIndex = 111;
+            // 
+            // btInsertarDamageType
+            // 
+            btInsertarDamageType.Location = new Point(1655, 839);
+            btInsertarDamageType.Name = "btInsertarDamageType";
+            btInsertarDamageType.Size = new Size(94, 35);
+            btInsertarDamageType.TabIndex = 110;
+            btInsertarDamageType.Text = "Insertar";
+            btInsertarDamageType.UseVisualStyleBackColor = true;
+            // 
+            // dgvDamageType
+            // 
+            dgvDamageType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageType.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageType.Location = new Point(17, 385);
+            dgvDamageType.MultiSelect = false;
+            dgvDamageType.Name = "dgvDamageType";
+            dgvDamageType.ReadOnly = true;
+            dgvDamageType.RowHeadersWidth = 51;
+            dgvDamageType.RowTemplate.Height = 29;
+            dgvDamageType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageType.Size = new Size(474, 489);
+            dgvDamageType.TabIndex = 109;
+            // 
             // rtbDescriptionDamageType
             // 
             rtbDescriptionDamageType.Location = new Point(428, 44);
@@ -1925,14 +1993,22 @@
             // 
             // Equipment
             // 
+            Equipment.Controls.Add(dgvThrowRangeEquipment);
+            Equipment.Controls.Add(dgvRangeEquipment);
+            Equipment.Controls.Add(dgvDamageEquipment);
+            Equipment.Controls.Add(label42);
+            Equipment.Controls.Add(dgvArmorClassEquipment);
+            Equipment.Controls.Add(btEliminarEquipment);
+            Equipment.Controls.Add(btModificarEquipment);
+            Equipment.Controls.Add(btBuscarEquipment);
+            Equipment.Controls.Add(tbFiltrarEquipment);
             Equipment.Controls.Add(btInsertarEquipment);
+            Equipment.Controls.Add(dgvEquipment);
             Equipment.Controls.Add(cbTwoHandedDamageEquipment);
-            Equipment.Controls.Add(cbThrowRangeEquipment);
             Equipment.Controls.Add(cbSpeedEquipment);
             Equipment.Controls.Add(label63);
             Equipment.Controls.Add(label62);
             Equipment.Controls.Add(label61);
-            Equipment.Controls.Add(cbRangeEquipment);
             Equipment.Controls.Add(label49);
             Equipment.Controls.Add(cbPropertiesEquipment);
             Equipment.Controls.Add(label54);
@@ -1940,7 +2016,6 @@
             Equipment.Controls.Add(label55);
             Equipment.Controls.Add(cbEquipmentCategoryEquipment);
             Equipment.Controls.Add(label56);
-            Equipment.Controls.Add(cbDamageEquipment);
             Equipment.Controls.Add(label57);
             Equipment.Controls.Add(dbCostEquipment);
             Equipment.Controls.Add(label58);
@@ -1970,10 +2045,8 @@
             Equipment.Controls.Add(tbSpecialEquipment);
             Equipment.Controls.Add(Capacity);
             Equipment.Controls.Add(tbCapacityEquipment);
-            Equipment.Controls.Add(label42);
             Equipment.Controls.Add(label43);
             Equipment.Controls.Add(label44);
-            Equipment.Controls.Add(tbArmorClassEquipment);
             Equipment.Controls.Add(tbIndexEquipment);
             Equipment.Controls.Add(tbNameEquipment);
             Equipment.Location = new Point(4, 29);
@@ -1985,37 +2058,77 @@
             Equipment.UseVisualStyleBackColor = true;
             Equipment.Click += Equipment_Click;
             // 
+            // btEliminarEquipment
+            // 
+            btEliminarEquipment.Location = new Point(1544, 865);
+            btEliminarEquipment.Name = "btEliminarEquipment";
+            btEliminarEquipment.Size = new Size(94, 29);
+            btEliminarEquipment.TabIndex = 136;
+            btEliminarEquipment.Text = "Eliminar";
+            btEliminarEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btModificarEquipment
+            // 
+            btModificarEquipment.Location = new Point(1445, 865);
+            btModificarEquipment.Name = "btModificarEquipment";
+            btModificarEquipment.Size = new Size(94, 29);
+            btModificarEquipment.TabIndex = 135;
+            btModificarEquipment.Text = "Modificar";
+            btModificarEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarEquipment
+            // 
+            btBuscarEquipment.Location = new Point(1445, 818);
+            btBuscarEquipment.Name = "btBuscarEquipment";
+            btBuscarEquipment.Size = new Size(194, 29);
+            btBuscarEquipment.TabIndex = 134;
+            btBuscarEquipment.Text = "Buscar por Index";
+            btBuscarEquipment.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarEquipment
+            // 
+            tbFiltrarEquipment.Location = new Point(1313, 818);
+            tbFiltrarEquipment.Name = "tbFiltrarEquipment";
+            tbFiltrarEquipment.Size = new Size(125, 27);
+            tbFiltrarEquipment.TabIndex = 133;
+            // 
             // btInsertarEquipment
             // 
-            btInsertarEquipment.Location = new Point(1182, 459);
+            btInsertarEquipment.Location = new Point(1659, 862);
             btInsertarEquipment.Name = "btInsertarEquipment";
             btInsertarEquipment.Size = new Size(94, 35);
-            btInsertarEquipment.TabIndex = 131;
-            btInsertarEquipment.Text = "Instertar";
+            btInsertarEquipment.TabIndex = 132;
+            btInsertarEquipment.Text = "Insertar";
             btInsertarEquipment.UseVisualStyleBackColor = true;
+            // 
+            // dgvEquipment
+            // 
+            dgvEquipment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvEquipment.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvEquipment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEquipment.Location = new Point(21, 408);
+            dgvEquipment.MultiSelect = false;
+            dgvEquipment.Name = "dgvEquipment";
+            dgvEquipment.ReadOnly = true;
+            dgvEquipment.RowHeadersWidth = 51;
+            dgvEquipment.RowTemplate.Height = 29;
+            dgvEquipment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEquipment.Size = new Size(474, 489);
+            dgvEquipment.TabIndex = 131;
             // 
             // cbTwoHandedDamageEquipment
             // 
             cbTwoHandedDamageEquipment.FormattingEnabled = true;
-            cbTwoHandedDamageEquipment.Location = new Point(306, 380);
+            cbTwoHandedDamageEquipment.Location = new Point(1088, 392);
             cbTwoHandedDamageEquipment.Margin = new Padding(3, 4, 3, 4);
             cbTwoHandedDamageEquipment.Name = "cbTwoHandedDamageEquipment";
             cbTwoHandedDamageEquipment.Size = new Size(121, 28);
             cbTwoHandedDamageEquipment.TabIndex = 130;
             // 
-            // cbThrowRangeEquipment
-            // 
-            cbThrowRangeEquipment.FormattingEnabled = true;
-            cbThrowRangeEquipment.Location = new Point(163, 380);
-            cbThrowRangeEquipment.Margin = new Padding(3, 4, 3, 4);
-            cbThrowRangeEquipment.Name = "cbThrowRangeEquipment";
-            cbThrowRangeEquipment.Size = new Size(121, 28);
-            cbThrowRangeEquipment.TabIndex = 129;
-            // 
             // cbSpeedEquipment
             // 
             cbSpeedEquipment.FormattingEnabled = true;
-            cbSpeedEquipment.Location = new Point(21, 381);
+            cbSpeedEquipment.Location = new Point(936, 392);
             cbSpeedEquipment.Margin = new Padding(3, 4, 3, 4);
             cbSpeedEquipment.Name = "cbSpeedEquipment";
             cbSpeedEquipment.Size = new Size(121, 28);
@@ -2024,7 +2137,7 @@
             // label63
             // 
             label63.AutoSize = true;
-            label63.Location = new Point(306, 345);
+            label63.Location = new Point(1088, 369);
             label63.Name = "label63";
             label63.Size = new Size(146, 20);
             label63.TabIndex = 127;
@@ -2033,7 +2146,7 @@
             // label62
             // 
             label62.AutoSize = true;
-            label62.Location = new Point(163, 347);
+            label62.Location = new Point(521, 385);
             label62.Name = "label62";
             label62.Size = new Size(92, 20);
             label62.TabIndex = 126;
@@ -2042,25 +2155,16 @@
             // label61
             // 
             label61.AutoSize = true;
-            label61.Location = new Point(17, 347);
+            label61.Location = new Point(936, 368);
             label61.Name = "label61";
             label61.Size = new Size(51, 20);
             label61.TabIndex = 125;
             label61.Text = "Speed";
             // 
-            // cbRangeEquipment
-            // 
-            cbRangeEquipment.FormattingEnabled = true;
-            cbRangeEquipment.Location = new Point(1087, 235);
-            cbRangeEquipment.Margin = new Padding(3, 4, 3, 4);
-            cbRangeEquipment.Name = "cbRangeEquipment";
-            cbRangeEquipment.Size = new Size(121, 28);
-            cbRangeEquipment.TabIndex = 124;
-            // 
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(1083, 211);
+            label49.Location = new Point(1313, 13);
             label49.Name = "label49";
             label49.Size = new Size(51, 20);
             label49.TabIndex = 123;
@@ -2069,7 +2173,7 @@
             // cbPropertiesEquipment
             // 
             cbPropertiesEquipment.FormattingEnabled = true;
-            cbPropertiesEquipment.Location = new Point(905, 235);
+            cbPropertiesEquipment.Location = new Point(1535, 558);
             cbPropertiesEquipment.Margin = new Padding(3, 4, 3, 4);
             cbPropertiesEquipment.Name = "cbPropertiesEquipment";
             cbPropertiesEquipment.Size = new Size(159, 28);
@@ -2078,7 +2182,7 @@
             // label54
             // 
             label54.AutoSize = true;
-            label54.Location = new Point(902, 211);
+            label54.Location = new Point(1532, 534);
             label54.Name = "label54";
             label54.Size = new Size(76, 20);
             label54.TabIndex = 121;
@@ -2087,7 +2191,7 @@
             // cbGearCategoryEquipment
             // 
             cbGearCategoryEquipment.FormattingEnabled = true;
-            cbGearCategoryEquipment.Location = new Point(762, 235);
+            cbGearCategoryEquipment.Location = new Point(1210, 659);
             cbGearCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
             cbGearCategoryEquipment.Name = "cbGearCategoryEquipment";
             cbGearCategoryEquipment.Size = new Size(121, 28);
@@ -2096,7 +2200,7 @@
             // label55
             // 
             label55.AutoSize = true;
-            label55.Location = new Point(759, 211);
+            label55.Location = new Point(1207, 635);
             label55.Name = "label55";
             label55.Size = new Size(100, 20);
             label55.TabIndex = 119;
@@ -2105,7 +2209,7 @@
             // cbEquipmentCategoryEquipment
             // 
             cbEquipmentCategoryEquipment.FormattingEnabled = true;
-            cbEquipmentCategoryEquipment.Location = new Point(619, 235);
+            cbEquipmentCategoryEquipment.Location = new Point(1058, 659);
             cbEquipmentCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
             cbEquipmentCategoryEquipment.Name = "cbEquipmentCategoryEquipment";
             cbEquipmentCategoryEquipment.Size = new Size(121, 28);
@@ -2114,25 +2218,16 @@
             // label56
             // 
             label56.AutoSize = true;
-            label56.Location = new Point(616, 211);
+            label56.Location = new Point(1055, 635);
             label56.Name = "label56";
             label56.Size = new Size(141, 20);
             label56.TabIndex = 117;
             label56.Text = "EquipmentCategory";
             // 
-            // cbDamageEquipment
-            // 
-            cbDamageEquipment.FormattingEnabled = true;
-            cbDamageEquipment.Location = new Point(449, 235);
-            cbDamageEquipment.Margin = new Padding(3, 4, 3, 4);
-            cbDamageEquipment.Name = "cbDamageEquipment";
-            cbDamageEquipment.Size = new Size(121, 28);
-            cbDamageEquipment.TabIndex = 116;
-            // 
             // label57
             // 
             label57.AutoSize = true;
-            label57.Location = new Point(446, 211);
+            label57.Location = new Point(923, 13);
             label57.Name = "label57";
             label57.Size = new Size(66, 20);
             label57.TabIndex = 115;
@@ -2195,7 +2290,7 @@
             // label41
             // 
             label41.AutoSize = true;
-            label41.Location = new Point(907, 111);
+            label41.Location = new Point(1353, 436);
             label41.Name = "label41";
             label41.Size = new Size(106, 20);
             label41.TabIndex = 104;
@@ -2204,7 +2299,7 @@
             // label45
             // 
             label45.AutoSize = true;
-            label45.Location = new Point(779, 111);
+            label45.Location = new Point(1488, 436);
             label45.Name = "label45";
             label45.Size = new Size(124, 20);
             label45.TabIndex = 103;
@@ -2213,7 +2308,7 @@
             // W
             // 
             W.AutoSize = true;
-            W.Location = new Point(1038, 111);
+            W.Location = new Point(1239, 535);
             W.Name = "W";
             W.Size = new Size(56, 20);
             W.TabIndex = 102;
@@ -2221,7 +2316,7 @@
             // 
             // tbWeaponRangeEquipment
             // 
-            tbWeaponRangeEquipment.Location = new Point(911, 135);
+            tbWeaponRangeEquipment.Location = new Point(1357, 460);
             tbWeaponRangeEquipment.Margin = new Padding(3, 4, 3, 4);
             tbWeaponRangeEquipment.Name = "tbWeaponRangeEquipment";
             tbWeaponRangeEquipment.Size = new Size(95, 27);
@@ -2229,7 +2324,7 @@
             // 
             // tbWeapongCategoryEquipment
             // 
-            tbWeapongCategoryEquipment.Location = new Point(782, 135);
+            tbWeapongCategoryEquipment.Location = new Point(1491, 460);
             tbWeapongCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
             tbWeapongCategoryEquipment.Name = "tbWeapongCategoryEquipment";
             tbWeapongCategoryEquipment.Size = new Size(100, 27);
@@ -2237,7 +2332,7 @@
             // 
             // tbWeightEquipment
             // 
-            tbWeightEquipment.Location = new Point(1041, 135);
+            tbWeightEquipment.Location = new Point(1242, 559);
             tbWeightEquipment.Margin = new Padding(3, 4, 3, 4);
             tbWeightEquipment.Name = "tbWeightEquipment";
             tbWeightEquipment.Size = new Size(252, 27);
@@ -2246,7 +2341,7 @@
             // label50
             // 
             label50.AutoSize = true;
-            label50.Location = new Point(501, 111);
+            label50.Location = new Point(940, 535);
             label50.Name = "label50";
             label50.Size = new Size(116, 20);
             label50.TabIndex = 98;
@@ -2254,7 +2349,7 @@
             // 
             // tbVehicleCategoryEquipment
             // 
-            tbVehicleCategoryEquipment.Location = new Point(504, 135);
+            tbVehicleCategoryEquipment.Location = new Point(943, 559);
             tbVehicleCategoryEquipment.Margin = new Padding(3, 4, 3, 4);
             tbVehicleCategoryEquipment.Name = "tbVehicleCategoryEquipment";
             tbVehicleCategoryEquipment.Size = new Size(252, 27);
@@ -2314,7 +2409,7 @@
             // label46
             // 
             label46.AutoSize = true;
-            label46.Location = new Point(907, 12);
+            label46.Location = new Point(1253, 369);
             label46.Name = "label46";
             label46.Size = new Size(65, 20);
             label46.TabIndex = 90;
@@ -2324,7 +2419,7 @@
             // label47
             // 
             label47.AutoSize = true;
-            label47.Location = new Point(779, 12);
+            label47.Location = new Point(1218, 436);
             label47.Name = "label47";
             label47.Size = new Size(111, 20);
             label47.TabIndex = 89;
@@ -2333,7 +2428,7 @@
             // label48
             // 
             label48.AutoSize = true;
-            label48.Location = new Point(1038, 12);
+            label48.Location = new Point(1384, 369);
             label48.Name = "label48";
             label48.Size = new Size(57, 20);
             label48.TabIndex = 88;
@@ -2341,7 +2436,7 @@
             // 
             // tbQuantityEquipment
             // 
-            tbQuantityEquipment.Location = new Point(911, 36);
+            tbQuantityEquipment.Location = new Point(1257, 393);
             tbQuantityEquipment.Margin = new Padding(3, 4, 3, 4);
             tbQuantityEquipment.Name = "tbQuantityEquipment";
             tbQuantityEquipment.Size = new Size(95, 27);
@@ -2349,7 +2444,7 @@
             // 
             // tbCategoryRangeEquipment
             // 
-            tbCategoryRangeEquipment.Location = new Point(782, 36);
+            tbCategoryRangeEquipment.Location = new Point(1221, 460);
             tbCategoryRangeEquipment.Margin = new Padding(3, 4, 3, 4);
             tbCategoryRangeEquipment.Name = "tbCategoryRangeEquipment";
             tbCategoryRangeEquipment.Size = new Size(100, 27);
@@ -2357,7 +2452,7 @@
             // 
             // tbSpecialEquipment
             // 
-            tbSpecialEquipment.Location = new Point(1041, 36);
+            tbSpecialEquipment.Location = new Point(1387, 393);
             tbSpecialEquipment.Margin = new Padding(3, 4, 3, 4);
             tbSpecialEquipment.Name = "tbSpecialEquipment";
             tbSpecialEquipment.Size = new Size(252, 27);
@@ -2366,7 +2461,7 @@
             // Capacity
             // 
             Capacity.AutoSize = true;
-            Capacity.Location = new Point(501, 12);
+            Capacity.Location = new Point(940, 436);
             Capacity.Name = "Capacity";
             Capacity.Size = new Size(66, 20);
             Capacity.TabIndex = 84;
@@ -2374,21 +2469,11 @@
             // 
             // tbCapacityEquipment
             // 
-            tbCapacityEquipment.Location = new Point(504, 36);
+            tbCapacityEquipment.Location = new Point(943, 460);
             tbCapacityEquipment.Margin = new Padding(3, 4, 3, 4);
             tbCapacityEquipment.Name = "tbCapacityEquipment";
             tbCapacityEquipment.Size = new Size(252, 27);
             tbCapacityEquipment.TabIndex = 83;
-            // 
-            // label42
-            // 
-            label42.AutoSize = true;
-            label42.Location = new Point(361, 12);
-            label42.Name = "label42";
-            label42.Size = new Size(84, 20);
-            label42.TabIndex = 82;
-            label42.Text = "ArmorClass";
-            label42.Click += label42_Click;
             // 
             // label43
             // 
@@ -2407,14 +2492,6 @@
             label44.Size = new Size(49, 20);
             label44.TabIndex = 80;
             label44.Text = "Name";
-            // 
-            // tbArmorClassEquipment
-            // 
-            tbArmorClassEquipment.Location = new Point(363, 36);
-            tbArmorClassEquipment.Margin = new Padding(3, 4, 3, 4);
-            tbArmorClassEquipment.Name = "tbArmorClassEquipment";
-            tbArmorClassEquipment.Size = new Size(95, 27);
-            tbArmorClassEquipment.TabIndex = 79;
             // 
             // tbIndexEquipment
             // 
@@ -4926,63 +5003,74 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // btEliminarDamageType
+            // dgvArmorClassEquipment
             // 
-            btEliminarDamageType.Location = new Point(1540, 842);
-            btEliminarDamageType.Name = "btEliminarDamageType";
-            btEliminarDamageType.Size = new Size(94, 29);
-            btEliminarDamageType.TabIndex = 114;
-            btEliminarDamageType.Text = "Eliminar";
-            btEliminarDamageType.UseVisualStyleBackColor = true;
+            dgvArmorClassEquipment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvArmorClassEquipment.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvArmorClassEquipment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvArmorClassEquipment.Location = new Point(521, 36);
+            dgvArmorClassEquipment.MultiSelect = false;
+            dgvArmorClassEquipment.Name = "dgvArmorClassEquipment";
+            dgvArmorClassEquipment.ReadOnly = true;
+            dgvArmorClassEquipment.RowHeadersWidth = 51;
+            dgvArmorClassEquipment.RowTemplate.Height = 29;
+            dgvArmorClassEquipment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvArmorClassEquipment.Size = new Size(340, 259);
+            dgvArmorClassEquipment.TabIndex = 137;
             // 
-            // btModificarDamageType
+            // label42
             // 
-            btModificarDamageType.Location = new Point(1441, 842);
-            btModificarDamageType.Name = "btModificarDamageType";
-            btModificarDamageType.Size = new Size(94, 29);
-            btModificarDamageType.TabIndex = 113;
-            btModificarDamageType.Text = "Modificar";
-            btModificarDamageType.UseVisualStyleBackColor = true;
+            label42.AutoSize = true;
+            label42.Location = new Point(521, 13);
+            label42.Name = "label42";
+            label42.Size = new Size(84, 20);
+            label42.TabIndex = 138;
+            label42.Text = "ArmorClass";
             // 
-            // btBuscarDamageType
+            // dgvDamageEquipment
             // 
-            btBuscarDamageType.Location = new Point(1441, 795);
-            btBuscarDamageType.Name = "btBuscarDamageType";
-            btBuscarDamageType.Size = new Size(194, 29);
-            btBuscarDamageType.TabIndex = 112;
-            btBuscarDamageType.Text = "Buscar por Index";
-            btBuscarDamageType.UseVisualStyleBackColor = true;
+            dgvDamageEquipment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageEquipment.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageEquipment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageEquipment.Location = new Point(923, 36);
+            dgvDamageEquipment.MultiSelect = false;
+            dgvDamageEquipment.Name = "dgvDamageEquipment";
+            dgvDamageEquipment.ReadOnly = true;
+            dgvDamageEquipment.RowHeadersWidth = 51;
+            dgvDamageEquipment.RowTemplate.Height = 29;
+            dgvDamageEquipment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageEquipment.Size = new Size(340, 259);
+            dgvDamageEquipment.TabIndex = 139;
             // 
-            // tbFiltrarDamageType
+            // dgvRangeEquipment
             // 
-            tbFiltrarDamageType.Location = new Point(1309, 795);
-            tbFiltrarDamageType.Name = "tbFiltrarDamageType";
-            tbFiltrarDamageType.Size = new Size(125, 27);
-            tbFiltrarDamageType.TabIndex = 111;
+            dgvRangeEquipment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvRangeEquipment.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvRangeEquipment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRangeEquipment.Location = new Point(1313, 36);
+            dgvRangeEquipment.MultiSelect = false;
+            dgvRangeEquipment.Name = "dgvRangeEquipment";
+            dgvRangeEquipment.ReadOnly = true;
+            dgvRangeEquipment.RowHeadersWidth = 51;
+            dgvRangeEquipment.RowTemplate.Height = 29;
+            dgvRangeEquipment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRangeEquipment.Size = new Size(340, 259);
+            dgvRangeEquipment.TabIndex = 140;
             // 
-            // btInsertarDamageType
+            // dgvThrowRangeEquipment
             // 
-            btInsertarDamageType.Location = new Point(1655, 839);
-            btInsertarDamageType.Name = "btInsertarDamageType";
-            btInsertarDamageType.Size = new Size(94, 35);
-            btInsertarDamageType.TabIndex = 110;
-            btInsertarDamageType.Text = "Insertar";
-            btInsertarDamageType.UseVisualStyleBackColor = true;
-            // 
-            // dgvDamageType
-            // 
-            dgvDamageType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDamageType.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDamageType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageType.Location = new Point(17, 385);
-            dgvDamageType.MultiSelect = false;
-            dgvDamageType.Name = "dgvDamageType";
-            dgvDamageType.ReadOnly = true;
-            dgvDamageType.RowHeadersWidth = 51;
-            dgvDamageType.RowTemplate.Height = 29;
-            dgvDamageType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageType.Size = new Size(474, 489);
-            dgvDamageType.TabIndex = 109;
+            dgvThrowRangeEquipment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvThrowRangeEquipment.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvThrowRangeEquipment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvThrowRangeEquipment.Location = new Point(521, 408);
+            dgvThrowRangeEquipment.MultiSelect = false;
+            dgvThrowRangeEquipment.Name = "dgvThrowRangeEquipment";
+            dgvThrowRangeEquipment.ReadOnly = true;
+            dgvThrowRangeEquipment.RowHeadersWidth = 51;
+            dgvThrowRangeEquipment.RowTemplate.Height = 29;
+            dgvThrowRangeEquipment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvThrowRangeEquipment.Size = new Size(340, 259);
+            dgvThrowRangeEquipment.TabIndex = 141;
             // 
             // Form1
             // 
@@ -5021,8 +5109,10 @@
             ((System.ComponentModel.ISupportInitialize)dgvConditions).EndInit();
             DamageType.ResumeLayout(false);
             DamageType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageType).EndInit();
             Equipment.ResumeLayout(false);
             Equipment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEquipment).EndInit();
             EquipmentCategories.ResumeLayout(false);
             EquipmentCategories.PerformLayout();
             Feats.ResumeLayout(false);
@@ -5051,7 +5141,10 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageType).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvArmorClassEquipment).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageEquipment).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRangeEquipment).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvThrowRangeEquipment).EndInit();
             ResumeLayout(false);
         }
 
@@ -5132,10 +5225,9 @@
         public System.Windows.Forms.Label label29;
         public System.Windows.Forms.ComboBox cbBondsBackgrounds;
         public System.Windows.Forms.Label label30;
-        public System.Windows.Forms.Label label31;
         public System.Windows.Forms.Label label32;
         public System.Windows.Forms.Label label33;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox tbFiltrarEquipment;
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.TextBox tbNameBackgrounds;
         public System.Windows.Forms.Label label34;
@@ -5150,10 +5242,8 @@
         public System.Windows.Forms.TextBox tbNameDamageType;
         public System.Windows.Forms.Label Capacity;
         public System.Windows.Forms.TextBox tbCapacityEquipment;
-        public System.Windows.Forms.Label label42;
         public System.Windows.Forms.Label label43;
         public System.Windows.Forms.Label label44;
-        public System.Windows.Forms.TextBox tbArmorClassEquipment;
         public System.Windows.Forms.TextBox tbIndexEquipment;
         public System.Windows.Forms.TextBox tbNameEquipment;
         public System.Windows.Forms.Label label46;
@@ -5176,7 +5266,6 @@
         public System.Windows.Forms.TextBox tbToolCategoryEquipment;
         public System.Windows.Forms.TextBox tbSTRMinimumEquipment;
         public System.Windows.Forms.TextBox tbStealthDisadvantageEquipment;
-        public System.Windows.Forms.ComboBox cbRangeEquipment;
         public System.Windows.Forms.Label label49;
         public System.Windows.Forms.ComboBox cbPropertiesEquipment;
         public System.Windows.Forms.Label label54;
@@ -5184,7 +5273,6 @@
         public System.Windows.Forms.Label label55;
         public System.Windows.Forms.ComboBox cbEquipmentCategoryEquipment;
         public System.Windows.Forms.Label label56;
-        public System.Windows.Forms.ComboBox cbDamageEquipment;
         public System.Windows.Forms.Label label57;
         public System.Windows.Forms.ComboBox dbCostEquipment;
         public System.Windows.Forms.Label label58;
@@ -5194,7 +5282,6 @@
         public System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.ComboBox cbTwoHandedDamageEquipment;
-        private System.Windows.Forms.ComboBox cbThrowRangeEquipment;
         private System.Windows.Forms.ComboBox cbSpeedEquipment;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label62;
@@ -5327,7 +5414,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarEquipment;
         public Button btInsertarEquipmentCategories;
         public Button btInsertarFeats;
         public Button btInsertarFeatures;
@@ -5505,6 +5591,16 @@
         public TextBox tbFiltrarDamageType;
         public Button btInsertarDamageType;
         public DataGridView dgvDamageType;
+        public Button btEliminarEquipment;
+        public Button btModificarEquipment;
+        public Button btBuscarEquipment;
+        public Button btInsertarEquipment;
+        public DataGridView dgvEquipment;
+        public Label label42;
+        public DataGridView dgvArmorClassEquipment;
+        public DataGridView dgvDamageEquipment;
+        public DataGridView dgvRangeEquipment;
+        public DataGridView dgvThrowRangeEquipment;
     }
 }
 

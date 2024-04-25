@@ -20,6 +20,7 @@ namespace DnDDesktop.Controllers
         BackgroundsRepository backgroundsRepository = new BackgroundsRepository();
         ConditionsRepository conditionsRepository = new ConditionsRepository();
         DamageTypeRepository DamageTypeRepository = new DamageTypeRepository();
+        EquipmentRepository EquipmentRepository = new EquipmentRepository();
 
         //Listas
 
@@ -46,6 +47,9 @@ namespace DnDDesktop.Controllers
         //DamageType
         List<DamageType> damageTypes = new List<DamageType>();
 
+        //Equipment
+        List<Equipment> equipments = new List<Equipment>();
+
         public Controlador()
         {
             LoadData();
@@ -62,6 +66,7 @@ namespace DnDDesktop.Controllers
             LoadDataBackgrounds();
             LoadDataConditions();
             LoadDataDamageType();
+            LoadDataEquipment();
         }
 
         private void LoadDataAbilityScore()
@@ -117,6 +122,11 @@ namespace DnDDesktop.Controllers
             damageTypes = DamageTypeRepository.GetDamageTypes();
             f.dgvDamageType.DataSource = damageTypes;
         }
+        private void LoadDataEquipment()
+        {
+            equipments = EquipmentRepository.GetEquipments();
+            f.dgvEquipment.DataSource = equipments;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -164,6 +174,12 @@ namespace DnDDesktop.Controllers
             f.btModificarDamageType.Click += BtModificarDamageType_Click;
             f.btEliminarDamageType.Click += BtEliminarDamageType_Click;
             f.dgvDamageType.SelectionChanged += DgvDamageType_SelectionChanged;
+            //Equipment
+            f.dgvEquipment.SelectionChanged += DgvEquipment_SelectionChanged;
+            f.btBuscarEquipment.Click += BtBuscarEquipment_Click;
+            f.btEliminarEquipment.Click += BtEliminarEquipment_Click;
+            f.btInsertarEquipment.Click += BtInsertarEquipment_Click;
+            f.btModificarEquipment.Click += BtModificarEquipment_Click;
         }
 
         //AbilityScore
@@ -1731,6 +1747,34 @@ namespace DnDDesktop.Controllers
 
         }
 
+        //Equipment
+        private void DgvEquipment_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvEquipment.CurrentRow;
+            if (row != null)
+            {
+                Equipment eq = (Equipment)row.DataBoundItem;
+                f.tbIndexEquipment.Text = eq.Index;
+                f.tbNameEquipment.Text = eq.Name;
+                f.tbArmorClassEquipment.Text = eq.;
+            }
+        }
+        private void BtBuscarEquipment_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void BtInsertarEquipment_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void BtEliminarEquipment_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void BtModificarEquipment_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DnDDesktop.Models.Repository
+namespace DnDDesktop.Models.Repository.DAOs
 {
     public class ClassesMultiClassingDAO
     {
@@ -19,9 +19,9 @@ namespace DnDDesktop.Models.Repository
         }
         public ClassesMultiClassingDAO(Prerequisites p)
         {
-            this.index = p.AbilityScore.Index;
-            this.name = p.AbilityScore.Name;
-            this.minimum_score = p.MinimumScore;
+            index = p.AbilityScore.Index;
+            name = p.AbilityScore.Name;
+            minimum_score = p.MinimumScore;
         }
     }
 

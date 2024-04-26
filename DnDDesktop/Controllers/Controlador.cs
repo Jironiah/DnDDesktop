@@ -5,6 +5,7 @@ using DnDDesktop.Models.SubModels;
 using System.Xml.Linq;
 using System;
 using Extensions = DnDDesktop.Models.Extensions;
+using DnDDesktop.Models.Repository.DAOs;
 
 namespace DnDDesktop.Controllers
 {
@@ -125,7 +126,7 @@ namespace DnDDesktop.Controllers
         private void LoadDataEquipment()
         {
             equipments = EquipmentRepository.GetEquipments();
-            f.dgvEquipment.DataSource = equipments;
+            f.dgvEquipment.DataSource = equipments.Select(a => new EquipmentDAO(a)).ToList();
         }
         private void InitListeners()
         {
@@ -1750,77 +1751,85 @@ namespace DnDDesktop.Controllers
         //Equipment
         private void DgvEquipment_SelectionChanged(object? sender, EventArgs e)
         {
-            DataGridViewRow row = f.dgvEquipment.CurrentRow;
-            if (row != null)
+            try
             {
-                Equipment eq = (Equipment)row.DataBoundItem;
-                string idBuscar = eq.Id;
-                Equipment newEq = EquipmentRepository.GetEquipment(idBuscar);
-                f.tbIndexEquipment.Text = newEq.Index;
-                f.tbNameEquipment.Text = newEq.Name;
-                f.tbSTRMinimumEquipment.Text = newEq.StrengthMinimum.ToString();
-                f.chbStealthDisadvantageEquipment.Checked = newEq.StealthDisadvantage.HasValue;
-                f.tbToolCategoryEquipment.Text = newEq.ToolCategory;
-                f.tbVehicleCategoryEquipment.Text = newEq.VehicleCategory;
-                f.tbWeightEquipment.Text = newEq.Weight.ToString();
-                f.tbCapacityEquipment.Text = newEq.Capacity;
-                f.tbCategoryRangeEquipment.Text = newEq.CategoryRange;
-                f.tbWeapongCategoryEquipment.Text = newEq.WeaponCategory;
-                f.tbQuantityEquipment.Text = newEq.Quantity.ToString();
-                f.tbArmorCategoryEquipment.Text = newEq.ArmorCategory;
-                f.tbTwoHandedDamageDiceEquipment.Text = newEq.TwoHandedDamage?.DamageDice;
-                f.tbWeaponRangeEquipment.Text = newEq.WeaponRange;
-                //f.rtbSpecialEquipment.Text += eq.Special;
+                DataGridViewRow row = f.dgvEquipment.CurrentRow;
+                if (row != null)
+                {
+                    EquipmentDAO eq = (EquipmentDAO)row.DataBoundItem;
+                    string idBuscar = eq.Id;
+                    Equipment newEq = EquipmentRepository.GetEquipment(idBuscar);
+                    f.tbIndexEquipment.Text = newEq?.Index;
+                    f.tbNameEquipment.Text = newEq?.Name;
+                    f.tbSTRMinimumEquipment.Text = newEq?.StrengthMinimum.ToString();
+                    f.chbStealthDisadvantageEquipment.Checked = (newEq.StealthDisadvantage.HasValue);
+                    f.tbToolCategoryEquipment.Text = newEq?.ToolCategory;
+                    f.tbVehicleCategoryEquipment.Text = newEq?.VehicleCategory;
+                    f.tbWeightEquipment.Text = newEq?.Weight.ToString();
+                    f.tbCapacityEquipment.Text = newEq?.Capacity;
+                    f.tbCategoryRangeEquipment.Text = newEq?.CategoryRange;
+                    f.tbWeapongCategoryEquipment.Text = newEq?.WeaponCategory;
+                    f.tbQuantityEquipment.Text = newEq?.Quantity.ToString();
+                    f.tbArmorCategoryEquipment.Text = newEq?.ArmorCategory;
+                    f.tbTwoHandedDamageDiceEquipment.Text = newEq?.TwoHandedDamage?.DamageDice;
+                    f.tbWeaponRangeEquipment.Text = newEq?.WeaponRange;
+                    f.rtbSpecialEquipment.Text += newEq?.Special;
 
-                //dgv
-                List<ArmorClassEquipment> armorName = new List<ArmorClassEquipment>();
-                armorName.Add(newEq.ArmorName);
-                f.dgvArmorNameEquipment.DataSource = armorName;
+                    //dgv
+                    List<ArmorClassEquipment> armorName = new List<ArmorClassEquipment>();
+                    armorName.Add(newEq?.ArmorName);
+                    f.dgvArmorNameEquipment.DataSource = armorName;
 
-                List<DamageEquipment> unitQuantity = new List<DamageEquipment>();
-                unitQuantity.Add(newEq.UnitQuantity);
-                f.dgvUnitQuantityEquipment.DataSource = unitQuantity;
+                    List<DamageEquipment> unitQuantity = new List<DamageEquipment>();
+                    unitQuantity.Add(newEq?.UnitQuantity);
+                    f.dgvUnitQuantityEquipment.DataSource = unitQuantity;
 
-                List<Models.Commons.Range> range = new List<Models.Commons.Range>();
-                range.Add(newEq.Range);
-                f.dgvRangeEquipment.DataSource = range;
+                    List<Models.Commons.Range> range = new List<Models.Commons.Range>();
+                    range.Add(newEq?.Range);
+                    f.dgvRangeEquipment.DataSource = range;
 
-                List<Models.Commons.Range> throwRange = new List<Models.Commons.Range>();
-                throwRange.Add(newEq.ThrowRange);
-                f.dgvThrowRangeEquipment.DataSource = throwRange;
+                    List<Models.Commons.Range> throwRange = new List<Models.Commons.Range>();
+                    throwRange.Add(newEq?.ThrowRange);
+                    f.dgvThrowRangeEquipment.DataSource = throwRange;
 
-                List<From> damageType = new List<From>();
-                damageType.Add(newEq.TwoHandedDamage?.DamageType);
-                f.dgvTwoHandedDamageDamageTypeEquipment.DataSource = damageType;
+                    List<From> damageType = new List<From>();
+                    damageType.Add(newEq?.TwoHandedDamage?.DamageType);
+                    f.dgvTwoHandedDamageDamageTypeEquipment.DataSource = damageType;
 
-                List<From[]> properties = new List<From[]>();
-                properties.Add(newEq?.Properties);
-                f.dgvPropertiesEquipment.DataSource = properties.FirstOrDefault();
+                    List<From[]> properties = new List<From[]>();
+                    properties.Add(newEq?.Properties);
+                    f.dgvPropertiesEquipment.DataSource = properties.FirstOrDefault();
 
-                //cb
-                List<UnitQuantity> speed = new List<UnitQuantity>();
-                speed.Add(newEq?.Speed);
-                f.cbSpeedEquipment.DataSource = speed;
-                //f.cbSpeedEquipment.DisplayMember = "Unit";
+                    List<From> gearCategory = new List<From>();
+                    gearCategory.Add(newEq?.GearCategory);
+                    f.dgvGearCategoryEquipment.DataSource = gearCategory;
 
-                List<From> equipmentCategory = new List<From>();
-                equipmentCategory.Add(newEq?.EquipmentCategory);
-                f.cbEquipmentCategoryEquipment.DataSource = equipmentCategory;
-                f.cbEquipmentCategoryEquipment.DisplayMember = "Name";
+                    //cb
+                    List<UnitQuantity> speed = new List<UnitQuantity>();
+                    speed.Add(newEq?.Speed);
+                    f.cbSpeedEquipment.DataSource = speed;
 
-                List<From> gearCategory = new List<From>();
-                gearCategory.Add(newEq?.GearCategory);
-                f.cbGearCategoryEquipment.DataSource = gearCategory.ToList();
+                    List<From> equipmentCategory = new List<From>();
+                    equipmentCategory.Add(newEq?.EquipmentCategory);
+                    f.cbEquipmentCategoryEquipment.DataSource = equipmentCategory;
+                    f.cbEquipmentCategoryEquipment.DisplayMember = "Name";
 
-                List<ContentsEquipment> contents = new List<ContentsEquipment>();
-                contents.Add(newEq?.Contents);
-                f.cbContentsEquipment.DataSource = contents;
-                f.cbContentsEquipment.DisplayMember = "Quantity";
 
-                List<UnitQuantity> cost = new List<UnitQuantity>();
-                cost.Add(newEq.Cost);
-                f.cbCostEquipment.DataSource = cost;
-                f.cbCostEquipment.DisplayMember = "Quantity";
+
+                    List<ContentsEquipment> contents = new List<ContentsEquipment>();
+                    contents.Add(newEq?.Contents);
+                    f.cbContentsEquipment.DataSource = contents;
+                    f.cbContentsEquipment.DisplayMember = "Quantity";
+
+                    List<UnitQuantity> cost = new List<UnitQuantity>();
+                    cost.Add(newEq?.Cost);
+                    f.cbCostEquipment.DataSource = cost;
+                    f.cbCostEquipment.DisplayMember = "Quantity";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
         private void BtBuscarEquipment_Click(object? sender, EventArgs e)
@@ -1847,7 +1856,7 @@ namespace DnDDesktop.Controllers
                         f.tbArmorCategoryEquipment.Text = equipment.ArmorCategory;
                         f.tbTwoHandedDamageDiceEquipment.Text = equipment.TwoHandedDamage?.DamageDice;
                         f.tbWeaponRangeEquipment.Text = equipment.WeaponRange;
-                        //f.rtbSpecialEquipment.Text += eq.Special;
+                        f.rtbSpecialEquipment.Text += equipment.Special;
 
                         //dgv
                         List<ArmorClassEquipment> armorName = new List<ArmorClassEquipment>();
@@ -1872,7 +1881,14 @@ namespace DnDDesktop.Controllers
 
                         List<From[]> properties = new List<From[]>();
                         properties.Add(equipment?.Properties);
-                        f.dgvPropertiesEquipment.DataSource = properties.FirstOrDefault();
+                        if (properties != null)
+                        {
+                            f.dgvPropertiesEquipment.DataSource = properties.FirstOrDefault();
+                        }
+                        else
+                        {
+                            f.dgvPropertiesEquipment.DataSource = new List<From>();
+                        }
 
                         //cb
                         List<UnitQuantity> speed = new List<UnitQuantity>();
@@ -1886,9 +1902,8 @@ namespace DnDDesktop.Controllers
                         f.cbEquipmentCategoryEquipment.DisplayMember = "Name";
 
                         List<From> gearCategory = new List<From>();
-                        gearCategory.Add(equipment.GearCategory);
-                        f.cbGearCategoryEquipment.DataSource = gearCategory;
-                        f.cbGearCategoryEquipment.DisplayMember = "Name";
+                        gearCategory.Add(equipment?.GearCategory);
+                        f.dgvGearCategoryEquipment.DataSource = gearCategory;
 
                         List<ContentsEquipment> contents = new List<ContentsEquipment>();
                         contents.Add(equipment?.Contents);
@@ -1918,66 +1933,255 @@ namespace DnDDesktop.Controllers
         }
         private void BtInsertarEquipment_Click(object? sender, EventArgs e)
         {
-            Equipment equipment = new Equipment();
+            try
+            {
+                Equipment equipment = new Equipment();
 
-            equipment.Index = f.tbIndexEquipment.Text;
-            equipment.Name = f.tbNameEquipment.Text;
-            if (!string.IsNullOrEmpty(f.tbSTRMinimumEquipment?.Text))
-            {
-                equipment.StrengthMinimum = int.Parse(f.tbSTRMinimumEquipment?.Text);
-            }
-            else
-            {
-                equipment.StrengthMinimum = null;
-            }
-            equipment.StealthDisadvantage = f.chbStealthDisadvantageEquipment.Checked;
-            equipment.ToolCategory = f.tbToolCategoryEquipment.Text;
-            equipment.VehicleCategory = f.tbVehicleCategoryEquipment.Text;
-            equipment.Weight = int.Parse(f.tbWeightEquipment.Text);
-            equipment.Capacity = f.tbCapacityEquipment.Text;
-            equipment.CategoryRange = f.tbCategoryRangeEquipment.Text;
-            equipment.WeaponCategory = f.tbWeapongCategoryEquipment.Text;
-            if (!string.IsNullOrEmpty(f.tbQuantityEquipment.Text))
-            {
-                equipment.Quantity = int.Parse(f.tbQuantityEquipment.Text);
-            }
-            else
-            {
-                equipment.Quantity = null;
-            }
-            equipment.ArmorCategory = f.tbArmorCategoryEquipment.Text;
+                equipment.Index = f.tbIndexEquipment.Text;
+                equipment.Name = f.tbNameEquipment.Text;
+                if (!string.IsNullOrEmpty(f.tbSTRMinimumEquipment?.Text))
+                {
+                    equipment.StrengthMinimum = int.Parse(f.tbSTRMinimumEquipment?.Text);
+                }
+                else
+                {
+                    equipment.StrengthMinimum = null;
+                }
+                equipment.StealthDisadvantage = f.chbStealthDisadvantageEquipment.Checked;
+                equipment.ToolCategory = f.tbToolCategoryEquipment.Text;
+                equipment.VehicleCategory = f.tbVehicleCategoryEquipment.Text;
+                equipment.Weight = int.Parse(f.tbWeightEquipment.Text);
+                equipment.Capacity = f.tbCapacityEquipment.Text;
+                equipment.CategoryRange = f.tbCategoryRangeEquipment.Text;
+                equipment.WeaponCategory = f.tbWeapongCategoryEquipment.Text;
+                if (!string.IsNullOrEmpty(f.tbQuantityEquipment.Text))
+                {
+                    equipment.Quantity = int.Parse(f.tbQuantityEquipment.Text);
+                }
+                else
+                {
+                    equipment.Quantity = null;
+                }
+                equipment.ArmorCategory = f.tbArmorCategoryEquipment.Text;
 
-            equipment.ArmorName = (ArmorClassEquipment)f.dgvArmorNameEquipment.CurrentRow.DataBoundItem;
-            equipment.UnitQuantity = (DamageEquipment)f.dgvUnitQuantityEquipment.CurrentRow.DataBoundItem;
-            equipment.Range = (Models.Commons.Range)f.dgvRangeEquipment.CurrentRow.DataBoundItem;
-            equipment.ThrowRange = (Models.Commons.Range)f.dgvThrowRangeEquipment.CurrentRow.DataBoundItem;
-            equipment.TwoHandedDamage = new TwoHandedDamageEquipment
-            {
-                DamageDice = f.tbTwoHandedDamageDiceEquipment.Text,
-                DamageType = (From)f.dgvTwoHandedDamageDamageTypeEquipment.CurrentRow.DataBoundItem
-            };
-            equipment.WeaponRange = f.tbWeaponRangeEquipment.Text;
+                DataGridViewRow rowArmorName = f.dgvArmorNameEquipment.CurrentRow;
+                DataGridViewRow rowUnitQuantity = f.dgvUnitQuantityEquipment.CurrentRow;
+                DataGridViewRow rowRange = f.dgvRangeEquipment.CurrentRow;
+                DataGridViewRow rowThrowRange = f.dgvThrowRangeEquipment.CurrentRow;
+                DataGridViewRow rowGearCategory = f.dgvGearCategoryEquipment.CurrentRow;
+                DataGridViewRow rowProperties = f.dgvPropertiesEquipment.CurrentRow;
 
-            equipment.Speed = (UnitQuantity)f.cbSpeedEquipment.SelectedItem;
-            equipment.EquipmentCategory = (From)f.cbEquipmentCategoryEquipment.SelectedItem;
-            equipment.GearCategory = (From)f.cbGearCategoryEquipment.SelectedItem;
-            From propertiesEquipment = ((From)f.dgvPropertiesEquipment.CurrentRow.DataBoundItem);
-            List<From> propertiesEquipmentList = new List<From>();
-            propertiesEquipmentList.Add(propertiesEquipment);
-            equipment.Properties = propertiesEquipmentList.ToArray();
-            equipment.Contents = (ContentsEquipment)f.cbContentsEquipment.SelectedItem;
-            equipment.Cost = (UnitQuantity)f.cbCostEquipment.SelectedItem;
-            EquipmentRepository.CreateEquipment(equipment);
-            MessageBox.Show("Equipment introducido");
-            LoadDataEquipment();
+                if (rowArmorName != null)
+                {
+                    equipment.ArmorName = (ArmorClassEquipment)rowArmorName.DataBoundItem;
+
+                }
+                if (rowUnitQuantity != null)
+                {
+                    equipment.UnitQuantity = (DamageEquipment)rowUnitQuantity.DataBoundItem;
+
+                }
+                if (rowRange != null)
+                {
+                    equipment.Range = (Models.Commons.Range)rowRange.DataBoundItem;
+
+                }
+                if (rowThrowRange != null)
+                {
+                    equipment.ThrowRange = (Models.Commons.Range)rowThrowRange.DataBoundItem;
+
+                }
+                if (rowGearCategory != null)
+                {
+                    equipment.GearCategory = (From)rowGearCategory.DataBoundItem;
+
+                }
+                if (rowProperties != null)
+                {
+                    From propertiesEquipment = (From)rowProperties.DataBoundItem;
+                    List<From> propertiesEquipmentList = new List<From>();
+                    propertiesEquipmentList.Add(propertiesEquipment);
+                    equipment.Properties = propertiesEquipmentList.ToArray();
+
+                }
+                else
+                {
+                    List<From> propertiesEquipmentList = new List<From>();
+                    From emptyPropertiesEquipment = new From();
+                    emptyPropertiesEquipment.Name = string.Empty;
+                    emptyPropertiesEquipment.Index = string.Empty;
+                    propertiesEquipmentList.Add(emptyPropertiesEquipment);
+                    equipment.Properties = propertiesEquipmentList.ToArray();
+                }
+                equipment.TwoHandedDamage = new TwoHandedDamageEquipment
+                {
+                    DamageDice = f.tbTwoHandedDamageDiceEquipment.Text,
+                    DamageType = (From)f.dgvTwoHandedDamageDamageTypeEquipment.CurrentRow.DataBoundItem
+                };
+                equipment.WeaponRange = f.tbWeaponRangeEquipment.Text;
+
+                equipment.Speed = (UnitQuantity)f.cbSpeedEquipment.SelectedItem;
+                equipment.EquipmentCategory = (From)f.cbEquipmentCategoryEquipment.SelectedItem;
+
+
+
+                equipment.Contents = (ContentsEquipment)f.cbContentsEquipment.SelectedItem;
+                equipment.Cost = (UnitQuantity)f.cbCostEquipment.SelectedItem;
+                EquipmentRepository.CreateEquipment(equipment);
+                MessageBox.Show("Equipment introducido");
+                LoadDataEquipment();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
         private void BtEliminarEquipment_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarEquipment.Text))
+                {
+                    string idBuscar = equipments.Where(a => a.Index.Equals(f.tbFiltrarEquipment.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        EquipmentRepository.DeleteEquipment(idBuscar);
+                        MessageBox.Show(f.tbFiltrarEquipment.Text.ToString() + " eliminado");
+                        LoadDataEquipment();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
         private void BtModificarEquipment_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarEquipment.Text))
+                {
+                    string idBuscar = equipments.Where(a => a.Index.Equals(f.tbFiltrarEquipment.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+                    if (idBuscar != null)
+                    {
+                        Equipment equipment = new Equipment();
+
+                        equipment.Id = idBuscar;
+                        equipment.Index = f.tbIndexEquipment.Text;
+                        equipment.Name = f.tbNameEquipment.Text;
+                        if (!string.IsNullOrEmpty(f.tbSTRMinimumEquipment?.Text))
+                        {
+                            equipment.StrengthMinimum = int.Parse(f.tbSTRMinimumEquipment?.Text);
+                        }
+                        else
+                        {
+                            equipment.StrengthMinimum = null;
+                        }
+                        equipment.StealthDisadvantage = f.chbStealthDisadvantageEquipment.Checked;
+                        equipment.ToolCategory = f.tbToolCategoryEquipment.Text;
+                        equipment.VehicleCategory = f.tbVehicleCategoryEquipment.Text;
+                        equipment.Weight = int.Parse(f.tbWeightEquipment.Text);
+                        equipment.Capacity = f.tbCapacityEquipment.Text;
+                        equipment.CategoryRange = f.tbCategoryRangeEquipment.Text;
+                        equipment.WeaponCategory = f.tbWeapongCategoryEquipment.Text;
+                        if (!string.IsNullOrEmpty(f.tbQuantityEquipment.Text))
+                        {
+                            equipment.Quantity = int.Parse(f.tbQuantityEquipment.Text);
+                        }
+                        else
+                        {
+                            equipment.Quantity = null;
+                        }
+                        equipment.ArmorCategory = f.tbArmorCategoryEquipment.Text;
+
+                        DataGridViewRow rowArmorName = f.dgvArmorNameEquipment.CurrentRow;
+                        DataGridViewRow rowUnitQuantity = f.dgvUnitQuantityEquipment.CurrentRow;
+                        DataGridViewRow rowRange = f.dgvRangeEquipment.CurrentRow;
+                        DataGridViewRow rowThrowRange = f.dgvThrowRangeEquipment.CurrentRow;
+                        DataGridViewRow rowGearCategory = f.dgvGearCategoryEquipment.CurrentRow;
+                        DataGridViewRow rowProperties = f.dgvPropertiesEquipment.CurrentRow;
+
+                        if (rowArmorName != null)
+                        {
+                            equipment.ArmorName = (ArmorClassEquipment)rowArmorName.DataBoundItem;
+
+                        }
+                        if (rowUnitQuantity != null)
+                        {
+                            equipment.UnitQuantity = (DamageEquipment)rowUnitQuantity.DataBoundItem;
+
+                        }
+                        if (rowRange != null)
+                        {
+                            equipment.Range = (Models.Commons.Range)rowRange.DataBoundItem;
+
+                        }
+                        if (rowThrowRange != null)
+                        {
+                            equipment.ThrowRange = (Models.Commons.Range)rowThrowRange.DataBoundItem;
+
+                        }
+                        if (rowGearCategory != null)
+                        {
+                            equipment.GearCategory = (From)rowGearCategory.DataBoundItem;
+
+                        }
+                        if (rowProperties != null)
+                        {
+                            From propertiesEquipment = (From)rowProperties.DataBoundItem;
+                            List<From> propertiesEquipmentList = new List<From>();
+                            propertiesEquipmentList.Add(propertiesEquipment);
+                            equipment.Properties = propertiesEquipmentList.ToArray();
+
+                        }
+                        else
+                        {
+                            List<From> propertiesEquipmentList = new List<From>();
+                            From emptyPropertiesEquipment = new From();
+                            emptyPropertiesEquipment.Name = string.Empty;
+                            emptyPropertiesEquipment.Index = string.Empty;
+                            propertiesEquipmentList.Add(emptyPropertiesEquipment);
+                            equipment.Properties = propertiesEquipmentList.ToArray();
+                        }
+                        equipment.TwoHandedDamage = new TwoHandedDamageEquipment
+                        {
+                            DamageDice = f.tbTwoHandedDamageDiceEquipment.Text,
+                            DamageType = (From)f.dgvTwoHandedDamageDamageTypeEquipment.CurrentRow.DataBoundItem
+                        };
+                        equipment.WeaponRange = f.tbWeaponRangeEquipment.Text;
+
+                        equipment.Speed = (UnitQuantity)f.cbSpeedEquipment.SelectedItem;
+                        equipment.EquipmentCategory = (From)f.cbEquipmentCategoryEquipment.SelectedItem;
+
+
+
+                        equipment.Contents = (ContentsEquipment)f.cbContentsEquipment.SelectedItem;
+                        equipment.Cost = (UnitQuantity)f.cbCostEquipment.SelectedItem;
+                        EquipmentRepository.UpdateEquipment(equipment);
+                        MessageBox.Show("Modificado correctamente");
+                        LoadDataEquipment();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
 
     }

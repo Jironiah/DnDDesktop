@@ -22,6 +22,7 @@ namespace DnDDesktop.Controllers
         ConditionsRepository conditionsRepository = new ConditionsRepository();
         DamageTypeRepository DamageTypeRepository = new DamageTypeRepository();
         EquipmentRepository EquipmentRepository = new EquipmentRepository();
+        EquipmentCategoriesRepository EquipmentCategoriesRepository = new EquipmentCategoriesRepository();
 
         //Listas
 
@@ -51,6 +52,9 @@ namespace DnDDesktop.Controllers
         //Equipment
         List<Equipment> equipments = new List<Equipment>();
 
+        //EquipmentCategories
+        List<EquipmentCategory> equipmentCategories = new List<EquipmentCategory>();
+
         public Controlador()
         {
             LoadData();
@@ -68,6 +72,7 @@ namespace DnDDesktop.Controllers
             LoadDataConditions();
             LoadDataDamageType();
             LoadDataEquipment();
+            LoadDataEquipmentCategories();
         }
 
         private void LoadDataAbilityScore()
@@ -128,6 +133,11 @@ namespace DnDDesktop.Controllers
             equipments = EquipmentRepository.GetEquipments();
             f.dgvEquipment.DataSource = equipments.Select(a => new EquipmentDAO(a)).ToList();
         }
+        private void LoadDataEquipmentCategories()
+        {
+            equipmentCategories = EquipmentCategoriesRepository.GetEquipmentCategories();
+            f.dgvEquipmentCategories.DataSource = equipmentCategories;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -181,6 +191,13 @@ namespace DnDDesktop.Controllers
             f.btEliminarEquipment.Click += BtEliminarEquipment_Click;
             f.btInsertarEquipment.Click += BtInsertarEquipment_Click;
             f.btModificarEquipment.Click += BtModificarEquipment_Click;
+            //EquipmentCategories
+            f.dgvEquipmentCategories.SelectionChanged += DgvEquipmentCategories_SelectionChanged;
+            f.btBuscarEquipmentCategories.Click += BtBuscarEquipmentCategories_Click;
+            f.btEliminarEquipmentCategories.Click += BtEliminarEquipmentCategories_Click;
+            f.btInsertarEquipmentCategories.Click += BtInsertarEquipmentCategories_Click;
+            f.btInsertarEquipmentCategories.MouseUp += BtInsertarEquipmentCategories_MouseUp;
+            f.btModificarEquipmentCategories.Click += BtModificarEquipmentCategories_Click;
         }
 
         //AbilityScore
@@ -840,118 +857,7 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        //private void BtInsertarClasses_Click(object? sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        Classes classeInsertar = new Classes();
 
-        //        //Rows de todos los datagridviews
-        //        DataGridViewRow rowMultiClassingPrerequisitesClasses = f.dgvMultiClassingPrerequisitesClasses.CurrentRow;
-        //        DataGridViewRow rowMultiClassingProficienciesClasses = f.dgvMultiClassingProficienciesClasses.CurrentRow;
-        //        DataGridViewRow rowProficiencyChoicesClasses = f.dgvProficiencyChoicesClasses.CurrentRow;
-        //        DataGridViewRow rowSpellCastingInfoNameClasses = f.dgvSpellCastingInfoNameClasses.CurrentRow;
-        //        DataGridViewRow rowStartingEquipmentOptionsChooseDescClasses = f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow;
-        //        DataGridViewRow rowStartingEquipmentOptionsFromClasses = f.dgvStartingEquipmentOptionsFromClasses.CurrentRow;
-
-        //        //Elementos de todos los combobox
-        //        From? selectedProficiencies = (From?)f.cbProficienciesClasses.SelectedItem;
-        //        From? selectedSavingThrows = (From?)f.cbSavingThrowsClasses.SelectedItem;
-        //        From? selectedStartingEquipment = (From?)f.cbStartingEquipmentClasses.SelectedItem;
-        //        From? selectedSubclasses = (From?)f.cbSubclassesClasses.SelectedItem;
-
-        //        if (/*Comprobacion null dgv*/rowMultiClassingPrerequisitesClasses != null && rowMultiClassingProficienciesClasses != null && rowProficiencyChoicesClasses != null &&
-        //            rowSpellCastingInfoNameClasses != null && rowStartingEquipmentOptionsChooseDescClasses != null && rowStartingEquipmentOptionsFromClasses != null
-        //            /*Comprobacion null cb*/&& selectedProficiencies != null && selectedSavingThrows != null && selectedStartingEquipment != null && selectedSubclasses != null)
-        //        {
-        //            //DGV
-        //            ClassesMultiClassingDAO MultiClassingPrerequisites = (ClassesMultiClassingDAO)rowMultiClassingPrerequisitesClasses.DataBoundItem;//Esta clase es DTO
-        //            From MultiClassingProficiencies = (From)rowMultiClassingProficienciesClasses.DataBoundItem;
-        //            ProficiencyChoiceClasses ProficiencyChoices = (ProficiencyChoiceClasses)rowProficiencyChoicesClasses.DataBoundItem;
-        //            InfoClasses SpellCastingInfoName = (InfoClasses)rowSpellCastingInfoNameClasses.DataBoundItem;
-        //            StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)rowStartingEquipmentOptionsChooseDescClasses.DataBoundItem;
-        //            OptionItemClasses StartingEquipmentOptionsFrom = (OptionItemClasses)rowStartingEquipmentOptionsFromClasses.DataBoundItem;
-
-        //            //Transformacion objetos para insertar
-
-        //            //Proficiencies
-        //            List<From> proficiencies = new List<From>();
-        //            proficiencies.Add(selectedProficiencies);
-        //            classeInsertar.Proficiencies = proficiencies.ToArray();
-        //            //SavingThrows
-        //            List<From> savingThrows = new List<From>();
-        //            savingThrows.Add(selectedSavingThrows);
-        //            classeInsertar.SavingThrows = savingThrows.ToArray();
-        //            //StartingEquipment
-        //            List<StartingEquipmentClasses> startingEquipment = new List<StartingEquipmentClasses>();
-        //            StartingEquipmentClasses startingEquipmentClasses = new StartingEquipmentClasses();
-        //            startingEquipmentClasses.Equipment = selectedStartingEquipment;
-        //            startingEquipment.Add(startingEquipmentClasses);
-        //            classeInsertar.StartingEquipment = startingEquipment.ToArray();
-        //            //Subclasses
-        //            List<From> subclasses = new List<From>();
-        //            subclasses.Add(selectedSubclasses);
-        //            classeInsertar.Subclasses = subclasses.ToArray();
-
-        //            //MultiClassingPrerequisites/Proficiencies
-        //            List<Prerequisites> multiClassingPrerequisites = new List<Prerequisites>();
-        //            Prerequisites prerequisites = new Prerequisites();
-        //            From abScore = new From();
-        //            abScore.Name = MultiClassingPrerequisites.name;
-        //            abScore.Index = MultiClassingPrerequisites.index;
-        //            prerequisites.AbilityScore = abScore;
-        //            prerequisites = MultiClassingPrerequisites;
-        //            //prerequisites.AbilityScore = multiClassingPrerequisites.Select(a=>a.AbilityScore).FirstOrDefault();
-        //            multiClassingPrerequisites.Add(prerequisites);
-        //            MultiClassing multiClassing = new MultiClassing();
-        //            multiClassing.Prerequisites = multiClassingPrerequisites.ToArray();
-        //            //MultiClassingProficiencies
-        //            List<From> multiClassingProficiencies = new List<From>();
-        //            From proficiency = new From();
-        //            proficiency.Index = MultiClassingProficiencies.Index;
-        //            proficiency.Name = MultiClassingProficiencies.Name;
-        //            multiClassing.Proficiencies = multiClassingProficiencies.ToArray();
-        //            //ProficiencyChoices
-        //            List<ProficiencyChoiceClasses> proficiencyChoices = new List<ProficiencyChoiceClasses>();
-        //            proficiencyChoices.Add(ProficiencyChoices);
-        //            classeInsertar.ProficienciesChoices = proficiencyChoices.ToArray();
-        //            //SpellCasting
-        //            //SpellCastingInfoName
-        //            List<SpellcastingClass> spellcastingInfo = new List<SpellcastingClass>();
-        //            List<InfoClasses> spellcastingClasses = new List<InfoClasses>();
-        //            SpellcastingClass spellcastingClass = new SpellcastingClass();
-        //            spellcastingClasses.Add(SpellCastingInfoName);
-        //            spellcastingClass.Info = spellcastingClasses.ToArray();
-        //            spellcastingInfo.Add(spellcastingClass);
-        //            classeInsertar.Spellcasting = spellcastingClass;
-        //            //StartingEquipmentOptionsChooseDesc
-        //            List<StartingEquipmentOptionClasses> startingEquipmentOptionClassesList = new List<StartingEquipmentOptionClasses>();
-        //            StartingEquipmentOptionClasses startingEquipmentOptionClasses = new StartingEquipmentOptionClasses();
-        //            classeInsertar.StartingEquipmentOption = startingEquipmentOptionClassesList.ToArray();
-        //            //StartingEquipmentOptionsFrom
-        //            List<OptionItemClasses> optionItemClasses = new List<OptionItemClasses>();
-        //            OptionItemClasses optionItemClass = new OptionItemClasses();
-        //            optionItemClass = StartingEquipmentOptionsFrom;
-        //            optionItemClasses.Add(optionItemClass);
-        //            startingEquipmentOptionClasses = StartingEquipmentOptionsChooseDesc;
-        //            startingEquipmentOptionClasses.From.Add(optionItemClasses.ToArray());
-
-        //            classeInsertar.Index = f.tbIndexClasses.Text;
-        //            classeInsertar.Name = f.tbNameClasses.Text;
-        //            classeInsertar.HitDie = int.Parse(f.tbHitDieClasses.Text);
-        //            //classeInsertar.Spellcasting.SpellcastingAbility.Name = f.tbSpellCastingAbilityClasses.Text;
-        //            classeInsertar.Spellcasting.Info = spellcastingClass.Info;
-
-        //            classesRepository.CreateClass(classeInsertar);
-        //            MessageBox.Show("Classes introducido");
-        //            LoadDataClasses();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(Extensions.GetaAllMessages(ex));
-        //    }
-        //}
         //private void BtInsertarClasses_MouseUp(object? sender, MouseEventArgs e)
         //{
         //    try
@@ -2184,5 +2090,166 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        //EquipmentCategories
+        private void DgvEquipmentCategories_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvEquipmentCategories.CurrentRow;
+                if (row != null)
+                {
+                    EquipmentCategory eqCat = (EquipmentCategory)row.DataBoundItem;
+                    EquipmentCategory newEqCat = EquipmentCategoriesRepository.GetEquipmentCategory(eqCat.Id);
+
+                    f.tbIndexEquipmentCategories.Text = newEqCat?.Index;
+                    f.tbNameEquipmentCategories.Text = newEqCat?.Name;
+                    f.cbEquipmentEquipmentCategories.DataSource = newEqCat?.Equipment;
+                    f.cbEquipmentEquipmentCategories.DisplayMember = "Name";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtBuscarEquipmentCategories_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarEquipmentCategories.Text))
+                {
+                    string idBuscar = equipmentCategories.Where(a => a.Index.Equals(f.tbFiltrarEquipmentCategories.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        EquipmentCategory newEquipmentCategory = EquipmentCategoriesRepository.GetEquipmentCategory(idBuscar.ToString());
+                        f.tbIndexEquipmentCategories.Text = newEquipmentCategory.Index;
+                        f.tbNameEquipmentCategories.Text = newEquipmentCategory.Name;
+                        f.cbEquipmentEquipmentCategories.DataSource = newEquipmentCategory.Equipment;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtModificarEquipmentCategories_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarEquipmentCategories.Text))
+                {
+                    string idBuscar = equipmentCategories.Where(a => a.Index.Equals(f.tbFiltrarEquipmentCategories.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        From selectedEquipment = (From)f.cbEquipmentEquipmentCategories.SelectedItem;
+                        if (selectedEquipment != null)
+                        {
+                            EquipmentCategory eqCat = new EquipmentCategory();
+                            eqCat.Id = idBuscar;
+                            eqCat.Index = f.tbIndexEquipmentCategories.Text;
+                            eqCat.Name = f.tbNameEquipmentCategories.Text;
+                            eqCat.Equipment = new From[] { selectedEquipment };
+                            EquipmentCategoriesRepository.UpdateEquipmentCategory(eqCat);
+                            LoadDataEquipmentCategories();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarEquipmentCategories_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                From selectedEquipment = (From)f.cbEquipmentEquipmentCategories.SelectedItem;
+                if (selectedEquipment != null)
+                {
+                    EquipmentCategory eqCat = new EquipmentCategory();
+                    eqCat.Index = f.tbIndexEquipmentCategories.Text;
+                    eqCat.Name = f.tbNameEquipmentCategories.Text;
+                    eqCat.Equipment = new From[] { selectedEquipment };
+                    EquipmentCategoriesRepository.CreateEquipmentCategory(eqCat);
+                    LoadDataEquipmentCategories();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarEquipmentCategories_MouseUp(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+                From selectedEquipment = (From)f.cbEquipmentEquipmentCategories.SelectedItem;
+                if (selectedEquipment != null)
+                {
+                    EquipmentCategory eqCat = new EquipmentCategory();
+                    eqCat.Index = f.tbIndexEquipmentCategories.Text;
+                    eqCat.Name = f.tbNameEquipmentCategories.Text;
+                    eqCat.Equipment = new From[] { null };
+                    EquipmentCategoriesRepository.CreateEquipmentCategory(eqCat);
+                    LoadDataEquipmentCategories();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarEquipmentCategories_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarEquipmentCategories.Text))
+                {
+                    string idBuscar = equipmentCategories.Where(a => a.Index.Equals(f.tbFiltrarEquipmentCategories.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        EquipmentCategoriesRepository.DeleteEquipmentCategory(idBuscar);
+                        LoadDataEquipmentCategories();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }

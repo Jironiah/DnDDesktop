@@ -226,7 +226,12 @@
             tbIndexEquipment = new TextBox();
             tbNameEquipment = new TextBox();
             EquipmentCategories = new TabPage();
+            btEliminarEquipmentCategories = new Button();
+            btModificarEquipmentCategories = new Button();
+            btBuscarEquipmentCategories = new Button();
+            tbFiltrarEquipmentCategories = new TextBox();
             btInsertarEquipmentCategories = new Button();
+            dgvEquipmentCategories = new DataGridView();
             label64 = new Label();
             label65 = new Label();
             label66 = new Label();
@@ -510,6 +515,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvArmorNameEquipment).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEquipment).BeginInit();
             EquipmentCategories.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEquipmentCategories).BeginInit();
             Feats.SuspendLayout();
             Features.SuspendLayout();
             Languages.SuspendLayout();
@@ -2382,7 +2388,7 @@
             // cbCostEquipment
             // 
             cbCostEquipment.FormattingEnabled = true;
-            cbCostEquipment.Location = new Point(1586, 767);
+            cbCostEquipment.Location = new Point(1462, 707);
             cbCostEquipment.Margin = new Padding(3, 4, 3, 4);
             cbCostEquipment.Name = "cbCostEquipment";
             cbCostEquipment.Size = new Size(121, 28);
@@ -2391,7 +2397,7 @@
             // label58
             // 
             label58.AutoSize = true;
-            label58.Location = new Point(1583, 743);
+            label58.Location = new Point(1459, 683);
             label58.Name = "label58";
             label58.Size = new Size(38, 20);
             label58.TabIndex = 113;
@@ -2400,7 +2406,7 @@
             // cbContentsEquipment
             // 
             cbContentsEquipment.FormattingEnabled = true;
-            cbContentsEquipment.Location = new Point(1443, 767);
+            cbContentsEquipment.Location = new Point(1319, 707);
             cbContentsEquipment.Margin = new Padding(3, 4, 3, 4);
             cbContentsEquipment.Name = "cbContentsEquipment";
             cbContentsEquipment.Size = new Size(121, 28);
@@ -2409,7 +2415,7 @@
             // label59
             // 
             label59.AutoSize = true;
-            label59.Location = new Point(1440, 743);
+            label59.Location = new Point(1316, 683);
             label59.Name = "label59";
             label59.Size = new Size(67, 20);
             label59.TabIndex = 111;
@@ -2614,7 +2620,12 @@
             // 
             // EquipmentCategories
             // 
+            EquipmentCategories.Controls.Add(btEliminarEquipmentCategories);
+            EquipmentCategories.Controls.Add(btModificarEquipmentCategories);
+            EquipmentCategories.Controls.Add(btBuscarEquipmentCategories);
+            EquipmentCategories.Controls.Add(tbFiltrarEquipmentCategories);
             EquipmentCategories.Controls.Add(btInsertarEquipmentCategories);
+            EquipmentCategories.Controls.Add(dgvEquipmentCategories);
             EquipmentCategories.Controls.Add(label64);
             EquipmentCategories.Controls.Add(label65);
             EquipmentCategories.Controls.Add(label66);
@@ -2629,19 +2640,68 @@
             EquipmentCategories.Text = "EquipmentCategories";
             EquipmentCategories.UseVisualStyleBackColor = true;
             // 
+            // btEliminarEquipmentCategories
+            // 
+            btEliminarEquipmentCategories.Location = new Point(1540, 828);
+            btEliminarEquipmentCategories.Name = "btEliminarEquipmentCategories";
+            btEliminarEquipmentCategories.Size = new Size(94, 29);
+            btEliminarEquipmentCategories.TabIndex = 142;
+            btEliminarEquipmentCategories.Text = "Eliminar";
+            btEliminarEquipmentCategories.UseVisualStyleBackColor = true;
+            // 
+            // btModificarEquipmentCategories
+            // 
+            btModificarEquipmentCategories.Location = new Point(1441, 828);
+            btModificarEquipmentCategories.Name = "btModificarEquipmentCategories";
+            btModificarEquipmentCategories.Size = new Size(94, 29);
+            btModificarEquipmentCategories.TabIndex = 141;
+            btModificarEquipmentCategories.Text = "Modificar";
+            btModificarEquipmentCategories.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarEquipmentCategories
+            // 
+            btBuscarEquipmentCategories.Location = new Point(1441, 782);
+            btBuscarEquipmentCategories.Name = "btBuscarEquipmentCategories";
+            btBuscarEquipmentCategories.Size = new Size(194, 29);
+            btBuscarEquipmentCategories.TabIndex = 140;
+            btBuscarEquipmentCategories.Text = "Buscar por Index";
+            btBuscarEquipmentCategories.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarEquipmentCategories
+            // 
+            tbFiltrarEquipmentCategories.Location = new Point(1309, 782);
+            tbFiltrarEquipmentCategories.Name = "tbFiltrarEquipmentCategories";
+            tbFiltrarEquipmentCategories.Size = new Size(125, 27);
+            tbFiltrarEquipmentCategories.TabIndex = 139;
+            // 
             // btInsertarEquipmentCategories
             // 
-            btInsertarEquipmentCategories.Location = new Point(1168, 453);
+            btInsertarEquipmentCategories.Location = new Point(1655, 824);
             btInsertarEquipmentCategories.Name = "btInsertarEquipmentCategories";
             btInsertarEquipmentCategories.Size = new Size(94, 35);
-            btInsertarEquipmentCategories.TabIndex = 28;
-            btInsertarEquipmentCategories.Text = "Instertar";
+            btInsertarEquipmentCategories.TabIndex = 138;
+            btInsertarEquipmentCategories.Text = "Insertar";
             btInsertarEquipmentCategories.UseVisualStyleBackColor = true;
+            // 
+            // dgvEquipmentCategories
+            // 
+            dgvEquipmentCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvEquipmentCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvEquipmentCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEquipmentCategories.Location = new Point(17, 371);
+            dgvEquipmentCategories.MultiSelect = false;
+            dgvEquipmentCategories.Name = "dgvEquipmentCategories";
+            dgvEquipmentCategories.ReadOnly = true;
+            dgvEquipmentCategories.RowHeadersWidth = 51;
+            dgvEquipmentCategories.RowTemplate.Height = 29;
+            dgvEquipmentCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEquipmentCategories.Size = new Size(474, 489);
+            dgvEquipmentCategories.TabIndex = 137;
             // 
             // label64
             // 
             label64.AutoSize = true;
-            label64.Location = new Point(343, 15);
+            label64.Location = new Point(569, 16);
             label64.Name = "label64";
             label64.Size = new Size(81, 20);
             label64.TabIndex = 27;
@@ -2650,7 +2710,7 @@
             // label65
             // 
             label65.AutoSize = true;
-            label65.Location = new Point(91, 21);
+            label65.Location = new Point(317, 22);
             label65.Name = "label65";
             label65.Size = new Size(49, 20);
             label65.TabIndex = 26;
@@ -2668,7 +2728,7 @@
             // cbEquipmentEquipmentCategories
             // 
             cbEquipmentEquipmentCategories.FormattingEnabled = true;
-            cbEquipmentEquipmentCategories.Location = new Point(343, 43);
+            cbEquipmentEquipmentCategories.Location = new Point(569, 44);
             cbEquipmentEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
             cbEquipmentEquipmentCategories.Name = "cbEquipmentEquipmentCategories";
             cbEquipmentEquipmentCategories.Size = new Size(220, 28);
@@ -2676,7 +2736,7 @@
             // 
             // tbNameEquipmentCategories
             // 
-            tbNameEquipmentCategories.Location = new Point(94, 45);
+            tbNameEquipmentCategories.Location = new Point(320, 46);
             tbNameEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
             tbNameEquipmentCategories.Name = "tbNameEquipmentCategories";
             tbNameEquipmentCategories.Size = new Size(199, 27);
@@ -2687,7 +2747,7 @@
             tbIndexEquipmentCategories.Location = new Point(17, 45);
             tbIndexEquipmentCategories.Margin = new Padding(3, 4, 3, 4);
             tbIndexEquipmentCategories.Name = "tbIndexEquipmentCategories";
-            tbIndexEquipmentCategories.Size = new Size(41, 27);
+            tbIndexEquipmentCategories.Size = new Size(256, 27);
             tbIndexEquipmentCategories.TabIndex = 21;
             // 
             // Feats
@@ -5157,6 +5217,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvEquipment).EndInit();
             EquipmentCategories.ResumeLayout(false);
             EquipmentCategories.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEquipmentCategories).EndInit();
             Feats.ResumeLayout(false);
             Feats.PerformLayout();
             Features.ResumeLayout(false);
@@ -5440,7 +5501,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarEquipmentCategories;
         public Button btInsertarFeats;
         public Button btInsertarFeatures;
         public Button btInsertarLanguages;
@@ -5640,6 +5700,12 @@
         public DataGridView dgvPropertiesEquipment;
         public CheckBox chbStealthDisadvantageEquipment;
         public DataGridView dgvGearCategoryEquipment;
+        public Button btEliminarEquipmentCategories;
+        public Button btModificarEquipmentCategories;
+        public Button btBuscarEquipmentCategories;
+        public TextBox tbFiltrarEquipmentCategories;
+        public Button btInsertarEquipmentCategories;
+        public DataGridView dgvEquipmentCategories;
     }
 }
 

@@ -23,6 +23,7 @@ namespace DnDDesktop.Controllers
         DamageTypeRepository DamageTypeRepository = new DamageTypeRepository();
         EquipmentRepository EquipmentRepository = new EquipmentRepository();
         EquipmentCategoriesRepository EquipmentCategoriesRepository = new EquipmentCategoriesRepository();
+        FeatsRepository FeatsRepository = new FeatsRepository();
 
         //Listas
 
@@ -31,7 +32,7 @@ namespace DnDDesktop.Controllers
         List<AbilityScore> abilityScores = new List<AbilityScore>();
 
         //Alignments
-        List<Alignment> alignments = new List<Alignment>();
+        List<Feats> alignments = new List<Feats>();
 
         //WeaponProperties
         List<WeaponProperty> weapons = new List<WeaponProperty>();
@@ -54,6 +55,8 @@ namespace DnDDesktop.Controllers
 
         //EquipmentCategories
         List<EquipmentCategory> equipmentCategories = new List<EquipmentCategory>();
+
+
 
         public Controlador()
         {
@@ -407,7 +410,7 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-                Alignment alignment = new Alignment();
+                Feats alignment = new Feats();
                 string index = f.tbIndexAlignments.Text.ToString();
                 string name = f.tbNameAlignments.Text.ToString();
                 string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
@@ -447,7 +450,7 @@ namespace DnDDesktop.Controllers
                     //MessageBox.Show(idBuscar);
                     if (idBuscar != null)
                     {
-                        Alignment newAlignments = alignmentsRepository.GetAlignment(idBuscar.ToString());
+                        Feats newAlignments = alignmentsRepository.GetAlignment(idBuscar.ToString());
                         f.tbIndexAlignments.Text = newAlignments.Index;
                         f.tbNameAlignments.Text = newAlignments.Name;
                         f.tbAbbreviationAlignments.Text = newAlignments.Abbreviation;
@@ -509,7 +512,7 @@ namespace DnDDesktop.Controllers
                 string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
                 string description = f.rtbDescriptionAlignments.Text;
 
-                Alignment alignmentModificar = new Alignment();
+                Feats alignmentModificar = new Feats();
 
                 if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(abbreviation))
                 {
@@ -547,7 +550,7 @@ namespace DnDDesktop.Controllers
             DataGridViewRow row = f.dgvAlignments.CurrentRow;
             if (row != null)
             {
-                Alignment alig = (Alignment)row.DataBoundItem;
+                Feats alig = (Feats)row.DataBoundItem;
                 f.tbIndexAlignments.Text = alig.Index;
                 f.tbAbbreviationAlignments.Text = alig.Abbreviation;
                 f.tbNameAlignments.Text = alig.Name;
@@ -2195,6 +2198,7 @@ namespace DnDDesktop.Controllers
                     eqCat.Name = f.tbNameEquipmentCategories.Text;
                     eqCat.Equipment = new From[] { selectedEquipment };
                     EquipmentCategoriesRepository.CreateEquipmentCategory(eqCat);
+                    MessageBox.Show("");
                     LoadDataEquipmentCategories();
                 }
             }
@@ -2207,14 +2211,16 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-                From selectedEquipment = (From)f.cbEquipmentEquipmentCategories.SelectedItem;
-                if (selectedEquipment != null)
+                if (e.Button == MouseButtons.Middle)
                 {
                     EquipmentCategory eqCat = new EquipmentCategory();
                     eqCat.Index = f.tbIndexEquipmentCategories.Text;
                     eqCat.Name = f.tbNameEquipmentCategories.Text;
-                    eqCat.Equipment = new From[] { null };
+                    From emptyEquipment = new From();
+                    emptyEquipment.Index = string.Empty;
+                    eqCat.Equipment = new From[] { emptyEquipment };
                     EquipmentCategoriesRepository.CreateEquipmentCategory(eqCat);
+                    MessageBox.Show("Classes introducido sin equipment");
                     LoadDataEquipmentCategories();
                 }
             }
@@ -2251,5 +2257,7 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        //Feats
     }
 }

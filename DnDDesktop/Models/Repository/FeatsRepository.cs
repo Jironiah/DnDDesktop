@@ -8,33 +8,33 @@ using System.Threading.Tasks;
 
 namespace DnDDesktop.Models.Repository
 {
-    public class AlignmentsRepository
+    public class FeatsRepository
     {
-        string urlAlignments = "https://localhost:7153/api/Alignment/";
+        string urlFeats = "https://localhost:7153/api/Feat/";
 
-        public List<Feats> GetAlignments()
+        public List<Feats> GetFeats()
         {
-            return MakeRequest<List<Feats>>(urlAlignments, null, "GET", "application/json");
+            return MakeRequest<List<Feats>>(urlFeats, null, "GET", "application/json");
         }
 
-        public Feats GetAlignment(string id)
+        public Feats GetFeat(string id)
         {
-            return MakeRequest<Feats>(urlAlignments + id, null, "GET", "application/json");
+            return MakeRequest<Feats>(urlFeats + id, null, "GET", "application/json");
         }
 
-        public Feats CreateAlignment(Feats alignment)
+        public Feats CreateFeat(Feats feat)
         {
-            return MakeRequest<Feats>(urlAlignments, alignment, "POST", "application/json");
+            return MakeRequest<Feats>(urlFeats, feat, "POST", "application/json");
         }
 
-        public Feats UpdateAlignment(Feats alignment)
+        public Feats UpdateFeat(Feats feat)
         {
-            return MakeRequest<Feats>(urlAlignments + alignment.Id, alignment, "PUT", "application/json");
+            return MakeRequest<Feats>(urlFeats + feat.Id, feat, "PUT", "application/json");
         }
 
-        public Feats DeleteAlignment(string id)
+        public Feats DeleteFeat(string id)
         {
-            return MakeRequest<Feats>(urlAlignments + id, null, "DELETE", "application/json");
+            return MakeRequest<Feats>(urlFeats + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

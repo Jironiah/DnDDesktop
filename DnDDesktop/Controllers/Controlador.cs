@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
+using System.Windows.Forms.VisualStyles;
 
 namespace DnDDesktop.Controllers
 {
@@ -23,7 +24,7 @@ namespace DnDDesktop.Controllers
         DamageTypeRepository DamageTypeRepository = new DamageTypeRepository();
         EquipmentRepository EquipmentRepository = new EquipmentRepository();
         EquipmentCategoriesRepository EquipmentCategoriesRepository = new EquipmentCategoriesRepository();
-        FeatsRepository FeatsRepository = new FeatsRepository();
+        FeatRepository FeatsRepository = new FeatRepository();
 
         //Listas
 
@@ -32,7 +33,7 @@ namespace DnDDesktop.Controllers
         List<AbilityScore> abilityScores = new List<AbilityScore>();
 
         //Alignments
-        List<Feats> alignments = new List<Feats>();
+        List<Alignments> alignments = new List<Alignments>();
 
         //WeaponProperties
         List<WeaponProperty> weapons = new List<WeaponProperty>();
@@ -56,7 +57,8 @@ namespace DnDDesktop.Controllers
         //EquipmentCategories
         List<EquipmentCategory> equipmentCategories = new List<EquipmentCategory>();
 
-
+        //Feats
+        List<Feat> feats = new List<Feat>();
 
         public Controlador()
         {
@@ -76,6 +78,7 @@ namespace DnDDesktop.Controllers
             LoadDataDamageType();
             LoadDataEquipment();
             LoadDataEquipmentCategories();
+            LoadDataFeat();
         }
 
         private void LoadDataAbilityScore()
@@ -92,13 +95,11 @@ namespace DnDDesktop.Controllers
             alignments = alignmentsRepository.GetAlignments();
             f.dgvAlignments.DataSource = alignments;
         }
-
         private void LoadDataWeaponProperties()
         {
             weapons = weaponPropertiesRepository.GetWeaponProperties();
             f.dgvWeaponProperties.DataSource = weapons;
         }
-
         private void LoadDataClasses()
         {
             classes = classesRepository.GetClasses();
@@ -140,6 +141,11 @@ namespace DnDDesktop.Controllers
         {
             equipmentCategories = EquipmentCategoriesRepository.GetEquipmentCategories();
             f.dgvEquipmentCategories.DataSource = equipmentCategories;
+        }
+        private void LoadDataFeat()
+        {
+            feats = FeatsRepository.GetFeats();
+            f.dgvFeats.DataSource = feats;
         }
         private void InitListeners()
         {
@@ -201,6 +207,13 @@ namespace DnDDesktop.Controllers
             f.btInsertarEquipmentCategories.Click += BtInsertarEquipmentCategories_Click;
             f.btInsertarEquipmentCategories.MouseUp += BtInsertarEquipmentCategories_MouseUp;
             f.btModificarEquipmentCategories.Click += BtModificarEquipmentCategories_Click;
+            //Feat
+            f.dgvFeats.SelectionChanged += DgvFeats_SelectionChanged;
+            f.btBuscarFeats.Click += BtBuscarFeats_Click;
+            f.btEliminarFeats.Click += BtEliminarFeats_Click;
+            f.btInsertarFeats.Click += BtInsertarFeats_Click;
+            f.btInsertarFeats.MouseUp += BtInsertarFeats_MouseUp;
+            f.btModificarFeats.Click += BtModificarFeats_Click;
         }
 
         //AbilityScore
@@ -410,7 +423,7 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-                Feats alignment = new Feats();
+                Alignments alignment = new Alignments();
                 string index = f.tbIndexAlignments.Text.ToString();
                 string name = f.tbNameAlignments.Text.ToString();
                 string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
@@ -450,7 +463,7 @@ namespace DnDDesktop.Controllers
                     //MessageBox.Show(idBuscar);
                     if (idBuscar != null)
                     {
-                        Feats newAlignments = alignmentsRepository.GetAlignment(idBuscar.ToString());
+                        Alignments newAlignments = alignmentsRepository.GetAlignment(idBuscar.ToString());
                         f.tbIndexAlignments.Text = newAlignments.Index;
                         f.tbNameAlignments.Text = newAlignments.Name;
                         f.tbAbbreviationAlignments.Text = newAlignments.Abbreviation;
@@ -512,7 +525,7 @@ namespace DnDDesktop.Controllers
                 string abbreviation = f.tbAbbreviationAlignments.Text.ToString();
                 string description = f.rtbDescriptionAlignments.Text;
 
-                Feats alignmentModificar = new Feats();
+                Alignments alignmentModificar = new Alignments();
 
                 if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(abbreviation))
                 {
@@ -550,7 +563,7 @@ namespace DnDDesktop.Controllers
             DataGridViewRow row = f.dgvAlignments.CurrentRow;
             if (row != null)
             {
-                Feats alig = (Feats)row.DataBoundItem;
+                Alignments alig = (Alignments)row.DataBoundItem;
                 f.tbIndexAlignments.Text = alig.Index;
                 f.tbAbbreviationAlignments.Text = alig.Abbreviation;
                 f.tbNameAlignments.Text = alig.Name;
@@ -2240,6 +2253,7 @@ namespace DnDDesktop.Controllers
                     if (idBuscar != null)
                     {
                         EquipmentCategoriesRepository.DeleteEquipmentCategory(idBuscar);
+                        MessageBox.Show(f.tbIndexEquipmentCategories.Text.ToString() + " eliminado");
                         LoadDataEquipmentCategories();
                     }
                     else
@@ -2258,6 +2272,193 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        //Feats
+        //Feat
+        private void DgvFeats_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvFeats.CurrentRow;
+                if (row != null)
+                {
+                    Feat feat = (Feat)row.DataBoundItem;
+                    f.tbIndexFeats.Text = feat.Index;
+                    f.tbNameFeats.Text = feat.Name;
+                    f.rtbDescriptionFeats.Text = feat.Description.FirstOrDefault();
+                    f.cbPrerequisitesFeats.DataSource = feat.Prerequisites;
+                    f.cbPrerequisitesFeats.DisplayMember = "MinimumScore";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtBuscarFeats_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeats.Text))
+                {
+                    string idBuscar = feats.Where(a => a.Index.Equals(f.tbFiltrarFeats.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Feat feat = FeatsRepository.GetFeat(idBuscar.ToString());
+                        f.tbIndexFeats.Text = feat.Index;
+                        f.tbNameFeats.Text = feat.Name;
+                        f.rtbDescriptionFeats.Text = feat.Description?.FirstOrDefault();
+                        f.cbPrerequisitesFeats.DataSource = feat.Prerequisites;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarFeats_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Feat feat = new Feat();
+                string index = f.tbIndexFeats.Text;
+                string name = f.tbNameFeats.Text;
+                string[] description = new string[] { f.rtbDescriptionFeats.Text };
+                Prerequisites prerequisites = (Prerequisites)f.cbPrerequisitesFeats.SelectedItem;
+                List<Prerequisites> prerequisitesList = new List<Prerequisites>();
+                prerequisitesList.Add(prerequisites);
+                if (prerequisites != null)
+                {
+                    feat.Index = index;
+                    feat.Name = name;
+                    feat.Description = description;
+                    feat.Prerequisites = prerequisitesList.ToArray();
+                    FeatsRepository.CreateFeat(feat);
+                    MessageBox.Show("Feat añadido");
+                    LoadDataFeat();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarFeats_MouseUp(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Middle)
+                {
+                    Feat feat = new Feat();
+                    string index = f.tbIndexFeats.Text;
+                    string name = f.tbNameFeats.Text;
+                    string[] description = new string[] { f.rtbDescriptionFeats.Text };
+                    From emptyAbilityScore = new From();
+                    emptyAbilityScore.Index = string.Empty;
+                    emptyAbilityScore.Name = string.Empty;
+                    Prerequisites prerequisites = new Prerequisites();
+                    prerequisites.AbilityScore = emptyAbilityScore;
+                    prerequisites.MinimumScore = 0;
+
+                    List<Prerequisites> prerequisitesList = new List<Prerequisites>();
+                    prerequisitesList.Add(prerequisites);
+
+                    feat.Index = index;
+                    feat.Name = name;
+                    feat.Description = description;
+                    feat.Prerequisites = prerequisitesList.ToArray();
+                    FeatsRepository.CreateFeat(feat);
+                    MessageBox.Show("Feat añadido");
+                    LoadDataFeat();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarFeats_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeats.Text))
+                {
+                    string idBuscar = feats.Where(a => a.Index.Equals(f.tbFiltrarFeats.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Feat feat = FeatsRepository.GetFeat(idBuscar.ToString());
+                        MessageBox.Show(f.tbIndexFeats.Text.ToString() + " eliminado");
+                        LoadDataFeat();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtModificarFeats_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeats.Text))
+                {
+                    string idBuscar = feats.Where(a => a.Index.Equals(f.tbFiltrarFeats.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Feat feat = new Feat();
+                        string index = f.tbIndexFeats.Text;
+                        string name = f.tbNameFeats.Text;
+                        string[] description = new string[] { f.rtbDescriptionFeats.Text };
+                        Prerequisites prerequisites = (Prerequisites)f.cbPrerequisitesFeats.SelectedItem;
+                        List<Prerequisites> prerequisitesList = new List<Prerequisites>();
+                        prerequisitesList.Add(prerequisites);
+                        if (prerequisites != null)
+                        {
+                            feat.Id = idBuscar;
+                            feat.Index = index;
+                            feat.Name = name;
+                            feat.Description = description;
+                            feat.Prerequisites = prerequisitesList.ToArray();
+                            FeatsRepository.UpdateFeat(feat);
+                            MessageBox.Show("Feat modificado");
+                            LoadDataFeat();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }

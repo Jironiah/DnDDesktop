@@ -8,33 +8,33 @@ using System.Threading.Tasks;
 
 namespace DnDDesktop.Models.Repository
 {
-    public class FeatsRepository
+    public class FeatRepository
     {
         string urlFeats = "https://localhost:7153/api/Feat/";
 
-        public List<Feats> GetFeats()
+        public List<Feat> GetFeats()
         {
-            return MakeRequest<List<Feats>>(urlFeats, null, "GET", "application/json");
+            return MakeRequest<List<Feat>>(urlFeats, null, "GET", "application/json");
         }
 
-        public Feats GetFeat(string id)
+        public Feat GetFeat(string id)
         {
-            return MakeRequest<Feats>(urlFeats + id, null, "GET", "application/json");
+            return MakeRequest<Feat>(urlFeats + id, null, "GET", "application/json");
         }
 
-        public Feats CreateFeat(Feats feat)
+        public Feat CreateFeat(Feat feat)
         {
-            return MakeRequest<Feats>(urlFeats, feat, "POST", "application/json");
+            return MakeRequest<Feat>(urlFeats, feat, "POST", "application/json");
         }
 
-        public Feats UpdateFeat(Feats feat)
+        public Feat UpdateFeat(Feat feat)
         {
-            return MakeRequest<Feats>(urlFeats + feat.Id, feat, "PUT", "application/json");
+            return MakeRequest<Feat>(urlFeats + feat.Id, feat, "PUT", "application/json");
         }
 
-        public Feats DeleteFeat(string id)
+        public Feat DeleteFeat(string id)
         {
-            return MakeRequest<Feats>(urlFeats + id, null, "DELETE", "application/json");
+            return MakeRequest<Feat>(urlFeats + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DnDDesktop.Models
 {
-    public class Feats
+    public class Alignments
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

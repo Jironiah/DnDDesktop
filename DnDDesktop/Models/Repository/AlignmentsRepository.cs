@@ -12,29 +12,29 @@ namespace DnDDesktop.Models.Repository
     {
         string urlAlignments = "https://localhost:7153/api/Alignment/";
 
-        public List<Feats> GetAlignments()
+        public List<Alignments> GetAlignments()
         {
-            return MakeRequest<List<Feats>>(urlAlignments, null, "GET", "application/json");
+            return MakeRequest<List<Alignments>>(urlAlignments, null, "GET", "application/json");
         }
 
-        public Feats GetAlignment(string id)
+        public Alignments GetAlignment(string id)
         {
-            return MakeRequest<Feats>(urlAlignments + id, null, "GET", "application/json");
+            return MakeRequest<Alignments>(urlAlignments + id, null, "GET", "application/json");
         }
 
-        public Feats CreateAlignment(Feats alignment)
+        public Alignments CreateAlignment(Alignments alignment)
         {
-            return MakeRequest<Feats>(urlAlignments, alignment, "POST", "application/json");
+            return MakeRequest<Alignments>(urlAlignments, alignment, "POST", "application/json");
         }
 
-        public Feats UpdateAlignment(Feats alignment)
+        public Alignments UpdateAlignment(Alignments alignment)
         {
-            return MakeRequest<Feats>(urlAlignments + alignment.Id, alignment, "PUT", "application/json");
+            return MakeRequest<Alignments>(urlAlignments + alignment.Id, alignment, "PUT", "application/json");
         }
 
-        public Feats DeleteAlignment(string id)
+        public Alignments DeleteAlignment(string id)
         {
-            return MakeRequest<Feats>(urlAlignments + id, null, "DELETE", "application/json");
+            return MakeRequest<Alignments>(urlAlignments + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

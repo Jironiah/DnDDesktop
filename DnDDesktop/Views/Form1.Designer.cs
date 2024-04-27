@@ -239,6 +239,12 @@
             tbNameEquipmentCategories = new TextBox();
             tbIndexEquipmentCategories = new TextBox();
             Feats = new TabPage();
+            btEliminarFeats = new Button();
+            btModificarFeats = new Button();
+            btBuscarFeats = new Button();
+            tbFiltrarFeats = new TextBox();
+            btInsertarFeats = new Button();
+            dgvFeats = new DataGridView();
             rtbDescriptionFeats = new RichTextBox();
             label69 = new Label();
             label70 = new Label();
@@ -483,12 +489,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btEliminarFeats = new Button();
-            btModificarFeats = new Button();
-            btBuscarFeats = new Button();
-            tbFiltrarFeats = new TextBox();
-            btInsertarFeats = new Button();
-            dgvFeats = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -522,6 +522,7 @@
             EquipmentCategories.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEquipmentCategories).BeginInit();
             Feats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvFeats).BeginInit();
             Features.SuspendLayout();
             Languages.SuspendLayout();
             Levels.SuspendLayout();
@@ -534,7 +535,6 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFeats).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -588,7 +588,7 @@
             AbilityScore.Controls.Add(tbFullNameAbilityScore);
             AbilityScore.Location = new Point(4, 24);
             AbilityScore.Name = "AbilityScore";
-            AbilityScore.Padding = new Padding(3, 3, 3, 3);
+            AbilityScore.Padding = new Padding(3);
             AbilityScore.Size = new Size(1555, 679);
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
@@ -770,7 +770,7 @@
             Alignments.Controls.Add(tbNameAlignments);
             Alignments.Location = new Point(4, 24);
             Alignments.Name = "Alignments";
-            Alignments.Padding = new Padding(3, 3, 3, 3);
+            Alignments.Padding = new Padding(3);
             Alignments.Size = new Size(1555, 679);
             Alignments.TabIndex = 1;
             Alignments.Text = "Alignments";
@@ -922,7 +922,7 @@
             WeaponProperties.Controls.Add(tbNameWeaponProperties);
             WeaponProperties.Location = new Point(4, 24);
             WeaponProperties.Name = "WeaponProperties";
-            WeaponProperties.Padding = new Padding(3, 3, 3, 3);
+            WeaponProperties.Padding = new Padding(3);
             WeaponProperties.Size = new Size(1555, 679);
             WeaponProperties.TabIndex = 2;
             WeaponProperties.Text = "Weapon Properties";
@@ -1082,7 +1082,7 @@
             Classes.Controls.Add(tbNameClasses);
             Classes.Location = new Point(4, 24);
             Classes.Name = "Classes";
-            Classes.Padding = new Padding(3, 3, 3, 3);
+            Classes.Padding = new Padding(3);
             Classes.Size = new Size(1555, 679);
             Classes.TabIndex = 3;
             Classes.Text = "Classes";
@@ -2784,9 +2784,73 @@
             Feats.Text = "Feats";
             Feats.UseVisualStyleBackColor = true;
             // 
+            // btEliminarFeats
+            // 
+            btEliminarFeats.Location = new Point(1344, 633);
+            btEliminarFeats.Margin = new Padding(3, 2, 3, 2);
+            btEliminarFeats.Name = "btEliminarFeats";
+            btEliminarFeats.Size = new Size(82, 22);
+            btEliminarFeats.TabIndex = 148;
+            btEliminarFeats.Text = "Eliminar";
+            btEliminarFeats.UseVisualStyleBackColor = true;
+            // 
+            // btModificarFeats
+            // 
+            btModificarFeats.Location = new Point(1257, 633);
+            btModificarFeats.Margin = new Padding(3, 2, 3, 2);
+            btModificarFeats.Name = "btModificarFeats";
+            btModificarFeats.Size = new Size(82, 22);
+            btModificarFeats.TabIndex = 147;
+            btModificarFeats.Text = "Modificar";
+            btModificarFeats.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarFeats
+            // 
+            btBuscarFeats.Location = new Point(1257, 598);
+            btBuscarFeats.Margin = new Padding(3, 2, 3, 2);
+            btBuscarFeats.Name = "btBuscarFeats";
+            btBuscarFeats.Size = new Size(170, 22);
+            btBuscarFeats.TabIndex = 146;
+            btBuscarFeats.Text = "Buscar por Index";
+            btBuscarFeats.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarFeats
+            // 
+            tbFiltrarFeats.Location = new Point(1141, 598);
+            tbFiltrarFeats.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarFeats.Name = "tbFiltrarFeats";
+            tbFiltrarFeats.Size = new Size(110, 23);
+            tbFiltrarFeats.TabIndex = 145;
+            // 
+            // btInsertarFeats
+            // 
+            btInsertarFeats.Location = new Point(1444, 630);
+            btInsertarFeats.Margin = new Padding(3, 2, 3, 2);
+            btInsertarFeats.Name = "btInsertarFeats";
+            btInsertarFeats.Size = new Size(82, 26);
+            btInsertarFeats.TabIndex = 144;
+            btInsertarFeats.Text = "Insertar";
+            btInsertarFeats.UseVisualStyleBackColor = true;
+            // 
+            // dgvFeats
+            // 
+            dgvFeats.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvFeats.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvFeats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFeats.Location = new Point(11, 290);
+            dgvFeats.Margin = new Padding(3, 2, 3, 2);
+            dgvFeats.MultiSelect = false;
+            dgvFeats.Name = "dgvFeats";
+            dgvFeats.ReadOnly = true;
+            dgvFeats.RowHeadersWidth = 51;
+            dgvFeats.RowTemplate.Height = 29;
+            dgvFeats.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFeats.Size = new Size(415, 367);
+            dgvFeats.TabIndex = 143;
+            // 
             // rtbDescriptionFeats
             // 
-            rtbDescriptionFeats.Location = new Point(325, 27);
+            rtbDescriptionFeats.Location = new Point(390, 27);
             rtbDescriptionFeats.Name = "rtbDescriptionFeats";
             rtbDescriptionFeats.Size = new Size(432, 96);
             rtbDescriptionFeats.TabIndex = 84;
@@ -2795,7 +2859,7 @@
             // label69
             // 
             label69.AutoSize = true;
-            label69.Location = new Point(325, 9);
+            label69.Location = new Point(390, 9);
             label69.Name = "label69";
             label69.Size = new Size(67, 15);
             label69.TabIndex = 83;
@@ -2804,7 +2868,7 @@
             // label70
             // 
             label70.AutoSize = true;
-            label70.Location = new Point(797, 9);
+            label70.Location = new Point(862, 9);
             label70.Name = "label70";
             label70.Size = new Size(74, 15);
             label70.TabIndex = 43;
@@ -2813,7 +2877,7 @@
             // cbPrerequisitesFeats
             // 
             cbPrerequisitesFeats.FormattingEnabled = true;
-            cbPrerequisitesFeats.Location = new Point(800, 27);
+            cbPrerequisitesFeats.Location = new Point(865, 27);
             cbPrerequisitesFeats.Name = "cbPrerequisitesFeats";
             cbPrerequisitesFeats.Size = new Size(106, 23);
             cbPrerequisitesFeats.TabIndex = 42;
@@ -2830,7 +2894,7 @@
             // label68
             // 
             label68.AutoSize = true;
-            label68.Location = new Point(66, 9);
+            label68.Location = new Point(131, 9);
             label68.Name = "label68";
             label68.Size = new Size(39, 15);
             label68.TabIndex = 40;
@@ -2840,12 +2904,12 @@
             // 
             tbIndexFeats.Location = new Point(11, 27);
             tbIndexFeats.Name = "tbIndexFeats";
-            tbIndexFeats.Size = new Size(36, 23);
+            tbIndexFeats.Size = new Size(89, 23);
             tbIndexFeats.TabIndex = 38;
             // 
             // tbNameFeats
             // 
-            tbNameFeats.Location = new Point(69, 27);
+            tbNameFeats.Location = new Point(134, 27);
             tbNameFeats.Name = "tbNameFeats";
             tbNameFeats.Size = new Size(221, 23);
             tbNameFeats.TabIndex = 37;
@@ -5054,70 +5118,6 @@
             tbNameTraits.Size = new Size(221, 23);
             tbNameTraits.TabIndex = 63;
             // 
-            // btEliminarFeats
-            // 
-            btEliminarFeats.Location = new Point(1344, 633);
-            btEliminarFeats.Margin = new Padding(3, 2, 3, 2);
-            btEliminarFeats.Name = "btEliminarFeats";
-            btEliminarFeats.Size = new Size(82, 22);
-            btEliminarFeats.TabIndex = 148;
-            btEliminarFeats.Text = "Eliminar";
-            btEliminarFeats.UseVisualStyleBackColor = true;
-            // 
-            // btModificarFeats
-            // 
-            btModificarFeats.Location = new Point(1257, 633);
-            btModificarFeats.Margin = new Padding(3, 2, 3, 2);
-            btModificarFeats.Name = "btModificarFeats";
-            btModificarFeats.Size = new Size(82, 22);
-            btModificarFeats.TabIndex = 147;
-            btModificarFeats.Text = "Modificar";
-            btModificarFeats.UseVisualStyleBackColor = true;
-            // 
-            // btBuscarFeats
-            // 
-            btBuscarFeats.Location = new Point(1257, 598);
-            btBuscarFeats.Margin = new Padding(3, 2, 3, 2);
-            btBuscarFeats.Name = "btBuscarFeats";
-            btBuscarFeats.Size = new Size(170, 22);
-            btBuscarFeats.TabIndex = 146;
-            btBuscarFeats.Text = "Buscar por Index";
-            btBuscarFeats.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarFeats
-            // 
-            tbFiltrarFeats.Location = new Point(1141, 598);
-            tbFiltrarFeats.Margin = new Padding(3, 2, 3, 2);
-            tbFiltrarFeats.Name = "tbFiltrarFeats";
-            tbFiltrarFeats.Size = new Size(110, 23);
-            tbFiltrarFeats.TabIndex = 145;
-            // 
-            // btInsertarFeats
-            // 
-            btInsertarFeats.Location = new Point(1444, 630);
-            btInsertarFeats.Margin = new Padding(3, 2, 3, 2);
-            btInsertarFeats.Name = "btInsertarFeats";
-            btInsertarFeats.Size = new Size(82, 26);
-            btInsertarFeats.TabIndex = 144;
-            btInsertarFeats.Text = "Insertar";
-            btInsertarFeats.UseVisualStyleBackColor = true;
-            // 
-            // dgvFeats
-            // 
-            dgvFeats.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvFeats.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvFeats.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFeats.Location = new Point(11, 290);
-            dgvFeats.Margin = new Padding(3, 2, 3, 2);
-            dgvFeats.MultiSelect = false;
-            dgvFeats.Name = "dgvFeats";
-            dgvFeats.ReadOnly = true;
-            dgvFeats.RowHeadersWidth = 51;
-            dgvFeats.RowTemplate.Height = 29;
-            dgvFeats.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFeats.Size = new Size(415, 367);
-            dgvFeats.TabIndex = 143;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -5171,6 +5171,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvEquipmentCategories).EndInit();
             Feats.ResumeLayout(false);
             Feats.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvFeats).EndInit();
             Features.ResumeLayout(false);
             Features.PerformLayout();
             Languages.ResumeLayout(false);
@@ -5195,7 +5196,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFeats).EndInit();
             ResumeLayout(false);
         }
 
@@ -5334,8 +5334,6 @@
         public System.Windows.Forms.Label label68;
         public System.Windows.Forms.TextBox tbIndexFeats;
         public System.Windows.Forms.TextBox tbNameFeats;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.ComboBox cbPrerequisitesFeats;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.Label label75;
@@ -5663,6 +5661,8 @@
         public TextBox tbFiltrarFeats;
         public Button btInsertarFeats;
         public DataGridView dgvFeats;
+        public Label label70;
+        public ComboBox cbPrerequisitesFeats;
     }
 }
 

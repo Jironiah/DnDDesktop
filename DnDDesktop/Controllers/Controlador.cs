@@ -7,6 +7,9 @@ using System;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
 using System.Windows.Forms.VisualStyles;
+using System.Security.Policy;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Windows.Forms;
 
 namespace DnDDesktop.Controllers
 {
@@ -25,6 +28,7 @@ namespace DnDDesktop.Controllers
         EquipmentRepository EquipmentRepository = new EquipmentRepository();
         EquipmentCategoriesRepository EquipmentCategoriesRepository = new EquipmentCategoriesRepository();
         FeatRepository FeatsRepository = new FeatRepository();
+        FeaturesRepository FeaturesRepository = new FeaturesRepository();
 
         //Listas
 
@@ -60,6 +64,9 @@ namespace DnDDesktop.Controllers
         //Feats
         List<Feat> feats = new List<Feat>();
 
+        //Feature
+        List<Feature> features = new List<Feature>();
+
         public Controlador()
         {
             LoadData();
@@ -79,6 +86,7 @@ namespace DnDDesktop.Controllers
             LoadDataEquipment();
             LoadDataEquipmentCategories();
             LoadDataFeat();
+            LoadDataFeatures();
         }
 
         private void LoadDataAbilityScore()
@@ -89,7 +97,6 @@ namespace DnDDesktop.Controllers
             abilityScores = abilityScoreRepository.GetAbilityScores();
             f.dgvAbilityScore.DataSource = abilityScores;
         }
-
         private void LoadDataAlignments()
         {
             alignments = alignmentsRepository.GetAlignments();
@@ -147,6 +154,12 @@ namespace DnDDesktop.Controllers
             feats = FeatsRepository.GetFeats();
             f.dgvFeats.DataSource = feats;
         }
+        private void LoadDataFeatures()
+        {
+            features = FeaturesRepository.GetFeatures();
+            f.dgvFeatures.DataSource = features.Select(a => new FeaturesDAO(a)).ToList();
+        }
+
         private void InitListeners()
         {
             //AbilityScore
@@ -214,6 +227,13 @@ namespace DnDDesktop.Controllers
             f.btInsertarFeats.Click += BtInsertarFeats_Click;
             f.btInsertarFeats.MouseUp += BtInsertarFeats_MouseUp;
             f.btModificarFeats.Click += BtModificarFeats_Click;
+            //Features
+            f.dgvFeatures.SelectionChanged += DgvFeatures_SelectionChanged;
+            f.btBuscarFeatures.Click += BtBuscarFeatures_Click;
+            f.btInsertarFeatures.Click += BtInsertarFeatures_Click;
+            f.btInsertarFeatures.MouseUp += BtInsertarFeatures_MouseUp;
+            f.btEliminarFeatures.Click += BtEliminarFeatures_Click;
+            f.btModificarFeatures.Click += BtModificarFeatures_Click;
         }
 
         //AbilityScore
@@ -231,7 +251,6 @@ namespace DnDDesktop.Controllers
                 f.cbSkillsAbilityScore.DataSource = absc.Skills;
             }
         }
-
         private void BtInsertarAbilityScore_Click(object? sender, EventArgs e)
         {
             try
@@ -268,7 +287,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
         private void btInsertarAbilityScore_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
@@ -311,7 +329,6 @@ namespace DnDDesktop.Controllers
                 }
             }
         }
-
         private void BtBuscarAbilityScore_Click(object? sender, EventArgs e)
         {
             try
@@ -345,7 +362,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
         private void BtEliminarAbilityScore_Click(object? sender, EventArgs e)
         {
             try
@@ -375,7 +391,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
         private void BtModificarAbilityScore_Click(object? sender, EventArgs e)
         {
             try
@@ -451,7 +466,6 @@ namespace DnDDesktop.Controllers
             }
 
         }
-
         private void BtBuscarAlignments_Click(object? sender, EventArgs e)
         {
             try
@@ -485,7 +499,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
         private void BtEliminarAlignments_Click(object? sender, EventArgs e)
         {
             try
@@ -515,7 +528,6 @@ namespace DnDDesktop.Controllers
             }
 
         }
-
         private void BtModificarAlignment_Click(object? sender, EventArgs e)
         {
             try
@@ -557,7 +569,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
         private void DgvAlignments_SelectionChanged(object? sender, EventArgs e)
         {
             DataGridViewRow row = f.dgvAlignments.CurrentRow;
@@ -604,7 +615,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("No puedes dejar espacios vacíos");
             }
         }
-
         private void BtBuscarWeaponProperties_Click(object? sender, EventArgs e)
         {
             try
@@ -637,7 +647,6 @@ namespace DnDDesktop.Controllers
             }
 
         }
-
         private void BtEliminarWeaponProperties_Click(object? sender, EventArgs e)
         {
             try
@@ -668,7 +677,6 @@ namespace DnDDesktop.Controllers
             }
 
         }
-
         private void BtModificarWeaponProperties_Click(object? sender, EventArgs e)
         {
             try
@@ -785,7 +793,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
         private void BtInsertarClasses_Click(object? sender, EventArgs e)
         {
             try
@@ -872,8 +879,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
-
         //private void BtInsertarClasses_MouseUp(object? sender, MouseEventArgs e)
         //{
         //    try
@@ -977,7 +982,6 @@ namespace DnDDesktop.Controllers
         //        MessageBox.Show(Extensions.GetaAllMessages(ex));
         //    }
         //}
-
         private void BtModificarClasses_Click(object? sender, EventArgs e)
         {
             try
@@ -1088,7 +1092,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
         private void BtEliminarClasses_Click(object? sender, EventArgs e)
         {
             try
@@ -2404,7 +2407,6 @@ namespace DnDDesktop.Controllers
                     {
                         MessageBox.Show("No existe una referencia con ese index");
                     }
-
                 }
                 else
                 {
@@ -2453,6 +2455,561 @@ namespace DnDDesktop.Controllers
                 else
                 {
                     MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //Features
+        private void DgvFeatures_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvFeatures.CurrentRow;
+                if (row != null)
+                {
+                    FeaturesDAO featureDAO = (FeaturesDAO)row.DataBoundItem;
+                    Feature feature = FeaturesRepository.GetFeature(featureDAO.id);
+                    f.tbIndexFeatures.Text = feature?.Index;
+                    f.tbNameFeatures.Text = feature?.Name;
+                    f.cbExpertiseOptionsInvocationsFeatures.DataSource = feature?.FeatureSpecific?.Invocations?.Name;
+                    f.tbLevelFeatures.Text = feature?.level.ToString();
+                    f.tbExpertiseOptionChooseFeature.Text = feature?.FeatureSpecific?.ExpertiseOption?.Choose.ToString();
+
+                    List<From> featureClass = new List<From>();
+                    featureClass.Add(feature?.Class);
+                    f.dgvClassFeatures.DataSource = featureClass;
+
+                    List<From> featureParent = new List<From>();
+                    featureParent.Add(feature?.Parent);
+                    f.dgvParentFeatures.DataSource = featureParent;
+
+                    List<From> featureSubclass = new List<From>();
+                    featureSubclass.Add(feature?.Subclass);
+                    f.dgvSubclassFeatures.DataSource = featureSubclass;
+
+                    //ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromIndex
+                    var indexList = new List<string>();
+                    if (feature?.FeatureSpecific?.ExpertiseOption?.From?.Any() ?? false)
+                    {
+                        var expertiseOptions = feature.FeatureSpecific.ExpertiseOption.From;
+
+                        foreach (var option in expertiseOptions)
+                        {
+                            if (option?.Items?.Choice?.Item?.Any() ?? false)
+                            {
+                                var items = option.Items.Choice.Item;
+
+                                foreach (var item in items)
+                                {
+                                    if (item?.Index?.Any() ?? false)
+                                    {
+                                        indexList.AddRange(item.Index.ToList());
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.DataSource = indexList;
+
+                    //ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromName
+                    var nameList = new List<string>();
+                    if (feature?.FeatureSpecific?.ExpertiseOption?.From?.Any() ?? false)
+                    {
+                        var expertiseOptions = feature.FeatureSpecific.ExpertiseOption.From;
+
+                        foreach (var option in expertiseOptions)
+                        {
+                            if (option?.Items?.Choice?.Item?.Any() ?? false)
+                            {
+                                var items = option.Items.Choice.Item;
+
+                                foreach (var item in items)
+                                {
+                                    if (item?.Name?.Any() ?? false)
+                                    {
+                                        nameList.AddRange(item.Name.ToList());
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.DataSource = nameList;
+
+                    //ExpertiseOptionFromFeatureChoiceFeatureFroms
+                    f.dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.DataSource = feature?.FeatureSpecific?.ExpertiseOption?.From?.SelectMany(a => a.Choice?.Froms?.ToList());
+
+                    //ExpertiseOptionsSubfeaturesOptionsFrom
+                    f.dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.DataSource = feature?.FeatureSpecific?.SubfeatureOptions?.From?.ToList();
+
+                    //PrerequisiteFeature
+                    f.dgvPrerequisitesFeatures.DataSource = feature?.PrerequisiteFeatures?.ToList();
+
+                    List<string> indexList2 = new List<string>();
+                    List<string> nameList2 = new List<string>();
+
+                    if (feature?.FeatureSpecific?.ExpertiseOption?.From != null)
+                    {
+                        foreach (var from in feature.FeatureSpecific.ExpertiseOption.From)
+                        {
+                            if (from.Items != null && from.Items.Item != null)
+                            {
+                                indexList2.AddRange(from.Items.Item.Index.Select(a => a).ToList());
+                                nameList2.AddRange(from.Items.Item.Name);
+                            }
+                        }
+                    }
+
+                    f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.DataSource = indexList;
+                    f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.DataSource = nameList;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarFeatures_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                string index = f.tbIndexFeatures.Text;
+                string name = f.tbNameFeatures.Text;
+                string featureSpecificInvocations = f.cbExpertiseOptionsInvocationsFeatures.Text;
+                string level = f.tbLevelFeatures.Text;
+                string[] description = new string[] { f.rtbDescriptionFeatures.Text };
+                string expertiseOptionsFromFeatureIndex = f.tbExpertiseOptionsFromFeatureIndex.Text;
+                string expertiseOptionsFromFeatureName = f.tbExpertiseOptionsFromFeatureName.Text;
+
+                Feature insertarFeature = new Feature();
+
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level))
+                {
+                    insertarFeature.Index = index;
+                    insertarFeature.Name = name;
+                    insertarFeature.level = int.Parse(level);
+                    insertarFeature.Description = description;
+
+                    // Prerequisites
+                    DataGridViewRow prerequisitesRow = f.dgvPrerequisitesFeatures.CurrentRow;
+                    if (prerequisitesRow != null)
+                    {
+                        PrerequisiteFeature prerequisiteFeature = (PrerequisiteFeature)prerequisitesRow.DataBoundItem;
+                        insertarFeature.PrerequisiteFeatures = new[] { prerequisiteFeature };
+                    }
+                    else
+                    {
+                        insertarFeature.PrerequisiteFeatures = new PrerequisiteFeature[] { new PrerequisiteFeature() };
+                    }
+
+                    // Parent
+                    DataGridViewRow parentRow = f.dgvParentFeatures.CurrentRow;
+                    if (parentRow != null)
+                    {
+                        From parent = (From)parentRow.DataBoundItem;
+                        insertarFeature.Parent = parent;
+                    }
+                    else
+                    {
+                        insertarFeature.Parent = new From { Index = string.Empty, Name = string.Empty };
+                    }
+
+                    // Subclass
+                    DataGridViewRow subclassRow = f.dgvSubclassFeatures.CurrentRow;
+                    if (subclassRow != null)
+                    {
+                        From subclass = (From)subclassRow.DataBoundItem;
+                        insertarFeature.Subclass = subclass;
+                    }
+                    else
+                    {
+                        insertarFeature.Subclass = new From { Index = string.Empty, Name = string.Empty };
+                    }
+
+                    // Class
+                    DataGridViewRow classRow = f.dgvClassFeatures.CurrentRow;
+                    if (classRow != null)
+                    {
+                        From Class = (From)classRow.DataBoundItem;
+                        insertarFeature.Class = Class;
+                    }
+                    else
+                    {
+                        insertarFeature.Class = new From { Index = string.Empty, Name = string.Empty };
+                    }
+
+                    // Expertise Options
+                    DataGridViewRow expertiseOptionsChooseRow = f.dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.CurrentRow;
+                    if (expertiseOptionsChooseRow != null)
+                    {
+                        ExpertiseOptionFeature expertiseOptionFeature = new ExpertiseOptionFeature();
+                        expertiseOptionFeature.Choose = int.Parse(f.tbExpertiseOptionChooseFeature.Text);
+                        expertiseOptionFeature.From = ((ExpertiseOptionFromFeature[])expertiseOptionsChooseRow.DataBoundItem);
+                        insertarFeature.FeatureSpecific = new FeatureSpecific { ExpertiseOption = expertiseOptionFeature };
+                    }
+                    else
+                    {
+                        insertarFeature.FeatureSpecific = new FeatureSpecific { ExpertiseOption = new ExpertiseOptionFeature() };
+                    }
+
+                    // Expertise Options Subfeature Options
+                    DataGridViewRow expertiseOptionSubfeatureOptionsRow = f.dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.CurrentRow;
+                    if (expertiseOptionSubfeatureOptionsRow != null)
+                    {
+                        From[] expertiseOptionSubfeatureOptions = (From[])expertiseOptionSubfeatureOptionsRow.DataBoundItem;
+
+                        insertarFeature.FeatureSpecific.SubfeatureOptions = new SubFeatureOptions { From = expertiseOptionSubfeatureOptions.ToArray() };
+                    }
+                    else
+                    {
+                        insertarFeature.FeatureSpecific.SubfeatureOptions = new SubFeatureOptions { From = new List<From>().ToArray() };
+                    }
+
+                    // Expertise Options From Feature Items
+                    DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex = f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.CurrentRow;
+                    DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName = f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.CurrentRow;
+                    DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature = f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.CurrentRow;
+                    DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature = f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.CurrentRow;
+
+                    if (ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex != null && ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName != null)
+                    {
+                        ArrayedFrom arrayedFrom = new ArrayedFrom();
+                        arrayedFrom.Index = new[] { ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Cells[0].Value.ToString() };
+                        arrayedFrom.Name = new[] { ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Cells[0].Value.ToString() };
+
+                        ItemsFeature itemsFeature = new ItemsFeature();
+                        itemsFeature.Choice = new ItemsChoiceFeature();
+                        itemsFeature.Choice.Item = new ArrayedFrom[] { arrayedFrom };
+
+                        ExpertiseOptionFromFeature expertiseOptionFromFeature = new ExpertiseOptionFromFeature();
+                        expertiseOptionFromFeature.Items = itemsFeature;
+
+                        insertarFeature.FeatureSpecific.ExpertiseOption.From = new[] { expertiseOptionFromFeature };
+                    }
+                    else if (ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature != null && ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature != null)
+                    {
+                        ArrayedFrom arrayedFrom = new ArrayedFrom();
+                        arrayedFrom.Index = new[] { ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Cells[0].Value.ToString() };
+                        arrayedFrom.Name = new[] { ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Cells[0].Value.ToString() };
+
+                        ExpertiseOptionFromFeature expertiseOptionFromFeature = new ExpertiseOptionFromFeature();
+                        expertiseOptionFromFeature.Items = new ItemsFeature();
+                        expertiseOptionFromFeature.Items.Choice = new ItemsChoiceFeature();
+                        expertiseOptionFromFeature.Items.Choice.Item = new ArrayedFrom[] { arrayedFrom };
+
+                        insertarFeature.FeatureSpecific.ExpertiseOption.From = new[] { expertiseOptionFromFeature };
+                    }
+                    else
+                    {
+                        insertarFeature.FeatureSpecific.ExpertiseOption.From = new ExpertiseOptionFromFeature[] { new ExpertiseOptionFromFeature() };
+                    }
+                }
+                // Insertar la feature en la base de datos
+                FeaturesRepository.CreateFeature(insertarFeature);
+                MessageBox.Show("Has insertado Feature");
+                LoadDataFeatures();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarFeatures_MouseUp(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtBuscarFeatures_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeatures.Text))
+                {
+                    string idBuscar = features.Where(a => a.Index.Equals(f.tbFiltrarFeatures.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Feature feature = FeaturesRepository.GetFeature(idBuscar);
+                        f.tbIndexFeatures.Text = feature?.Index;
+                        f.tbNameFeatures.Text = feature?.Name;
+                        f.cbExpertiseOptionsInvocationsFeatures.DataSource = feature?.FeatureSpecific?.Invocations?.Name;
+                        f.tbLevelFeatures.Text = feature?.level.ToString();
+                        f.tbExpertiseOptionChooseFeature.Text = feature?.FeatureSpecific?.ExpertiseOption?.Choose.ToString();
+
+                        List<From> featureClass = new List<From>();
+                        featureClass.Add(feature?.Class);
+                        f.dgvClassFeatures.DataSource = featureClass;
+
+                        List<From> featureParent = new List<From>();
+                        featureParent.Add(feature?.Parent);
+                        f.dgvParentFeatures.DataSource = featureParent;
+
+                        List<From> featureSubclass = new List<From>();
+                        featureSubclass.Add(feature?.Subclass);
+                        f.dgvSubclassFeatures.DataSource = featureSubclass;
+
+                        //ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromIndex
+                        var indexList = new List<string>();
+                        if (feature?.FeatureSpecific?.ExpertiseOption?.From?.Any() ?? false)
+                        {
+                            var expertiseOptions = feature.FeatureSpecific.ExpertiseOption.From;
+
+                            foreach (var option in expertiseOptions)
+                            {
+                                if (option?.Items?.Choice?.Item?.Any() ?? false)
+                                {
+                                    var items = option.Items.Choice.Item;
+
+                                    foreach (var item in items)
+                                    {
+                                        if (item?.Index?.Any() ?? false)
+                                        {
+                                            indexList.AddRange(item.Index.ToList());
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.DataSource = indexList;
+
+                        //ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromName
+                        var nameList = new List<string>();
+                        if (feature?.FeatureSpecific?.ExpertiseOption?.From?.Any() ?? false)
+                        {
+                            var expertiseOptions = feature.FeatureSpecific.ExpertiseOption.From;
+
+                            foreach (var option in expertiseOptions)
+                            {
+                                if (option?.Items?.Choice?.Item?.Any() ?? false)
+                                {
+                                    var items = option.Items.Choice.Item;
+
+                                    foreach (var item in items)
+                                    {
+                                        if (item?.Name?.Any() ?? false)
+                                        {
+                                            nameList.AddRange(item.Name.ToList());
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.DataSource = nameList;
+
+                        //ExpertiseOptionFromFeatureChoiceFeatureFroms
+                        f.dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.DataSource = feature?.FeatureSpecific?.ExpertiseOption?.From?.SelectMany(a => a.Choice?.Froms?.ToList());
+
+                        //ExpertiseOptionsSubfeaturesOptionsFrom
+                        f.dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.DataSource = feature?.FeatureSpecific?.SubfeatureOptions?.From?.ToList();
+
+                        //PrerequisiteFeature
+                        f.dgvPrerequisitesFeatures.DataSource = feature?.PrerequisiteFeatures?.ToList();
+
+                        List<string> indexList2 = new List<string>();
+                        List<string> nameList2 = new List<string>();
+
+                        if (feature?.FeatureSpecific?.ExpertiseOption?.From != null)
+                        {
+                            foreach (var from in feature.FeatureSpecific.ExpertiseOption.From)
+                            {
+                                if (from.Items != null && from.Items.Item != null)
+                                {
+                                    indexList2.AddRange(from.Items.Item.Index.Select(a => a).ToList());
+                                    nameList2.AddRange(from.Items.Item.Name);
+                                }
+                            }
+                        }
+
+                        f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.DataSource = indexList;
+                        f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.DataSource = nameList;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtModificarFeatures_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                string index = f.tbIndexFeatures.Text;
+                string name = f.tbNameFeatures.Text;
+                string featureSpecificInvocations = f.cbExpertiseOptionsInvocationsFeatures.Text;
+                string level = f.tbLevelFeatures.Text;
+                string[] description = new string[] { f.rtbDescriptionFeatures.Text };
+                string expertiseOptionsFromFeatureIndex = f.tbExpertiseOptionsFromFeatureIndex.Text;
+                string expertiseOptionsFromFeatureName = f.tbExpertiseOptionsFromFeatureName.Text;
+
+                Feature modificarFeature = new Feature();
+
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeatures.Text))
+                {
+                    string idBuscar = features.Where(a => a.Index.Equals(f.tbFiltrarFeatures.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level))
+                        {
+                            modificarFeature.Id = idBuscar;
+                            modificarFeature.Index = index;
+                            modificarFeature.Name = name;
+                            modificarFeature.level = int.Parse(level);
+                            modificarFeature.Description = description;
+
+                            // Prerequisites
+                            DataGridViewRow prerequisitesRow = f.dgvPrerequisitesFeatures.CurrentRow;
+                            if (prerequisitesRow != null)
+                            {
+                                PrerequisiteFeature prerequisiteFeature = (PrerequisiteFeature)prerequisitesRow.DataBoundItem;
+                                modificarFeature.PrerequisiteFeatures = new[] { prerequisiteFeature };
+                            }
+                            else
+                            {
+                                modificarFeature.PrerequisiteFeatures = new PrerequisiteFeature[] { new PrerequisiteFeature() };
+                            }
+
+                            // Parent
+                            DataGridViewRow parentRow = f.dgvParentFeatures.CurrentRow;
+                            if (parentRow != null)
+                            {
+                                From parent = (From)parentRow.DataBoundItem;
+                                modificarFeature.Parent = parent;
+                            }
+                            else
+                            {
+                                modificarFeature.Parent = new From { Index = string.Empty, Name = string.Empty };
+                            }
+
+                            // Subclass
+                            DataGridViewRow subclassRow = f.dgvSubclassFeatures.CurrentRow;
+                            if (subclassRow != null)
+                            {
+                                From subclass = (From)subclassRow.DataBoundItem;
+                                modificarFeature.Subclass = subclass;
+                            }
+                            else
+                            {
+                                modificarFeature.Subclass = new From { Index = string.Empty, Name = string.Empty };
+                            }
+
+                            // Class
+                            DataGridViewRow classRow = f.dgvClassFeatures.CurrentRow;
+                            if (classRow != null)
+                            {
+                                From Class = (From)classRow.DataBoundItem;
+                                modificarFeature.Class = Class;
+                            }
+                            else
+                            {
+                                modificarFeature.Class = new From { Index = string.Empty, Name = string.Empty };
+                            }
+
+                            // Expertise Options
+                            DataGridViewRow expertiseOptionsChooseRow = f.dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.CurrentRow;
+                            if (expertiseOptionsChooseRow != null)
+                            {
+                                ExpertiseOptionFeature expertiseOptionFeature = new ExpertiseOptionFeature();
+                                expertiseOptionFeature.Choose = int.Parse(f.tbExpertiseOptionChooseFeature.Text);
+                                expertiseOptionFeature.From = ((ExpertiseOptionFromFeature[])expertiseOptionsChooseRow.DataBoundItem);
+                                modificarFeature.FeatureSpecific = new FeatureSpecific { ExpertiseOption = expertiseOptionFeature };
+                            }
+                            else
+                            {
+                                modificarFeature.FeatureSpecific = new FeatureSpecific { ExpertiseOption = new ExpertiseOptionFeature() };
+                            }
+
+                            // Expertise Options Subfeature Options
+                            DataGridViewRow expertiseOptionSubfeatureOptionsRow = f.dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.CurrentRow;
+                            if (expertiseOptionSubfeatureOptionsRow != null)
+                            {
+                                From[] expertiseOptionSubfeatureOptions = (From[])expertiseOptionSubfeatureOptionsRow.DataBoundItem;
+                                modificarFeature.FeatureSpecific.SubfeatureOptions = new SubFeatureOptions { From = expertiseOptionSubfeatureOptions.ToArray() };
+                            }
+                            else
+                            {
+                                modificarFeature.FeatureSpecific.SubfeatureOptions = new SubFeatureOptions { From = new List<From>().ToArray() };
+                            }
+
+                            // Expertise Options From Feature Items
+                            DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex = f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.CurrentRow;
+                            DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName = f.dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.CurrentRow;
+                            DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature = f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.CurrentRow;
+                            DataGridViewRow ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature = f.dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.CurrentRow;
+
+                            if (ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex != null && ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName != null)
+                            {
+                                ArrayedFrom arrayedFrom = new ArrayedFrom();
+                                arrayedFrom.Index = new[] { ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Cells[0].Value.ToString() };
+                                arrayedFrom.Name = new[] { ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Cells[0].Value.ToString() };
+
+                                ItemsFeature itemsFeature = new ItemsFeature();
+                                itemsFeature.Choice = new ItemsChoiceFeature();
+                                itemsFeature.Choice.Item = new ArrayedFrom[] { arrayedFrom };
+
+                                ExpertiseOptionFromFeature expertiseOptionFromFeature = new ExpertiseOptionFromFeature();
+                                expertiseOptionFromFeature.Items = itemsFeature;
+
+                                modificarFeature.FeatureSpecific.ExpertiseOption.From = new[] { expertiseOptionFromFeature };
+                            }
+                            else if (ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature != null && ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature != null)
+                            {
+                                ArrayedFrom arrayedFrom = new ArrayedFrom();
+                                arrayedFrom.Index = new[] { ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Cells[0].Value.ToString() };
+                                arrayedFrom.Name = new[] { ExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Cells[0].Value.ToString() };
+
+                                ExpertiseOptionFromFeature expertiseOptionFromFeature = new ExpertiseOptionFromFeature();
+                                expertiseOptionFromFeature.Items = new ItemsFeature();
+                                expertiseOptionFromFeature.Items.Choice = new ItemsChoiceFeature();
+                                expertiseOptionFromFeature.Items.Choice.Item = new ArrayedFrom[] { arrayedFrom };
+
+                                modificarFeature.FeatureSpecific.ExpertiseOption.From = new[] { expertiseOptionFromFeature };
+                            }
+                            else
+                            {
+                                modificarFeature.FeatureSpecific.ExpertiseOption.From = new ExpertiseOptionFromFeature[] { new ExpertiseOptionFromFeature() };
+                            }
+                        }
+                        // Insertar la feature en la base de datos
+                        FeaturesRepository.UpdateFeature(modificarFeature);
+                        MessageBox.Show("Has modificado Feature");
+                        LoadDataFeatures();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarFeatures_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarFeatures.Text))
+                {
+                    string idBuscar = features.Where(a => a.Index.Equals(f.tbFiltrarFeatures.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        FeaturesRepository.DeleteFeature(idBuscar);
+                        MessageBox.Show(f.tbFiltrarFeatures.Text.ToString() + " eliminado");
+                        LoadDataFeatures();
+                    }
                 }
             }
             catch (Exception ex)

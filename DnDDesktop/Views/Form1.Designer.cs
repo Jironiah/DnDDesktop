@@ -254,22 +254,45 @@
             tbIndexFeats = new TextBox();
             tbNameFeats = new TextBox();
             Features = new TabPage();
+            label187 = new Label();
+            tbExpertiseOptionsFromFeatureName = new TextBox();
+            label186 = new Label();
+            tbExpertiseOptionsFromFeatureIndex = new TextBox();
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature = new DataGridView();
+            label185 = new Label();
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName = new DataGridView();
+            label183 = new Label();
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex = new DataGridView();
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature = new DataGridView();
+            label = new Label();
+            label184 = new Label();
+            label78 = new Label();
+            tbExpertiseOptionChooseFeature = new TextBox();
+            cbExpertiseOptionsInvocationsFeatures = new ComboBox();
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures = new DataGridView();
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature = new DataGridView();
+            dgvSubclassFeatures = new DataGridView();
+            dgvClassFeatures = new DataGridView();
+            dgvParentFeatures = new DataGridView();
+            label182 = new Label();
+            label181 = new Label();
+            label52 = new Label();
+            dgvPrerequisitesFeatures = new DataGridView();
+            btEliminarFeatures = new Button();
+            btModificarFeatures = new Button();
+            btBuscarFeatures = new Button();
+            tbFiltrarFeatures = new TextBox();
+            btInsertarFeatures = new Button();
+            dgvFeatures = new DataGridView();
             rtbDescriptionFeatures = new RichTextBox();
             label76 = new Label();
-            btInsertarFeatures = new Button();
             label79 = new Label();
-            label78 = new Label();
             label75 = new Label();
             label77 = new Label();
             label73 = new Label();
             label74 = new Label();
             label72 = new Label();
             label71 = new Label();
-            cbSubclassFeatures = new ComboBox();
-            cnbPrerequisitesFeatures = new ComboBox();
-            cbParentFeatures = new ComboBox();
-            cbFeatureSpecificFeatures = new ComboBox();
-            cbClassFeatures = new ComboBox();
             tbLevelFeatures = new TextBox();
             tbNameFeatures = new TextBox();
             tbIndexFeatures = new TextBox();
@@ -524,6 +547,17 @@
             Feats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFeats).BeginInit();
             Features.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsSubfeaturesOptionsFromFeatures).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubclassFeatures).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassFeatures).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvParentFeatures).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrerequisitesFeatures).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFeatures).BeginInit();
             Languages.SuspendLayout();
             Levels.SuspendLayout();
             MagicItems.SuspendLayout();
@@ -2916,22 +2950,45 @@
             // 
             // Features
             // 
+            Features.Controls.Add(label187);
+            Features.Controls.Add(tbExpertiseOptionsFromFeatureName);
+            Features.Controls.Add(label186);
+            Features.Controls.Add(tbExpertiseOptionsFromFeatureIndex);
+            Features.Controls.Add(dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature);
+            Features.Controls.Add(label185);
+            Features.Controls.Add(dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName);
+            Features.Controls.Add(label183);
+            Features.Controls.Add(dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex);
+            Features.Controls.Add(dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature);
+            Features.Controls.Add(label);
+            Features.Controls.Add(label184);
+            Features.Controls.Add(label78);
+            Features.Controls.Add(tbExpertiseOptionChooseFeature);
+            Features.Controls.Add(cbExpertiseOptionsInvocationsFeatures);
+            Features.Controls.Add(dgvExpertiseOptionsSubfeaturesOptionsFromFeatures);
+            Features.Controls.Add(dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature);
+            Features.Controls.Add(dgvSubclassFeatures);
+            Features.Controls.Add(dgvClassFeatures);
+            Features.Controls.Add(dgvParentFeatures);
+            Features.Controls.Add(label182);
+            Features.Controls.Add(label181);
+            Features.Controls.Add(label52);
+            Features.Controls.Add(dgvPrerequisitesFeatures);
+            Features.Controls.Add(btEliminarFeatures);
+            Features.Controls.Add(btModificarFeatures);
+            Features.Controls.Add(btBuscarFeatures);
+            Features.Controls.Add(tbFiltrarFeatures);
+            Features.Controls.Add(btInsertarFeatures);
+            Features.Controls.Add(dgvFeatures);
             Features.Controls.Add(rtbDescriptionFeatures);
             Features.Controls.Add(label76);
-            Features.Controls.Add(btInsertarFeatures);
             Features.Controls.Add(label79);
-            Features.Controls.Add(label78);
             Features.Controls.Add(label75);
             Features.Controls.Add(label77);
             Features.Controls.Add(label73);
             Features.Controls.Add(label74);
             Features.Controls.Add(label72);
             Features.Controls.Add(label71);
-            Features.Controls.Add(cbSubclassFeatures);
-            Features.Controls.Add(cnbPrerequisitesFeatures);
-            Features.Controls.Add(cbParentFeatures);
-            Features.Controls.Add(cbFeatureSpecificFeatures);
-            Features.Controls.Add(cbClassFeatures);
             Features.Controls.Add(tbLevelFeatures);
             Features.Controls.Add(tbNameFeatures);
             Features.Controls.Add(tbIndexFeatures);
@@ -2941,64 +2998,389 @@
             Features.TabIndex = 10;
             Features.Text = "Features";
             // 
+            // label187
+            // 
+            label187.AutoSize = true;
+            label187.Location = new Point(767, 604);
+            label187.Name = "label187";
+            label187.Size = new Size(195, 15);
+            label187.TabIndex = 183;
+            label187.Text = "ExpertiseOptionsFromFeatureName";
+            // 
+            // tbExpertiseOptionsFromFeatureName
+            // 
+            tbExpertiseOptionsFromFeatureName.Location = new Point(767, 622);
+            tbExpertiseOptionsFromFeatureName.Name = "tbExpertiseOptionsFromFeatureName";
+            tbExpertiseOptionsFromFeatureName.Size = new Size(88, 23);
+            tbExpertiseOptionsFromFeatureName.TabIndex = 182;
+            // 
+            // label186
+            // 
+            label186.AutoSize = true;
+            label186.Location = new Point(536, 604);
+            label186.Name = "label186";
+            label186.Size = new Size(192, 15);
+            label186.TabIndex = 181;
+            label186.Text = "ExpertiseOptionsFromFeatureIndex";
+            // 
+            // tbExpertiseOptionsFromFeatureIndex
+            // 
+            tbExpertiseOptionsFromFeatureIndex.Location = new Point(536, 622);
+            tbExpertiseOptionsFromFeatureIndex.Name = "tbExpertiseOptionsFromFeatureIndex";
+            tbExpertiseOptionsFromFeatureIndex.Size = new Size(88, 23);
+            tbExpertiseOptionsFromFeatureIndex.TabIndex = 180;
+            // 
+            // dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature
+            // 
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Location = new Point(1004, 505);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.MultiSelect = false;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Name = "dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature";
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.ReadOnly = true;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.RowHeadersWidth = 51;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.RowTemplate.Height = 29;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.Size = new Size(434, 77);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature.TabIndex = 179;
+            // 
+            // label185
+            // 
+            label185.AutoSize = true;
+            label185.Location = new Point(1004, 488);
+            label185.Name = "label185";
+            label185.Size = new Size(332, 15);
+            label185.TabIndex = 178;
+            label185.Text = "ExpertiseOptionsFromFeatureItemsFeatureArrayedFromName";
+            // 
+            // dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName
+            // 
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Location = new Point(1004, 388);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.MultiSelect = false;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Name = "dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName";
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.ReadOnly = true;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.RowHeadersWidth = 51;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.RowTemplate.Height = 29;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.Size = new Size(437, 77);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName.TabIndex = 177;
+            // 
+            // label183
+            // 
+            label183.AutoSize = true;
+            label183.Location = new Point(1001, 371);
+            label183.Name = "label183";
+            label183.Size = new Size(437, 15);
+            label183.TabIndex = 176;
+            label183.Text = "ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromName\r\n";
+            // 
+            // dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex
+            // 
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Location = new Point(539, 388);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.MultiSelect = false;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Name = "dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex";
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.ReadOnly = true;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.RowHeadersWidth = 51;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.RowTemplate.Height = 29;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.Size = new Size(434, 77);
+            dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex.TabIndex = 175;
+            // 
+            // dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature
+            // 
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Location = new Point(536, 505);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.MultiSelect = false;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Name = "dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature";
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.ReadOnly = true;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.RowHeadersWidth = 51;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.RowTemplate.Height = 29;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.Size = new Size(434, 77);
+            dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature.TabIndex = 174;
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Location = new Point(536, 488);
+            label.Name = "label";
+            label.Size = new Size(329, 15);
+            label.TabIndex = 173;
+            label.Text = "ExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndex";
+            // 
+            // label184
+            // 
+            label184.AutoSize = true;
+            label184.Location = new Point(536, 371);
+            label184.Name = "label184";
+            label184.Size = new Size(434, 15);
+            label184.TabIndex = 172;
+            label184.Text = "ExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromIndex\r\n";
+            // 
+            // label78
+            // 
+            label78.AutoSize = true;
+            label78.Location = new Point(1206, 195);
+            label78.Name = "label78";
+            label78.Size = new Size(131, 15);
+            label78.TabIndex = 171;
+            label78.Text = "ExpertiseOptionChoose";
+            // 
+            // tbExpertiseOptionChooseFeature
+            // 
+            tbExpertiseOptionChooseFeature.Location = new Point(1209, 212);
+            tbExpertiseOptionChooseFeature.Name = "tbExpertiseOptionChooseFeature";
+            tbExpertiseOptionChooseFeature.Size = new Size(88, 23);
+            tbExpertiseOptionChooseFeature.TabIndex = 170;
+            // 
+            // cbExpertiseOptionsInvocationsFeatures
+            // 
+            cbExpertiseOptionsInvocationsFeatures.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbExpertiseOptionsInvocationsFeatures.FormattingEnabled = true;
+            cbExpertiseOptionsInvocationsFeatures.Location = new Point(452, 31);
+            cbExpertiseOptionsInvocationsFeatures.Name = "cbExpertiseOptionsInvocationsFeatures";
+            cbExpertiseOptionsInvocationsFeatures.Size = new Size(121, 23);
+            cbExpertiseOptionsInvocationsFeatures.TabIndex = 169;
+            // 
+            // dgvExpertiseOptionsSubfeaturesOptionsFromFeatures
+            // 
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.Location = new Point(409, 212);
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.MultiSelect = false;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.Name = "dgvExpertiseOptionsSubfeaturesOptionsFromFeatures";
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.ReadOnly = true;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.RowHeadersWidth = 51;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.RowTemplate.Height = 29;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.Size = new Size(373, 112);
+            dgvExpertiseOptionsSubfeaturesOptionsFromFeatures.TabIndex = 168;
+            // 
+            // dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature
+            // 
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.Location = new Point(807, 212);
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.Margin = new Padding(3, 2, 3, 2);
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.MultiSelect = false;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.Name = "dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature";
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.ReadOnly = true;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.RowHeadersWidth = 51;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.RowTemplate.Height = 29;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.Size = new Size(373, 112);
+            dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature.TabIndex = 167;
+            // 
+            // dgvSubclassFeatures
+            // 
+            dgvSubclassFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSubclassFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSubclassFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSubclassFeatures.Location = new Point(807, 75);
+            dgvSubclassFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvSubclassFeatures.MultiSelect = false;
+            dgvSubclassFeatures.Name = "dgvSubclassFeatures";
+            dgvSubclassFeatures.ReadOnly = true;
+            dgvSubclassFeatures.RowHeadersWidth = 51;
+            dgvSubclassFeatures.RowTemplate.Height = 29;
+            dgvSubclassFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSubclassFeatures.Size = new Size(373, 112);
+            dgvSubclassFeatures.TabIndex = 166;
+            // 
+            // dgvClassFeatures
+            // 
+            dgvClassFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClassFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClassFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClassFeatures.Location = new Point(409, 75);
+            dgvClassFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvClassFeatures.MultiSelect = false;
+            dgvClassFeatures.Name = "dgvClassFeatures";
+            dgvClassFeatures.ReadOnly = true;
+            dgvClassFeatures.RowHeadersWidth = 51;
+            dgvClassFeatures.RowTemplate.Height = 29;
+            dgvClassFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClassFeatures.Size = new Size(373, 112);
+            dgvClassFeatures.TabIndex = 165;
+            // 
+            // dgvParentFeatures
+            // 
+            dgvParentFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvParentFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvParentFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvParentFeatures.Location = new Point(15, 212);
+            dgvParentFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvParentFeatures.MultiSelect = false;
+            dgvParentFeatures.Name = "dgvParentFeatures";
+            dgvParentFeatures.ReadOnly = true;
+            dgvParentFeatures.RowHeadersWidth = 51;
+            dgvParentFeatures.RowTemplate.Height = 29;
+            dgvParentFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvParentFeatures.Size = new Size(373, 112);
+            dgvParentFeatures.TabIndex = 164;
+            // 
+            // label182
+            // 
+            label182.AutoSize = true;
+            label182.Location = new Point(14, 58);
+            label182.Name = "label182";
+            label182.Size = new Size(74, 15);
+            label182.TabIndex = 162;
+            label182.Text = "Prerequisites";
+            // 
+            // label181
+            // 
+            label181.AutoSize = true;
+            label181.Location = new Point(452, 13);
+            label181.Name = "label181";
+            label181.Size = new Size(148, 15);
+            label181.TabIndex = 160;
+            label181.Text = "FeatureSpecificInvocations";
+            // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Location = new Point(807, 195);
+            label52.Name = "label52";
+            label52.Size = new Size(272, 15);
+            label52.TabIndex = 158;
+            label52.Text = "ExpertiseOptionsFromFeatureChoiceFeatureFroms";
+            // 
+            // dgvPrerequisitesFeatures
+            // 
+            dgvPrerequisitesFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvPrerequisitesFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvPrerequisitesFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrerequisitesFeatures.Location = new Point(14, 75);
+            dgvPrerequisitesFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvPrerequisitesFeatures.MultiSelect = false;
+            dgvPrerequisitesFeatures.Name = "dgvPrerequisitesFeatures";
+            dgvPrerequisitesFeatures.ReadOnly = true;
+            dgvPrerequisitesFeatures.RowHeadersWidth = 51;
+            dgvPrerequisitesFeatures.RowTemplate.Height = 29;
+            dgvPrerequisitesFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrerequisitesFeatures.Size = new Size(373, 112);
+            dgvPrerequisitesFeatures.TabIndex = 155;
+            // 
+            // btEliminarFeatures
+            // 
+            btEliminarFeatures.Location = new Point(1347, 635);
+            btEliminarFeatures.Margin = new Padding(3, 2, 3, 2);
+            btEliminarFeatures.Name = "btEliminarFeatures";
+            btEliminarFeatures.Size = new Size(82, 22);
+            btEliminarFeatures.TabIndex = 154;
+            btEliminarFeatures.Text = "Eliminar";
+            btEliminarFeatures.UseVisualStyleBackColor = true;
+            // 
+            // btModificarFeatures
+            // 
+            btModificarFeatures.Location = new Point(1260, 635);
+            btModificarFeatures.Margin = new Padding(3, 2, 3, 2);
+            btModificarFeatures.Name = "btModificarFeatures";
+            btModificarFeatures.Size = new Size(82, 22);
+            btModificarFeatures.TabIndex = 153;
+            btModificarFeatures.Text = "Modificar";
+            btModificarFeatures.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarFeatures
+            // 
+            btBuscarFeatures.Location = new Point(1260, 600);
+            btBuscarFeatures.Margin = new Padding(3, 2, 3, 2);
+            btBuscarFeatures.Name = "btBuscarFeatures";
+            btBuscarFeatures.Size = new Size(170, 22);
+            btBuscarFeatures.TabIndex = 152;
+            btBuscarFeatures.Text = "Buscar por Index";
+            btBuscarFeatures.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarFeatures
+            // 
+            tbFiltrarFeatures.Location = new Point(1144, 600);
+            tbFiltrarFeatures.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarFeatures.Name = "tbFiltrarFeatures";
+            tbFiltrarFeatures.Size = new Size(110, 23);
+            tbFiltrarFeatures.TabIndex = 151;
+            // 
+            // btInsertarFeatures
+            // 
+            btInsertarFeatures.Location = new Point(1447, 632);
+            btInsertarFeatures.Margin = new Padding(3, 2, 3, 2);
+            btInsertarFeatures.Name = "btInsertarFeatures";
+            btInsertarFeatures.Size = new Size(82, 26);
+            btInsertarFeatures.TabIndex = 150;
+            btInsertarFeatures.Text = "Insertar";
+            btInsertarFeatures.UseVisualStyleBackColor = true;
+            // 
+            // dgvFeatures
+            // 
+            dgvFeatures.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvFeatures.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvFeatures.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFeatures.Location = new Point(14, 388);
+            dgvFeatures.Margin = new Padding(3, 2, 3, 2);
+            dgvFeatures.MultiSelect = false;
+            dgvFeatures.Name = "dgvFeatures";
+            dgvFeatures.ReadOnly = true;
+            dgvFeatures.RowHeadersWidth = 51;
+            dgvFeatures.RowTemplate.Height = 29;
+            dgvFeatures.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFeatures.Size = new Size(505, 271);
+            dgvFeatures.TabIndex = 149;
+            // 
             // rtbDescriptionFeatures
             // 
-            rtbDescriptionFeatures.Location = new Point(705, 31);
+            rtbDescriptionFeatures.Location = new Point(1260, 75);
             rtbDescriptionFeatures.Name = "rtbDescriptionFeatures";
-            rtbDescriptionFeatures.Size = new Size(387, 95);
+            rtbDescriptionFeatures.Size = new Size(269, 48);
             rtbDescriptionFeatures.TabIndex = 84;
             rtbDescriptionFeatures.Text = "";
             // 
             // label76
             // 
             label76.AutoSize = true;
-            label76.Location = new Point(705, 13);
+            label76.Location = new Point(1260, 57);
             label76.Name = "label76";
             label76.Size = new Size(67, 15);
             label76.TabIndex = 83;
             label76.Text = "Description";
             // 
-            // btInsertarFeatures
-            // 
-            btInsertarFeatures.Location = new Point(1010, 341);
-            btInsertarFeatures.Margin = new Padding(3, 2, 3, 2);
-            btInsertarFeatures.Name = "btInsertarFeatures";
-            btInsertarFeatures.Size = new Size(82, 26);
-            btInsertarFeatures.TabIndex = 21;
-            btInsertarFeatures.Text = "Instertar";
-            btInsertarFeatures.UseVisualStyleBackColor = true;
-            // 
             // label79
             // 
             label79.AutoSize = true;
-            label79.Location = new Point(347, 75);
+            label79.Location = new Point(409, 57);
             label79.Name = "label79";
             label79.Size = new Size(52, 15);
             label79.TabIndex = 17;
             label79.Text = "Subclass";
             // 
-            // label78
-            // 
-            label78.AutoSize = true;
-            label78.Location = new Point(181, 75);
-            label78.Name = "label78";
-            label78.Size = new Size(74, 15);
-            label78.TabIndex = 16;
-            label78.Text = "Prerequisites";
-            // 
             // label75
             // 
             label75.AutoSize = true;
-            label75.Location = new Point(584, 14);
+            label75.Location = new Point(409, 195);
             label75.Name = "label75";
-            label75.Size = new Size(87, 15);
+            label75.Size = new Size(195, 15);
             label75.TabIndex = 15;
-            label75.Text = "FeatureSpecific";
+            label75.Text = "ExpertiseOptionsSubfeatureOptions";
             // 
             // label77
             // 
             label77.AutoSize = true;
-            label77.Location = new Point(14, 75);
+            label77.Location = new Point(15, 195);
             label77.Name = "label77";
             label77.Size = new Size(41, 15);
             label77.TabIndex = 13;
@@ -3007,7 +3389,7 @@
             // label73
             // 
             label73.AutoSize = true;
-            label73.Location = new Point(416, 14);
+            label73.Location = new Point(807, 57);
             label73.Name = "label73";
             label73.Size = new Size(34, 15);
             label73.TabIndex = 12;
@@ -3016,7 +3398,7 @@
             // label74
             // 
             label74.AutoSize = true;
-            label74.Location = new Point(274, 14);
+            label74.Location = new Point(632, 14);
             label74.Name = "label74";
             label74.Size = new Size(34, 15);
             label74.TabIndex = 11;
@@ -3025,7 +3407,7 @@
             // label72
             // 
             label72.AutoSize = true;
-            label72.Location = new Point(141, 14);
+            label72.Location = new Point(321, 14);
             label72.Name = "label72";
             label72.Size = new Size(39, 15);
             label72.TabIndex = 10;
@@ -3040,56 +3422,16 @@
             label71.TabIndex = 9;
             label71.Text = "Index";
             // 
-            // cbSubclassFeatures
-            // 
-            cbSubclassFeatures.FormattingEnabled = true;
-            cbSubclassFeatures.Location = new Point(350, 93);
-            cbSubclassFeatures.Name = "cbSubclassFeatures";
-            cbSubclassFeatures.Size = new Size(106, 23);
-            cbSubclassFeatures.TabIndex = 8;
-            // 
-            // cnbPrerequisitesFeatures
-            // 
-            cnbPrerequisitesFeatures.FormattingEnabled = true;
-            cnbPrerequisitesFeatures.Location = new Point(184, 93);
-            cnbPrerequisitesFeatures.Name = "cnbPrerequisitesFeatures";
-            cnbPrerequisitesFeatures.Size = new Size(106, 23);
-            cnbPrerequisitesFeatures.TabIndex = 7;
-            // 
-            // cbParentFeatures
-            // 
-            cbParentFeatures.FormattingEnabled = true;
-            cbParentFeatures.Location = new Point(17, 93);
-            cbParentFeatures.Name = "cbParentFeatures";
-            cbParentFeatures.Size = new Size(106, 23);
-            cbParentFeatures.TabIndex = 6;
-            // 
-            // cbFeatureSpecificFeatures
-            // 
-            cbFeatureSpecificFeatures.FormattingEnabled = true;
-            cbFeatureSpecificFeatures.Location = new Point(586, 31);
-            cbFeatureSpecificFeatures.Name = "cbFeatureSpecificFeatures";
-            cbFeatureSpecificFeatures.Size = new Size(106, 23);
-            cbFeatureSpecificFeatures.TabIndex = 5;
-            // 
-            // cbClassFeatures
-            // 
-            cbClassFeatures.FormattingEnabled = true;
-            cbClassFeatures.Location = new Point(419, 31);
-            cbClassFeatures.Name = "cbClassFeatures";
-            cbClassFeatures.Size = new Size(106, 23);
-            cbClassFeatures.TabIndex = 4;
-            // 
             // tbLevelFeatures
             // 
-            tbLevelFeatures.Location = new Point(276, 31);
+            tbLevelFeatures.Location = new Point(634, 31);
             tbLevelFeatures.Name = "tbLevelFeatures";
             tbLevelFeatures.Size = new Size(88, 23);
             tbLevelFeatures.TabIndex = 2;
             // 
             // tbNameFeatures
             // 
-            tbNameFeatures.Location = new Point(144, 31);
+            tbNameFeatures.Location = new Point(324, 31);
             tbNameFeatures.Name = "tbNameFeatures";
             tbNameFeatures.Size = new Size(88, 23);
             tbNameFeatures.TabIndex = 1;
@@ -3098,7 +3440,7 @@
             // 
             tbIndexFeatures.Location = new Point(15, 31);
             tbIndexFeatures.Name = "tbIndexFeatures";
-            tbIndexFeatures.Size = new Size(88, 23);
+            tbIndexFeatures.Size = new Size(265, 23);
             tbIndexFeatures.TabIndex = 0;
             // 
             // Languages
@@ -5174,6 +5516,17 @@
             ((System.ComponentModel.ISupportInitialize)dgvFeats).EndInit();
             Features.ResumeLayout(false);
             Features.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsSubfeaturesOptionsFromFeatures).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubclassFeatures).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassFeatures).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvParentFeatures).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrerequisitesFeatures).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFeatures).EndInit();
             Languages.ResumeLayout(false);
             Languages.PerformLayout();
             Levels.ResumeLayout(false);
@@ -5279,7 +5632,6 @@
         public System.Windows.Forms.Label label32;
         public System.Windows.Forms.Label label33;
         public System.Windows.Forms.TextBox tbFiltrarEquipment;
-        public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.TextBox tbNameBackgrounds;
         public System.Windows.Forms.Label label34;
         public System.Windows.Forms.TextBox tbLanguageOptionsBackgrounds;
@@ -5334,22 +5686,6 @@
         public System.Windows.Forms.Label label68;
         public System.Windows.Forms.TextBox tbIndexFeats;
         public System.Windows.Forms.TextBox tbNameFeats;
-        private System.Windows.Forms.Label label79;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.ComboBox cbSubclassFeatures;
-        private System.Windows.Forms.ComboBox cnbPrerequisitesFeatures;
-        private System.Windows.Forms.ComboBox cbParentFeatures;
-        private System.Windows.Forms.ComboBox cbFeatureSpecificFeatures;
-        private System.Windows.Forms.ComboBox cbClassFeatures;
-        private System.Windows.Forms.TextBox tbLevelFeatures;
-        private System.Windows.Forms.TextBox tbNameFeatures;
-        private System.Windows.Forms.TextBox tbIndexFeatures;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TextBox tbDescriptionLanguages;
         private System.Windows.Forms.TextBox tbTypeLanguages;
@@ -5451,7 +5787,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarFeatures;
         public Button btInsertarLanguages;
         public Button btInsertarLevels;
         public Button btInsertarMagicItems;
@@ -5663,6 +5998,46 @@
         public DataGridView dgvFeats;
         public Label label70;
         public ComboBox cbPrerequisitesFeats;
+        public Button btEliminarFeatures;
+        public Button btModificarFeatures;
+        public Button btBuscarFeatures;
+        public TextBox tbFiltrarFeatures;
+        public Button btInsertarFeatures;
+        public DataGridView dgvFeatures;
+        public DataGridView dgvPrerequisitesFeatures;
+        public Label label52;
+        public Label label181;
+        public Label label79;
+        public Label label75;
+        public Label label77;
+        public Label label73;
+        public Label label74;
+        public Label label72;
+        public Label label71;
+        public TextBox tbLevelFeatures;
+        public TextBox tbNameFeatures;
+        public TextBox tbIndexFeatures;
+        public Label label182;
+        public DataGridView dgvParentFeatures;
+        public DataGridView dgvClassFeatures;
+        public DataGridView dgvSubclassFeatures;
+        public DataGridView dgvExpertiseOptionsFromFeatureChoiceFeatureFromsFeature;
+        public DataGridView dgvExpertiseOptionsSubfeaturesOptionsFromFeatures;
+        public ComboBox cbExpertiseOptionsInvocationsFeatures;
+        public Label label78;
+        public TextBox tbExpertiseOptionChooseFeature;
+        public DataGridView dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureIndex;
+        public DataGridView dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromIndexFeature;
+        public Label label;
+        public Label label184;
+        public DataGridView dgvExpertiseOptionsFromFeatureItemsFeatureItemsChoiceFeatureArrayedFromFeatureName;
+        public Label label183;
+        public DataGridView dgvExpertiseOptionsFromFeatureItemsFeatureArrayedFromNameFeature;
+        public Label label185;
+        public Label label186;
+        public TextBox tbExpertiseOptionsFromFeatureIndex;
+        public Label label187;
+        public TextBox tbExpertiseOptionsFromFeatureName;
     }
 }
 

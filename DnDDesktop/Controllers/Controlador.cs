@@ -176,7 +176,6 @@ namespace DnDDesktop.Controllers
             levels = LevelRepository.GetLevels();
             f.dgvLevels.DataSource = levels;
             f.dgvLevels.Columns["Class"].Visible = false;
-            f.dgvLevels.Columns["ClassLevels"].Visible = false;
             f.dgvLevels.Columns["ClassSpecific"].Visible = false;
             f.dgvLevels.Columns["Spellcasting"].Visible = false;
             f.dgvLevels.Columns["Subclass"].Visible = false;
@@ -3222,10 +3221,26 @@ namespace DnDDesktop.Controllers
                     f.tbProfBonusLevels.Text = level?.ProficiencyBonus?.ToString();
                     f.tbClassIndexLevels.Text = level?.Class?.Index;
                     f.tbClassNameLevels.Text = level?.Class?.Name;
-                    f.tbClassLevelsIndexLevels.Text = level?.ClassLevels?.Name;
-                    f.tbClassLevelsNameLevels.Text = level?.ClassLevels?.Name;
                     f.tbSubclassIndexLevels.Text = level?.Subclass?.Index;
                     f.tbSubclassNameLevels.Text = level?.Subclass?.Name;
+                    f.cbFeaturesIndexLevels.DataSource = level?.Features?.Select(a => a.Index?.FirstOrDefault()).ToList();
+                    f.cbFeaturesNameLevels.DataSource = level?.Features?.Select(a => a.Name?.FirstOrDefault()).ToList();
+                    List<ClassSpecificLevel> classSpecificList = new List<ClassSpecificLevel>();
+                    classSpecificList.Add(level?.ClassSpecific);
+                    f.dgcClassEspecificLevels.DataSource = classSpecificList;
+                    List<DiceCountValueCommon> classSpecificMartialArtsList = new List<DiceCountValueCommon>();
+                    classSpecificMartialArtsList.Add(level?.ClassSpecific?.MartialArts);
+                    f.dgvClassSpecificMartialArtsLevels.DataSource = classSpecificMartialArtsList;
+                    List<DiceCountValueCommon> classSpecificSneakAttackList = new List<DiceCountValueCommon>();
+                    classSpecificSneakAttackList.Add(level?.ClassSpecific?.SneakAttack);
+                    f.dgvClassSpecificSneakAttackLevels.DataSource = classSpecificSneakAttackList;
+                    f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = level?.ClassSpecific?.CreatingSpellSlots;
+                    List<SpellcastingLevel> spellcastingList = new List<SpellcastingLevel>();
+                    spellcastingList.Add(level?.Spellcasting);
+                    f.dgvSpellcastingLevels.DataSource = spellcastingList;
+                    List<SubclassSpecificLevel> subcategoriesLevels = new List<SubclassSpecificLevel>();
+                    subcategoriesLevels.Add(level?.Subcategories);
+                    f.dgvSubcategoriesLevels.DataSource = subcategoriesLevels;
                 }
             }
             catch (Exception ex)

@@ -316,6 +316,12 @@
             tbNameLanguages = new TextBox();
             tbIndexLanguages = new TextBox();
             Levels = new TabPage();
+            tbSubclassNameLevels = new TextBox();
+            tbSubclassIndexLevels = new TextBox();
+            label195 = new Label();
+            tbClassNameLevels = new TextBox();
+            label193 = new Label();
+            tbClassIndexLevels = new TextBox();
             label191 = new Label();
             dgvSubcategoriesLevels = new DataGridView();
             label192 = new Label();
@@ -328,7 +334,7 @@
             dgvClassSpecificCreatingSpellSlotsLevels = new DataGridView();
             cbFeaturesIndexLevels = new ComboBox();
             label91 = new Label();
-            dataGridView2 = new DataGridView();
+            dgcClassEspecificLevels = new DataGridView();
             label89 = new Label();
             cbFeaturesNameLevels = new ComboBox();
             btEliminarLevels = new Button();
@@ -343,7 +349,6 @@
             label92 = new Label();
             label90 = new Label();
             label88 = new Label();
-            label87 = new Label();
             label86 = new Label();
             tbLevelLevels = new TextBox();
             tbProfBonusLevels = new TextBox();
@@ -529,15 +534,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            tbClassIndexLevels = new TextBox();
-            tbClassNameLevels = new TextBox();
-            label193 = new Label();
-            label194 = new Label();
-            tbClassLevelsNameLevels = new TextBox();
-            tbClassLevelsIndexLevels = new TextBox();
-            label195 = new Label();
-            tbSubclassNameLevels = new TextBox();
-            tbSubclassIndexLevels = new TextBox();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -592,7 +588,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgcClassEspecificLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLevels).BeginInit();
             MagicItems.SuspendLayout();
             MagicSchools.SuspendLayout();
@@ -3661,9 +3657,6 @@
             Levels.Controls.Add(tbSubclassNameLevels);
             Levels.Controls.Add(tbSubclassIndexLevels);
             Levels.Controls.Add(label195);
-            Levels.Controls.Add(tbClassLevelsNameLevels);
-            Levels.Controls.Add(tbClassLevelsIndexLevels);
-            Levels.Controls.Add(label194);
             Levels.Controls.Add(tbClassNameLevels);
             Levels.Controls.Add(label193);
             Levels.Controls.Add(tbClassIndexLevels);
@@ -3679,7 +3672,7 @@
             Levels.Controls.Add(dgvClassSpecificCreatingSpellSlotsLevels);
             Levels.Controls.Add(cbFeaturesIndexLevels);
             Levels.Controls.Add(label91);
-            Levels.Controls.Add(dataGridView2);
+            Levels.Controls.Add(dgcClassEspecificLevels);
             Levels.Controls.Add(label89);
             Levels.Controls.Add(cbFeaturesNameLevels);
             Levels.Controls.Add(btEliminarLevels);
@@ -3694,7 +3687,6 @@
             Levels.Controls.Add(label92);
             Levels.Controls.Add(label90);
             Levels.Controls.Add(label88);
-            Levels.Controls.Add(label87);
             Levels.Controls.Add(label86);
             Levels.Controls.Add(tbLevelLevels);
             Levels.Controls.Add(tbProfBonusLevels);
@@ -3708,10 +3700,60 @@
             Levels.Text = "Levels";
             Levels.UseVisualStyleBackColor = true;
             // 
+            // tbSubclassNameLevels
+            // 
+            tbSubclassNameLevels.Location = new Point(1168, 52);
+            tbSubclassNameLevels.Margin = new Padding(3, 4, 3, 4);
+            tbSubclassNameLevels.Name = "tbSubclassNameLevels";
+            tbSubclassNameLevels.Size = new Size(127, 27);
+            tbSubclassNameLevels.TabIndex = 147;
+            // 
+            // tbSubclassIndexLevels
+            // 
+            tbSubclassIndexLevels.Location = new Point(993, 52);
+            tbSubclassIndexLevels.Margin = new Padding(3, 4, 3, 4);
+            tbSubclassIndexLevels.Name = "tbSubclassIndexLevels";
+            tbSubclassIndexLevels.Size = new Size(127, 27);
+            tbSubclassIndexLevels.TabIndex = 146;
+            // 
+            // label195
+            // 
+            label195.AutoSize = true;
+            label195.Location = new Point(1168, 28);
+            label195.Name = "label195";
+            label195.Size = new Size(105, 20);
+            label195.TabIndex = 145;
+            label195.Text = "SubclassName";
+            // 
+            // tbClassNameLevels
+            // 
+            tbClassNameLevels.Location = new Point(805, 52);
+            tbClassNameLevels.Margin = new Padding(3, 4, 3, 4);
+            tbClassNameLevels.Name = "tbClassNameLevels";
+            tbClassNameLevels.Size = new Size(127, 27);
+            tbClassNameLevels.TabIndex = 140;
+            // 
+            // label193
+            // 
+            label193.AutoSize = true;
+            label193.Location = new Point(805, 29);
+            label193.Name = "label193";
+            label193.Size = new Size(82, 20);
+            label193.TabIndex = 139;
+            label193.Text = "ClassName";
+            // 
+            // tbClassIndexLevels
+            // 
+            tbClassIndexLevels.Location = new Point(639, 52);
+            tbClassIndexLevels.Margin = new Padding(3, 4, 3, 4);
+            tbClassIndexLevels.Name = "tbClassIndexLevels";
+            tbClassIndexLevels.Size = new Size(127, 27);
+            tbClassIndexLevels.TabIndex = 138;
+            // 
             // label191
             // 
             label191.AutoSize = true;
-            label191.Location = new Point(865, 659);
+            label191.Location = new Point(523, 694);
             label191.Name = "label191";
             label191.Size = new Size(103, 20);
             label191.TabIndex = 137;
@@ -3722,20 +3764,20 @@
             dgvSubcategoriesLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvSubcategoriesLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSubcategoriesLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubcategoriesLevels.Location = new Point(865, 682);
+            dgvSubcategoriesLevels.Location = new Point(523, 717);
             dgvSubcategoriesLevels.MultiSelect = false;
             dgvSubcategoriesLevels.Name = "dgvSubcategoriesLevels";
             dgvSubcategoriesLevels.ReadOnly = true;
             dgvSubcategoriesLevels.RowHeadersWidth = 51;
             dgvSubcategoriesLevels.RowTemplate.Height = 29;
             dgvSubcategoriesLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSubcategoriesLevels.Size = new Size(275, 195);
+            dgvSubcategoriesLevels.Size = new Size(490, 109);
             dgvSubcategoriesLevels.TabIndex = 136;
             // 
             // label192
             // 
             label192.AutoSize = true;
-            label192.Location = new Point(522, 659);
+            label192.Location = new Point(523, 547);
             label192.Name = "label192";
             label192.Size = new Size(89, 20);
             label192.TabIndex = 135;
@@ -3746,20 +3788,20 @@
             dgvSpellcastingLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvSpellcastingLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSpellcastingLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSpellcastingLevels.Location = new Point(522, 682);
+            dgvSpellcastingLevels.Location = new Point(523, 570);
             dgvSpellcastingLevels.MultiSelect = false;
             dgvSpellcastingLevels.Name = "dgvSpellcastingLevels";
             dgvSpellcastingLevels.ReadOnly = true;
             dgvSpellcastingLevels.RowHeadersWidth = 51;
             dgvSpellcastingLevels.RowTemplate.Height = 29;
             dgvSpellcastingLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSpellcastingLevels.Size = new Size(275, 195);
+            dgvSpellcastingLevels.Size = new Size(1224, 109);
             dgvSpellcastingLevels.TabIndex = 134;
             // 
             // label190
             // 
             label190.AutoSize = true;
-            label190.Location = new Point(361, 129);
+            label190.Location = new Point(866, 388);
             label190.Name = "label190";
             label190.Size = new Size(175, 20);
             label190.TabIndex = 133;
@@ -3770,20 +3812,20 @@
             dgvClassSpecificSneakAttackLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvClassSpecificSneakAttackLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvClassSpecificSneakAttackLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClassSpecificSneakAttackLevels.Location = new Point(361, 152);
+            dgvClassSpecificSneakAttackLevels.Location = new Point(866, 411);
             dgvClassSpecificSneakAttackLevels.MultiSelect = false;
             dgvClassSpecificSneakAttackLevels.Name = "dgvClassSpecificSneakAttackLevels";
             dgvClassSpecificSneakAttackLevels.ReadOnly = true;
             dgvClassSpecificSneakAttackLevels.RowHeadersWidth = 51;
             dgvClassSpecificSneakAttackLevels.RowTemplate.Height = 29;
             dgvClassSpecificSneakAttackLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClassSpecificSneakAttackLevels.Size = new Size(275, 195);
+            dgvClassSpecificSneakAttackLevels.Size = new Size(275, 102);
             dgvClassSpecificSneakAttackLevels.TabIndex = 132;
             // 
             // label189
             // 
             label189.AutoSize = true;
-            label189.Location = new Point(18, 129);
+            label189.Location = new Point(523, 388);
             label189.Name = "label189";
             label189.Size = new Size(167, 20);
             label189.TabIndex = 131;
@@ -3794,20 +3836,20 @@
             dgvClassSpecificMartialArtsLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvClassSpecificMartialArtsLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvClassSpecificMartialArtsLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClassSpecificMartialArtsLevels.Location = new Point(18, 152);
+            dgvClassSpecificMartialArtsLevels.Location = new Point(523, 411);
             dgvClassSpecificMartialArtsLevels.MultiSelect = false;
             dgvClassSpecificMartialArtsLevels.Name = "dgvClassSpecificMartialArtsLevels";
             dgvClassSpecificMartialArtsLevels.ReadOnly = true;
             dgvClassSpecificMartialArtsLevels.RowHeadersWidth = 51;
             dgvClassSpecificMartialArtsLevels.RowTemplate.Height = 29;
             dgvClassSpecificMartialArtsLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClassSpecificMartialArtsLevels.Size = new Size(275, 195);
+            dgvClassSpecificMartialArtsLevels.Size = new Size(275, 109);
             dgvClassSpecificMartialArtsLevels.TabIndex = 130;
             // 
             // label188
             // 
             label188.AutoSize = true;
-            label188.Location = new Point(878, 420);
+            label188.Location = new Point(1220, 388);
             label188.Name = "label188";
             label188.Size = new Size(215, 20);
             label188.TabIndex = 129;
@@ -3818,53 +3860,53 @@
             dgvClassSpecificCreatingSpellSlotsLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvClassSpecificCreatingSpellSlotsLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvClassSpecificCreatingSpellSlotsLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClassSpecificCreatingSpellSlotsLevels.Location = new Point(878, 443);
+            dgvClassSpecificCreatingSpellSlotsLevels.Location = new Point(1220, 411);
             dgvClassSpecificCreatingSpellSlotsLevels.MultiSelect = false;
             dgvClassSpecificCreatingSpellSlotsLevels.Name = "dgvClassSpecificCreatingSpellSlotsLevels";
             dgvClassSpecificCreatingSpellSlotsLevels.ReadOnly = true;
             dgvClassSpecificCreatingSpellSlotsLevels.RowHeadersWidth = 51;
             dgvClassSpecificCreatingSpellSlotsLevels.RowTemplate.Height = 29;
             dgvClassSpecificCreatingSpellSlotsLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClassSpecificCreatingSpellSlotsLevels.Size = new Size(275, 195);
+            dgvClassSpecificCreatingSpellSlotsLevels.Size = new Size(387, 102);
             dgvClassSpecificCreatingSpellSlotsLevels.TabIndex = 128;
             // 
             // cbFeaturesIndexLevels
             // 
             cbFeaturesIndexLevels.FormattingEnabled = true;
-            cbFeaturesIndexLevels.Location = new Point(689, 152);
+            cbFeaturesIndexLevels.Location = new Point(1361, 51);
             cbFeaturesIndexLevels.Margin = new Padding(3, 4, 3, 4);
             cbFeaturesIndexLevels.Name = "cbFeaturesIndexLevels";
-            cbFeaturesIndexLevels.Size = new Size(121, 28);
+            cbFeaturesIndexLevels.Size = new Size(172, 28);
             cbFeaturesIndexLevels.TabIndex = 127;
             // 
             // label91
             // 
             label91.AutoSize = true;
-            label91.Location = new Point(522, 420);
+            label91.Location = new Point(18, 109);
             label91.Name = "label91";
             label91.Size = new Size(94, 20);
             label91.TabIndex = 125;
             label91.Text = "ClassSpecific";
             // 
-            // dataGridView2
+            // dgcClassEspecificLevels
             // 
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(522, 443);
-            dataGridView2.MultiSelect = false;
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(275, 195);
-            dataGridView2.TabIndex = 124;
+            dgcClassEspecificLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgcClassEspecificLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgcClassEspecificLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgcClassEspecificLevels.Location = new Point(18, 132);
+            dgcClassEspecificLevels.MultiSelect = false;
+            dgcClassEspecificLevels.Name = "dgcClassEspecificLevels";
+            dgcClassEspecificLevels.ReadOnly = true;
+            dgcClassEspecificLevels.RowHeadersWidth = 51;
+            dgcClassEspecificLevels.RowTemplate.Height = 29;
+            dgcClassEspecificLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgcClassEspecificLevels.Size = new Size(1729, 94);
+            dgcClassEspecificLevels.TabIndex = 124;
             // 
             // label89
             // 
             label89.AutoSize = true;
-            label89.Location = new Point(839, 129);
+            label89.Location = new Point(1571, 29);
             label89.Name = "label89";
             label89.Size = new Size(104, 20);
             label89.TabIndex = 122;
@@ -3873,10 +3915,10 @@
             // cbFeaturesNameLevels
             // 
             cbFeaturesNameLevels.FormattingEnabled = true;
-            cbFeaturesNameLevels.Location = new Point(839, 152);
+            cbFeaturesNameLevels.Location = new Point(1571, 52);
             cbFeaturesNameLevels.Margin = new Padding(3, 4, 3, 4);
             cbFeaturesNameLevels.Name = "cbFeaturesNameLevels";
-            cbFeaturesNameLevels.Size = new Size(121, 28);
+            cbFeaturesNameLevels.Size = new Size(176, 28);
             cbFeaturesNameLevels.TabIndex = 121;
             // 
             // btEliminarLevels
@@ -3976,7 +4018,7 @@
             // label90
             // 
             label90.AutoSize = true;
-            label90.Location = new Point(689, 128);
+            label90.Location = new Point(1361, 27);
             label90.Name = "label90";
             label90.Size = new Size(100, 20);
             label90.TabIndex = 14;
@@ -3985,20 +4027,11 @@
             // label88
             // 
             label88.AutoSize = true;
-            label88.Location = new Point(1323, 27);
+            label88.Location = new Point(993, 26);
             label88.Name = "label88";
             label88.Size = new Size(101, 20);
             label88.TabIndex = 12;
             label88.Text = "SubclassIndex";
-            // 
-            // label87
-            // 
-            label87.AutoSize = true;
-            label87.Location = new Point(976, 27);
-            label87.Name = "label87";
-            label87.Size = new Size(118, 20);
-            label87.TabIndex = 11;
-            label87.Text = "ClassLevelsIndex";
             // 
             // label86
             // 
@@ -5810,81 +5843,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // tbClassIndexLevels
-            // 
-            tbClassIndexLevels.Location = new Point(639, 52);
-            tbClassIndexLevels.Margin = new Padding(3, 4, 3, 4);
-            tbClassIndexLevels.Name = "tbClassIndexLevels";
-            tbClassIndexLevels.Size = new Size(127, 27);
-            tbClassIndexLevels.TabIndex = 138;
-            // 
-            // tbClassNameLevels
-            // 
-            tbClassNameLevels.Location = new Point(805, 52);
-            tbClassNameLevels.Margin = new Padding(3, 4, 3, 4);
-            tbClassNameLevels.Name = "tbClassNameLevels";
-            tbClassNameLevels.Size = new Size(127, 27);
-            tbClassNameLevels.TabIndex = 140;
-            // 
-            // label193
-            // 
-            label193.AutoSize = true;
-            label193.Location = new Point(805, 29);
-            label193.Name = "label193";
-            label193.Size = new Size(82, 20);
-            label193.TabIndex = 139;
-            label193.Text = "ClassName";
-            // 
-            // label194
-            // 
-            label194.AutoSize = true;
-            label194.Location = new Point(1142, 27);
-            label194.Name = "label194";
-            label194.Size = new Size(122, 20);
-            label194.TabIndex = 141;
-            label194.Text = "ClassLevelsName";
-            // 
-            // tbClassLevelsNameLevels
-            // 
-            tbClassLevelsNameLevels.Location = new Point(1142, 53);
-            tbClassLevelsNameLevels.Margin = new Padding(3, 4, 3, 4);
-            tbClassLevelsNameLevels.Name = "tbClassLevelsNameLevels";
-            tbClassLevelsNameLevels.Size = new Size(127, 27);
-            tbClassLevelsNameLevels.TabIndex = 143;
-            // 
-            // tbClassLevelsIndexLevels
-            // 
-            tbClassLevelsIndexLevels.Location = new Point(976, 53);
-            tbClassLevelsIndexLevels.Margin = new Padding(3, 4, 3, 4);
-            tbClassLevelsIndexLevels.Name = "tbClassLevelsIndexLevels";
-            tbClassLevelsIndexLevels.Size = new Size(127, 27);
-            tbClassLevelsIndexLevels.TabIndex = 142;
-            // 
-            // label195
-            // 
-            label195.AutoSize = true;
-            label195.Location = new Point(1498, 29);
-            label195.Name = "label195";
-            label195.Size = new Size(105, 20);
-            label195.TabIndex = 145;
-            label195.Text = "SubclassName";
-            // 
-            // tbSubclassNameLevels
-            // 
-            tbSubclassNameLevels.Location = new Point(1498, 53);
-            tbSubclassNameLevels.Margin = new Padding(3, 4, 3, 4);
-            tbSubclassNameLevels.Name = "tbSubclassNameLevels";
-            tbSubclassNameLevels.Size = new Size(127, 27);
-            tbSubclassNameLevels.TabIndex = 147;
-            // 
-            // tbSubclassIndexLevels
-            // 
-            tbSubclassIndexLevels.Location = new Point(1323, 53);
-            tbSubclassIndexLevels.Margin = new Padding(3, 4, 3, 4);
-            tbSubclassIndexLevels.Name = "tbSubclassIndexLevels";
-            tbSubclassIndexLevels.Size = new Size(127, 27);
-            tbSubclassIndexLevels.TabIndex = 146;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -5963,7 +5921,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgcClassEspecificLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvLevels).EndInit();
             MagicItems.ResumeLayout(false);
             MagicItems.PerformLayout();
@@ -6465,7 +6423,7 @@
         public TextBox tbFiltrarLevels;
         public Button btInsertarLevels;
         public DataGridView dgvLevels;
-        public DataGridView dataGridView2;
+        public DataGridView dgcClassEspecificLevels;
         public TextBox tbLevelLevels;
         public TextBox tbProfBonusLevels;
         public TextBox tbIndexLevels;
@@ -6477,7 +6435,6 @@
         public Label label91;
         public Label label90;
         public Label label88;
-        public Label label87;
         public Label label86;
         public Label label89;
         public ComboBox cbFeaturesNameLevels;
@@ -6485,7 +6442,6 @@
         public Label label188;
         public DataGridView dgvClassSpecificCreatingSpellSlotsLevels;
         public Label label189;
-        public DataGridView dgvClassSpecificMartialArtsLevels;
         public Label label190;
         public DataGridView dgvClassSpecificSneakAttackLevels;
         public Label label191;
@@ -6495,12 +6451,10 @@
         public TextBox tbClassNameLevels;
         public Label label193;
         public TextBox tbClassIndexLevels;
-        public TextBox tbClassLevelsNameLevels;
-        public TextBox tbClassLevelsIndexLevels;
-        public Label label194;
         public Label label195;
         public TextBox tbSubclassNameLevels;
         public TextBox tbSubclassIndexLevels;
+        public DataGridView dgvClassSpecificMartialArtsLevels;
     }
 }
 

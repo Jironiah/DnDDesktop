@@ -24,6 +24,7 @@ namespace DnDDesktop.Controllers
         EquipmentCategoriesRepository EquipmentCategoriesRepository = new EquipmentCategoriesRepository();
         FeatRepository FeatsRepository = new FeatRepository();
         FeaturesRepository FeaturesRepository = new FeaturesRepository();
+        LanguageRepository LanguageRepository = new LanguageRepository();
 
         //Listas
 
@@ -57,10 +58,13 @@ namespace DnDDesktop.Controllers
         List<EquipmentCategory> equipmentCategories = new List<EquipmentCategory>();
 
         //Feats
-        List<Feat> feats = new List<Feat>();
+        List<Feats> feats = new List<Feats>();
 
         //Feature
         List<Feature> features = new List<Feature>();
+
+        //Language
+        List<Language> languages = new List<Language>();
 
         public Controlador()
         {
@@ -82,6 +86,7 @@ namespace DnDDesktop.Controllers
             LoadDataEquipmentCategories();
             LoadDataFeat();
             LoadDataFeatures();
+            LoadDataLanguages();
         }
 
         private void LoadDataAbilityScore()
@@ -153,6 +158,11 @@ namespace DnDDesktop.Controllers
         {
             features = FeaturesRepository.GetFeatures();
             f.dgvFeatures.DataSource = features.Select(a => new FeaturesDAO(a)).ToList();
+        }
+        private void LoadDataLanguages()
+        {
+            languages = LanguageRepository.GetLanguages();
+            f.dgvLanguages.DataSource = languages;
         }
 
         private void InitListeners()
@@ -229,6 +239,12 @@ namespace DnDDesktop.Controllers
             f.btInsertarFeatures.MouseUp += BtInsertarFeatures_MouseUp;
             f.btEliminarFeatures.Click += BtEliminarFeatures_Click;
             f.btModificarFeatures.Click += BtModificarFeatures_Click;
+            //Languages
+            f.dgvLanguages.SelectionChanged += DgvLanguages_SelectionChanged;
+            f.btBuscarLanguages.Click += BtBuscarLanguages_Click;
+            f.btInsertarLanguages.Click += BtInsertarLanguages_Click;
+            f.btEliminarLanguages.Click += BtEliminarLanguages_Click;
+            f.btModificarLanguages.Click += BtModificarLanguages_Click;
         }
 
         //AbilityScore
@@ -2278,7 +2294,7 @@ namespace DnDDesktop.Controllers
                 DataGridViewRow row = f.dgvFeats.CurrentRow;
                 if (row != null)
                 {
-                    Feat feat = (Feat)row.DataBoundItem;
+                    Feats feat = (Feats)row.DataBoundItem;
                     f.tbIndexFeats.Text = feat.Index;
                     f.tbNameFeats.Text = feat.Name;
                     f.rtbDescriptionFeats.Text = feat.Description.FirstOrDefault();
@@ -2301,7 +2317,7 @@ namespace DnDDesktop.Controllers
 
                     if (idBuscar != null)
                     {
-                        Feat feat = FeatsRepository.GetFeat(idBuscar.ToString());
+                        Feats feat = FeatsRepository.GetFeat(idBuscar.ToString());
                         f.tbIndexFeats.Text = feat.Index;
                         f.tbNameFeats.Text = feat.Name;
                         f.rtbDescriptionFeats.Text = feat.Description?.FirstOrDefault();
@@ -2327,7 +2343,7 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-                Feat feat = new Feat();
+                Feats feat = new Feats();
                 string index = f.tbIndexFeats.Text;
                 string name = f.tbNameFeats.Text;
                 string[] description = new string[] { f.rtbDescriptionFeats.Text };
@@ -2356,7 +2372,7 @@ namespace DnDDesktop.Controllers
             {
                 if (e.Button == MouseButtons.Middle)
                 {
-                    Feat feat = new Feat();
+                    Feats feat = new Feats();
                     string index = f.tbIndexFeats.Text;
                     string name = f.tbNameFeats.Text;
                     string[] description = new string[] { f.rtbDescriptionFeats.Text };
@@ -2394,7 +2410,7 @@ namespace DnDDesktop.Controllers
 
                     if (idBuscar != null)
                     {
-                        Feat feat = FeatsRepository.GetFeat(idBuscar.ToString());
+                        Feats feat = FeatsRepository.GetFeat(idBuscar.ToString());
                         MessageBox.Show(f.tbIndexFeats.Text.ToString() + " eliminado");
                         LoadDataFeat();
                     }
@@ -2423,7 +2439,7 @@ namespace DnDDesktop.Controllers
 
                     if (idBuscar != null)
                     {
-                        Feat feat = new Feat();
+                        Feats feat = new Feats();
                         string index = f.tbIndexFeats.Text;
                         string name = f.tbNameFeats.Text;
                         string[] description = new string[] { f.rtbDescriptionFeats.Text };
@@ -3005,6 +3021,160 @@ namespace DnDDesktop.Controllers
                         MessageBox.Show(f.tbFiltrarFeatures.Text.ToString() + " eliminado");
                         LoadDataFeatures();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //Languages
+        private void DgvLanguages_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvLanguages.CurrentRow;
+                if (row != null)
+                {
+                    Language language = LanguageRepository.GetLanguage(((Language)row.DataBoundItem).Id);
+                    f.tbIndexLanguages.Text = language?.Index;
+                    f.tbNameLanguages.Text = language?.Name;
+                    f.rtbTypicalSpeakersLanguages.Text = language?.TypicalSpeakers?.FirstOrDefault();
+                    f.tbDescriptionLanguages.Text = language?.Description;
+                    f.tbScriptLanguages.Text = language?.Script;
+                    f.tbTypeLanguages.Text = language?.Type;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtBuscarLanguages_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLanguages.Text))
+                {
+                    string idBuscar = languages.Where(a => a.Index.Equals(f.tbFiltrarLanguages.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Language language = LanguageRepository.GetLanguage(idBuscar);
+                        f.tbIndexLanguages.Text = language?.Index;
+                        f.tbNameLanguages.Text = language?.Name;
+                        f.rtbTypicalSpeakersLanguages.Text = language?.TypicalSpeakers?.FirstOrDefault();
+                        f.tbDescriptionLanguages.Text = language?.Description;
+                        f.tbScriptLanguages.Text = language?.Script;
+                        f.tbTypeLanguages.Text = language?.Type;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarLanguages_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Language languageInsertar = new Language();
+                string index = f.tbIndexLanguages.Text;
+                string name = f.tbNameLanguages.Text;
+                string[] typicalSpeackers = new string[] { f.rtbTypicalSpeakersLanguages.Text };
+                string description = f.tbDescriptionLanguages.Text;
+                string script = f.tbScriptLanguages.Text;
+                string type = f.tbTypeLanguages.Text;
+                languageInsertar.Index = index;
+                languageInsertar.Name = name;
+                languageInsertar.TypicalSpeakers = typicalSpeackers;
+                languageInsertar.Description = description;
+                languageInsertar.Script = script;
+                languageInsertar.Type = type;
+                LanguageRepository.CreateLanguage(languageInsertar);
+                LoadDataLanguages();
+                MessageBox.Show("Has insertardo Language");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarLanguages_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLanguages.Text))
+                {
+                    string idBuscar = languages.Where(a => a.Index.Equals(f.tbFiltrarLanguages.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        LanguageRepository.DeleteLanguage(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarLanguages.Text.ToString());
+                        LoadDataLanguages();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtModificarLanguages_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLanguages.Text))
+                {
+                    string idBuscar = languages.Where(a => a.Index.Equals(f.tbFiltrarLanguages.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Language languageModificar = new Language();
+                        string index = f.tbIndexLanguages.Text;
+                        string name = f.tbNameLanguages.Text;
+                        string[] typicalSpeackers = new string[] { f.rtbTypicalSpeakersLanguages.Text };
+                        string description = f.tbDescriptionLanguages.Text;
+                        string script = f.tbScriptLanguages.Text;
+                        string type = f.tbTypeLanguages.Text;
+                        languageModificar.Id = idBuscar;
+                        languageModificar.Index = index;
+                        languageModificar.Name = name;
+                        languageModificar.TypicalSpeakers = typicalSpeackers;
+                        languageModificar.Description = description;
+                        languageModificar.Script = script;
+                        languageModificar.Type = type;
+                        LanguageRepository.UpdateLanguage(languageModificar);
+                        MessageBox.Show("Has modificado " + f.tbFiltrarLanguages.Text.ToString());
+                        LoadDataLanguages();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
                 }
             }
             catch (Exception ex)

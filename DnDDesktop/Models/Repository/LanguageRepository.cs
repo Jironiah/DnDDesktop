@@ -1,40 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Text;
 using Newtonsoft.Json;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace DnDDesktop.Models.Repository
 {
-    public class FeatRepository
+    public class LanguageRepository
     {
-        string urlFeats = "https://localhost:7153/api/Feat/";
+        string ws1 = "https://localhost:7153/api/Language/";
 
-        public List<Feats> GetFeats()
+        public List<Language> GetLanguages()
         {
-            return MakeRequest<List<Feats>>(urlFeats, null, "GET", "application/json");
+            return MakeRequest<List<Language>>(ws1, null, "GET", "application/json");
         }
 
-        public Feats GetFeat(string id)
+        public Language GetLanguage(string id)
         {
-            return MakeRequest<Feats>(urlFeats + id, null, "GET", "application/json");
+            return MakeRequest<Language>(ws1 + id, null, "GET", "application/json");
         }
 
-        public Feats CreateFeat(Feats feat)
+        public Language CreateLanguage(Language language)
         {
-            return MakeRequest<Feats>(urlFeats, feat, "POST", "application/json");
+            return MakeRequest<Language>(ws1, language, "POST", "application/json");
         }
 
-        public Feats UpdateFeat(Feats feat)
+        public Language UpdateLanguage(Language language)
         {
-            return MakeRequest<Feats>(urlFeats + feat.Id, feat, "PUT", "application/json");
+            return MakeRequest<Language>(ws1 + language.Id, language, "PUT", "application/json");
         }
 
-        public Feats DeleteFeat(string id)
+        public Language DeleteLanguage(string id)
         {
-            return MakeRequest<Feats>(urlFeats + id, null, "DELETE", "application/json");
+            return MakeRequest<Language>(ws1 + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

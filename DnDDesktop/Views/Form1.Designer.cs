@@ -297,9 +297,14 @@
             tbNameFeatures = new TextBox();
             tbIndexFeatures = new TextBox();
             Languages = new TabPage();
+            btEliminarLanguages = new Button();
+            btModificarLanguages = new Button();
+            btBuscarLanguages = new Button();
+            tbFiltrarLanguages = new TextBox();
+            btInsertarLanguages = new Button();
+            dgvLanguages = new DataGridView();
             rtbTypicalSpeakersLanguages = new RichTextBox();
             label85 = new Label();
-            btInsertarLanguages = new Button();
             label84 = new Label();
             label82 = new Label();
             label83 = new Label();
@@ -559,6 +564,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvPrerequisitesFeatures).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvFeatures).BeginInit();
             Languages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLanguages).BeginInit();
             Levels.SuspendLayout();
             MagicItems.SuspendLayout();
             MagicSchools.SuspendLayout();
@@ -3445,9 +3451,14 @@
             // 
             // Languages
             // 
+            Languages.Controls.Add(btEliminarLanguages);
+            Languages.Controls.Add(btModificarLanguages);
+            Languages.Controls.Add(btBuscarLanguages);
+            Languages.Controls.Add(tbFiltrarLanguages);
+            Languages.Controls.Add(btInsertarLanguages);
+            Languages.Controls.Add(dgvLanguages);
             Languages.Controls.Add(rtbTypicalSpeakersLanguages);
             Languages.Controls.Add(label85);
-            Languages.Controls.Add(btInsertarLanguages);
             Languages.Controls.Add(label84);
             Languages.Controls.Add(label82);
             Languages.Controls.Add(label83);
@@ -3465,9 +3476,73 @@
             Languages.Text = "Languages";
             Languages.UseVisualStyleBackColor = true;
             // 
+            // btEliminarLanguages
+            // 
+            btEliminarLanguages.Location = new Point(1352, 634);
+            btEliminarLanguages.Margin = new Padding(3, 2, 3, 2);
+            btEliminarLanguages.Name = "btEliminarLanguages";
+            btEliminarLanguages.Size = new Size(82, 22);
+            btEliminarLanguages.TabIndex = 114;
+            btEliminarLanguages.Text = "Eliminar";
+            btEliminarLanguages.UseVisualStyleBackColor = true;
+            // 
+            // btModificarLanguages
+            // 
+            btModificarLanguages.Location = new Point(1265, 634);
+            btModificarLanguages.Margin = new Padding(3, 2, 3, 2);
+            btModificarLanguages.Name = "btModificarLanguages";
+            btModificarLanguages.Size = new Size(82, 22);
+            btModificarLanguages.TabIndex = 113;
+            btModificarLanguages.Text = "Modificar";
+            btModificarLanguages.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarLanguages
+            // 
+            btBuscarLanguages.Location = new Point(1265, 598);
+            btBuscarLanguages.Margin = new Padding(3, 2, 3, 2);
+            btBuscarLanguages.Name = "btBuscarLanguages";
+            btBuscarLanguages.Size = new Size(170, 22);
+            btBuscarLanguages.TabIndex = 112;
+            btBuscarLanguages.Text = "Buscar por Index";
+            btBuscarLanguages.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarLanguages
+            // 
+            tbFiltrarLanguages.Location = new Point(1150, 598);
+            tbFiltrarLanguages.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarLanguages.Name = "tbFiltrarLanguages";
+            tbFiltrarLanguages.Size = new Size(110, 23);
+            tbFiltrarLanguages.TabIndex = 111;
+            // 
+            // btInsertarLanguages
+            // 
+            btInsertarLanguages.Location = new Point(1452, 632);
+            btInsertarLanguages.Margin = new Padding(3, 2, 3, 2);
+            btInsertarLanguages.Name = "btInsertarLanguages";
+            btInsertarLanguages.Size = new Size(82, 26);
+            btInsertarLanguages.TabIndex = 110;
+            btInsertarLanguages.Text = "Insertar";
+            btInsertarLanguages.UseVisualStyleBackColor = true;
+            // 
+            // dgvLanguages
+            // 
+            dgvLanguages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvLanguages.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvLanguages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLanguages.Location = new Point(19, 291);
+            dgvLanguages.Margin = new Padding(3, 2, 3, 2);
+            dgvLanguages.MultiSelect = false;
+            dgvLanguages.Name = "dgvLanguages";
+            dgvLanguages.ReadOnly = true;
+            dgvLanguages.RowHeadersWidth = 51;
+            dgvLanguages.RowTemplate.Height = 29;
+            dgvLanguages.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLanguages.Size = new Size(415, 367);
+            dgvLanguages.TabIndex = 109;
+            // 
             // rtbTypicalSpeakersLanguages
             // 
-            rtbTypicalSpeakersLanguages.Location = new Point(663, 36);
+            rtbTypicalSpeakersLanguages.Location = new Point(1102, 36);
             rtbTypicalSpeakersLanguages.Name = "rtbTypicalSpeakersLanguages";
             rtbTypicalSpeakersLanguages.Size = new Size(432, 96);
             rtbTypicalSpeakersLanguages.TabIndex = 84;
@@ -3476,21 +3551,11 @@
             // label85
             // 
             label85.AutoSize = true;
-            label85.Location = new Point(663, 18);
+            label85.Location = new Point(1102, 18);
             label85.Name = "label85";
             label85.Size = new Size(89, 15);
             label85.TabIndex = 83;
             label85.Text = "TypicalSpeakers";
-            // 
-            // btInsertarLanguages
-            // 
-            btInsertarLanguages.Location = new Point(1030, 344);
-            btInsertarLanguages.Margin = new Padding(3, 2, 3, 2);
-            btInsertarLanguages.Name = "btInsertarLanguages";
-            btInsertarLanguages.Size = new Size(82, 26);
-            btInsertarLanguages.TabIndex = 21;
-            btInsertarLanguages.Text = "Instertar";
-            btInsertarLanguages.UseVisualStyleBackColor = true;
             // 
             // label84
             // 
@@ -3542,8 +3607,9 @@
             // tbDescriptionLanguages
             // 
             tbDescriptionLanguages.Location = new Point(536, 36);
+            tbDescriptionLanguages.Multiline = true;
             tbDescriptionLanguages.Name = "tbDescriptionLanguages";
-            tbDescriptionLanguages.Size = new Size(88, 23);
+            tbDescriptionLanguages.Size = new Size(495, 96);
             tbDescriptionLanguages.TabIndex = 4;
             // 
             // tbTypeLanguages
@@ -5529,6 +5595,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvFeatures).EndInit();
             Languages.ResumeLayout(false);
             Languages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLanguages).EndInit();
             Levels.ResumeLayout(false);
             Levels.PerformLayout();
             MagicItems.ResumeLayout(false);
@@ -5686,16 +5753,6 @@
         public System.Windows.Forms.Label label68;
         public System.Windows.Forms.TextBox tbIndexFeats;
         public System.Windows.Forms.TextBox tbNameFeats;
-        private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.TextBox tbDescriptionLanguages;
-        private System.Windows.Forms.TextBox tbTypeLanguages;
-        private System.Windows.Forms.TextBox tbScriptLanguages;
-        private System.Windows.Forms.TextBox tbNameLanguages;
-        private System.Windows.Forms.TextBox tbIndexLanguages;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Label label82;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Label label81;
         private System.Windows.Forms.TextBox tbLevelLevels;
         private System.Windows.Forms.TextBox tbProfBonusLevels;
         private System.Windows.Forms.TextBox tbIndexLevels;
@@ -5787,7 +5844,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarLanguages;
         public Button btInsertarLevels;
         public Button btInsertarMagicItems;
         public Button btInsertarMagicSchools;
@@ -6038,6 +6094,22 @@
         public TextBox tbExpertiseOptionsFromFeatureIndex;
         public Label label187;
         public TextBox tbExpertiseOptionsFromFeatureName;
+        public Button btEliminarLanguages;
+        public Button btModificarLanguages;
+        public Button btBuscarLanguages;
+        public TextBox tbFiltrarLanguages;
+        public Button btInsertarLanguages;
+        public DataGridView dgvLanguages;
+        public Label label80;
+        public TextBox tbDescriptionLanguages;
+        public TextBox tbTypeLanguages;
+        public TextBox tbScriptLanguages;
+        public TextBox tbNameLanguages;
+        public TextBox tbIndexLanguages;
+        public Label label84;
+        public Label label82;
+        public Label label83;
+        public Label label81;
     }
 }
 

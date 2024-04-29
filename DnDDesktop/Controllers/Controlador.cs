@@ -4,6 +4,7 @@ using DnDDesktop.Models.Repository;
 using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
+using System.Windows.Forms;
 
 
 namespace DnDDesktop.Controllers
@@ -25,6 +26,7 @@ namespace DnDDesktop.Controllers
         FeatRepository FeatsRepository = new FeatRepository();
         FeaturesRepository FeaturesRepository = new FeaturesRepository();
         LanguageRepository LanguageRepository = new LanguageRepository();
+        LevelRepository LevelRepository = new LevelRepository();
 
         //Listas
 
@@ -66,6 +68,9 @@ namespace DnDDesktop.Controllers
         //Language
         List<Language> languages = new List<Language>();
 
+        //Level
+        List<Level> levels = new List<Level>();
+
         public Controlador()
         {
             LoadData();
@@ -87,6 +92,7 @@ namespace DnDDesktop.Controllers
             LoadDataFeat();
             LoadDataFeatures();
             LoadDataLanguages();
+            LoadDataLevel();
         }
 
         private void LoadDataAbilityScore()
@@ -164,7 +170,18 @@ namespace DnDDesktop.Controllers
             languages = LanguageRepository.GetLanguages();
             f.dgvLanguages.DataSource = languages;
         }
-
+        private void LoadDataLevel()
+        {
+            levels = LevelRepository.GetLevels();
+            f.dgvLevels.DataSource = levels;
+            f.dgvLevels.Columns["Class"].Visible = false;
+            f.dgvLevels.Columns["ClassLevels"].Visible = false;
+            f.dgvLevels.Columns["ClassSpecific"].Visible = false;
+            f.dgvLevels.Columns["Spellcasting"].Visible = false;
+            f.dgvLevels.Columns["Subclass"].Visible = false;
+            f.dgvLevels.Columns["Subcategories"].Visible = false;
+            f.dgvLevels.Columns["Index"].DisplayIndex = 1;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -245,6 +262,12 @@ namespace DnDDesktop.Controllers
             f.btInsertarLanguages.Click += BtInsertarLanguages_Click;
             f.btEliminarLanguages.Click += BtEliminarLanguages_Click;
             f.btModificarLanguages.Click += BtModificarLanguages_Click;
+            //Levels
+            f.dgvLevels.SelectionChanged += DgvLevels_SelectionChanged;
+            f.btModificarLevels.Click += BtModificarLevels_Click;
+            f.btEliminarLevels.Click += BtEliminarLevels_Click;
+            f.btInsertarLevels.Click += BtInsertarLevels_Click;
+            f.btBuscarLevels.Click += BtBuscarLevels_Click;
         }
 
         //AbilityScore
@@ -3176,6 +3199,79 @@ namespace DnDDesktop.Controllers
                 {
                     MessageBox.Show("Lo que quieres modificar no puede estar vacío");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //Levels
+        private void DgvLevels_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvLevels.CurrentRow;
+                if (row != null)
+                {
+                    Level level = LevelRepository.GetLevel(((Level)row.DataBoundItem).Id);
+                    f.tbIndexLevels.Text = level.Index;
+                    f.tbAbilityScoreBonusesLevels.Text = level.AbilityScoreBonuses.ToString();
+                    f.tbLevelLevels.Text = level.LevelN.ToString();
+                    f.tbProfBonusLevels.Text = level.ProficiencyBonus.ToString();
+
+                    List<From?> classList = new List<From?>();
+                    classList.Add(level.Class);
+                    f.cbClassLevels.DataSource = classList;
+                    f.cbClassLevels.DisplayMember = "Name";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtBuscarLevels_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtInsertarLevels_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarLevels_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtModificarLevels_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
             }
             catch (Exception ex)
             {

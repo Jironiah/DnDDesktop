@@ -39,7 +39,7 @@ namespace DnDDesktop.Models
         public SpellcastingLevel? Spellcasting { get; set;}
 
         [BsonElement("subclass")]
-        public From? Subcalss { get; set; }
+        public From? Subclass { get; set; }
 
         [BsonElement("subclass_specific")]
         public SubclassSpecificLevel? Subcategories { get; set; }

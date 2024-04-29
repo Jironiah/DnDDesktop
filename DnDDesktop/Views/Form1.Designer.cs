@@ -316,23 +316,28 @@
             tbNameLanguages = new TextBox();
             tbIndexLanguages = new TextBox();
             Levels = new TabPage();
+            cbFeaturesIndexLevels = new ComboBox();
+            cbClassLevelsLevels = new ComboBox();
+            label91 = new Label();
+            dataGridView2 = new DataGridView();
+            label89 = new Label();
+            cbFeaturesNameLevels = new ComboBox();
+            btEliminarLevels = new Button();
+            btModificarLevels = new Button();
+            btBuscarLevels = new Button();
+            tbFiltrarLevels = new TextBox();
             btInsertarLevels = new Button();
+            dgvLevels = new DataGridView();
             label95 = new Label();
             label94 = new Label();
             label93 = new Label();
             label92 = new Label();
-            label91 = new Label();
             label90 = new Label();
-            label89 = new Label();
             label88 = new Label();
             label87 = new Label();
             label86 = new Label();
             cbClassLevels = new ComboBox();
-            cbClassSpecificLevels = new ComboBox();
-            cbFeaturesLevels = new ComboBox();
-            cbSpellcastingLevels = new ComboBox();
             cbSubclassLevels = new ComboBox();
-            cbSubclassSpecificLevels = new ComboBox();
             tbLevelLevels = new TextBox();
             tbProfBonusLevels = new TextBox();
             tbIndexLevels = new TextBox();
@@ -517,6 +522,16 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
+            label188 = new Label();
+            dgvClassSpecificCreatingSpellSlotsLevels = new DataGridView();
+            label189 = new Label();
+            dgvClassSpecificMartialArtsLevels = new DataGridView();
+            label190 = new Label();
+            dgvClassSpecificSneakAttackLevels = new DataGridView();
+            label191 = new Label();
+            dgvSubcategoriesLevels = new DataGridView();
+            label192 = new Label();
+            dgvSpellcastingLevels = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -566,6 +581,8 @@
             Languages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLanguages).BeginInit();
             Levels.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLevels).BeginInit();
             MagicItems.SuspendLayout();
             MagicSchools.SuspendLayout();
             Proficiencies.SuspendLayout();
@@ -575,6 +592,11 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubcategoriesLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpellcastingLevels).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -3642,23 +3664,38 @@
             // 
             // Levels
             // 
+            Levels.Controls.Add(label191);
+            Levels.Controls.Add(dgvSubcategoriesLevels);
+            Levels.Controls.Add(label192);
+            Levels.Controls.Add(dgvSpellcastingLevels);
+            Levels.Controls.Add(label190);
+            Levels.Controls.Add(dgvClassSpecificSneakAttackLevels);
+            Levels.Controls.Add(label189);
+            Levels.Controls.Add(dgvClassSpecificMartialArtsLevels);
+            Levels.Controls.Add(label188);
+            Levels.Controls.Add(dgvClassSpecificCreatingSpellSlotsLevels);
+            Levels.Controls.Add(cbFeaturesIndexLevels);
+            Levels.Controls.Add(cbClassLevelsLevels);
+            Levels.Controls.Add(label91);
+            Levels.Controls.Add(dataGridView2);
+            Levels.Controls.Add(label89);
+            Levels.Controls.Add(cbFeaturesNameLevels);
+            Levels.Controls.Add(btEliminarLevels);
+            Levels.Controls.Add(btModificarLevels);
+            Levels.Controls.Add(btBuscarLevels);
+            Levels.Controls.Add(tbFiltrarLevels);
             Levels.Controls.Add(btInsertarLevels);
+            Levels.Controls.Add(dgvLevels);
             Levels.Controls.Add(label95);
             Levels.Controls.Add(label94);
             Levels.Controls.Add(label93);
             Levels.Controls.Add(label92);
-            Levels.Controls.Add(label91);
             Levels.Controls.Add(label90);
-            Levels.Controls.Add(label89);
             Levels.Controls.Add(label88);
             Levels.Controls.Add(label87);
             Levels.Controls.Add(label86);
             Levels.Controls.Add(cbClassLevels);
-            Levels.Controls.Add(cbClassSpecificLevels);
-            Levels.Controls.Add(cbFeaturesLevels);
-            Levels.Controls.Add(cbSpellcastingLevels);
             Levels.Controls.Add(cbSubclassLevels);
-            Levels.Controls.Add(cbSubclassSpecificLevels);
             Levels.Controls.Add(tbLevelLevels);
             Levels.Controls.Add(tbProfBonusLevels);
             Levels.Controls.Add(tbIndexLevels);
@@ -3670,20 +3707,132 @@
             Levels.Text = "Levels";
             Levels.UseVisualStyleBackColor = true;
             // 
+            // cbFeaturesIndexLevels
+            // 
+            cbFeaturesIndexLevels.FormattingEnabled = true;
+            cbFeaturesIndexLevels.Location = new Point(1000, 39);
+            cbFeaturesIndexLevels.Name = "cbFeaturesIndexLevels";
+            cbFeaturesIndexLevels.Size = new Size(106, 23);
+            cbFeaturesIndexLevels.TabIndex = 127;
+            // 
+            // cbClassLevelsLevels
+            // 
+            cbClassLevelsLevels.FormattingEnabled = true;
+            cbClassLevelsLevels.Location = new Point(853, 39);
+            cbClassLevelsLevels.Name = "cbClassLevelsLevels";
+            cbClassLevelsLevels.Size = new Size(106, 23);
+            cbClassLevelsLevels.TabIndex = 126;
+            // 
+            // label91
+            // 
+            label91.AutoSize = true;
+            label91.Location = new Point(16, 90);
+            label91.Name = "label91";
+            label91.Size = new Size(75, 15);
+            label91.TabIndex = 125;
+            label91.Text = "ClassSpecific";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(16, 107);
+            dataGridView2.Margin = new Padding(3, 2, 3, 2);
+            dataGridView2.MultiSelect = false;
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.RowTemplate.Height = 29;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(241, 146);
+            dataGridView2.TabIndex = 124;
+            // 
+            // label89
+            // 
+            label89.AutoSize = true;
+            label89.Location = new Point(1131, 22);
+            label89.Name = "label89";
+            label89.Size = new Size(83, 15);
+            label89.TabIndex = 122;
+            label89.Text = "FeaturesName";
+            // 
+            // cbFeaturesNameLevels
+            // 
+            cbFeaturesNameLevels.FormattingEnabled = true;
+            cbFeaturesNameLevels.Location = new Point(1131, 39);
+            cbFeaturesNameLevels.Name = "cbFeaturesNameLevels";
+            cbFeaturesNameLevels.Size = new Size(106, 23);
+            cbFeaturesNameLevels.TabIndex = 121;
+            // 
+            // btEliminarLevels
+            // 
+            btEliminarLevels.Location = new Point(1346, 634);
+            btEliminarLevels.Margin = new Padding(3, 2, 3, 2);
+            btEliminarLevels.Name = "btEliminarLevels";
+            btEliminarLevels.Size = new Size(82, 22);
+            btEliminarLevels.TabIndex = 120;
+            btEliminarLevels.Text = "Eliminar";
+            btEliminarLevels.UseVisualStyleBackColor = true;
+            // 
+            // btModificarLevels
+            // 
+            btModificarLevels.Location = new Point(1259, 634);
+            btModificarLevels.Margin = new Padding(3, 2, 3, 2);
+            btModificarLevels.Name = "btModificarLevels";
+            btModificarLevels.Size = new Size(82, 22);
+            btModificarLevels.TabIndex = 119;
+            btModificarLevels.Text = "Modificar";
+            btModificarLevels.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarLevels
+            // 
+            btBuscarLevels.Location = new Point(1259, 598);
+            btBuscarLevels.Margin = new Padding(3, 2, 3, 2);
+            btBuscarLevels.Name = "btBuscarLevels";
+            btBuscarLevels.Size = new Size(170, 22);
+            btBuscarLevels.TabIndex = 118;
+            btBuscarLevels.Text = "Buscar por Index";
+            btBuscarLevels.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarLevels
+            // 
+            tbFiltrarLevels.Location = new Point(1144, 598);
+            tbFiltrarLevels.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarLevels.Name = "tbFiltrarLevels";
+            tbFiltrarLevels.Size = new Size(110, 23);
+            tbFiltrarLevels.TabIndex = 117;
+            // 
             // btInsertarLevels
             // 
-            btInsertarLevels.Location = new Point(1016, 343);
+            btInsertarLevels.Location = new Point(1446, 632);
             btInsertarLevels.Margin = new Padding(3, 2, 3, 2);
             btInsertarLevels.Name = "btInsertarLevels";
             btInsertarLevels.Size = new Size(82, 26);
-            btInsertarLevels.TabIndex = 21;
-            btInsertarLevels.Text = "Instertar";
+            btInsertarLevels.TabIndex = 116;
+            btInsertarLevels.Text = "Insertar";
             btInsertarLevels.UseVisualStyleBackColor = true;
+            // 
+            // dgvLevels
+            // 
+            dgvLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLevels.Location = new Point(13, 291);
+            dgvLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvLevels.MultiSelect = false;
+            dgvLevels.Name = "dgvLevels";
+            dgvLevels.ReadOnly = true;
+            dgvLevels.RowHeadersWidth = 51;
+            dgvLevels.RowTemplate.Height = 29;
+            dgvLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLevels.Size = new Size(415, 367);
+            dgvLevels.TabIndex = 115;
             // 
             // label95
             // 
             label95.AutoSize = true;
-            label95.Location = new Point(129, 22);
+            label95.Location = new Point(131, 22);
             label95.Name = "label95";
             label95.Size = new Size(34, 15);
             label95.TabIndex = 19;
@@ -3692,7 +3841,7 @@
             // label94
             // 
             label94.AutoSize = true;
-            label94.Location = new Point(267, 22);
+            label94.Location = new Point(270, 21);
             label94.Name = "label94";
             label94.Size = new Size(62, 15);
             label94.TabIndex = 18;
@@ -3701,7 +3850,7 @@
             // label93
             // 
             label93.AutoSize = true;
-            label93.Location = new Point(401, 22);
+            label93.Location = new Point(397, 22);
             label93.Name = "label93";
             label93.Size = new Size(114, 15);
             label93.TabIndex = 17;
@@ -3710,43 +3859,25 @@
             // label92
             // 
             label92.AutoSize = true;
-            label92.Location = new Point(544, 22);
+            label92.Location = new Point(548, 22);
             label92.Name = "label92";
             label92.Size = new Size(34, 15);
             label92.TabIndex = 16;
             label92.Text = "Class";
             // 
-            // label91
-            // 
-            label91.AutoSize = true;
-            label91.Location = new Point(682, 22);
-            label91.Name = "label91";
-            label91.Size = new Size(75, 15);
-            label91.TabIndex = 15;
-            label91.Text = "ClassSpecific";
-            // 
             // label90
             // 
             label90.AutoSize = true;
-            label90.Location = new Point(822, 22);
+            label90.Location = new Point(1000, 21);
             label90.Name = "label90";
-            label90.Size = new Size(51, 15);
+            label90.Size = new Size(80, 15);
             label90.TabIndex = 14;
-            label90.Text = "Features";
-            // 
-            // label89
-            // 
-            label89.AutoSize = true;
-            label89.Location = new Point(961, 22);
-            label89.Name = "label89";
-            label89.Size = new Size(70, 15);
-            label89.TabIndex = 13;
-            label89.Text = "Spellcasting";
+            label90.Text = "FeaturesIndex";
             // 
             // label88
             // 
             label88.AutoSize = true;
-            label88.Location = new Point(13, 90);
+            label88.Location = new Point(695, 21);
             label88.Name = "label88";
             label88.Size = new Size(52, 15);
             label88.TabIndex = 12;
@@ -3755,16 +3886,16 @@
             // label87
             // 
             label87.AutoSize = true;
-            label87.Location = new Point(174, 90);
+            label87.Location = new Point(853, 21);
             label87.Name = "label87";
-            label87.Size = new Size(93, 15);
+            label87.Size = new Size(66, 15);
             label87.TabIndex = 11;
-            label87.Text = "SubclassSpecific";
+            label87.Text = "ClassLevels";
             // 
             // label86
             // 
             label86.AutoSize = true;
-            label86.Location = new Point(13, 22);
+            label86.Location = new Point(16, 22);
             label86.Name = "label86";
             label86.Size = new Size(36, 15);
             label86.TabIndex = 10;
@@ -3773,50 +3904,18 @@
             // cbClassLevels
             // 
             cbClassLevels.FormattingEnabled = true;
-            cbClassLevels.Location = new Point(547, 39);
+            cbClassLevels.Location = new Point(548, 39);
             cbClassLevels.Name = "cbClassLevels";
             cbClassLevels.Size = new Size(106, 23);
             cbClassLevels.TabIndex = 9;
             // 
-            // cbClassSpecificLevels
-            // 
-            cbClassSpecificLevels.FormattingEnabled = true;
-            cbClassSpecificLevels.Location = new Point(684, 39);
-            cbClassSpecificLevels.Name = "cbClassSpecificLevels";
-            cbClassSpecificLevels.Size = new Size(106, 23);
-            cbClassSpecificLevels.TabIndex = 8;
-            // 
-            // cbFeaturesLevels
-            // 
-            cbFeaturesLevels.FormattingEnabled = true;
-            cbFeaturesLevels.Location = new Point(824, 39);
-            cbFeaturesLevels.Name = "cbFeaturesLevels";
-            cbFeaturesLevels.Size = new Size(106, 23);
-            cbFeaturesLevels.TabIndex = 7;
-            // 
-            // cbSpellcastingLevels
-            // 
-            cbSpellcastingLevels.FormattingEnabled = true;
-            cbSpellcastingLevels.Location = new Point(963, 39);
-            cbSpellcastingLevels.Name = "cbSpellcastingLevels";
-            cbSpellcastingLevels.Size = new Size(106, 23);
-            cbSpellcastingLevels.TabIndex = 6;
-            // 
             // cbSubclassLevels
             // 
             cbSubclassLevels.FormattingEnabled = true;
-            cbSubclassLevels.Location = new Point(16, 108);
+            cbSubclassLevels.Location = new Point(695, 39);
             cbSubclassLevels.Name = "cbSubclassLevels";
             cbSubclassLevels.Size = new Size(106, 23);
             cbSubclassLevels.TabIndex = 5;
-            // 
-            // cbSubclassSpecificLevels
-            // 
-            cbSubclassSpecificLevels.FormattingEnabled = true;
-            cbSubclassSpecificLevels.Location = new Point(173, 108);
-            cbSubclassSpecificLevels.Name = "cbSubclassSpecificLevels";
-            cbSubclassSpecificLevels.Size = new Size(106, 23);
-            cbSubclassSpecificLevels.TabIndex = 4;
             // 
             // tbLevelLevels
             // 
@@ -3841,9 +3940,9 @@
             // 
             // tbAbilityScoreBonusesLevels
             // 
-            tbAbilityScoreBonusesLevels.Location = new Point(403, 39);
+            tbAbilityScoreBonusesLevels.Location = new Point(397, 39);
             tbAbilityScoreBonusesLevels.Name = "tbAbilityScoreBonusesLevels";
-            tbAbilityScoreBonusesLevels.Size = new Size(88, 23);
+            tbAbilityScoreBonusesLevels.Size = new Size(112, 23);
             tbAbilityScoreBonusesLevels.TabIndex = 0;
             // 
             // MagicItems
@@ -5526,6 +5625,131 @@
             tbNameTraits.Size = new Size(221, 23);
             tbNameTraits.TabIndex = 63;
             // 
+            // label188
+            // 
+            label188.AutoSize = true;
+            label188.Location = new Point(327, 90);
+            label188.Name = "label188";
+            label188.Size = new Size(170, 15);
+            label188.TabIndex = 129;
+            label188.Text = "ClassSpecificCreatingSpellSlots";
+            // 
+            // dgvClassSpecificCreatingSpellSlotsLevels
+            // 
+            dgvClassSpecificCreatingSpellSlotsLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClassSpecificCreatingSpellSlotsLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClassSpecificCreatingSpellSlotsLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClassSpecificCreatingSpellSlotsLevels.Location = new Point(327, 107);
+            dgvClassSpecificCreatingSpellSlotsLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvClassSpecificCreatingSpellSlotsLevels.MultiSelect = false;
+            dgvClassSpecificCreatingSpellSlotsLevels.Name = "dgvClassSpecificCreatingSpellSlotsLevels";
+            dgvClassSpecificCreatingSpellSlotsLevels.ReadOnly = true;
+            dgvClassSpecificCreatingSpellSlotsLevels.RowHeadersWidth = 51;
+            dgvClassSpecificCreatingSpellSlotsLevels.RowTemplate.Height = 29;
+            dgvClassSpecificCreatingSpellSlotsLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClassSpecificCreatingSpellSlotsLevels.Size = new Size(241, 146);
+            dgvClassSpecificCreatingSpellSlotsLevels.TabIndex = 128;
+            // 
+            // label189
+            // 
+            label189.AutoSize = true;
+            label189.Location = new Point(635, 90);
+            label189.Name = "label189";
+            label189.Size = new Size(133, 15);
+            label189.TabIndex = 131;
+            label189.Text = "ClassSpecificMartialArts";
+            // 
+            // dgvClassSpecificMartialArtsLevels
+            // 
+            dgvClassSpecificMartialArtsLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClassSpecificMartialArtsLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClassSpecificMartialArtsLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClassSpecificMartialArtsLevels.Location = new Point(635, 107);
+            dgvClassSpecificMartialArtsLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvClassSpecificMartialArtsLevels.MultiSelect = false;
+            dgvClassSpecificMartialArtsLevels.Name = "dgvClassSpecificMartialArtsLevels";
+            dgvClassSpecificMartialArtsLevels.ReadOnly = true;
+            dgvClassSpecificMartialArtsLevels.RowHeadersWidth = 51;
+            dgvClassSpecificMartialArtsLevels.RowTemplate.Height = 29;
+            dgvClassSpecificMartialArtsLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClassSpecificMartialArtsLevels.Size = new Size(241, 146);
+            dgvClassSpecificMartialArtsLevels.TabIndex = 130;
+            // 
+            // label190
+            // 
+            label190.AutoSize = true;
+            label190.Location = new Point(935, 90);
+            label190.Name = "label190";
+            label190.Size = new Size(140, 15);
+            label190.TabIndex = 133;
+            label190.Text = "ClassSpecificSneakAttack";
+            // 
+            // dgvClassSpecificSneakAttackLevels
+            // 
+            dgvClassSpecificSneakAttackLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClassSpecificSneakAttackLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClassSpecificSneakAttackLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClassSpecificSneakAttackLevels.Location = new Point(935, 107);
+            dgvClassSpecificSneakAttackLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvClassSpecificSneakAttackLevels.MultiSelect = false;
+            dgvClassSpecificSneakAttackLevels.Name = "dgvClassSpecificSneakAttackLevels";
+            dgvClassSpecificSneakAttackLevels.ReadOnly = true;
+            dgvClassSpecificSneakAttackLevels.RowHeadersWidth = 51;
+            dgvClassSpecificSneakAttackLevels.RowTemplate.Height = 29;
+            dgvClassSpecificSneakAttackLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClassSpecificSneakAttackLevels.Size = new Size(241, 146);
+            dgvClassSpecificSneakAttackLevels.TabIndex = 132;
+            // 
+            // label191
+            // 
+            label191.AutoSize = true;
+            label191.Location = new Point(765, 274);
+            label191.Name = "label191";
+            label191.Size = new Size(81, 15);
+            label191.TabIndex = 137;
+            label191.Text = "Subcategories";
+            // 
+            // dgvSubcategoriesLevels
+            // 
+            dgvSubcategoriesLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSubcategoriesLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSubcategoriesLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSubcategoriesLevels.Location = new Point(765, 291);
+            dgvSubcategoriesLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvSubcategoriesLevels.MultiSelect = false;
+            dgvSubcategoriesLevels.Name = "dgvSubcategoriesLevels";
+            dgvSubcategoriesLevels.ReadOnly = true;
+            dgvSubcategoriesLevels.RowHeadersWidth = 51;
+            dgvSubcategoriesLevels.RowTemplate.Height = 29;
+            dgvSubcategoriesLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSubcategoriesLevels.Size = new Size(241, 146);
+            dgvSubcategoriesLevels.TabIndex = 136;
+            // 
+            // label192
+            // 
+            label192.AutoSize = true;
+            label192.Location = new Point(465, 274);
+            label192.Name = "label192";
+            label192.Size = new Size(70, 15);
+            label192.TabIndex = 135;
+            label192.Text = "Spellcasting";
+            // 
+            // dgvSpellcastingLevels
+            // 
+            dgvSpellcastingLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSpellcastingLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSpellcastingLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSpellcastingLevels.Location = new Point(465, 291);
+            dgvSpellcastingLevels.Margin = new Padding(3, 2, 3, 2);
+            dgvSpellcastingLevels.MultiSelect = false;
+            dgvSpellcastingLevels.Name = "dgvSpellcastingLevels";
+            dgvSpellcastingLevels.ReadOnly = true;
+            dgvSpellcastingLevels.RowHeadersWidth = 51;
+            dgvSpellcastingLevels.RowTemplate.Height = 29;
+            dgvSpellcastingLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSpellcastingLevels.Size = new Size(241, 146);
+            dgvSpellcastingLevels.TabIndex = 134;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -5598,6 +5822,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvLanguages).EndInit();
             Levels.ResumeLayout(false);
             Levels.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLevels).EndInit();
             MagicItems.ResumeLayout(false);
             MagicItems.PerformLayout();
             MagicSchools.ResumeLayout(false);
@@ -5616,6 +5842,11 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubcategoriesLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpellcastingLevels).EndInit();
             ResumeLayout(false);
         }
 
@@ -5753,25 +5984,8 @@
         public System.Windows.Forms.Label label68;
         public System.Windows.Forms.TextBox tbIndexFeats;
         public System.Windows.Forms.TextBox tbNameFeats;
-        private System.Windows.Forms.TextBox tbLevelLevels;
-        private System.Windows.Forms.TextBox tbProfBonusLevels;
-        private System.Windows.Forms.TextBox tbIndexLevels;
-        private System.Windows.Forms.TextBox tbAbilityScoreBonusesLevels;
-        private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.Label label89;
-        private System.Windows.Forms.Label label88;
-        private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.ComboBox cbClassLevels;
         private System.Windows.Forms.ComboBox cbClassSpecificLevels;
         private System.Windows.Forms.ComboBox cbFeaturesLevels;
-        private System.Windows.Forms.ComboBox cbSpellcastingLevels;
-        private System.Windows.Forms.ComboBox cbSubclassLevels;
         private System.Windows.Forms.ComboBox cbSubclassSpecificLevels;
         private System.Windows.Forms.CheckBox chbVariantMagicItems;
         private System.Windows.Forms.Label label102;
@@ -5844,7 +6058,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarLevels;
         public Button btInsertarMagicItems;
         public Button btInsertarMagicSchools;
         public Button btInsertarProficiencies;
@@ -6110,6 +6323,42 @@
         public Label label82;
         public Label label83;
         public Label label81;
+        public Button btEliminarLevels;
+        public Button btModificarLevels;
+        public Button btBuscarLevels;
+        public TextBox tbFiltrarLevels;
+        public Button btInsertarLevels;
+        public DataGridView dgvLevels;
+        public DataGridView dataGridView2;
+        public TextBox tbLevelLevels;
+        public TextBox tbProfBonusLevels;
+        public TextBox tbIndexLevels;
+        public TextBox tbAbilityScoreBonusesLevels;
+        public Label label95;
+        public Label label94;
+        public Label label93;
+        public Label label92;
+        public Label label91;
+        public Label label90;
+        public Label label88;
+        public Label label87;
+        public Label label86;
+        public ComboBox cbClassLevels;
+        public ComboBox cbSubclassLevels;
+        public Label label89;
+        public ComboBox cbFeaturesNameLevels;
+        public ComboBox cbFeaturesIndexLevels;
+        public ComboBox cbClassLevelsLevels;
+        public Label label188;
+        public DataGridView dgvClassSpecificCreatingSpellSlotsLevels;
+        public Label label189;
+        public DataGridView dgvClassSpecificMartialArtsLevels;
+        public Label label190;
+        public DataGridView dgvClassSpecificSneakAttackLevels;
+        public Label label191;
+        public DataGridView dgvSubcategoriesLevels;
+        public Label label192;
+        public DataGridView dgvSpellcastingLevels;
     }
 }
 

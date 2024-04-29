@@ -17,9 +17,6 @@ namespace DnDDesktop.Models
         [BsonElement("class")]
         public From? Class { get; set; }
 
-        [BsonElement("classLevels")]
-        public From? ClassLevels { get; set; }
-
         [BsonElement("class_specific")]
         public ClassSpecificLevel? ClassSpecific { get; set; }
 

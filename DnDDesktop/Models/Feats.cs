@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DnDDesktop.Models
 {
-    public class Feat
+    public class Feats
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

@@ -5,6 +5,9 @@ using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Reflection.Emit;
+using System.Linq;
 
 
 namespace DnDDesktop.Controllers
@@ -12,6 +15,7 @@ namespace DnDDesktop.Controllers
     public class Controlador
     {
         Form1 f = new Form1();
+        private string searchString = "";
 
         //Repositories
         AbilityScoreRepository abilityScoreRepository = new AbilityScoreRepository();
@@ -92,7 +96,7 @@ namespace DnDDesktop.Controllers
             LoadDataFeat();
             LoadDataFeatures();
             LoadDataLanguages();
-            LoadDataLevel();
+            LoadDataLevels();
         }
 
         private void LoadDataAbilityScore()
@@ -170,17 +174,25 @@ namespace DnDDesktop.Controllers
             languages = LanguageRepository.GetLanguages();
             f.dgvLanguages.DataSource = languages;
         }
-        private void LoadDataLevel()
+        private void LoadDataLevels()
         {
             levels = LevelRepository.GetLevels();
             f.dgvLevels.DataSource = levels;
             f.dgvLevels.Columns["Class"].Visible = false;
-            f.dgvLevels.Columns["ClassLevels"].Visible = false;
             f.dgvLevels.Columns["ClassSpecific"].Visible = false;
             f.dgvLevels.Columns["Spellcasting"].Visible = false;
             f.dgvLevels.Columns["Subclass"].Visible = false;
             f.dgvLevels.Columns["Subcategories"].Visible = false;
             f.dgvLevels.Columns["Index"].DisplayIndex = 1;
+            //Tal vez cargar todos los dgv
+            f.cbFeaturesIndexLevels.DataSource = LevelRepository.GetLevels()?.SelectMany(a => a.Features)?.Select(a => a.Index.FirstOrDefault()).ToList();
+            f.cbFeaturesNameLevels.DataSource = LevelRepository.GetLevels()?.SelectMany(a => a.Features)?.Select(a => a.Name.FirstOrDefault()).ToList();
+            f.dgvClassEspecificLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.ClassSpecific).ToList();
+            f.dgvClassSpecificMartialArtsLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.ClassSpecific?.MartialArts)?.ToList();
+            f.dgvClassSpecificSneakAttackLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.ClassSpecific?.SneakAttack)?.ToList();
+            f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.ClassSpecific?.CreatingSpellSlots?.FirstOrDefault()).ToList();
+            f.dgvSpellcastingLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.Spellcasting).ToList();
+            f.dgvSubcategoriesLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.Subcategories).ToList();
         }
         private void InitListeners()
         {
@@ -3215,15 +3227,23 @@ namespace DnDDesktop.Controllers
                 if (row != null)
                 {
                     Level level = LevelRepository.GetLevel(((Level)row.DataBoundItem).Id);
-                    f.tbIndexLevels.Text = level.Index;
-                    f.tbAbilityScoreBonusesLevels.Text = level.AbilityScoreBonuses.ToString();
-                    f.tbLevelLevels.Text = level.LevelN.ToString();
-                    f.tbProfBonusLevels.Text = level.ProficiencyBonus.ToString();
+                    f.tbIndexLevels.Text = level?.Index;
+                    f.tbAbilityScoreBonusesLevels.Text = level?.AbilityScoreBonuses?.ToString();
+                    f.tbLevelLevels.Text = level?.LevelN?.ToString();
+                    f.tbProfBonusLevels.Text = level?.ProficiencyBonus?.ToString();
+                    f.tbClassIndexLevels.Text = level?.Class?.Index;
+                    f.tbClassNameLevels.Text = level?.Class?.Name;
+                    f.tbSubclassIndexLevels.Text = level?.Subclass?.Index;
+                    f.tbSubclassNameLevels.Text = level?.Subclass?.Name;
+                    f.cbFeaturesIndexLevels.SelectedIndex = f.cbFeaturesIndexLevels.FindString(level?.Features.SelectMany(a => a.Index)?.FirstOrDefault());
+                    f.cbFeaturesNameLevels.SelectedIndex = f.cbFeaturesNameLevels.FindString(level?.Features.SelectMany(a => a.Name)?.FirstOrDefault());
 
-                    List<From?> classList = new List<From?>();
-                    classList.Add(level.Class);
-                    f.cbClassLevels.DataSource = classList;
-                    f.cbClassLevels.DisplayMember = "Name";
+                    BuscarYSeleccionarClassSpecificLevel(level?.ClassSpecific);
+                    //f.dgvClassSpecificMartialArtsLevels.DataSource = classSpecificMartialArtsList;
+                    //f.dgvClassSpecificSneakAttackLevels.DataSource = classSpecificSneakAttackList;
+                    //f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = level?.ClassSpecific?.CreatingSpellSlots;
+                    //f.dgvSpellcastingLevels.DataSource = spellcastingList;
+                    //f.dgvSubcategoriesLevels.DataSource = subcategoriesLevels;
                 }
             }
             catch (Exception ex)
@@ -3231,18 +3251,83 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        // Método para buscar y seleccionar un ClassSpecificLevel en el DataGridView
+        private void BuscarYSeleccionarClassSpecificLevel(ClassSpecificLevel classSpecific)
+        {
+            // Buscar el objeto Level que contiene el ClassSpecificLevel dado
+            Level level = levels?.FirstOrDefault(l => l.ClassSpecific == classSpecific);
+
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvClassEspecificLevels.Rows[rowIndex].Selected = true;
+                    f.dgvClassEspecificLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto ClassSpecificLevel no está contenido en ningún objeto Level.");
+            }
+        }
+
         private void BtBuscarLevels_Click(object? sender, EventArgs e)
         {
             try
             {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLevels.Text))
+                {
+                    string idBuscar = levels.Where(a => a.Index.Equals(f.tbFiltrarLevels.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
+                    if (idBuscar != null)
+                    {
+                        Level level = LevelRepository.GetLevel(idBuscar);
+                        f.tbIndexLevels.Text = level?.Index;
+                        f.tbAbilityScoreBonusesLevels.Text = level?.AbilityScoreBonuses?.ToString();
+                        f.tbLevelLevels.Text = level?.LevelN?.ToString();
+                        f.tbProfBonusLevels.Text = level?.ProficiencyBonus?.ToString();
+                        f.tbClassIndexLevels.Text = level?.Class?.Index;
+                        f.tbClassNameLevels.Text = level?.Class?.Name;
+                        f.tbSubclassIndexLevels.Text = level?.Subclass?.Index;
+                        f.tbSubclassNameLevels.Text = level?.Subclass?.Name;
+                        f.cbFeaturesIndexLevels.DataSource = level?.Features?.Select(a => a.Index?.FirstOrDefault()).ToList();
+                        f.cbFeaturesNameLevels.DataSource = level?.Features?.Select(a => a.Name?.FirstOrDefault()).ToList();
+                        List<ClassSpecificLevel> classSpecificList = new List<ClassSpecificLevel>();
+                        classSpecificList.Add(level?.ClassSpecific);
+                        f.dgvClassEspecificLevels.DataSource = classSpecificList;
+                        List<DiceCountValueCommon> classSpecificMartialArtsList = new List<DiceCountValueCommon>();
+                        classSpecificMartialArtsList.Add(level?.ClassSpecific?.MartialArts);
+                        f.dgvClassSpecificMartialArtsLevels.DataSource = classSpecificMartialArtsList;
+                        List<DiceCountValueCommon> classSpecificSneakAttackList = new List<DiceCountValueCommon>();
+                        classSpecificSneakAttackList.Add(level?.ClassSpecific?.SneakAttack);
+                        f.dgvClassSpecificSneakAttackLevels.DataSource = classSpecificSneakAttackList;
+                        f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = level?.ClassSpecific?.CreatingSpellSlots;
+                        List<SpellcastingLevel> spellcastingList = new List<SpellcastingLevel>();
+                        spellcastingList.Add(level?.Spellcasting);
+                        f.dgvSpellcastingLevels.DataSource = spellcastingList;
+                        List<SubclassSpecificLevel> subcategoriesLevels = new List<SubclassSpecificLevel>();
+                        subcategoriesLevels.Add(level?.Subcategories);
+                        f.dgvSubcategoriesLevels.DataSource = subcategoriesLevels;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
         private void BtInsertarLevels_Click(object? sender, EventArgs e)
         {
             try
@@ -3254,7 +3339,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
         private void BtEliminarLevels_Click(object? sender, EventArgs e)
         {
             try
@@ -3266,7 +3350,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
         private void BtModificarLevels_Click(object? sender, EventArgs e)
         {
             try

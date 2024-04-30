@@ -95,6 +95,7 @@ namespace DnDDesktop.Controllers
             LoadDataFeatures();
             LoadDataLanguages();
             LoadDataLevels();
+            LoadDataMagicItems();
         }
 
         private void LoadDataAbilityScore()
@@ -198,7 +199,10 @@ namespace DnDDesktop.Controllers
             f.dgvMagicItems.DataSource = magicItems;
             f.dgvMagicItems.Columns["EquipmentCategory"].Visible = false;
             f.dgvMagicItems.Columns["Rarity"].Visible = false;
-            f.dgvVariantsMagicItems.DataSource = magicItems?.Select(a => a.Variants.FirstOrDefault());
+            f.cbVariantsMagicItems.DataSource = magicItems?.SelectMany(a => a.Variants).ToList();
+            f.cbVariantsMagicItems.DisplayMember = "Name";
+            f.cbRarityMagicItems.DataSource = magicItems?.Select(a => a.Rarity).ToList();
+            f.cbRarityMagicItems.DisplayMember = "Name";
         }
 
         private void InitListeners()
@@ -287,7 +291,11 @@ namespace DnDDesktop.Controllers
             f.btEliminarLevels.Click += BtEliminarLevels_Click;
             f.btInsertarLevels.Click += BtInsertarLevels_Click;
             f.btBuscarLevels.Click += BtBuscarLevels_Click;
+            //MagicItem
+            f.dgvMagicItems.SelectionChanged += DgvMagicItems_SelectionChanged;
         }
+
+
 
         //AbilityScore
 
@@ -3835,5 +3843,62 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        //MagicItem
+        private void DgvMagicItems_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvMagicItems.CurrentRow;
+                if (row != null)
+                {
+                    MagicItem magicItem = MagicItemsRepository.GetMagicItem(((MagicItem)row.DataBoundItem).Id);
+                    f.tbIndexMagicItems.Text = magicItem.Index;
+                    f.tbNameMagicItems.Text = magicItem.Name;
+                    f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
+                    f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
+
+                    f.chbVariantMagicItems.Checked = (bool)(magicItem?.Variant);
+
+                    f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
+
+                    f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a=>a.Name).FirstOrDefault());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //private void BuscarYSeleccionarRarity(From[] variants)
+        //{
+        //    // Check if magicItems is not null and has elements
+        //    if (magicItems != null && magicItems.Any())
+        //    {
+        //        // Buscar el objeto MagicItem que contiene el From dado
+        //        MagicItem? magicItem = magicItems.FirstOrDefault(a => a.Variants.Any(b => variants.Any(c => c.Index == b.Index && c.Name == b.Name)));
+
+        //        if (magicItem != null)
+        //        {
+        //            // Encontrado, ahora seleccionamos la fila en el DataGridView
+        //            int rowIndex = magicItems.IndexOf(magicItem);
+        //            if (rowIndex != -1)
+        //            {
+        //                // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+        //                f.dgvVariantsMagicItems.Rows[rowIndex].Selected = true;
+        //                f.dgvVariantsMagicItems.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Ningún objeto From está contenido en ningún objeto MagicItem.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("La lista de MagicItems está vacía.");
+        //    }
+        //}
     }
 }

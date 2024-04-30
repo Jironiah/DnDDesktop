@@ -120,5 +120,10 @@ namespace DnDDesktop
         {
 
         }
+
+        private void dgvLevels_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

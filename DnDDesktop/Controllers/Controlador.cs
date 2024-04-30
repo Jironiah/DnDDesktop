@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Reflection.Emit;
 using System.Linq;
+using System.Windows.Forms.VisualStyles;
 
 
 namespace DnDDesktop.Controllers
@@ -3166,7 +3167,7 @@ namespace DnDDesktop.Controllers
                 }
                 else
                 {
-                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
                 }
             }
             catch (Exception ex)
@@ -3239,11 +3240,11 @@ namespace DnDDesktop.Controllers
                     f.cbFeaturesNameLevels.SelectedIndex = f.cbFeaturesNameLevels.FindString(level?.Features.SelectMany(a => a.Name)?.FirstOrDefault());
 
                     BuscarYSeleccionarClassSpecificLevel(level?.ClassSpecific);
-                    //f.dgvClassSpecificMartialArtsLevels.DataSource = classSpecificMartialArtsList;
-                    //f.dgvClassSpecificSneakAttackLevels.DataSource = classSpecificSneakAttackList;
-                    //f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = level?.ClassSpecific?.CreatingSpellSlots;
-                    //f.dgvSpellcastingLevels.DataSource = spellcastingList;
-                    //f.dgvSubcategoriesLevels.DataSource = subcategoriesLevels;
+                    BuscarYSeleccionarCreatingSpellSlots(level?.ClassSpecific);
+                    BuscarYSeleccionarMartialArts(level?.ClassSpecific);
+                    BuscarYSeleccionarSneakAttack(level?.ClassSpecific);
+                    BuscarYSeleccionarSpellcasting(level?.Spellcasting);
+                    BuscarYSeleccionarSubcategories(level?.Subcategories);
                 }
             }
             catch (Exception ex)
@@ -3251,8 +3252,6 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-
-        // Método para buscar y seleccionar un ClassSpecificLevel en el DataGridView
         private void BuscarYSeleccionarClassSpecificLevel(ClassSpecificLevel classSpecific)
         {
             // Buscar el objeto Level que contiene el ClassSpecificLevel dado
@@ -3263,9 +3262,7 @@ namespace DnDDesktop.Controllers
                 a.ClassSpecific?.BardicInspirationDie == classSpecific?.BardicInspirationDie &&
                 a.ClassSpecific?.BrutalCriticalDie == classSpecific?.BrutalCriticalDie &&
                 a.ClassSpecific?.ChannelDivinityCharges == classSpecific?.ChannelDivinityCharges &&
-  /*Desde aqui*/a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) == classSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) &&
-                a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) == classSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) &&
-                a.ClassSpecific?.CreatingSpellSlots == classSpecific?.CreatingSpellSlots &&/*Hasta aquí revisar para mostrar*/
+                CompareCreatingSpellSlots(a.ClassSpecific?.CreatingSpellSlots, classSpecific?.CreatingSpellSlots) &&
                 a.ClassSpecific?.DestroyUndeadCr == classSpecific?.DestroyUndeadCr &&
                 a.ClassSpecific?.ExtraAttacks == classSpecific?.ExtraAttacks &&
                 a.ClassSpecific?.FavoredEnemies == classSpecific?.FavoredEnemies &&
@@ -3311,8 +3308,229 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("El objeto ClassSpecificLevel no está contenido en ningún objeto Level.");
             }
         }
+        private bool CompareCreatingSpellSlots(CreatingSpellSlotsLevel[]? a, CreatingSpellSlotsLevel[]? b)
+        {
+            if (a != null && b != null)
+            {
+                if (a == null && b == null)
+                    return true;
 
+                if (a == null || b == null || a.Length != b.Length)
+                    return false;
 
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (a[i].SorceryPointCost != b[i].SorceryPointCost || a[i].SpellSlotLevel != b[i].SpellSlotLevel)
+                        return false;
+                }
+            }
+            return true;
+        }
+        private void BuscarYSeleccionarCreatingSpellSlots(ClassSpecificLevel classSpecific)
+        {
+            Level level = levels?.FirstOrDefault(a => CompareCreatingSpellSlots(a.ClassSpecific?.CreatingSpellSlots, classSpecific?.CreatingSpellSlots));
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvClassSpecificCreatingSpellSlotsLevels.Rows[rowIndex].Selected = true;
+                    f.dgvClassSpecificCreatingSpellSlotsLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto CreatingSpellSlotsLevel no está contenido en ningún objeto Level.");
+            }
+        }
+        private void BuscarYSeleccionarMartialArts(ClassSpecificLevel classSpecific)
+        {
+            // Buscar el objeto Level que contiene el ClassSpecificLevel dado
+            Level? level = levels?.FirstOrDefault(a =>
+                a.ClassSpecific?.ActionSurge == classSpecific?.ActionSurge &&
+                a.ClassSpecific?.ArcaneRecoveryLevel == classSpecific?.ArcaneRecoveryLevel &&
+                a.ClassSpecific?.AuraRange == classSpecific?.AuraRange &&
+                a.ClassSpecific?.BardicInspirationDie == classSpecific?.BardicInspirationDie &&
+                a.ClassSpecific?.BrutalCriticalDie == classSpecific?.BrutalCriticalDie &&
+                a.ClassSpecific?.ChannelDivinityCharges == classSpecific?.ChannelDivinityCharges &&
+                CompareCreatingSpellSlots(a.ClassSpecific?.CreatingSpellSlots, classSpecific?.CreatingSpellSlots) &&
+                a.ClassSpecific?.DestroyUndeadCr == classSpecific?.DestroyUndeadCr &&
+                a.ClassSpecific?.ExtraAttacks == classSpecific?.ExtraAttacks &&
+                a.ClassSpecific?.FavoredEnemies == classSpecific?.FavoredEnemies &&
+                a.ClassSpecific?.FavoredTerrain == classSpecific?.FavoredTerrain &&
+                a.ClassSpecific?.IndomitableUses == classSpecific?.IndomitableUses &&
+                a.ClassSpecific?.InvocationsKnown == classSpecific?.InvocationsKnown &&
+                a.ClassSpecific?.KiPoints == classSpecific?.KiPoints &&
+                a.ClassSpecific?.MagicSecretsMax5 == classSpecific?.MagicSecretsMax5 &&
+                a.ClassSpecific?.MagicSecretsMax7 == classSpecific?.MagicSecretsMax7 &&
+                a.ClassSpecific?.MagicSecretsMax9 == classSpecific?.MagicSecretsMax9 &&
+                CompareMartialArts(a.ClassSpecific?.MartialArts, classSpecific?.MartialArts) &&
+                a.ClassSpecific?.MetamagicKnown == classSpecific?.MetamagicKnown &&
+                a.ClassSpecific?.MysticArcanumLevel6 == classSpecific?.MysticArcanumLevel6 &&
+                a.ClassSpecific?.MysticArcanumLevel7 == classSpecific?.MysticArcanumLevel7 &&
+                a.ClassSpecific?.MysticArcanumLevel8 == classSpecific?.MysticArcanumLevel8 &&
+                a.ClassSpecific?.MysticArcanumLevel9 == classSpecific?.MysticArcanumLevel9 &&
+                a.ClassSpecific?.RageCount == classSpecific?.RageCount &&
+                a.ClassSpecific?.RageDamaageBonus == classSpecific?.RageDamaageBonus &&
+                a.ClassSpecific?.SneakAttack?.DiceCount == classSpecific?.SneakAttack?.DiceCount &&
+                a.ClassSpecific?.SneakAttack?.DiceValues == classSpecific?.SneakAttack?.DiceValues &&
+                a.ClassSpecific?.SongOfRestDie == classSpecific?.SongOfRestDie &&
+                a.ClassSpecific?.SorceryPoints == classSpecific?.SorceryPoints &&
+                a.ClassSpecific?.UnarmoredMovement == classSpecific?.UnarmoredMovement &&
+                a.ClassSpecific?.WildShapeFly == classSpecific?.WildShapeFly &&
+                a.ClassSpecific?.WildShapeMaxCr == classSpecific?.WildShapeMaxCr &&
+                a.ClassSpecific?.WildShapeSwim == classSpecific?.WildShapeSwim
+            );
+
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvClassSpecificMartialArtsLevels.Rows[rowIndex].Selected = true;
+                    f.dgvClassSpecificMartialArtsLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto MartialArts no está contenido en ningún objeto Level.");
+            }
+        }
+        private bool CompareMartialArts(DiceCountValueCommon? a, DiceCountValueCommon? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            return a.DiceCount == b.DiceCount && a.DiceValues == b.DiceValues;
+        }
+        private void BuscarYSeleccionarSneakAttack(ClassSpecificLevel classSpecific)
+        {
+            // Buscar el objeto Level que contiene el ClassSpecificLevel dado
+            Level? level = levels?.FirstOrDefault(a =>
+                a.ClassSpecific?.ActionSurge == classSpecific?.ActionSurge &&
+                a.ClassSpecific?.ArcaneRecoveryLevel == classSpecific?.ArcaneRecoveryLevel &&
+                a.ClassSpecific?.AuraRange == classSpecific?.AuraRange &&
+                a.ClassSpecific?.BardicInspirationDie == classSpecific?.BardicInspirationDie &&
+                a.ClassSpecific?.BrutalCriticalDie == classSpecific?.BrutalCriticalDie &&
+                a.ClassSpecific?.ChannelDivinityCharges == classSpecific?.ChannelDivinityCharges &&
+                CompareCreatingSpellSlots(a.ClassSpecific?.CreatingSpellSlots, classSpecific?.CreatingSpellSlots) &&
+                a.ClassSpecific?.DestroyUndeadCr == classSpecific?.DestroyUndeadCr &&
+                a.ClassSpecific?.ExtraAttacks == classSpecific?.ExtraAttacks &&
+                a.ClassSpecific?.FavoredEnemies == classSpecific?.FavoredEnemies &&
+                a.ClassSpecific?.FavoredTerrain == classSpecific?.FavoredTerrain &&
+                a.ClassSpecific?.IndomitableUses == classSpecific?.IndomitableUses &&
+                a.ClassSpecific?.InvocationsKnown == classSpecific?.InvocationsKnown &&
+                a.ClassSpecific?.KiPoints == classSpecific?.KiPoints &&
+                a.ClassSpecific?.MagicSecretsMax5 == classSpecific?.MagicSecretsMax5 &&
+                a.ClassSpecific?.MagicSecretsMax7 == classSpecific?.MagicSecretsMax7 &&
+                a.ClassSpecific?.MagicSecretsMax9 == classSpecific?.MagicSecretsMax9 &&
+                CompareMartialArts(a.ClassSpecific?.MartialArts, classSpecific?.MartialArts) &&
+                CompareSneakAttack(a.ClassSpecific?.SneakAttack, classSpecific?.SneakAttack) &&
+                a.ClassSpecific?.MetamagicKnown == classSpecific?.MetamagicKnown &&
+                a.ClassSpecific?.MysticArcanumLevel6 == classSpecific?.MysticArcanumLevel6 &&
+                a.ClassSpecific?.MysticArcanumLevel7 == classSpecific?.MysticArcanumLevel7 &&
+                a.ClassSpecific?.MysticArcanumLevel8 == classSpecific?.MysticArcanumLevel8 &&
+                a.ClassSpecific?.MysticArcanumLevel9 == classSpecific?.MysticArcanumLevel9 &&
+                a.ClassSpecific?.RageCount == classSpecific?.RageCount &&
+                a.ClassSpecific?.RageDamaageBonus == classSpecific?.RageDamaageBonus &&
+                a.ClassSpecific?.SongOfRestDie == classSpecific?.SongOfRestDie &&
+                a.ClassSpecific?.SorceryPoints == classSpecific?.SorceryPoints &&
+                a.ClassSpecific?.UnarmoredMovement == classSpecific?.UnarmoredMovement &&
+                a.ClassSpecific?.WildShapeFly == classSpecific?.WildShapeFly &&
+                a.ClassSpecific?.WildShapeMaxCr == classSpecific?.WildShapeMaxCr &&
+                a.ClassSpecific?.WildShapeSwim == classSpecific?.WildShapeSwim
+            );
+
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvClassSpecificSneakAttackLevels.Rows[rowIndex].Selected = true;
+                    f.dgvClassSpecificSneakAttackLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto ClassSpecificLevel no está contenido en ningún objeto Level.");
+            }
+        }
+        private bool CompareSneakAttack(DiceCountValueCommon? a, DiceCountValueCommon? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            return a.DiceCount == b.DiceCount && a.DiceValues == b.DiceValues;
+        }
+        private void BuscarYSeleccionarSpellcasting(SpellcastingLevel spellcasting)
+        {
+            // Buscar el objeto Level que contiene el SpellcastingLevel dado
+            Level? level = levels?.FirstOrDefault(a =>
+                a.Spellcasting?.CantripsKnown == spellcasting?.CantripsKnown &&
+                a.Spellcasting?.SpellSlotsLevel1 == spellcasting?.SpellSlotsLevel1 &&
+                a.Spellcasting?.SpellSlotsLevel2 == spellcasting?.SpellSlotsLevel2 &&
+                a.Spellcasting?.SpellSlotsLevel3 == spellcasting?.SpellSlotsLevel3 &&
+                a.Spellcasting?.SpellSlotsLevel4 == spellcasting?.SpellSlotsLevel4 &&
+                a.Spellcasting?.SpellSlotsLevel5 == spellcasting?.SpellSlotsLevel5 &&
+                a.Spellcasting?.SpellSlotsLevel6 == spellcasting?.SpellSlotsLevel6 &&
+                a.Spellcasting?.SpellSlotsLevel7 == spellcasting?.SpellSlotsLevel7 &&
+                a.Spellcasting?.SpellSlotsLevel8 == spellcasting?.SpellSlotsLevel8 &&
+                a.Spellcasting?.SpellSlotsLevel9 == spellcasting?.SpellSlotsLevel9 &&
+                a.Spellcasting?.SpellsKnown == spellcasting?.SpellsKnown
+            );
+
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvSpellcastingLevels.Rows[rowIndex].Selected = true;
+                    f.dgvSpellcastingLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto Spellcasting no está contenido en ningún objeto Level.");
+            }
+        }
+        private void BuscarYSeleccionarSubcategories(SubclassSpecificLevel Subcategories)
+        {
+            // Buscar el objeto Level que contiene el SpellcastingLevel dado
+            Level? level = levels?.FirstOrDefault(a =>
+                a.Subcategories?.AdditionalMagicalSecretsMaxLevel == Subcategories?.AdditionalMagicalSecretsMaxLevel &&
+                a.Subcategories?.AuraRange == Subcategories?.AuraRange
+            );
+
+            if (level != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = levels.IndexOf(level);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvSubcategoriesLevels.Rows[rowIndex].Selected = true;
+                    f.dgvSubcategoriesLevels.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto Spellcasting no está contenido en ningún objeto Level.");
+            }
+        }
         private void BtBuscarLevels_Click(object? sender, EventArgs e)
         {
             try
@@ -3332,24 +3550,15 @@ namespace DnDDesktop.Controllers
                         f.tbClassNameLevels.Text = level?.Class?.Name;
                         f.tbSubclassIndexLevels.Text = level?.Subclass?.Index;
                         f.tbSubclassNameLevels.Text = level?.Subclass?.Name;
-                        f.cbFeaturesIndexLevels.DataSource = level?.Features?.Select(a => a.Index?.FirstOrDefault()).ToList();
-                        f.cbFeaturesNameLevels.DataSource = level?.Features?.Select(a => a.Name?.FirstOrDefault()).ToList();
-                        List<ClassSpecificLevel> classSpecificList = new List<ClassSpecificLevel>();
-                        classSpecificList.Add(level?.ClassSpecific);
-                        f.dgvClassEspecificLevels.DataSource = classSpecificList;
-                        List<DiceCountValueCommon> classSpecificMartialArtsList = new List<DiceCountValueCommon>();
-                        classSpecificMartialArtsList.Add(level?.ClassSpecific?.MartialArts);
-                        f.dgvClassSpecificMartialArtsLevels.DataSource = classSpecificMartialArtsList;
-                        List<DiceCountValueCommon> classSpecificSneakAttackList = new List<DiceCountValueCommon>();
-                        classSpecificSneakAttackList.Add(level?.ClassSpecific?.SneakAttack);
-                        f.dgvClassSpecificSneakAttackLevels.DataSource = classSpecificSneakAttackList;
-                        f.dgvClassSpecificCreatingSpellSlotsLevels.DataSource = level?.ClassSpecific?.CreatingSpellSlots;
-                        List<SpellcastingLevel> spellcastingList = new List<SpellcastingLevel>();
-                        spellcastingList.Add(level?.Spellcasting);
-                        f.dgvSpellcastingLevels.DataSource = spellcastingList;
-                        List<SubclassSpecificLevel> subcategoriesLevels = new List<SubclassSpecificLevel>();
-                        subcategoriesLevels.Add(level?.Subcategories);
-                        f.dgvSubcategoriesLevels.DataSource = subcategoriesLevels;
+                        f.cbFeaturesIndexLevels.SelectedIndex = f.cbFeaturesIndexLevels.FindString(level?.Features.SelectMany(a => a.Index)?.FirstOrDefault());
+                        f.cbFeaturesNameLevels.SelectedIndex = f.cbFeaturesNameLevels.FindString(level?.Features.SelectMany(a => a.Name)?.FirstOrDefault());
+
+                        BuscarYSeleccionarClassSpecificLevel(level?.ClassSpecific);
+                        BuscarYSeleccionarCreatingSpellSlots(level?.ClassSpecific);
+                        BuscarYSeleccionarMartialArts(level?.ClassSpecific);
+                        BuscarYSeleccionarSneakAttack(level?.ClassSpecific);
+                        BuscarYSeleccionarSpellcasting(level?.Spellcasting);
+                        BuscarYSeleccionarSubcategories(level?.Subcategories);
                     }
                     else
                     {
@@ -3368,20 +3577,140 @@ namespace DnDDesktop.Controllers
         }
         private void BtInsertarLevels_Click(object? sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
+            Level levelInsertar = new Level();
 
-            }
-            catch (Exception ex)
+            string index = f.tbIndexLevels.Text;
+            string level = f.tbLevelLevels.Text;
+            string abylityScoreBonuses = f.tbAbilityScoreBonusesLevels.Text;
+            string proficiencyBonus = f.tbProfBonusLevels.Text;
+            string classIndex = f.tbClassIndexLevels.Text;
+            string className = f.tbClassNameLevels.Text;
+
+            if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(level))
             {
-                MessageBox.Show(Extensions.GetaAllMessages(ex));
+                levelInsertar.Index = index;
+                levelInsertar.LevelN = int.Parse(level);
+
+                if (!string.IsNullOrEmpty(abylityScoreBonuses))
+                {
+                    levelInsertar.AbilityScoreBonuses = int.Parse(abylityScoreBonuses);
+                }
+                else
+                {
+                    levelInsertar.AbilityScoreBonuses = null;
+                }
+                if (!string.IsNullOrEmpty(proficiencyBonus))
+                {
+                    levelInsertar.ProficiencyBonus = int.Parse(proficiencyBonus);
+                }
+                else
+                {
+                    levelInsertar.ProficiencyBonus = null;
+                }
+                if (!string.IsNullOrEmpty(classIndex) && !string.IsNullOrEmpty(className))
+                {
+
+                    From Class = new From();
+                    Class.Index = classIndex;
+                    Class.Name = className;
+                    levelInsertar.Class = Class;
+                }
+                else
+                {
+                    levelInsertar.Class.Index = string.Empty;
+                    levelInsertar.Class.Name = string.Empty;
+                }
+
+
+                DataGridViewRow rowClassSpecific = f.dgvClassEspecificLevels.CurrentRow;
+                DataGridViewRow rowCreatingSpellSlotLevels = f.dgvClassSpecificCreatingSpellSlotsLevels.CurrentRow;
+                DataGridViewRow rowMartialArts = f.dgvClassSpecificMartialArtsLevels.CurrentRow;
+                DataGridViewRow rowSneakAttack = f.dgvClassSpecificSneakAttackLevels.CurrentRow;
+                DataGridViewRow rowSpellcasting = f.dgvSpellcastingLevels.CurrentRow;
+                DataGridViewRow rowSubcategories = f.dgvSubcategoriesLevels.CurrentRow;
+                string featuresIndex = (string)f.cbFeaturesIndexLevels.SelectedItem;
+                string featuresName = (string)f.cbFeaturesNameLevels.SelectedItem;
+
+                if (featuresIndex != null && featuresName != null)
+                {
+                    List<ArrayedFrom> featuresList = new List<ArrayedFrom>();
+                    List<string> featuresIndexString = new List<string>();
+                    List<string> featuresNameString = new List<string>();
+                    ArrayedFrom features = new ArrayedFrom();
+
+                    featuresIndexString.Add(featuresIndex);
+                    featuresNameString.Add(featuresName);
+                    features.Index = featuresIndexString.ToArray();
+                    features.Name = featuresNameString.ToArray();
+                    featuresList.Add(features);
+                    levelInsertar.Features = featuresList.ToArray();
+                }
+                if (rowClassSpecific != null)
+                {
+                    levelInsertar.ClassSpecific = (ClassSpecificLevel)rowClassSpecific.DataBoundItem;
+                }
+                if (rowCreatingSpellSlotLevels != null)
+                {
+                    List<CreatingSpellSlotsLevel> creatingSpellSlotsLevels = new List<CreatingSpellSlotsLevel>();
+                    creatingSpellSlotsLevels.Add((CreatingSpellSlotsLevel)rowCreatingSpellSlotLevels.DataBoundItem);
+                    levelInsertar.ClassSpecific.CreatingSpellSlots = creatingSpellSlotsLevels.ToArray();
+                }
+                if (rowMartialArts != null)
+                {
+                    levelInsertar.ClassSpecific.MartialArts = (DiceCountValueCommon)rowMartialArts.DataBoundItem;
+                }
+                if (rowSneakAttack != null)
+                {
+                    levelInsertar.ClassSpecific.SneakAttack = (DiceCountValueCommon)rowSneakAttack.DataBoundItem;
+                }
+                if (rowSpellcasting != null)
+                {
+                    levelInsertar.Spellcasting = (SpellcastingLevel)rowSpellcasting.DataBoundItem;
+                }
+                if (rowSubcategories != null)
+                {
+                    levelInsertar.Subcategories = (SubclassSpecificLevel)rowSubcategories.DataBoundItem;
+                }
+                LevelRepository.CreateLevel(levelInsertar);
+                MessageBox.Show("Has insertado Levels");
+                LoadDataLevels();
             }
+            else
+            {
+                MessageBox.Show("Debes escribir un index y level");
+            }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
         private void BtEliminarLevels_Click(object? sender, EventArgs e)
         {
             try
             {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLevels.Text))
+                {
+                    string idBuscar = levels.Where(a => a.Index.Equals(f.tbFiltrarLevels.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
+                    if (idBuscar != null)
+                    {
+                        LevelRepository.DeleteLevel(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarLevels.Text.ToString());
+                        LoadDataLevels();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres elininar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {
@@ -3392,7 +3721,108 @@ namespace DnDDesktop.Controllers
         {
             try
             {
+                if (!string.IsNullOrEmpty(f.tbFiltrarLevels.Text))
+                {
+                    string idBuscar = levels.Where(a => a.Index.Equals(f.tbFiltrarLevels.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
+                    if (idBuscar != null)
+                    {
+                        Level levelModificar = new Level();
+
+                        string index = f.tbIndexLevels.Text;
+                        string level = f.tbLevelLevels.Text;
+                        string abylityScoreBonuses = f.tbAbilityScoreBonusesLevels.Text;
+                        string proficiencyBonus = f.tbProfBonusLevels.Text;
+                        string classIndex = f.tbClassIndexLevels.Text;
+                        string className = f.tbClassNameLevels.Text;
+
+                        if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(level) && !string.IsNullOrEmpty(abylityScoreBonuses) && !string.IsNullOrEmpty(proficiencyBonus))
+                        {
+                            levelModificar.Index = index;
+                            levelModificar.LevelN = int.Parse(level);
+                            levelModificar.AbilityScoreBonuses = int.Parse(abylityScoreBonuses);
+                            levelModificar.ProficiencyBonus = int.Parse(proficiencyBonus);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debes escribir un index, level, abilityScoreBonuses y proficiencyBonus");
+                        }
+                        if (!string.IsNullOrEmpty(classIndex) && !string.IsNullOrEmpty(className))
+                        {
+                            From Class = new From();
+                            Class.Index = classIndex;
+                            Class.Name = className;
+                            levelModificar.Class = Class;
+                        }
+                        else
+                        {
+                            levelModificar.Class.Index = string.Empty;
+                            levelModificar.Class.Name = string.Empty;
+                        }
+
+
+                        DataGridViewRow rowClassSpecific = f.dgvClassEspecificLevels.CurrentRow;
+                        DataGridViewRow rowCreatingSpellSlotLevels = f.dgvClassSpecificCreatingSpellSlotsLevels.CurrentRow;
+                        DataGridViewRow rowMartialArts = f.dgvClassSpecificMartialArtsLevels.CurrentRow;
+                        DataGridViewRow rowSneakAttack = f.dgvClassSpecificSneakAttackLevels.CurrentRow;
+                        DataGridViewRow rowSpellcasting = f.dgvSpellcastingLevels.CurrentRow;
+                        DataGridViewRow rowSubcategories = f.dgvSubcategoriesLevels.CurrentRow;
+                        string featuresIndex = (string)f.cbFeaturesIndexLevels.SelectedItem;
+                        string featuresName = (string)f.cbFeaturesNameLevels.SelectedItem;
+
+                        if (featuresIndex != null && featuresName != null)
+                        {
+                            List<ArrayedFrom> featuresList = new List<ArrayedFrom>();
+                            List<string> featuresIndexString = new List<string>();
+                            List<string> featuresNameString = new List<string>();
+                            ArrayedFrom features = new ArrayedFrom();
+
+                            featuresIndexString.Add(featuresIndex);
+                            featuresNameString.Add(featuresName);
+                            features.Index = featuresIndexString.ToArray();
+                            features.Name = featuresNameString.ToArray();
+                            featuresList.Add(features);
+                            levelModificar.Features = featuresList.ToArray();
+                        }
+                        if (rowClassSpecific != null)
+                        {
+                            levelModificar.ClassSpecific = (ClassSpecificLevel)rowClassSpecific.DataBoundItem;
+                        }
+                        if (rowCreatingSpellSlotLevels != null)
+                        {
+                            List<CreatingSpellSlotsLevel> creatingSpellSlotsLevels = new List<CreatingSpellSlotsLevel>();
+                            creatingSpellSlotsLevels.Add((CreatingSpellSlotsLevel)rowCreatingSpellSlotLevels.DataBoundItem);
+                            levelModificar.ClassSpecific.CreatingSpellSlots = creatingSpellSlotsLevels.ToArray();
+                        }
+                        if (rowMartialArts != null)
+                        {
+                            levelModificar.ClassSpecific.MartialArts = (DiceCountValueCommon)rowMartialArts.DataBoundItem;
+                        }
+                        if (rowSneakAttack != null)
+                        {
+                            levelModificar.ClassSpecific.SneakAttack = (DiceCountValueCommon)rowSneakAttack.DataBoundItem;
+                        }
+                        if (rowSpellcasting != null)
+                        {
+                            levelModificar.Spellcasting = (SpellcastingLevel)rowSpellcasting.DataBoundItem;
+                        }
+                        if (rowSubcategories != null)
+                        {
+                            levelModificar.Subcategories = (SubclassSpecificLevel)rowSubcategories.DataBoundItem;
+                        }
+                        LevelRepository.UpdateLevel(levelModificar);
+                        MessageBox.Show("Has modificado Levels");
+                        LoadDataLevels();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {

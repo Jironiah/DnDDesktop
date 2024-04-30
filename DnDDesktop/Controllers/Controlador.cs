@@ -95,6 +95,7 @@ namespace DnDDesktop.Controllers
             LoadDataFeatures();
             LoadDataLanguages();
             LoadDataLevels();
+            LoadDataMagicItems();
         }
 
         private void LoadDataAbilityScore()
@@ -198,7 +199,10 @@ namespace DnDDesktop.Controllers
             f.dgvMagicItems.DataSource = magicItems;
             f.dgvMagicItems.Columns["EquipmentCategory"].Visible = false;
             f.dgvMagicItems.Columns["Rarity"].Visible = false;
-            f.dgvVariantsMagicItems.DataSource = magicItems?.Select(a => a.Variants.FirstOrDefault());
+            f.cbVariantsMagicItems.DataSource = magicItems?.SelectMany(a => a.Variants).ToList();
+            f.cbVariantsMagicItems.DisplayMember = "Name";
+            f.cbRarityMagicItems.DataSource = magicItems?.Select(a => a.Rarity).ToList();
+            f.cbRarityMagicItems.DisplayMember = "Name";
         }
 
         private void InitListeners()
@@ -287,6 +291,10 @@ namespace DnDDesktop.Controllers
             f.btEliminarLevels.Click += BtEliminarLevels_Click;
             f.btInsertarLevels.Click += BtInsertarLevels_Click;
             f.btBuscarLevels.Click += BtBuscarLevels_Click;
+            //MagicItem
+            f.dgvMagicItems.SelectionChanged += DgvMagicItems_SelectionChanged;
+            f.btBuscarMagicItems.Click += BtBuscarMagicItems_Click;
+            f.btInsertarMagicItems.Click += BtInsertarMagicItems_Click;
         }
 
         //AbilityScore
@@ -3829,6 +3837,101 @@ namespace DnDDesktop.Controllers
                 {
                     MessageBox.Show("Lo que quieres modificar no puede estar vacío");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //MagicItem
+        private void DgvMagicItems_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvMagicItems.CurrentRow;
+                if (row != null)
+                {
+                    MagicItem magicItem = MagicItemsRepository.GetMagicItem(((MagicItem)row.DataBoundItem).Id);
+                    f.tbIndexMagicItems.Text = magicItem.Index;
+                    f.tbNameMagicItems.Text = magicItem.Name;
+                    f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
+                    f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
+                    f.rtbDescriptionMagicItems.Text = magicItem?.Desc?.FirstOrDefault();
+
+                    f.chbVariantMagicItems.Checked = (bool)(magicItem?.Variant);
+
+                    f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
+
+                    f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a => a.Name).FirstOrDefault());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtBuscarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicItems.Text))
+                {
+                    string idBuscar = magicItems.Where(a => a.Index.Equals(f.tbFiltrarMagicItems.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        MagicItem magicItem = MagicItemsRepository.GetMagicItem(idBuscar);
+                        f.tbIndexMagicItems.Text = magicItem.Index;
+                        f.tbNameMagicItems.Text = magicItem.Name;
+                        f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
+                        f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
+                        f.rtbDescriptionMagicItems.Text = magicItem?.Desc?.FirstOrDefault();
+
+                        f.chbVariantMagicItems.Checked = (bool)(magicItem?.Variant);
+
+                        f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
+
+                        f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a => a.Name).FirstOrDefault());
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                MagicItem magicItemInsertar = new MagicItem();
+                magicItemInsertar.Name = f.tbNameMagicItems.Text;
+                magicItemInsertar.Index = f.tbIndexMagicItems.Text;
+                magicItemInsertar.Variant = f.chbVariantMagicItems.Checked;
+                From equipmentCategory = new From();
+                equipmentCategory.Index = f.tbEquipmentCategoryIndexMagicItems.Text;
+                equipmentCategory.Name = f.tbEquipmentCategoryNameMagicItems.Text;
+                magicItemInsertar.EquipmentCategory = equipmentCategory;
+                magicItemInsertar.Rarity = (RarityMagicItem)f.cbRarityMagicItems.SelectedItem;
+                magicItemInsertar.Desc = new string[] { f.rtbDescriptionMagicItems.Text };
+
+                List<From> variantsList = new List<From>();
+                variantsList.Add((From)f.cbVariantsMagicItems.SelectedItem);
+                magicItemInsertar.Variants = variantsList.ToArray();
+
+                MagicItemsRepository.CreateMagicItem(magicItemInsertar);
+                LoadDataMagicItems();
+                MessageBox.Show("Has insertardo MagicItems");
             }
             catch (Exception ex)
             {

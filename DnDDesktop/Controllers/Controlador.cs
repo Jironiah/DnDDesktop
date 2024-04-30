@@ -293,7 +293,10 @@ namespace DnDDesktop.Controllers
             f.btBuscarLevels.Click += BtBuscarLevels_Click;
             //MagicItem
             f.dgvMagicItems.SelectionChanged += DgvMagicItems_SelectionChanged;
+            f.btBuscarMagicItems.Click += BtBuscarMagicItems_Click;
         }
+
+
 
 
 
@@ -3857,12 +3860,13 @@ namespace DnDDesktop.Controllers
                     f.tbNameMagicItems.Text = magicItem.Name;
                     f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
                     f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
+                    f.rtbDescriptionMagicItems.Text = magicItem?.Desc?.FirstOrDefault();
 
                     f.chbVariantMagicItems.Checked = (bool)(magicItem?.Variant);
 
                     f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
 
-                    f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a=>a.Name).FirstOrDefault());
+                    f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a => a.Name).FirstOrDefault());
                 }
             }
             catch (Exception ex)
@@ -3871,34 +3875,43 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        //private void BuscarYSeleccionarRarity(From[] variants)
-        //{
-        //    // Check if magicItems is not null and has elements
-        //    if (magicItems != null && magicItems.Any())
-        //    {
-        //        // Buscar el objeto MagicItem que contiene el From dado
-        //        MagicItem? magicItem = magicItems.FirstOrDefault(a => a.Variants.Any(b => variants.Any(c => c.Index == b.Index && c.Name == b.Name)));
+        private void BtBuscarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicItems.Text))
+                {
+                    string idBuscar = magicItems.Where(a => a.Index.Equals(f.tbFiltrarMagicItems.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
-        //        if (magicItem != null)
-        //        {
-        //            // Encontrado, ahora seleccionamos la fila en el DataGridView
-        //            int rowIndex = magicItems.IndexOf(magicItem);
-        //            if (rowIndex != -1)
-        //            {
-        //                // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
-        //                f.dgvVariantsMagicItems.Rows[rowIndex].Selected = true;
-        //                f.dgvVariantsMagicItems.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Ningún objeto From está contenido en ningún objeto MagicItem.");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("La lista de MagicItems está vacía.");
-        //    }
-        //}
+                    if (idBuscar != null)
+                    {
+                        MagicItem magicItem = MagicItemsRepository.GetMagicItem(idBuscar);
+                        f.tbIndexMagicItems.Text = magicItem.Index;
+                        f.tbNameMagicItems.Text = magicItem.Name;
+                        f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
+                        f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
+                        f.rtbDescriptionMagicItems.Text = magicItem?.Desc?.FirstOrDefault();
+
+                        f.chbVariantMagicItems.Checked = (bool)(magicItem?.Variant);
+
+                        f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
+
+                        f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a => a.Name).FirstOrDefault());
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }

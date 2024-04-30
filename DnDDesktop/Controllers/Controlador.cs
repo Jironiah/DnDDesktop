@@ -4,11 +4,6 @@ using DnDDesktop.Models.Repository;
 using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Reflection.Emit;
-using System.Linq;
-using System.Windows.Forms.VisualStyles;
 
 
 namespace DnDDesktop.Controllers
@@ -16,7 +11,6 @@ namespace DnDDesktop.Controllers
     public class Controlador
     {
         Form1 f = new Form1();
-        private string searchString = "";
 
         //Repositories
         AbilityScoreRepository abilityScoreRepository = new AbilityScoreRepository();
@@ -32,6 +26,7 @@ namespace DnDDesktop.Controllers
         FeaturesRepository FeaturesRepository = new FeaturesRepository();
         LanguageRepository LanguageRepository = new LanguageRepository();
         LevelRepository LevelRepository = new LevelRepository();
+        MagicItemsRepository MagicItemsRepository = new MagicItemsRepository();
 
         //Listas
 
@@ -44,7 +39,6 @@ namespace DnDDesktop.Controllers
 
         //WeaponProperties
         List<WeaponProperty> weapons = new List<WeaponProperty>();
-
 
         //Classes
         List<Classes> classes = new List<Classes>();
@@ -76,7 +70,9 @@ namespace DnDDesktop.Controllers
         //Level
         List<Level> levels = new List<Level>();
 
+        //MagicItem
         List<MagicItem> magicItems = new List<MagicItem>();
+
         public Controlador()
         {
             LoadData();
@@ -196,6 +192,15 @@ namespace DnDDesktop.Controllers
             f.dgvSpellcastingLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.Spellcasting).ToList();
             f.dgvSubcategoriesLevels.DataSource = LevelRepository.GetLevels()?.Select(a => a.Subcategories).ToList();
         }
+        private void LoadDataMagicItems()
+        {
+            magicItems = MagicItemsRepository.GetMagicItems();
+            f.dgvMagicItems.DataSource = magicItems;
+            f.dgvMagicItems.Columns["EquipmentCategory"].Visible = false;
+            f.dgvMagicItems.Columns["Rarity"].Visible = false;
+            f.dgvVariantsMagicItems.DataSource = magicItems?.Select(a => a.Variants.FirstOrDefault());
+        }
+
         private void InitListeners()
         {
             //AbilityScore
@@ -3578,116 +3583,116 @@ namespace DnDDesktop.Controllers
         }
         private void BtInsertarLevels_Click(object? sender, EventArgs e)
         {
-            //try
-            //{
-            Level levelInsertar = new Level();
-
-            string index = f.tbIndexLevels.Text;
-            string level = f.tbLevelLevels.Text;
-            string abylityScoreBonuses = f.tbAbilityScoreBonusesLevels.Text;
-            string proficiencyBonus = f.tbProfBonusLevels.Text;
-            string classIndex = f.tbClassIndexLevels.Text;
-            string className = f.tbClassNameLevels.Text;
-
-            if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(level))
+            try
             {
-                levelInsertar.Index = index;
-                levelInsertar.LevelN = int.Parse(level);
+                Level levelInsertar = new Level();
 
-                if (!string.IsNullOrEmpty(abylityScoreBonuses))
+                string index = f.tbIndexLevels.Text;
+                string level = f.tbLevelLevels.Text;
+                string abylityScoreBonuses = f.tbAbilityScoreBonusesLevels.Text;
+                string proficiencyBonus = f.tbProfBonusLevels.Text;
+                string classIndex = f.tbClassIndexLevels.Text;
+                string className = f.tbClassNameLevels.Text;
+
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(level))
                 {
-                    levelInsertar.AbilityScoreBonuses = int.Parse(abylityScoreBonuses);
+                    levelInsertar.Index = index;
+                    levelInsertar.LevelN = int.Parse(level);
+
+                    if (!string.IsNullOrEmpty(abylityScoreBonuses))
+                    {
+                        levelInsertar.AbilityScoreBonuses = int.Parse(abylityScoreBonuses);
+                    }
+                    else
+                    {
+                        levelInsertar.AbilityScoreBonuses = null;
+                    }
+                    if (!string.IsNullOrEmpty(proficiencyBonus))
+                    {
+                        levelInsertar.ProficiencyBonus = int.Parse(proficiencyBonus);
+                    }
+                    else
+                    {
+                        levelInsertar.ProficiencyBonus = null;
+                    }
+                    if (!string.IsNullOrEmpty(classIndex) && !string.IsNullOrEmpty(className))
+                    {
+
+                        From Class = new From();
+                        Class.Index = classIndex;
+                        Class.Name = className;
+                        levelInsertar.Class = Class;
+                    }
+                    else
+                    {
+                        levelInsertar.Class.Index = string.Empty;
+                        levelInsertar.Class.Name = string.Empty;
+                    }
+
+
+                    DataGridViewRow rowClassSpecific = f.dgvClassEspecificLevels.CurrentRow;
+                    DataGridViewRow rowCreatingSpellSlotLevels = f.dgvClassSpecificCreatingSpellSlotsLevels.CurrentRow;
+                    DataGridViewRow rowMartialArts = f.dgvClassSpecificMartialArtsLevels.CurrentRow;
+                    DataGridViewRow rowSneakAttack = f.dgvClassSpecificSneakAttackLevels.CurrentRow;
+                    DataGridViewRow rowSpellcasting = f.dgvSpellcastingLevels.CurrentRow;
+                    DataGridViewRow rowSubcategories = f.dgvSubcategoriesLevels.CurrentRow;
+                    string featuresIndex = (string)f.cbFeaturesIndexLevels.SelectedItem;
+                    string featuresName = (string)f.cbFeaturesNameLevels.SelectedItem;
+
+                    if (featuresIndex != null && featuresName != null)
+                    {
+                        List<ArrayedFrom> featuresList = new List<ArrayedFrom>();
+                        List<string> featuresIndexString = new List<string>();
+                        List<string> featuresNameString = new List<string>();
+                        ArrayedFrom features = new ArrayedFrom();
+
+                        featuresIndexString.Add(featuresIndex);
+                        featuresNameString.Add(featuresName);
+                        features.Index = featuresIndexString.ToArray();
+                        features.Name = featuresNameString.ToArray();
+                        featuresList.Add(features);
+                        levelInsertar.Features = featuresList.ToArray();
+                    }
+                    if (rowClassSpecific != null)
+                    {
+                        levelInsertar.ClassSpecific = (ClassSpecificLevel)rowClassSpecific.DataBoundItem;
+                    }
+                    if (rowCreatingSpellSlotLevels != null)
+                    {
+                        List<CreatingSpellSlotsLevel> creatingSpellSlotsLevels = new List<CreatingSpellSlotsLevel>();
+                        creatingSpellSlotsLevels.Add((CreatingSpellSlotsLevel)rowCreatingSpellSlotLevels.DataBoundItem);
+                        levelInsertar.ClassSpecific.CreatingSpellSlots = creatingSpellSlotsLevels.ToArray();
+                    }
+                    if (rowMartialArts != null)
+                    {
+                        levelInsertar.ClassSpecific.MartialArts = (DiceCountValueCommon)rowMartialArts.DataBoundItem;
+                    }
+                    if (rowSneakAttack != null)
+                    {
+                        levelInsertar.ClassSpecific.SneakAttack = (DiceCountValueCommon)rowSneakAttack.DataBoundItem;
+                    }
+                    if (rowSpellcasting != null)
+                    {
+                        levelInsertar.Spellcasting = (SpellcastingLevel)rowSpellcasting.DataBoundItem;
+                    }
+                    if (rowSubcategories != null)
+                    {
+                        levelInsertar.Subcategories = (SubclassSpecificLevel)rowSubcategories.DataBoundItem;
+                    }
+                    LevelRepository.CreateLevel(levelInsertar);
+                    MessageBox.Show("Has insertado Levels");
+                    LoadDataLevels();
                 }
                 else
                 {
-                    levelInsertar.AbilityScoreBonuses = null;
-                }
-                if (!string.IsNullOrEmpty(proficiencyBonus))
-                {
-                    levelInsertar.ProficiencyBonus = int.Parse(proficiencyBonus);
-                }
-                else
-                {
-                    levelInsertar.ProficiencyBonus = null;
-                }
-                if (!string.IsNullOrEmpty(classIndex) && !string.IsNullOrEmpty(className))
-                {
-
-                    From Class = new From();
-                    Class.Index = classIndex;
-                    Class.Name = className;
-                    levelInsertar.Class = Class;
-                }
-                else
-                {
-                    levelInsertar.Class.Index = string.Empty;
-                    levelInsertar.Class.Name = string.Empty;
+                    MessageBox.Show("Debes escribir un index y level");
                 }
 
-
-                DataGridViewRow rowClassSpecific = f.dgvClassEspecificLevels.CurrentRow;
-                DataGridViewRow rowCreatingSpellSlotLevels = f.dgvClassSpecificCreatingSpellSlotsLevels.CurrentRow;
-                DataGridViewRow rowMartialArts = f.dgvClassSpecificMartialArtsLevels.CurrentRow;
-                DataGridViewRow rowSneakAttack = f.dgvClassSpecificSneakAttackLevels.CurrentRow;
-                DataGridViewRow rowSpellcasting = f.dgvSpellcastingLevels.CurrentRow;
-                DataGridViewRow rowSubcategories = f.dgvSubcategoriesLevels.CurrentRow;
-                string featuresIndex = (string)f.cbFeaturesIndexLevels.SelectedItem;
-                string featuresName = (string)f.cbFeaturesNameLevels.SelectedItem;
-
-                if (featuresIndex != null && featuresName != null)
-                {
-                    List<ArrayedFrom> featuresList = new List<ArrayedFrom>();
-                    List<string> featuresIndexString = new List<string>();
-                    List<string> featuresNameString = new List<string>();
-                    ArrayedFrom features = new ArrayedFrom();
-
-                    featuresIndexString.Add(featuresIndex);
-                    featuresNameString.Add(featuresName);
-                    features.Index = featuresIndexString.ToArray();
-                    features.Name = featuresNameString.ToArray();
-                    featuresList.Add(features);
-                    levelInsertar.Features = featuresList.ToArray();
-                }
-                if (rowClassSpecific != null)
-                {
-                    levelInsertar.ClassSpecific = (ClassSpecificLevel)rowClassSpecific.DataBoundItem;
-                }
-                if (rowCreatingSpellSlotLevels != null)
-                {
-                    List<CreatingSpellSlotsLevel> creatingSpellSlotsLevels = new List<CreatingSpellSlotsLevel>();
-                    creatingSpellSlotsLevels.Add((CreatingSpellSlotsLevel)rowCreatingSpellSlotLevels.DataBoundItem);
-                    levelInsertar.ClassSpecific.CreatingSpellSlots = creatingSpellSlotsLevels.ToArray();
-                }
-                if (rowMartialArts != null)
-                {
-                    levelInsertar.ClassSpecific.MartialArts = (DiceCountValueCommon)rowMartialArts.DataBoundItem;
-                }
-                if (rowSneakAttack != null)
-                {
-                    levelInsertar.ClassSpecific.SneakAttack = (DiceCountValueCommon)rowSneakAttack.DataBoundItem;
-                }
-                if (rowSpellcasting != null)
-                {
-                    levelInsertar.Spellcasting = (SpellcastingLevel)rowSpellcasting.DataBoundItem;
-                }
-                if (rowSubcategories != null)
-                {
-                    levelInsertar.Subcategories = (SubclassSpecificLevel)rowSubcategories.DataBoundItem;
-                }
-                LevelRepository.CreateLevel(levelInsertar);
-                MessageBox.Show("Has insertado Levels");
-                LoadDataLevels();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debes escribir un index y level");
+                MessageBox.Show(ex.Message);
             }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
         }
         private void BtEliminarLevels_Click(object? sender, EventArgs e)
         {

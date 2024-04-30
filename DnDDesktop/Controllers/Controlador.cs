@@ -76,6 +76,7 @@ namespace DnDDesktop.Controllers
         //Level
         List<Level> levels = new List<Level>();
 
+        List<MagicItem> magicItems = new List<MagicItem>();
         public Controlador()
         {
             LoadData();

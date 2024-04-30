@@ -3263,9 +3263,7 @@ namespace DnDDesktop.Controllers
                 a.ClassSpecific?.BardicInspirationDie == classSpecific?.BardicInspirationDie &&
                 a.ClassSpecific?.BrutalCriticalDie == classSpecific?.BrutalCriticalDie &&
                 a.ClassSpecific?.ChannelDivinityCharges == classSpecific?.ChannelDivinityCharges &&
-  /*Desde aqui*/a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) == classSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) &&
-                a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) == classSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) &&
-                a.ClassSpecific?.CreatingSpellSlots == classSpecific?.CreatingSpellSlots &&/*Hasta aquí revisar para mostrar*/
+                CompareCreatingSpellSlots(a.ClassSpecific?.CreatingSpellSlots, classSpecific?.CreatingSpellSlots) &&
                 a.ClassSpecific?.DestroyUndeadCr == classSpecific?.DestroyUndeadCr &&
                 a.ClassSpecific?.ExtraAttacks == classSpecific?.ExtraAttacks &&
                 a.ClassSpecific?.FavoredEnemies == classSpecific?.FavoredEnemies &&
@@ -3311,6 +3309,24 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("El objeto ClassSpecificLevel no está contenido en ningún objeto Level.");
             }
         }
+
+        private bool CompareCreatingSpellSlots(CreatingSpellSlotsLevel[]? a, CreatingSpellSlotsLevel[]? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null || a.Length != b.Length)
+                return false;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i].SorceryPointCost != b[i].SorceryPointCost || a[i].SpellSlotLevel != b[i].SpellSlotLevel)
+                    return false;
+            }
+
+            return true;
+        }
+
 
 
         private void BtBuscarLevels_Click(object? sender, EventArgs e)

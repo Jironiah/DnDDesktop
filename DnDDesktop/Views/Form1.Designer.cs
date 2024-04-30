@@ -334,7 +334,7 @@
             dgvClassSpecificCreatingSpellSlotsLevels = new DataGridView();
             cbFeaturesIndexLevels = new ComboBox();
             label91 = new Label();
-            dgcClassEspecificLevels = new DataGridView();
+            dgvClassEspecificLevels = new DataGridView();
             label89 = new Label();
             cbFeaturesNameLevels = new ComboBox();
             btEliminarLevels = new Button();
@@ -588,7 +588,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgcClassEspecificLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassEspecificLevels).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLevels).BeginInit();
             MagicItems.SuspendLayout();
             MagicSchools.SuspendLayout();
@@ -3672,7 +3672,7 @@
             Levels.Controls.Add(dgvClassSpecificCreatingSpellSlotsLevels);
             Levels.Controls.Add(cbFeaturesIndexLevels);
             Levels.Controls.Add(label91);
-            Levels.Controls.Add(dgcClassEspecificLevels);
+            Levels.Controls.Add(dgvClassEspecificLevels);
             Levels.Controls.Add(label89);
             Levels.Controls.Add(cbFeaturesNameLevels);
             Levels.Controls.Add(btEliminarLevels);
@@ -3888,20 +3888,20 @@
             label91.TabIndex = 125;
             label91.Text = "ClassSpecific";
             // 
-            // dgcClassEspecificLevels
+            // dgvClassEspecificLevels
             // 
-            dgcClassEspecificLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgcClassEspecificLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgcClassEspecificLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgcClassEspecificLevels.Location = new Point(18, 132);
-            dgcClassEspecificLevels.MultiSelect = false;
-            dgcClassEspecificLevels.Name = "dgcClassEspecificLevels";
-            dgcClassEspecificLevels.ReadOnly = true;
-            dgcClassEspecificLevels.RowHeadersWidth = 51;
-            dgcClassEspecificLevels.RowTemplate.Height = 29;
-            dgcClassEspecificLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgcClassEspecificLevels.Size = new Size(1729, 94);
-            dgcClassEspecificLevels.TabIndex = 124;
+            dgvClassEspecificLevels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvClassEspecificLevels.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClassEspecificLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClassEspecificLevels.Location = new Point(18, 132);
+            dgvClassEspecificLevels.MultiSelect = false;
+            dgvClassEspecificLevels.Name = "dgvClassEspecificLevels";
+            dgvClassEspecificLevels.ReadOnly = true;
+            dgvClassEspecificLevels.RowHeadersWidth = 51;
+            dgvClassEspecificLevels.RowTemplate.Height = 29;
+            dgvClassEspecificLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClassEspecificLevels.Size = new Size(1729, 94);
+            dgvClassEspecificLevels.TabIndex = 124;
             // 
             // label89
             // 
@@ -5921,7 +5921,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificSneakAttackLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificMartialArtsLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvClassSpecificCreatingSpellSlotsLevels).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgcClassEspecificLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClassEspecificLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvLevels).EndInit();
             MagicItems.ResumeLayout(false);
             MagicItems.PerformLayout();
@@ -6423,7 +6423,7 @@
         public TextBox tbFiltrarLevels;
         public Button btInsertarLevels;
         public DataGridView dgvLevels;
-        public DataGridView dgcClassEspecificLevels;
+        public DataGridView dgvClassEspecificLevels;
         public TextBox tbLevelLevels;
         public TextBox tbProfBonusLevels;
         public TextBox tbIndexLevels;

@@ -294,11 +294,8 @@ namespace DnDDesktop.Controllers
             //MagicItem
             f.dgvMagicItems.SelectionChanged += DgvMagicItems_SelectionChanged;
             f.btBuscarMagicItems.Click += BtBuscarMagicItems_Click;
+            f.btInsertarMagicItems.Click += BtInsertarMagicItems_Click;
         }
-
-
-
-
 
         //AbilityScore
 
@@ -3907,6 +3904,34 @@ namespace DnDDesktop.Controllers
                 {
                     MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtInsertarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                MagicItem magicItemInsertar = new MagicItem();
+                magicItemInsertar.Name = f.tbNameMagicItems.Text;
+                magicItemInsertar.Index = f.tbIndexMagicItems.Text;
+                magicItemInsertar.Variant = f.chbVariantMagicItems.Checked;
+                From equipmentCategory = new From();
+                equipmentCategory.Index = f.tbEquipmentCategoryIndexMagicItems.Text;
+                equipmentCategory.Name = f.tbEquipmentCategoryNameMagicItems.Text;
+                magicItemInsertar.EquipmentCategory = equipmentCategory;
+                magicItemInsertar.Rarity = (RarityMagicItem)f.cbRarityMagicItems.SelectedItem;
+                magicItemInsertar.Desc = new string[] { f.rtbDescriptionMagicItems.Text };
+
+                List<From> variantsList = new List<From>();
+                variantsList.Add((From)f.cbVariantsMagicItems.SelectedItem);
+                magicItemInsertar.Variants = variantsList.ToArray();
+
+                MagicItemsRepository.CreateMagicItem(magicItemInsertar);
+                LoadDataMagicItems();
+                MessageBox.Show("Has insertardo MagicItems");
             }
             catch (Exception ex)
             {

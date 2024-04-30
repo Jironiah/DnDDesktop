@@ -357,7 +357,6 @@
             MagicItems = new TabPage();
             rtbDescriptionMagicItems = new RichTextBox();
             label100 = new Label();
-            btInsertarMagicItems = new Button();
             chbVariantMagicItems = new CheckBox();
             label102 = new Label();
             label101 = new Label();
@@ -365,9 +364,7 @@
             label98 = new Label();
             label97 = new Label();
             label96 = new Label();
-            cbEquipmentCategoryMagicItems = new ComboBox();
             cbRarityMagicItems = new ComboBox();
-            cbVariantsMagicItems = new ComboBox();
             tbNameMagicItems = new TextBox();
             tbIndexMagicItems = new TextBox();
             MagicSchools = new TabPage();
@@ -534,6 +531,16 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
+            btEliminarMagicItems = new Button();
+            btModificarMagicItems = new Button();
+            btBuscarMagicItems = new Button();
+            tbFiltrarMagicItems = new TextBox();
+            btInsertarMagicItems = new Button();
+            dgvMagicItems = new DataGridView();
+            label87 = new Label();
+            tbEquipmentCategoryNameMagicItems = new TextBox();
+            tbEquipmentCategoryIndexMagicItems = new TextBox();
+            dgvVariantsMagicItems = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -599,6 +606,8 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMagicItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVariantsMagicItems).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -4076,9 +4085,18 @@
             // 
             // MagicItems
             // 
+            MagicItems.Controls.Add(dgvVariantsMagicItems);
+            MagicItems.Controls.Add(tbEquipmentCategoryNameMagicItems);
+            MagicItems.Controls.Add(tbEquipmentCategoryIndexMagicItems);
+            MagicItems.Controls.Add(label87);
+            MagicItems.Controls.Add(btEliminarMagicItems);
+            MagicItems.Controls.Add(btModificarMagicItems);
+            MagicItems.Controls.Add(btBuscarMagicItems);
+            MagicItems.Controls.Add(tbFiltrarMagicItems);
+            MagicItems.Controls.Add(btInsertarMagicItems);
+            MagicItems.Controls.Add(dgvMagicItems);
             MagicItems.Controls.Add(rtbDescriptionMagicItems);
             MagicItems.Controls.Add(label100);
-            MagicItems.Controls.Add(btInsertarMagicItems);
             MagicItems.Controls.Add(chbVariantMagicItems);
             MagicItems.Controls.Add(label102);
             MagicItems.Controls.Add(label101);
@@ -4086,9 +4104,7 @@
             MagicItems.Controls.Add(label98);
             MagicItems.Controls.Add(label97);
             MagicItems.Controls.Add(label96);
-            MagicItems.Controls.Add(cbEquipmentCategoryMagicItems);
             MagicItems.Controls.Add(cbRarityMagicItems);
-            MagicItems.Controls.Add(cbVariantsMagicItems);
             MagicItems.Controls.Add(tbNameMagicItems);
             MagicItems.Controls.Add(tbIndexMagicItems);
             MagicItems.Location = new Point(4, 29);
@@ -4101,7 +4117,7 @@
             // 
             // rtbDescriptionMagicItems
             // 
-            rtbDescriptionMagicItems.Location = new Point(850, 44);
+            rtbDescriptionMagicItems.Location = new Point(1078, 44);
             rtbDescriptionMagicItems.Margin = new Padding(3, 4, 3, 4);
             rtbDescriptionMagicItems.Name = "rtbDescriptionMagicItems";
             rtbDescriptionMagicItems.Size = new Size(410, 127);
@@ -4111,20 +4127,11 @@
             // label100
             // 
             label100.AutoSize = true;
-            label100.Location = new Point(850, 20);
+            label100.Location = new Point(1078, 20);
             label100.Name = "label100";
             label100.Size = new Size(85, 20);
             label100.TabIndex = 83;
             label100.Text = "Description";
-            // 
-            // btInsertarMagicItems
-            // 
-            btInsertarMagicItems.Location = new Point(1167, 468);
-            btInsertarMagicItems.Name = "btInsertarMagicItems";
-            btInsertarMagicItems.Size = new Size(94, 35);
-            btInsertarMagicItems.TabIndex = 21;
-            btInsertarMagicItems.Text = "Instertar";
-            btInsertarMagicItems.UseVisualStyleBackColor = true;
             // 
             // chbVariantMagicItems
             // 
@@ -4168,14 +4175,14 @@
             label98.AutoSize = true;
             label98.Location = new Point(409, 21);
             label98.Name = "label98";
-            label98.Size = new Size(141, 20);
+            label98.Size = new Size(177, 20);
             label98.TabIndex = 9;
-            label98.Text = "EquipmentCategory";
+            label98.Text = "EquipmentCategoryIndex";
             // 
             // label97
             // 
             label97.AutoSize = true;
-            label97.Location = new Point(719, 20);
+            label97.Location = new Point(13, 118);
             label97.Name = "label97";
             label97.Size = new Size(61, 20);
             label97.TabIndex = 8;
@@ -4184,38 +4191,20 @@
             // label96
             // 
             label96.AutoSize = true;
-            label96.Location = new Point(562, 20);
+            label96.Location = new Point(897, 21);
             label96.Name = "label96";
             label96.Size = new Size(47, 20);
             label96.TabIndex = 7;
             label96.Text = "Rarity";
             // 
-            // cbEquipmentCategoryMagicItems
-            // 
-            cbEquipmentCategoryMagicItems.FormattingEnabled = true;
-            cbEquipmentCategoryMagicItems.Location = new Point(411, 44);
-            cbEquipmentCategoryMagicItems.Margin = new Padding(3, 4, 3, 4);
-            cbEquipmentCategoryMagicItems.Name = "cbEquipmentCategoryMagicItems";
-            cbEquipmentCategoryMagicItems.Size = new Size(121, 28);
-            cbEquipmentCategoryMagicItems.TabIndex = 5;
-            // 
             // cbRarityMagicItems
             // 
             cbRarityMagicItems.FormattingEnabled = true;
-            cbRarityMagicItems.Location = new Point(565, 44);
+            cbRarityMagicItems.Location = new Point(900, 45);
             cbRarityMagicItems.Margin = new Padding(3, 4, 3, 4);
             cbRarityMagicItems.Name = "cbRarityMagicItems";
             cbRarityMagicItems.Size = new Size(121, 28);
             cbRarityMagicItems.TabIndex = 4;
-            // 
-            // cbVariantsMagicItems
-            // 
-            cbVariantsMagicItems.FormattingEnabled = true;
-            cbVariantsMagicItems.Location = new Point(722, 45);
-            cbVariantsMagicItems.Margin = new Padding(3, 4, 3, 4);
-            cbVariantsMagicItems.Name = "cbVariantsMagicItems";
-            cbVariantsMagicItems.Size = new Size(121, 28);
-            cbVariantsMagicItems.TabIndex = 3;
             // 
             // tbNameMagicItems
             // 
@@ -5843,6 +5832,104 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
+            // btEliminarMagicItems
+            // 
+            btEliminarMagicItems.Location = new Point(1540, 851);
+            btEliminarMagicItems.Name = "btEliminarMagicItems";
+            btEliminarMagicItems.Size = new Size(94, 29);
+            btEliminarMagicItems.TabIndex = 148;
+            btEliminarMagicItems.Text = "Eliminar";
+            btEliminarMagicItems.UseVisualStyleBackColor = true;
+            // 
+            // btModificarMagicItems
+            // 
+            btModificarMagicItems.Location = new Point(1440, 851);
+            btModificarMagicItems.Name = "btModificarMagicItems";
+            btModificarMagicItems.Size = new Size(94, 29);
+            btModificarMagicItems.TabIndex = 147;
+            btModificarMagicItems.Text = "Modificar";
+            btModificarMagicItems.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarMagicItems
+            // 
+            btBuscarMagicItems.Location = new Point(1440, 804);
+            btBuscarMagicItems.Name = "btBuscarMagicItems";
+            btBuscarMagicItems.Size = new Size(194, 29);
+            btBuscarMagicItems.TabIndex = 146;
+            btBuscarMagicItems.Text = "Buscar por Index";
+            btBuscarMagicItems.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarMagicItems
+            // 
+            tbFiltrarMagicItems.Location = new Point(1308, 804);
+            tbFiltrarMagicItems.Name = "tbFiltrarMagicItems";
+            tbFiltrarMagicItems.Size = new Size(125, 27);
+            tbFiltrarMagicItems.TabIndex = 145;
+            // 
+            // btInsertarMagicItems
+            // 
+            btInsertarMagicItems.Location = new Point(1654, 847);
+            btInsertarMagicItems.Name = "btInsertarMagicItems";
+            btInsertarMagicItems.Size = new Size(94, 35);
+            btInsertarMagicItems.TabIndex = 144;
+            btInsertarMagicItems.Text = "Insertar";
+            btInsertarMagicItems.UseVisualStyleBackColor = true;
+            // 
+            // dgvMagicItems
+            // 
+            dgvMagicItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvMagicItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMagicItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMagicItems.Location = new Point(16, 394);
+            dgvMagicItems.MultiSelect = false;
+            dgvMagicItems.Name = "dgvMagicItems";
+            dgvMagicItems.ReadOnly = true;
+            dgvMagicItems.RowHeadersWidth = 51;
+            dgvMagicItems.RowTemplate.Height = 29;
+            dgvMagicItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMagicItems.Size = new Size(474, 489);
+            dgvMagicItems.TabIndex = 143;
+            // 
+            // label87
+            // 
+            label87.AutoSize = true;
+            label87.Location = new Point(662, 21);
+            label87.Name = "label87";
+            label87.Size = new Size(181, 20);
+            label87.TabIndex = 149;
+            label87.Text = "EquipmentCategoryName";
+            // 
+            // tbEquipmentCategoryNameMagicItems
+            // 
+            tbEquipmentCategoryNameMagicItems.Location = new Point(662, 46);
+            tbEquipmentCategoryNameMagicItems.Margin = new Padding(3, 4, 3, 4);
+            tbEquipmentCategoryNameMagicItems.Name = "tbEquipmentCategoryNameMagicItems";
+            tbEquipmentCategoryNameMagicItems.Size = new Size(181, 27);
+            tbEquipmentCategoryNameMagicItems.TabIndex = 151;
+            // 
+            // tbEquipmentCategoryIndexMagicItems
+            // 
+            tbEquipmentCategoryIndexMagicItems.Location = new Point(409, 44);
+            tbEquipmentCategoryIndexMagicItems.Margin = new Padding(3, 4, 3, 4);
+            tbEquipmentCategoryIndexMagicItems.Name = "tbEquipmentCategoryIndexMagicItems";
+            tbEquipmentCategoryIndexMagicItems.Size = new Size(177, 27);
+            tbEquipmentCategoryIndexMagicItems.TabIndex = 150;
+            // 
+            // dgvVariantsMagicItems
+            // 
+            dgvVariantsMagicItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvVariantsMagicItems.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvVariantsMagicItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVariantsMagicItems.Location = new Point(16, 151);
+            dgvVariantsMagicItems.MultiSelect = false;
+            dgvVariantsMagicItems.Name = "dgvVariantsMagicItems";
+            dgvVariantsMagicItems.ReadOnly = true;
+            dgvVariantsMagicItems.RowHeadersWidth = 51;
+            dgvVariantsMagicItems.RowTemplate.Height = 29;
+            dgvVariantsMagicItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVariantsMagicItems.Size = new Size(474, 155);
+            dgvVariantsMagicItems.TabIndex = 152;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -5941,6 +6028,8 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMagicItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVariantsMagicItems).EndInit();
             ResumeLayout(false);
         }
 
@@ -6081,18 +6170,6 @@
         private System.Windows.Forms.ComboBox cbClassSpecificLevels;
         private System.Windows.Forms.ComboBox cbFeaturesLevels;
         private System.Windows.Forms.ComboBox cbSubclassSpecificLevels;
-        private System.Windows.Forms.CheckBox chbVariantMagicItems;
-        private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.Label label99;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.Label label97;
-        private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.ComboBox cbEquipmentCategoryMagicItems;
-        private System.Windows.Forms.ComboBox cbRarityMagicItems;
-        private System.Windows.Forms.ComboBox cbVariantsMagicItems;
-        private System.Windows.Forms.TextBox tbNameMagicItems;
-        private System.Windows.Forms.TextBox tbIndexMagicItems;
         public System.Windows.Forms.Label label103;
         public System.Windows.Forms.Label label104;
         public System.Windows.Forms.TextBox tbIndexMagicSchools;
@@ -6152,7 +6229,6 @@
         public Button btInsertarAbilityScore;
         public RichTextBox rtbDescriptionAbilityScore;
         public RichTextBox rtbDescriptionAlignments;
-        public Button btInsertarMagicItems;
         public Button btInsertarMagicSchools;
         public Button btInsertarProficiencies;
         public Button btInsertarRaces;
@@ -6455,6 +6531,26 @@
         public TextBox tbSubclassNameLevels;
         public TextBox tbSubclassIndexLevels;
         public DataGridView dgvClassSpecificMartialArtsLevels;
+        public Button btEliminarMagicItems;
+        public Button btModificarMagicItems;
+        public Button btBuscarMagicItems;
+        public TextBox tbFiltrarMagicItems;
+        public Button btInsertarMagicItems;
+        public DataGridView dgvMagicItems;
+        public TextBox tbEquipmentCategoryNameMagicItems;
+        public TextBox tbEquipmentCategoryIndexMagicItems;
+        public Label label87;
+        public DataGridView dgvVariantsMagicItems;
+        public CheckBox chbVariantMagicItems;
+        public Label label102;
+        public Label label101;
+        public Label label99;
+        public Label label98;
+        public Label label97;
+        public Label label96;
+        public ComboBox cbRarityMagicItems;
+        public TextBox tbNameMagicItems;
+        public TextBox tbIndexMagicItems;
     }
 }
 

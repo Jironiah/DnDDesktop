@@ -3256,7 +3256,44 @@ namespace DnDDesktop.Controllers
         private void BuscarYSeleccionarClassSpecificLevel(ClassSpecificLevel classSpecific)
         {
             // Buscar el objeto Level que contiene el ClassSpecificLevel dado
-            Level level = levels?.FirstOrDefault(l => l.ClassSpecific == classSpecific);
+            Level? level = levels?.FirstOrDefault(a =>
+                a.ClassSpecific?.ActionSurge == classSpecific?.ActionSurge &&
+                a.ClassSpecific?.ArcaneRecoveryLevel == classSpecific?.ArcaneRecoveryLevel &&
+                a.ClassSpecific?.AuraRange == classSpecific?.AuraRange &&
+                a.ClassSpecific?.BardicInspirationDie == classSpecific?.BardicInspirationDie &&
+                a.ClassSpecific?.BrutalCriticalDie == classSpecific?.BrutalCriticalDie &&
+                a.ClassSpecific?.ChannelDivinityCharges == classSpecific?.ChannelDivinityCharges &&
+  /*Desde aqui*/a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) == classSpecific?.CreatingSpellSlots?.Select(a => a.SorceryPointCost) &&
+                a.ClassSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) == classSpecific?.CreatingSpellSlots?.Select(a => a.SpellSlotLevel) &&
+                a.ClassSpecific?.CreatingSpellSlots == classSpecific?.CreatingSpellSlots &&/*Hasta aquí revisar para mostrar*/
+                a.ClassSpecific?.DestroyUndeadCr == classSpecific?.DestroyUndeadCr &&
+                a.ClassSpecific?.ExtraAttacks == classSpecific?.ExtraAttacks &&
+                a.ClassSpecific?.FavoredEnemies == classSpecific?.FavoredEnemies &&
+                a.ClassSpecific?.FavoredTerrain == classSpecific?.FavoredTerrain &&
+                a.ClassSpecific?.IndomitableUses == classSpecific?.IndomitableUses &&
+                a.ClassSpecific?.InvocationsKnown == classSpecific?.InvocationsKnown &&
+                a.ClassSpecific?.KiPoints == classSpecific?.KiPoints &&
+                a.ClassSpecific?.MagicSecretsMax5 == classSpecific?.MagicSecretsMax5 &&
+                a.ClassSpecific?.MagicSecretsMax7 == classSpecific?.MagicSecretsMax7 &&
+                a.ClassSpecific?.MagicSecretsMax9 == classSpecific?.MagicSecretsMax9 &&
+                a.ClassSpecific?.MartialArts?.DiceValues == classSpecific?.MartialArts?.DiceValues &&
+                a.ClassSpecific?.MartialArts?.DiceCount == classSpecific?.MartialArts?.DiceCount &&
+                a.ClassSpecific?.MetamagicKnown == classSpecific?.MetamagicKnown &&
+                a.ClassSpecific?.MysticArcanumLevel6 == classSpecific?.MysticArcanumLevel6 &&
+                a.ClassSpecific?.MysticArcanumLevel7 == classSpecific?.MysticArcanumLevel7 &&
+                a.ClassSpecific?.MysticArcanumLevel8 == classSpecific?.MysticArcanumLevel8 &&
+                a.ClassSpecific?.MysticArcanumLevel9 == classSpecific?.MysticArcanumLevel9 &&
+                a.ClassSpecific?.RageCount == classSpecific?.RageCount &&
+                a.ClassSpecific?.RageDamaageBonus == classSpecific?.RageDamaageBonus &&
+                a.ClassSpecific?.SneakAttack?.DiceCount == classSpecific?.SneakAttack?.DiceCount &&
+                a.ClassSpecific?.SneakAttack?.DiceValues == classSpecific?.SneakAttack?.DiceValues &&
+                a.ClassSpecific?.SongOfRestDie == classSpecific?.SongOfRestDie &&
+                a.ClassSpecific?.SorceryPoints == classSpecific?.SorceryPoints &&
+                a.ClassSpecific?.UnarmoredMovement == classSpecific?.UnarmoredMovement &&
+                a.ClassSpecific?.WildShapeFly == classSpecific?.WildShapeFly &&
+                a.ClassSpecific?.WildShapeMaxCr == classSpecific?.WildShapeMaxCr &&
+                a.ClassSpecific?.WildShapeSwim == classSpecific?.WildShapeSwim
+            );
 
             if (level != null)
             {
@@ -3274,6 +3311,7 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("El objeto ClassSpecificLevel no está contenido en ningún objeto Level.");
             }
         }
+
 
         private void BtBuscarLevels_Click(object? sender, EventArgs e)
         {

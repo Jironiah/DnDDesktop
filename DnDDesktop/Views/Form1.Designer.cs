@@ -410,6 +410,50 @@
             tbIndexProficiency = new TextBox();
             tbNameProficiency = new TextBox();
             Races = new TabPage();
+            label205 = new Label();
+            tbStartingProficienciesOptionsFromRace = new ComboBox();
+            label202 = new Label();
+            label203 = new Label();
+            label204 = new Label();
+            tbStartingProficienciesOptionsTypeRace = new TextBox();
+            tbStartingProficienciesOptionsDescriptionRace = new TextBox();
+            tbStartingProficienciesOptionsChooseRace = new TextBox();
+            label201 = new Label();
+            dgvStartingProficienciesOptionsRace = new DataGridView();
+            label200 = new Label();
+            cbLanguageOptionsFromRace = new ComboBox();
+            tbLanguageOptionsTypeRace = new TextBox();
+            tbLanguageOptionsChooseRace = new TextBox();
+            label199 = new Label();
+            label198 = new Label();
+            label197 = new Label();
+            dataGridView1 = new DataGridView();
+            label196 = new Label();
+            dgvAbilityBonusAbilityScoreRace = new DataGridView();
+            label194 = new Label();
+            tbAbilityBonusBonusRace = new TextBox();
+            label125 = new Label();
+            dgvAbilityBonusRace = new DataGridView();
+            label123 = new Label();
+            dgvAbilityBonusOptionsAbilityScoreRace = new DataGridView();
+            label121 = new Label();
+            dgvAbilityBonusOptionFromRace = new DataGridView();
+            label119 = new Label();
+            dgvAbilityBonusOptionRace = new DataGridView();
+            btEliminarRaces = new Button();
+            btModificarRaces = new Button();
+            btBuscarRaces = new Button();
+            tbFiltrarRaces = new TextBox();
+            btInsertarRaces = new Button();
+            dgvRaces = new DataGridView();
+            label126 = new Label();
+            label124 = new Label();
+            label122 = new Label();
+            label120 = new Label();
+            cbSubracesRaces = new ComboBox();
+            cbTraitsRaces = new ComboBox();
+            cbLanguagesRaces = new ComboBox();
+            cbStartingProficienciesRaces = new ComboBox();
             label118 = new Label();
             label117 = new Label();
             label116 = new Label();
@@ -534,52 +578,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btEliminarRaces = new Button();
-            btModificarRaces = new Button();
-            btBuscarRaces = new Button();
-            tbFiltrarRaces = new TextBox();
-            btInsertarRaces = new Button();
-            dgvRaces = new DataGridView();
-            cbStartingProficienciesRaces = new ComboBox();
-            cbLanguagesRaces = new ComboBox();
-            cbTraitsRaces = new ComboBox();
-            cbSubracesRaces = new ComboBox();
-            label120 = new Label();
-            label122 = new Label();
-            label124 = new Label();
-            label126 = new Label();
-            dgvAbilityBonusOptionRace = new DataGridView();
-            label119 = new Label();
-            label121 = new Label();
-            dgvAbilityBonusOptionFromRace = new DataGridView();
-            dgvAbilityBonusOptionsOptionsRageRaces = new Label();
-            dgvAbilityBonusOptionsOptionsRageRace = new DataGridView();
-            label123 = new Label();
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace = new DataGridView();
-            label125 = new Label();
-            dgvAbilityBonusRace = new DataGridView();
-            label194 = new Label();
-            tbAbilityBonusBonusRace = new TextBox();
-            label196 = new Label();
-            dgvAbilityBonusAbilityScoreRace = new DataGridView();
-            label197 = new Label();
-            dataGridView1 = new DataGridView();
-            label198 = new Label();
-            label199 = new Label();
-            tbLanguageOptionsChooseRace = new TextBox();
-            tbLanguageOptionsTypeRace = new TextBox();
-            label200 = new Label();
-            cbLanguageOptionsFromRace = new ComboBox();
-            label201 = new Label();
-            dgvStartingProficienciesOptionsRace = new DataGridView();
-            label202 = new Label();
-            label203 = new Label();
-            label204 = new Label();
-            tbStartingProficienciesOptionsTypeRace = new TextBox();
-            tbStartingProficienciesOptionsDescriptionRace = new TextBox();
-            tbStartingProficienciesOptionsChooseRace = new TextBox();
-            label205 = new Label();
-            tbStartingProficienciesOptionsFromRace = new ComboBox();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -643,20 +641,19 @@
             Proficiencies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProficiency).BeginInit();
             Races.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusAbilityScoreRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsAbilityScoreRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRaces).BeginInit();
             Skills.SuspendLayout();
             Spells.SuspendLayout();
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvRaces).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsOptionsRageRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsOptionsRageAbilityScoreRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusAbilityScoreRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -4712,9 +4709,7 @@
             Races.Controls.Add(label125);
             Races.Controls.Add(dgvAbilityBonusRace);
             Races.Controls.Add(label123);
-            Races.Controls.Add(dgvAbilityBonusOptionsOptionsRageAbilityScoreRace);
-            Races.Controls.Add(dgvAbilityBonusOptionsOptionsRageRaces);
-            Races.Controls.Add(dgvAbilityBonusOptionsOptionsRageRace);
+            Races.Controls.Add(dgvAbilityBonusOptionsAbilityScoreRace);
             Races.Controls.Add(label121);
             Races.Controls.Add(dgvAbilityBonusOptionFromRace);
             Races.Controls.Add(label119);
@@ -4756,6 +4751,443 @@
             Races.TabIndex = 17;
             Races.Text = "Races";
             Races.UseVisualStyleBackColor = true;
+            // 
+            // label205
+            // 
+            label205.AutoSize = true;
+            label205.Location = new Point(1313, 515);
+            label205.Name = "label205";
+            label205.Size = new Size(43, 20);
+            label205.TabIndex = 199;
+            label205.Text = "From";
+            // 
+            // tbStartingProficienciesOptionsFromRace
+            // 
+            tbStartingProficienciesOptionsFromRace.FormattingEnabled = true;
+            tbStartingProficienciesOptionsFromRace.Location = new Point(1313, 539);
+            tbStartingProficienciesOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
+            tbStartingProficienciesOptionsFromRace.Name = "tbStartingProficienciesOptionsFromRace";
+            tbStartingProficienciesOptionsFromRace.Size = new Size(121, 28);
+            tbStartingProficienciesOptionsFromRace.TabIndex = 198;
+            // 
+            // label202
+            // 
+            label202.AutoSize = true;
+            label202.Location = new Point(1180, 516);
+            label202.Name = "label202";
+            label202.Size = new Size(40, 20);
+            label202.TabIndex = 197;
+            label202.Text = "Type";
+            // 
+            // label203
+            // 
+            label203.AutoSize = true;
+            label203.Location = new Point(1062, 517);
+            label203.Name = "label203";
+            label203.Size = new Size(85, 20);
+            label203.TabIndex = 196;
+            label203.Text = "Description";
+            // 
+            // label204
+            // 
+            label204.AutoSize = true;
+            label204.Location = new Point(940, 517);
+            label204.Name = "label204";
+            label204.Size = new Size(58, 20);
+            label204.TabIndex = 195;
+            label204.Text = "Choose";
+            // 
+            // tbStartingProficienciesOptionsTypeRace
+            // 
+            tbStartingProficienciesOptionsTypeRace.Location = new Point(1180, 540);
+            tbStartingProficienciesOptionsTypeRace.Margin = new Padding(3, 4, 3, 4);
+            tbStartingProficienciesOptionsTypeRace.Name = "tbStartingProficienciesOptionsTypeRace";
+            tbStartingProficienciesOptionsTypeRace.Size = new Size(100, 27);
+            tbStartingProficienciesOptionsTypeRace.TabIndex = 194;
+            // 
+            // tbStartingProficienciesOptionsDescriptionRace
+            // 
+            tbStartingProficienciesOptionsDescriptionRace.Location = new Point(1062, 540);
+            tbStartingProficienciesOptionsDescriptionRace.Margin = new Padding(3, 4, 3, 4);
+            tbStartingProficienciesOptionsDescriptionRace.Name = "tbStartingProficienciesOptionsDescriptionRace";
+            tbStartingProficienciesOptionsDescriptionRace.Size = new Size(100, 27);
+            tbStartingProficienciesOptionsDescriptionRace.TabIndex = 193;
+            // 
+            // tbStartingProficienciesOptionsChooseRace
+            // 
+            tbStartingProficienciesOptionsChooseRace.Location = new Point(940, 540);
+            tbStartingProficienciesOptionsChooseRace.Margin = new Padding(3, 4, 3, 4);
+            tbStartingProficienciesOptionsChooseRace.Name = "tbStartingProficienciesOptionsChooseRace";
+            tbStartingProficienciesOptionsChooseRace.Size = new Size(100, 27);
+            tbStartingProficienciesOptionsChooseRace.TabIndex = 192;
+            // 
+            // label201
+            // 
+            label201.AutoSize = true;
+            label201.Location = new Point(564, 517);
+            label201.Name = "label201";
+            label201.Size = new Size(196, 20);
+            label201.TabIndex = 191;
+            label201.Text = "StartingProficienciesOptions";
+            // 
+            // dgvStartingProficienciesOptionsRace
+            // 
+            dgvStartingProficienciesOptionsRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvStartingProficienciesOptionsRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvStartingProficienciesOptionsRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStartingProficienciesOptionsRace.Location = new Point(564, 540);
+            dgvStartingProficienciesOptionsRace.MultiSelect = false;
+            dgvStartingProficienciesOptionsRace.Name = "dgvStartingProficienciesOptionsRace";
+            dgvStartingProficienciesOptionsRace.ReadOnly = true;
+            dgvStartingProficienciesOptionsRace.RowHeadersWidth = 51;
+            dgvStartingProficienciesOptionsRace.RowTemplate.Height = 29;
+            dgvStartingProficienciesOptionsRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStartingProficienciesOptionsRace.Size = new Size(342, 135);
+            dgvStartingProficienciesOptionsRace.TabIndex = 190;
+            // 
+            // label200
+            // 
+            label200.AutoSize = true;
+            label200.Location = new Point(1371, 367);
+            label200.Name = "label200";
+            label200.Size = new Size(160, 20);
+            label200.TabIndex = 189;
+            label200.Text = "LanguageOptionsFrom";
+            // 
+            // cbLanguageOptionsFromRace
+            // 
+            cbLanguageOptionsFromRace.FormattingEnabled = true;
+            cbLanguageOptionsFromRace.Location = new Point(1371, 391);
+            cbLanguageOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
+            cbLanguageOptionsFromRace.Name = "cbLanguageOptionsFromRace";
+            cbLanguageOptionsFromRace.Size = new Size(121, 28);
+            cbLanguageOptionsFromRace.TabIndex = 188;
+            // 
+            // tbLanguageOptionsTypeRace
+            // 
+            tbLanguageOptionsTypeRace.Location = new Point(1574, 308);
+            tbLanguageOptionsTypeRace.Margin = new Padding(3, 4, 3, 4);
+            tbLanguageOptionsTypeRace.Name = "tbLanguageOptionsTypeRace";
+            tbLanguageOptionsTypeRace.Size = new Size(100, 27);
+            tbLanguageOptionsTypeRace.TabIndex = 187;
+            // 
+            // tbLanguageOptionsChooseRace
+            // 
+            tbLanguageOptionsChooseRace.Location = new Point(1371, 308);
+            tbLanguageOptionsChooseRace.Margin = new Padding(3, 4, 3, 4);
+            tbLanguageOptionsChooseRace.Name = "tbLanguageOptionsChooseRace";
+            tbLanguageOptionsChooseRace.Size = new Size(100, 27);
+            tbLanguageOptionsChooseRace.TabIndex = 186;
+            // 
+            // label199
+            // 
+            label199.AutoSize = true;
+            label199.Location = new Point(1574, 285);
+            label199.Name = "label199";
+            label199.Size = new Size(157, 20);
+            label199.TabIndex = 185;
+            label199.Text = "LanguageOptionsType";
+            // 
+            // label198
+            // 
+            label198.AutoSize = true;
+            label198.Location = new Point(1371, 285);
+            label198.Name = "label198";
+            label198.Size = new Size(175, 20);
+            label198.TabIndex = 184;
+            label198.Text = "LanguageOptionsChoose";
+            // 
+            // label197
+            // 
+            label197.AutoSize = true;
+            label197.Location = new Point(982, 285);
+            label197.Name = "label197";
+            label197.Size = new Size(126, 20);
+            label197.TabIndex = 182;
+            label197.Text = "LanguageOptions";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(982, 308);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(342, 135);
+            dataGridView1.TabIndex = 181;
+            // 
+            // label196
+            // 
+            label196.AutoSize = true;
+            label196.Location = new Point(564, 285);
+            label196.Name = "label196";
+            label196.Size = new Size(172, 20);
+            label196.TabIndex = 180;
+            label196.Text = "AbilityBonusAbilityScore";
+            // 
+            // dgvAbilityBonusAbilityScoreRace
+            // 
+            dgvAbilityBonusAbilityScoreRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityBonusAbilityScoreRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityBonusAbilityScoreRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityBonusAbilityScoreRace.Location = new Point(564, 308);
+            dgvAbilityBonusAbilityScoreRace.MultiSelect = false;
+            dgvAbilityBonusAbilityScoreRace.Name = "dgvAbilityBonusAbilityScoreRace";
+            dgvAbilityBonusAbilityScoreRace.ReadOnly = true;
+            dgvAbilityBonusAbilityScoreRace.RowHeadersWidth = 51;
+            dgvAbilityBonusAbilityScoreRace.RowTemplate.Height = 29;
+            dgvAbilityBonusAbilityScoreRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityBonusAbilityScoreRace.Size = new Size(342, 135);
+            dgvAbilityBonusAbilityScoreRace.TabIndex = 179;
+            // 
+            // label194
+            // 
+            label194.AutoSize = true;
+            label194.Location = new Point(387, 284);
+            label194.Name = "label194";
+            label194.Size = new Size(132, 20);
+            label194.TabIndex = 178;
+            label194.Text = "AbilityBonusBonus";
+            // 
+            // tbAbilityBonusBonusRace
+            // 
+            tbAbilityBonusBonusRace.Location = new Point(390, 308);
+            tbAbilityBonusBonusRace.Margin = new Padding(3, 4, 3, 4);
+            tbAbilityBonusBonusRace.Name = "tbAbilityBonusBonusRace";
+            tbAbilityBonusBonusRace.Size = new Size(100, 27);
+            tbAbilityBonusBonusRace.TabIndex = 177;
+            // 
+            // label125
+            // 
+            label125.AutoSize = true;
+            label125.Location = new Point(19, 285);
+            label125.Name = "label125";
+            label125.Size = new Size(92, 20);
+            label125.TabIndex = 176;
+            label125.Text = "AbilityBonus";
+            // 
+            // dgvAbilityBonusRace
+            // 
+            dgvAbilityBonusRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityBonusRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityBonusRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityBonusRace.Location = new Point(19, 308);
+            dgvAbilityBonusRace.MultiSelect = false;
+            dgvAbilityBonusRace.Name = "dgvAbilityBonusRace";
+            dgvAbilityBonusRace.ReadOnly = true;
+            dgvAbilityBonusRace.RowHeadersWidth = 51;
+            dgvAbilityBonusRace.RowTemplate.Height = 29;
+            dgvAbilityBonusRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityBonusRace.Size = new Size(342, 135);
+            dgvAbilityBonusRace.TabIndex = 175;
+            // 
+            // label123
+            // 
+            label123.AutoSize = true;
+            label123.Location = new Point(805, 104);
+            label123.Name = "label123";
+            label123.Size = new Size(258, 20);
+            label123.TabIndex = 174;
+            label123.Text = "AbilityBonusOptionsFromAbilityScore";
+            // 
+            // dgvAbilityBonusOptionsAbilityScoreRace
+            // 
+            dgvAbilityBonusOptionsAbilityScoreRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityBonusOptionsAbilityScoreRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityBonusOptionsAbilityScoreRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityBonusOptionsAbilityScoreRace.Location = new Point(805, 127);
+            dgvAbilityBonusOptionsAbilityScoreRace.MultiSelect = false;
+            dgvAbilityBonusOptionsAbilityScoreRace.Name = "dgvAbilityBonusOptionsAbilityScoreRace";
+            dgvAbilityBonusOptionsAbilityScoreRace.ReadOnly = true;
+            dgvAbilityBonusOptionsAbilityScoreRace.RowHeadersWidth = 51;
+            dgvAbilityBonusOptionsAbilityScoreRace.RowTemplate.Height = 29;
+            dgvAbilityBonusOptionsAbilityScoreRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityBonusOptionsAbilityScoreRace.Size = new Size(342, 135);
+            dgvAbilityBonusOptionsAbilityScoreRace.TabIndex = 173;
+            // 
+            // label121
+            // 
+            label121.AutoSize = true;
+            label121.Location = new Point(418, 104);
+            label121.Name = "label121";
+            label121.Size = new Size(172, 20);
+            label121.TabIndex = 170;
+            label121.Text = "AbilityBonusOptionFrom";
+            // 
+            // dgvAbilityBonusOptionFromRace
+            // 
+            dgvAbilityBonusOptionFromRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityBonusOptionFromRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityBonusOptionFromRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityBonusOptionFromRace.Location = new Point(418, 127);
+            dgvAbilityBonusOptionFromRace.MultiSelect = false;
+            dgvAbilityBonusOptionFromRace.Name = "dgvAbilityBonusOptionFromRace";
+            dgvAbilityBonusOptionFromRace.ReadOnly = true;
+            dgvAbilityBonusOptionFromRace.RowHeadersWidth = 51;
+            dgvAbilityBonusOptionFromRace.RowTemplate.Height = 29;
+            dgvAbilityBonusOptionFromRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityBonusOptionFromRace.Size = new Size(342, 135);
+            dgvAbilityBonusOptionFromRace.TabIndex = 169;
+            // 
+            // label119
+            // 
+            label119.AutoSize = true;
+            label119.Location = new Point(19, 104);
+            label119.Name = "label119";
+            label119.Size = new Size(138, 20);
+            label119.TabIndex = 168;
+            label119.Text = "AbilityBonusOption";
+            // 
+            // dgvAbilityBonusOptionRace
+            // 
+            dgvAbilityBonusOptionRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAbilityBonusOptionRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAbilityBonusOptionRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAbilityBonusOptionRace.Location = new Point(19, 127);
+            dgvAbilityBonusOptionRace.MultiSelect = false;
+            dgvAbilityBonusOptionRace.Name = "dgvAbilityBonusOptionRace";
+            dgvAbilityBonusOptionRace.ReadOnly = true;
+            dgvAbilityBonusOptionRace.RowHeadersWidth = 51;
+            dgvAbilityBonusOptionRace.RowTemplate.Height = 29;
+            dgvAbilityBonusOptionRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAbilityBonusOptionRace.Size = new Size(342, 135);
+            dgvAbilityBonusOptionRace.TabIndex = 167;
+            // 
+            // btEliminarRaces
+            // 
+            btEliminarRaces.Location = new Point(1542, 857);
+            btEliminarRaces.Name = "btEliminarRaces";
+            btEliminarRaces.Size = new Size(94, 29);
+            btEliminarRaces.TabIndex = 166;
+            btEliminarRaces.Text = "Eliminar";
+            btEliminarRaces.UseVisualStyleBackColor = true;
+            // 
+            // btModificarRaces
+            // 
+            btModificarRaces.Location = new Point(1442, 857);
+            btModificarRaces.Name = "btModificarRaces";
+            btModificarRaces.Size = new Size(94, 29);
+            btModificarRaces.TabIndex = 165;
+            btModificarRaces.Text = "Modificar";
+            btModificarRaces.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarRaces
+            // 
+            btBuscarRaces.Location = new Point(1442, 810);
+            btBuscarRaces.Name = "btBuscarRaces";
+            btBuscarRaces.Size = new Size(194, 29);
+            btBuscarRaces.TabIndex = 164;
+            btBuscarRaces.Text = "Buscar por Index";
+            btBuscarRaces.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarRaces
+            // 
+            tbFiltrarRaces.Location = new Point(1309, 810);
+            tbFiltrarRaces.Name = "tbFiltrarRaces";
+            tbFiltrarRaces.Size = new Size(125, 27);
+            tbFiltrarRaces.TabIndex = 163;
+            // 
+            // btInsertarRaces
+            // 
+            btInsertarRaces.Location = new Point(1655, 853);
+            btInsertarRaces.Name = "btInsertarRaces";
+            btInsertarRaces.Size = new Size(94, 35);
+            btInsertarRaces.TabIndex = 162;
+            btInsertarRaces.Text = "Insertar";
+            btInsertarRaces.UseVisualStyleBackColor = true;
+            // 
+            // dgvRaces
+            // 
+            dgvRaces.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvRaces.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvRaces.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRaces.Location = new Point(18, 540);
+            dgvRaces.MultiSelect = false;
+            dgvRaces.Name = "dgvRaces";
+            dgvRaces.ReadOnly = true;
+            dgvRaces.RowHeadersWidth = 51;
+            dgvRaces.RowTemplate.Height = 29;
+            dgvRaces.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRaces.Size = new Size(524, 350);
+            dgvRaces.TabIndex = 161;
+            // 
+            // label126
+            // 
+            label126.AutoSize = true;
+            label126.Location = new Point(1522, 12);
+            label126.Name = "label126";
+            label126.Size = new Size(44, 20);
+            label126.TabIndex = 31;
+            label126.Text = "Traits";
+            // 
+            // label124
+            // 
+            label124.AutoSize = true;
+            label124.Location = new Point(1342, 12);
+            label124.Name = "label124";
+            label124.Size = new Size(68, 20);
+            label124.TabIndex = 29;
+            label124.Text = "Subraces";
+            // 
+            // label122
+            // 
+            label122.AutoSize = true;
+            label122.Location = new Point(1157, 13);
+            label122.Name = "label122";
+            label122.Size = new Size(144, 20);
+            label122.TabIndex = 27;
+            label122.Text = "StartingProficiencies";
+            // 
+            // label120
+            // 
+            label120.AutoSize = true;
+            label120.Location = new Point(997, 12);
+            label120.Name = "label120";
+            label120.Size = new Size(80, 20);
+            label120.TabIndex = 25;
+            label120.Text = "Languages";
+            label120.Click += label120_Click;
+            // 
+            // cbSubracesRaces
+            // 
+            cbSubracesRaces.FormattingEnabled = true;
+            cbSubracesRaces.Location = new Point(1345, 36);
+            cbSubracesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbSubracesRaces.Name = "cbSubracesRaces";
+            cbSubracesRaces.Size = new Size(121, 28);
+            cbSubracesRaces.TabIndex = 23;
+            // 
+            // cbTraitsRaces
+            // 
+            cbTraitsRaces.FormattingEnabled = true;
+            cbTraitsRaces.Location = new Point(1525, 36);
+            cbTraitsRaces.Margin = new Padding(3, 4, 3, 4);
+            cbTraitsRaces.Name = "cbTraitsRaces";
+            cbTraitsRaces.Size = new Size(169, 28);
+            cbTraitsRaces.TabIndex = 22;
+            // 
+            // cbLanguagesRaces
+            // 
+            cbLanguagesRaces.FormattingEnabled = true;
+            cbLanguagesRaces.Location = new Point(1000, 36);
+            cbLanguagesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbLanguagesRaces.Name = "cbLanguagesRaces";
+            cbLanguagesRaces.Size = new Size(121, 28);
+            cbLanguagesRaces.TabIndex = 19;
+            // 
+            // cbStartingProficienciesRaces
+            // 
+            cbStartingProficienciesRaces.FormattingEnabled = true;
+            cbStartingProficienciesRaces.Location = new Point(1160, 37);
+            cbStartingProficienciesRaces.Margin = new Padding(3, 4, 3, 4);
+            cbStartingProficienciesRaces.Name = "cbStartingProficienciesRaces";
+            cbStartingProficienciesRaces.Size = new Size(121, 28);
+            cbStartingProficienciesRaces.TabIndex = 18;
             // 
             // label118
             // 
@@ -5955,467 +6387,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // btEliminarRaces
-            // 
-            btEliminarRaces.Location = new Point(1542, 857);
-            btEliminarRaces.Name = "btEliminarRaces";
-            btEliminarRaces.Size = new Size(94, 29);
-            btEliminarRaces.TabIndex = 166;
-            btEliminarRaces.Text = "Eliminar";
-            btEliminarRaces.UseVisualStyleBackColor = true;
-            // 
-            // btModificarRaces
-            // 
-            btModificarRaces.Location = new Point(1442, 857);
-            btModificarRaces.Name = "btModificarRaces";
-            btModificarRaces.Size = new Size(94, 29);
-            btModificarRaces.TabIndex = 165;
-            btModificarRaces.Text = "Modificar";
-            btModificarRaces.UseVisualStyleBackColor = true;
-            // 
-            // btBuscarRaces
-            // 
-            btBuscarRaces.Location = new Point(1442, 810);
-            btBuscarRaces.Name = "btBuscarRaces";
-            btBuscarRaces.Size = new Size(194, 29);
-            btBuscarRaces.TabIndex = 164;
-            btBuscarRaces.Text = "Buscar por Index";
-            btBuscarRaces.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarRaces
-            // 
-            tbFiltrarRaces.Location = new Point(1309, 810);
-            tbFiltrarRaces.Name = "tbFiltrarRaces";
-            tbFiltrarRaces.Size = new Size(125, 27);
-            tbFiltrarRaces.TabIndex = 163;
-            // 
-            // btInsertarRaces
-            // 
-            btInsertarRaces.Location = new Point(1655, 853);
-            btInsertarRaces.Name = "btInsertarRaces";
-            btInsertarRaces.Size = new Size(94, 35);
-            btInsertarRaces.TabIndex = 162;
-            btInsertarRaces.Text = "Insertar";
-            btInsertarRaces.UseVisualStyleBackColor = true;
-            // 
-            // dgvRaces
-            // 
-            dgvRaces.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvRaces.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvRaces.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRaces.Location = new Point(18, 540);
-            dgvRaces.MultiSelect = false;
-            dgvRaces.Name = "dgvRaces";
-            dgvRaces.ReadOnly = true;
-            dgvRaces.RowHeadersWidth = 51;
-            dgvRaces.RowTemplate.Height = 29;
-            dgvRaces.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRaces.Size = new Size(524, 350);
-            dgvRaces.TabIndex = 161;
-            // 
-            // cbStartingProficienciesRaces
-            // 
-            cbStartingProficienciesRaces.FormattingEnabled = true;
-            cbStartingProficienciesRaces.Location = new Point(1160, 37);
-            cbStartingProficienciesRaces.Margin = new Padding(3, 4, 3, 4);
-            cbStartingProficienciesRaces.Name = "cbStartingProficienciesRaces";
-            cbStartingProficienciesRaces.Size = new Size(121, 28);
-            cbStartingProficienciesRaces.TabIndex = 18;
-            // 
-            // cbLanguagesRaces
-            // 
-            cbLanguagesRaces.FormattingEnabled = true;
-            cbLanguagesRaces.Location = new Point(1000, 36);
-            cbLanguagesRaces.Margin = new Padding(3, 4, 3, 4);
-            cbLanguagesRaces.Name = "cbLanguagesRaces";
-            cbLanguagesRaces.Size = new Size(121, 28);
-            cbLanguagesRaces.TabIndex = 19;
-            // 
-            // cbTraitsRaces
-            // 
-            cbTraitsRaces.FormattingEnabled = true;
-            cbTraitsRaces.Location = new Point(1525, 36);
-            cbTraitsRaces.Margin = new Padding(3, 4, 3, 4);
-            cbTraitsRaces.Name = "cbTraitsRaces";
-            cbTraitsRaces.Size = new Size(121, 28);
-            cbTraitsRaces.TabIndex = 22;
-            // 
-            // cbSubracesRaces
-            // 
-            cbSubracesRaces.FormattingEnabled = true;
-            cbSubracesRaces.Location = new Point(1345, 36);
-            cbSubracesRaces.Margin = new Padding(3, 4, 3, 4);
-            cbSubracesRaces.Name = "cbSubracesRaces";
-            cbSubracesRaces.Size = new Size(121, 28);
-            cbSubracesRaces.TabIndex = 23;
-            // 
-            // label120
-            // 
-            label120.AutoSize = true;
-            label120.Location = new Point(997, 12);
-            label120.Name = "label120";
-            label120.Size = new Size(80, 20);
-            label120.TabIndex = 25;
-            label120.Text = "Languages";
-            label120.Click += label120_Click;
-            // 
-            // label122
-            // 
-            label122.AutoSize = true;
-            label122.Location = new Point(1157, 13);
-            label122.Name = "label122";
-            label122.Size = new Size(144, 20);
-            label122.TabIndex = 27;
-            label122.Text = "StartingProficiencies";
-            // 
-            // label124
-            // 
-            label124.AutoSize = true;
-            label124.Location = new Point(1342, 12);
-            label124.Name = "label124";
-            label124.Size = new Size(68, 20);
-            label124.TabIndex = 29;
-            label124.Text = "Subraces";
-            // 
-            // label126
-            // 
-            label126.AutoSize = true;
-            label126.Location = new Point(1522, 12);
-            label126.Name = "label126";
-            label126.Size = new Size(44, 20);
-            label126.TabIndex = 31;
-            label126.Text = "Traits";
-            // 
-            // dgvAbilityBonusOptionRace
-            // 
-            dgvAbilityBonusOptionRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusOptionRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusOptionRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusOptionRace.Location = new Point(19, 127);
-            dgvAbilityBonusOptionRace.MultiSelect = false;
-            dgvAbilityBonusOptionRace.Name = "dgvAbilityBonusOptionRace";
-            dgvAbilityBonusOptionRace.ReadOnly = true;
-            dgvAbilityBonusOptionRace.RowHeadersWidth = 51;
-            dgvAbilityBonusOptionRace.RowTemplate.Height = 29;
-            dgvAbilityBonusOptionRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusOptionRace.Size = new Size(342, 135);
-            dgvAbilityBonusOptionRace.TabIndex = 167;
-            // 
-            // label119
-            // 
-            label119.AutoSize = true;
-            label119.Location = new Point(19, 104);
-            label119.Name = "label119";
-            label119.Size = new Size(138, 20);
-            label119.TabIndex = 168;
-            label119.Text = "AbilityBonusOption";
-            // 
-            // label121
-            // 
-            label121.AutoSize = true;
-            label121.Location = new Point(418, 104);
-            label121.Name = "label121";
-            label121.Size = new Size(172, 20);
-            label121.TabIndex = 170;
-            label121.Text = "AbilityBonusOptionFrom";
-            // 
-            // dgvAbilityBonusOptionFromRace
-            // 
-            dgvAbilityBonusOptionFromRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusOptionFromRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusOptionFromRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusOptionFromRace.Location = new Point(418, 127);
-            dgvAbilityBonusOptionFromRace.MultiSelect = false;
-            dgvAbilityBonusOptionFromRace.Name = "dgvAbilityBonusOptionFromRace";
-            dgvAbilityBonusOptionFromRace.ReadOnly = true;
-            dgvAbilityBonusOptionFromRace.RowHeadersWidth = 51;
-            dgvAbilityBonusOptionFromRace.RowTemplate.Height = 29;
-            dgvAbilityBonusOptionFromRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusOptionFromRace.Size = new Size(342, 135);
-            dgvAbilityBonusOptionFromRace.TabIndex = 169;
-            // 
-            // dgvAbilityBonusOptionsOptionsRageRaces
-            // 
-            dgvAbilityBonusOptionsOptionsRageRaces.AutoSize = true;
-            dgvAbilityBonusOptionsOptionsRageRaces.Location = new Point(820, 104);
-            dgvAbilityBonusOptionsOptionsRageRaces.Name = "dgvAbilityBonusOptionsOptionsRageRaces";
-            dgvAbilityBonusOptionsOptionsRageRaces.Size = new Size(230, 20);
-            dgvAbilityBonusOptionsOptionsRageRaces.TabIndex = 172;
-            dgvAbilityBonusOptionsOptionsRageRaces.Text = "AbilityBonusOptionsOptionsRage";
-            // 
-            // dgvAbilityBonusOptionsOptionsRageRace
-            // 
-            dgvAbilityBonusOptionsOptionsRageRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusOptionsOptionsRageRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusOptionsOptionsRageRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusOptionsOptionsRageRace.Location = new Point(820, 127);
-            dgvAbilityBonusOptionsOptionsRageRace.MultiSelect = false;
-            dgvAbilityBonusOptionsOptionsRageRace.Name = "dgvAbilityBonusOptionsOptionsRageRace";
-            dgvAbilityBonusOptionsOptionsRageRace.ReadOnly = true;
-            dgvAbilityBonusOptionsOptionsRageRace.RowHeadersWidth = 51;
-            dgvAbilityBonusOptionsOptionsRageRace.RowTemplate.Height = 29;
-            dgvAbilityBonusOptionsOptionsRageRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusOptionsOptionsRageRace.Size = new Size(342, 135);
-            dgvAbilityBonusOptionsOptionsRageRace.TabIndex = 171;
-            // 
-            // label123
-            // 
-            label123.AutoSize = true;
-            label123.Location = new Point(1224, 104);
-            label123.Name = "label123";
-            label123.Size = new Size(310, 20);
-            label123.TabIndex = 174;
-            label123.Text = "AbilityBonusOptionsOptionsRageAbilityScore";
-            // 
-            // dgvAbilityBonusOptionsOptionsRageAbilityScoreRace
-            // 
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.Location = new Point(1224, 127);
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.MultiSelect = false;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.Name = "dgvAbilityBonusOptionsOptionsRageAbilityScoreRace";
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.ReadOnly = true;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.RowHeadersWidth = 51;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.RowTemplate.Height = 29;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.Size = new Size(342, 135);
-            dgvAbilityBonusOptionsOptionsRageAbilityScoreRace.TabIndex = 173;
-            // 
-            // label125
-            // 
-            label125.AutoSize = true;
-            label125.Location = new Point(19, 285);
-            label125.Name = "label125";
-            label125.Size = new Size(92, 20);
-            label125.TabIndex = 176;
-            label125.Text = "AbilityBonus";
-            // 
-            // dgvAbilityBonusRace
-            // 
-            dgvAbilityBonusRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusRace.Location = new Point(19, 308);
-            dgvAbilityBonusRace.MultiSelect = false;
-            dgvAbilityBonusRace.Name = "dgvAbilityBonusRace";
-            dgvAbilityBonusRace.ReadOnly = true;
-            dgvAbilityBonusRace.RowHeadersWidth = 51;
-            dgvAbilityBonusRace.RowTemplate.Height = 29;
-            dgvAbilityBonusRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusRace.Size = new Size(342, 135);
-            dgvAbilityBonusRace.TabIndex = 175;
-            // 
-            // label194
-            // 
-            label194.AutoSize = true;
-            label194.Location = new Point(387, 284);
-            label194.Name = "label194";
-            label194.Size = new Size(132, 20);
-            label194.TabIndex = 178;
-            label194.Text = "AbilityBonusBonus";
-            // 
-            // tbAbilityBonusBonusRace
-            // 
-            tbAbilityBonusBonusRace.Location = new Point(390, 308);
-            tbAbilityBonusBonusRace.Margin = new Padding(3, 4, 3, 4);
-            tbAbilityBonusBonusRace.Name = "tbAbilityBonusBonusRace";
-            tbAbilityBonusBonusRace.Size = new Size(100, 27);
-            tbAbilityBonusBonusRace.TabIndex = 177;
-            // 
-            // label196
-            // 
-            label196.AutoSize = true;
-            label196.Location = new Point(564, 285);
-            label196.Name = "label196";
-            label196.Size = new Size(172, 20);
-            label196.TabIndex = 180;
-            label196.Text = "AbilityBonusAbilityScore";
-            // 
-            // dgvAbilityBonusAbilityScoreRace
-            // 
-            dgvAbilityBonusAbilityScoreRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusAbilityScoreRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusAbilityScoreRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusAbilityScoreRace.Location = new Point(564, 308);
-            dgvAbilityBonusAbilityScoreRace.MultiSelect = false;
-            dgvAbilityBonusAbilityScoreRace.Name = "dgvAbilityBonusAbilityScoreRace";
-            dgvAbilityBonusAbilityScoreRace.ReadOnly = true;
-            dgvAbilityBonusAbilityScoreRace.RowHeadersWidth = 51;
-            dgvAbilityBonusAbilityScoreRace.RowTemplate.Height = 29;
-            dgvAbilityBonusAbilityScoreRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusAbilityScoreRace.Size = new Size(342, 135);
-            dgvAbilityBonusAbilityScoreRace.TabIndex = 179;
-            // 
-            // label197
-            // 
-            label197.AutoSize = true;
-            label197.Location = new Point(982, 285);
-            label197.Name = "label197";
-            label197.Size = new Size(126, 20);
-            label197.TabIndex = 182;
-            label197.Text = "LanguageOptions";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(982, 308);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(342, 135);
-            dataGridView1.TabIndex = 181;
-            // 
-            // label198
-            // 
-            label198.AutoSize = true;
-            label198.Location = new Point(1371, 285);
-            label198.Name = "label198";
-            label198.Size = new Size(175, 20);
-            label198.TabIndex = 184;
-            label198.Text = "LanguageOptionsChoose";
-            // 
-            // label199
-            // 
-            label199.AutoSize = true;
-            label199.Location = new Point(1574, 285);
-            label199.Name = "label199";
-            label199.Size = new Size(157, 20);
-            label199.TabIndex = 185;
-            label199.Text = "LanguageOptionsType";
-            // 
-            // tbLanguageOptionsChooseRace
-            // 
-            tbLanguageOptionsChooseRace.Location = new Point(1371, 308);
-            tbLanguageOptionsChooseRace.Margin = new Padding(3, 4, 3, 4);
-            tbLanguageOptionsChooseRace.Name = "tbLanguageOptionsChooseRace";
-            tbLanguageOptionsChooseRace.Size = new Size(100, 27);
-            tbLanguageOptionsChooseRace.TabIndex = 186;
-            // 
-            // tbLanguageOptionsTypeRace
-            // 
-            tbLanguageOptionsTypeRace.Location = new Point(1574, 308);
-            tbLanguageOptionsTypeRace.Margin = new Padding(3, 4, 3, 4);
-            tbLanguageOptionsTypeRace.Name = "tbLanguageOptionsTypeRace";
-            tbLanguageOptionsTypeRace.Size = new Size(100, 27);
-            tbLanguageOptionsTypeRace.TabIndex = 187;
-            // 
-            // label200
-            // 
-            label200.AutoSize = true;
-            label200.Location = new Point(1371, 367);
-            label200.Name = "label200";
-            label200.Size = new Size(160, 20);
-            label200.TabIndex = 189;
-            label200.Text = "LanguageOptionsFrom";
-            // 
-            // cbLanguageOptionsFromRace
-            // 
-            cbLanguageOptionsFromRace.FormattingEnabled = true;
-            cbLanguageOptionsFromRace.Location = new Point(1371, 391);
-            cbLanguageOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
-            cbLanguageOptionsFromRace.Name = "cbLanguageOptionsFromRace";
-            cbLanguageOptionsFromRace.Size = new Size(121, 28);
-            cbLanguageOptionsFromRace.TabIndex = 188;
-            // 
-            // label201
-            // 
-            label201.AutoSize = true;
-            label201.Location = new Point(564, 517);
-            label201.Name = "label201";
-            label201.Size = new Size(196, 20);
-            label201.TabIndex = 191;
-            label201.Text = "StartingProficienciesOptions";
-            // 
-            // dgvStartingProficienciesOptionsRace
-            // 
-            dgvStartingProficienciesOptionsRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvStartingProficienciesOptionsRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvStartingProficienciesOptionsRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStartingProficienciesOptionsRace.Location = new Point(564, 540);
-            dgvStartingProficienciesOptionsRace.MultiSelect = false;
-            dgvStartingProficienciesOptionsRace.Name = "dgvStartingProficienciesOptionsRace";
-            dgvStartingProficienciesOptionsRace.ReadOnly = true;
-            dgvStartingProficienciesOptionsRace.RowHeadersWidth = 51;
-            dgvStartingProficienciesOptionsRace.RowTemplate.Height = 29;
-            dgvStartingProficienciesOptionsRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStartingProficienciesOptionsRace.Size = new Size(342, 135);
-            dgvStartingProficienciesOptionsRace.TabIndex = 190;
-            // 
-            // label202
-            // 
-            label202.AutoSize = true;
-            label202.Location = new Point(1180, 516);
-            label202.Name = "label202";
-            label202.Size = new Size(40, 20);
-            label202.TabIndex = 197;
-            label202.Text = "Type";
-            // 
-            // label203
-            // 
-            label203.AutoSize = true;
-            label203.Location = new Point(1062, 517);
-            label203.Name = "label203";
-            label203.Size = new Size(85, 20);
-            label203.TabIndex = 196;
-            label203.Text = "Description";
-            // 
-            // label204
-            // 
-            label204.AutoSize = true;
-            label204.Location = new Point(940, 517);
-            label204.Name = "label204";
-            label204.Size = new Size(58, 20);
-            label204.TabIndex = 195;
-            label204.Text = "Choose";
-            // 
-            // tbStartingProficienciesOptionsTypeRace
-            // 
-            tbStartingProficienciesOptionsTypeRace.Location = new Point(1180, 540);
-            tbStartingProficienciesOptionsTypeRace.Margin = new Padding(3, 4, 3, 4);
-            tbStartingProficienciesOptionsTypeRace.Name = "tbStartingProficienciesOptionsTypeRace";
-            tbStartingProficienciesOptionsTypeRace.Size = new Size(100, 27);
-            tbStartingProficienciesOptionsTypeRace.TabIndex = 194;
-            // 
-            // tbStartingProficienciesOptionsDescriptionRace
-            // 
-            tbStartingProficienciesOptionsDescriptionRace.Location = new Point(1062, 540);
-            tbStartingProficienciesOptionsDescriptionRace.Margin = new Padding(3, 4, 3, 4);
-            tbStartingProficienciesOptionsDescriptionRace.Name = "tbStartingProficienciesOptionsDescriptionRace";
-            tbStartingProficienciesOptionsDescriptionRace.Size = new Size(100, 27);
-            tbStartingProficienciesOptionsDescriptionRace.TabIndex = 193;
-            // 
-            // tbStartingProficienciesOptionsChooseRace
-            // 
-            tbStartingProficienciesOptionsChooseRace.Location = new Point(940, 540);
-            tbStartingProficienciesOptionsChooseRace.Margin = new Padding(3, 4, 3, 4);
-            tbStartingProficienciesOptionsChooseRace.Name = "tbStartingProficienciesOptionsChooseRace";
-            tbStartingProficienciesOptionsChooseRace.Size = new Size(100, 27);
-            tbStartingProficienciesOptionsChooseRace.TabIndex = 192;
-            // 
-            // label205
-            // 
-            label205.AutoSize = true;
-            label205.Location = new Point(1313, 515);
-            label205.Name = "label205";
-            label205.Size = new Size(43, 20);
-            label205.TabIndex = 199;
-            label205.Text = "From";
-            // 
-            // tbStartingProficienciesOptionsFromRace
-            // 
-            tbStartingProficienciesOptionsFromRace.FormattingEnabled = true;
-            tbStartingProficienciesOptionsFromRace.Location = new Point(1313, 539);
-            tbStartingProficienciesOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
-            tbStartingProficienciesOptionsFromRace.Name = "tbStartingProficienciesOptionsFromRace";
-            tbStartingProficienciesOptionsFromRace.Size = new Size(121, 28);
-            tbStartingProficienciesOptionsFromRace.TabIndex = 198;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -6507,6 +6478,14 @@
             ((System.ComponentModel.ISupportInitialize)dgvProficiency).EndInit();
             Races.ResumeLayout(false);
             Races.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusAbilityScoreRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsAbilityScoreRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRaces).EndInit();
             Skills.ResumeLayout(false);
             Skills.PerformLayout();
             Spells.ResumeLayout(false);
@@ -6517,15 +6496,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvRaces).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsOptionsRageRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsOptionsRageAbilityScoreRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusAbilityScoreRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).EndInit();
             ResumeLayout(false);
         }
 
@@ -7034,7 +7004,7 @@
         public DataGridView dgvAbilityBonusOptionRace;
         public DataGridView dgvAbilityBonusOptionFromRace;
         public DataGridView dgvAbilityBonusOptionsOptionsRageRace;
-        public DataGridView dgvAbilityBonusOptionsOptionsRageAbilityScoreRace;
+        public DataGridView dgvAbilityBonusOptionsAbilityScoreRace;
         public DataGridView dgvAbilityBonusRace;
         public DataGridView dgvAbilityBonusAbilityScoreRace;
         public DataGridView dataGridView1;

@@ -8,27 +8,27 @@ namespace DnDDesktop.Models.Repository
     {
         string urlRaces = "https://localhost:7153/api/Race/";
 
-        public List<Race> GetAbilityScores()
+        public List<Race> GetRaces()
         {
             return MakeRequest<List<Race>>(urlRaces, null, "GET", "application/json");
         }
 
-        public Race GetAbilityScore(string id)
+        public Race GetRace(string id)
         {
             return MakeRequest<Race>(urlRaces + id, null, "GET", "application/json");
         }
 
-        public Race CreateAbilityScore(Race race)
+        public Race CreateRace(Race race)
         {
             return MakeRequest<Race>(urlRaces, race, "POST", "application/json");
         }
 
-        public Race UpdateAbilityScore(Race race)
+        public Race UpdateRace(Race race)
         {
             return MakeRequest<Race>(urlRaces + race.Id, race, "PUT", "application/json");
         }
 
-        public Race DeleteAbilityScore(string id)
+        public Race DeleteRace(string id)
         {
             return MakeRequest<Race>(urlRaces + id, null, "DELETE", "application/json");
         }

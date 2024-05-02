@@ -4,6 +4,7 @@ using DnDDesktop.Models.Repository;
 using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
+using System.Diagnostics;
 
 
 namespace DnDDesktop.Controllers
@@ -28,6 +29,7 @@ namespace DnDDesktop.Controllers
         LevelRepository LevelRepository = new LevelRepository();
         MagicItemsRepository MagicItemsRepository = new MagicItemsRepository();
         MagicSchoolRepository MagicSchoolRepository = new MagicSchoolRepository();
+        ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
 
         //Listas
 
@@ -77,6 +79,9 @@ namespace DnDDesktop.Controllers
         //MagicSchool
         List<MagicSchool> magicSchools = new List<MagicSchool>();
 
+        //Proficiency
+        List<Proficiency> proficiencies = new List<Proficiency>();
+
 
         public Controlador()
         {
@@ -102,6 +107,7 @@ namespace DnDDesktop.Controllers
             LoadDataLevels();
             LoadDataMagicItems();
             LoadDataMagicSchools();
+            LoadDataProficiency();
         }
 
         private void LoadDataAbilityScore()
@@ -217,6 +223,18 @@ namespace DnDDesktop.Controllers
             f.dgvMagicSchools.DataSource = magicSchools;
         }
 
+        private void LoadDataProficiency()
+        {
+            proficiencies = ProficiencyRepository.GetProficiencies();
+            f.dgvProficiency.DataSource = proficiencies;
+            f.cbClassesProficiency.DataSource = proficiencies?.SelectMany(a => a.Classes)?.ToList();
+            f.cbClassesProficiency.DisplayMember = "Name";
+            f.cbRacesProficiency.DataSource = proficiencies?.SelectMany(a => a.Races)?.ToList();
+            f.cbRacesProficiency.DisplayMember = "Name";
+            //f.dgvReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
+            f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
+            f.cbReferenceProficiency.DisplayMember = "Name";
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -4053,6 +4071,7 @@ namespace DnDDesktop.Controllers
                     f.tbIndexMagicSchools.Text = magicSchool?.Index;
                     f.tbNameMagicSchools.Text = magicSchool?.Name;
                     f.tbDescriptionMagicSchools.Text = magicSchool?.Description;
+
                 }
             }
             catch (Exception ex)

@@ -337,7 +337,10 @@ namespace DnDDesktop.Controllers
             f.dgvProficiency.SelectionChanged += DgvProficiency_SelectionChanged;
             f.btBuscarProficiency.Click += BtBuscarProficiency_Click;
             f.btInsertarProficiency.Click += BtInsertarProficiency_Click;
+            f.btEliminarProficiency.Click += BtEliminarProficiency_Click;
         }
+
+
 
         //AbilityScore
 
@@ -4274,6 +4277,35 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("Has insertado Proficiency");
 
                 LoadDataProficiency();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarProficiency.Text))
+                {
+                    string idBuscar = proficiencies.Where(a => a.Index.Equals(f.tbFiltrarProficiency.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        ProficiencyRepository.DeleteProficiency(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarProficiency.Text.ToString());
+                        LoadDataProficiency();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {

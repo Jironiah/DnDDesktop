@@ -4,6 +4,7 @@ using DnDDesktop.Models.Repository;
 using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
+using System.Diagnostics;
 
 
 namespace DnDDesktop.Controllers
@@ -28,6 +29,7 @@ namespace DnDDesktop.Controllers
         LevelRepository LevelRepository = new LevelRepository();
         MagicItemsRepository MagicItemsRepository = new MagicItemsRepository();
         MagicSchoolRepository MagicSchoolRepository = new MagicSchoolRepository();
+        ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
 
         //Listas
 
@@ -77,6 +79,9 @@ namespace DnDDesktop.Controllers
         //MagicSchool
         List<MagicSchool> magicSchools = new List<MagicSchool>();
 
+        //Proficiency
+        List<Proficiency> proficiencies = new List<Proficiency>();
+
 
         public Controlador()
         {
@@ -102,6 +107,7 @@ namespace DnDDesktop.Controllers
             LoadDataLevels();
             LoadDataMagicItems();
             LoadDataMagicSchools();
+            LoadDataProficiency();
         }
 
         private void LoadDataAbilityScore()
@@ -217,6 +223,18 @@ namespace DnDDesktop.Controllers
             f.dgvMagicSchools.DataSource = magicSchools;
         }
 
+        private void LoadDataProficiency()
+        {
+            proficiencies = ProficiencyRepository.GetProficiencies();
+            f.dgvProficiency.DataSource = proficiencies;
+            f.cbClassesProficiency.DataSource = proficiencies?.SelectMany(a => a.Classes)?.ToList();
+            f.cbClassesProficiency.DisplayMember = "Name";
+            f.cbRacesProficiency.DataSource = proficiencies?.SelectMany(a => a.Races)?.ToList();
+            f.cbRacesProficiency.DisplayMember = "Name";
+            //f.dgvReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
+            f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference)?.ToList();
+            f.cbReferenceProficiency.DisplayMember = "Name";
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -224,7 +242,7 @@ namespace DnDDesktop.Controllers
             f.btInsertarAbilityScore.MouseUp += btInsertarAbilityScore_MouseUp;
             f.btBuscarAbilityScore.Click += BtBuscarAbilityScore_Click;
             f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
-            f.btModificarAbilityScore.Click += BtModificarAbilityScore_Click;
+            f.tbModificarAbilityScore.Click += BtModificarAbilityScore_Click;
             f.dgvAbilityScore.SelectionChanged += DgvAbilityScore_SelectionChanged;
             //Alignments
             f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
@@ -315,7 +333,14 @@ namespace DnDDesktop.Controllers
             f.btEliminarMagicSchools.Click += BtEliminarMagicSchools_Click;
             f.btModificarMagicSchools.Click += BtModificarMagicSchools_Click;
             f.btInsertarMagicSchools.Click += BtInsertarMagicSchools_Click;
+            //Proficiency
+            f.dgvProficiency.SelectionChanged += DgvProficiency_SelectionChanged;
+            f.btBuscarProficiency.Click += BtBuscarProficiency_Click;
+            f.btInsertarProficiency.Click += BtInsertarProficiency_Click;
+            f.btEliminarProficiency.Click += BtEliminarProficiency_Click;
         }
+
+
 
         //AbilityScore
 
@@ -4053,6 +4078,7 @@ namespace DnDDesktop.Controllers
                     f.tbIndexMagicSchools.Text = magicSchool?.Index;
                     f.tbNameMagicSchools.Text = magicSchool?.Name;
                     f.tbDescriptionMagicSchools.Text = magicSchool?.Description;
+
                 }
             }
             catch (Exception ex)
@@ -4175,6 +4201,117 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        //Proficiency
+        private void DgvProficiency_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvProficiency.CurrentRow;
+            if (row != null)
+            {
+                Proficiency proficiency = ProficiencyRepository.GetProficiency(((Proficiency)row.DataBoundItem).Id);
+                if (proficiency != null)
+                {
+                    f.tbIndexProficiency.Text = proficiency?.Index;
+                    f.tbNameProficiency.Text = proficiency?.Name;
+                    f.tbTypeProficiency.Text = proficiency?.Type;
+                    f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                    f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
+                    f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                }
+            }
+        }
 
+        private void BtBuscarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarProficiency.Text))
+                {
+                    string idBuscar = proficiencies.Where(a => a.Index.Equals(f.tbFiltrarProficiency.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Proficiency proficiency = ProficiencyRepository.GetProficiency(idBuscar);
+                        f.tbIndexProficiency.Text = proficiency?.Index;
+                        f.tbNameProficiency.Text = proficiency?.Name;
+                        f.tbTypeProficiency.Text = proficiency?.Type;
+                        f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                        f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
+                        f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtInsertarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Proficiency proficiencyInsertar = new Proficiency();
+                proficiencyInsertar.Index = f.tbIndexProficiency.Text;
+                proficiencyInsertar.Name = f.tbNameProficiency.Text;
+                proficiencyInsertar.Type = f.tbTypeProficiency.Text;
+
+                List<From> classesList = new List<From>();
+                From classes = (From)f.cbClassesProficiency.SelectedItem;
+                classesList.Add(classes);
+                proficiencyInsertar.Classes = classesList.ToArray();
+
+                List<From> racesList = new List<From>();
+                From races = (From)f.cbRacesProficiency.SelectedItem;
+                racesList.Add(races);
+                proficiencyInsertar.Races = racesList.ToArray();
+                proficiencyInsertar.Reference = (From)f.cbReferenceProficiency.SelectedItem;
+                ProficiencyRepository.CreateProficiency(proficiencyInsertar);
+                MessageBox.Show("Has insertado Proficiency");
+
+                LoadDataProficiency();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BtEliminarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarProficiency.Text))
+                {
+                    string idBuscar = proficiencies.Where(a => a.Index.Equals(f.tbFiltrarProficiency.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        ProficiencyRepository.DeleteProficiency(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarProficiency.Text.ToString());
+                        LoadDataProficiency();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }
+

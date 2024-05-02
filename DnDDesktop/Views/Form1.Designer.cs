@@ -403,7 +403,7 @@
             label109 = new Label();
             cbClassesProficiency = new ComboBox();
             cbRacesProficiency = new ComboBox();
-            tbTypeProficiencies = new Label();
+            t = new Label();
             tbTypeProficiency = new TextBox();
             label106 = new Label();
             label107 = new Label();
@@ -4470,7 +4470,7 @@
             Proficiencies.Controls.Add(label109);
             Proficiencies.Controls.Add(cbClassesProficiency);
             Proficiencies.Controls.Add(cbRacesProficiency);
-            Proficiencies.Controls.Add(tbTypeProficiencies);
+            Proficiencies.Controls.Add(t);
             Proficiencies.Controls.Add(tbTypeProficiency);
             Proficiencies.Controls.Add(label106);
             Proficiencies.Controls.Add(label107);
@@ -4596,14 +4596,14 @@
             cbRacesProficiency.Size = new Size(186, 28);
             cbRacesProficiency.TabIndex = 55;
             // 
-            // tbTypeProficiencies
+            // t
             // 
-            tbTypeProficiencies.AutoSize = true;
-            tbTypeProficiencies.Location = new Point(373, 24);
-            tbTypeProficiencies.Name = "tbTypeProficiencies";
-            tbTypeProficiencies.Size = new Size(40, 20);
-            tbTypeProficiencies.TabIndex = 53;
-            tbTypeProficiencies.Text = "Type";
+            t.AutoSize = true;
+            t.Location = new Point(373, 24);
+            t.Name = "t";
+            t.Size = new Size(40, 20);
+            t.TabIndex = 53;
+            t.Text = "Type";
             // 
             // tbTypeProficiency
             // 
@@ -6674,6 +6674,7 @@
         public ComboBox cbClassesProficiency;
         public ComboBox cbRacesProficiency;
         public ComboBox cbReferenceProficiency;
+        public Label t;
     }
 }
 

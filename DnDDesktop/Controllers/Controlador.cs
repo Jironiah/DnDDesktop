@@ -333,7 +333,11 @@ namespace DnDDesktop.Controllers
             f.btEliminarMagicSchools.Click += BtEliminarMagicSchools_Click;
             f.btModificarMagicSchools.Click += BtModificarMagicSchools_Click;
             f.btInsertarMagicSchools.Click += BtInsertarMagicSchools_Click;
+            //Proficiency
+            f.dgvProficiency.SelectionChanged += DgvProficiency_SelectionChanged;
         }
+
+
 
         //AbilityScore
 
@@ -4194,6 +4198,24 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        //Proficiency
+        private void DgvProficiency_SelectionChanged(object? sender, EventArgs e)
+        {
+            DataGridViewRow row = f.dgvProficiency.CurrentRow;
+            if (row != null)
+            {
+                Proficiency proficiency = ProficiencyRepository.GetProficiency(((Proficiency)row.DataBoundItem).Id);
+                if (proficiency != null)
+                {
+                    f.tbIndexProficiency.Text = proficiency?.Index;
+                    f.tbNameProficiency.Text = proficiency?.Name;
+                    f.tbTypeProficiency.Text = proficiency?.Type;
+                    f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                    f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
+                    f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                }
+            }
+        }
 
     }
 }

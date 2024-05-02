@@ -30,6 +30,7 @@ namespace DnDDesktop.Controllers
         MagicItemsRepository MagicItemsRepository = new MagicItemsRepository();
         MagicSchoolRepository MagicSchoolRepository = new MagicSchoolRepository();
         ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
+        RacesRepository RacesRepository = new RacesRepository();
 
         //Listas
 
@@ -82,6 +83,8 @@ namespace DnDDesktop.Controllers
         //Proficiency
         List<Proficiency> proficiencies = new List<Proficiency>();
 
+        //Races
+        List<Race> races = new List<Race>();
 
         public Controlador()
         {
@@ -108,6 +111,7 @@ namespace DnDDesktop.Controllers
             LoadDataMagicItems();
             LoadDataMagicSchools();
             LoadDataProficiency();
+            LoadDataRace();
         }
 
         private void LoadDataAbilityScore()
@@ -218,11 +222,9 @@ namespace DnDDesktop.Controllers
         }
         private void LoadDataMagicSchools()
         {
-
             magicSchools = MagicSchoolRepository.GetMagicSchools();
             f.dgvMagicSchools.DataSource = magicSchools;
         }
-
         private void LoadDataProficiency()
         {
             proficiencies = ProficiencyRepository.GetProficiencies();
@@ -233,6 +235,27 @@ namespace DnDDesktop.Controllers
             f.cbRacesProficiency.DisplayMember = "Name";
             f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference)?.ToList();
             f.cbReferenceProficiency.DisplayMember = "Name";
+        }
+        private void LoadDataRace()
+        {
+            races = RacesRepository.GetRaces();
+            f.dgvRaces.DataSource = races;
+            f.dgvRaces.Columns["LanguageOptions"].Visible = false;
+            f.dgvRaces.Columns["StartingProficienciesOptions"].Visible = false;
+
+            f.cbLanguagesRaces.DataSource = races?.SelectMany(a => a.Languages)?.ToList();
+            f.cbLanguagesRaces.DisplayMember = "Name";
+            f.cbStartingProficienciesRaces.DataSource = races?.SelectMany(a => a.StartingProficiencies)?.ToList();
+            f.cbStartingProficienciesRaces.DisplayMember = "Name";
+            f.cbSubracesRaces.DataSource = races?.SelectMany(a => a.Subraces)?.ToList();
+            f.cbSubracesRaces.DisplayMember = "Name";
+            f.cbTraitsRaces.DataSource = races?.SelectMany(a => a.Traits).ToList();
+            f.cbTraitsRaces.DisplayMember = "Name";
+
+            f.dgvAbilityBonusOptionRace.DataSource = races?.Select(a => a.AbilityBonusOptions)?.ToList();
+            f.dgvAbilityBonusOptionFromRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.FirstOrDefault())?.ToList();
+            f.dgvAbilityBonusOptionFromRace.Columns["AbilityScore"].Visible = false;
+            f.dgvAbilityBonusOptionsAbilityScoreRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.Select(a => a.AbilityScore).FirstOrDefault())?.ToList();
         }
         private void InitListeners()
         {

@@ -394,7 +394,7 @@
             cbReferenceProficiency = new ComboBox();
             tbEliminarProficiency = new Button();
             tbModificarProficiency = new Button();
-            tbBuscarProficiency = new Button();
+            btBuscarProficiency = new Button();
             tbFiltrarProficiency = new TextBox();
             tbInsertarProficiency = new Button();
             dgvProficiency = new DataGridView();
@@ -4461,7 +4461,7 @@
             Proficiencies.Controls.Add(cbReferenceProficiency);
             Proficiencies.Controls.Add(tbEliminarProficiency);
             Proficiencies.Controls.Add(tbModificarProficiency);
-            Proficiencies.Controls.Add(tbBuscarProficiency);
+            Proficiencies.Controls.Add(btBuscarProficiency);
             Proficiencies.Controls.Add(tbFiltrarProficiency);
             Proficiencies.Controls.Add(tbInsertarProficiency);
             Proficiencies.Controls.Add(dgvProficiency);
@@ -4513,12 +4513,12 @@
             // 
             // tbBuscarProficiency
             // 
-            tbBuscarProficiency.Location = new Point(1443, 796);
-            tbBuscarProficiency.Name = "tbBuscarProficiency";
-            tbBuscarProficiency.Size = new Size(194, 29);
-            tbBuscarProficiency.TabIndex = 158;
-            tbBuscarProficiency.Text = "Buscar por Index";
-            tbBuscarProficiency.UseVisualStyleBackColor = true;
+            btBuscarProficiency.Location = new Point(1443, 796);
+            btBuscarProficiency.Name = "tbBuscarProficiency";
+            btBuscarProficiency.Size = new Size(194, 29);
+            btBuscarProficiency.TabIndex = 158;
+            btBuscarProficiency.Text = "Buscar por Index";
+            btBuscarProficiency.UseVisualStyleBackColor = true;
             // 
             // tbFiltrarProficiency
             // 
@@ -6664,7 +6664,7 @@
         public TextBox tbDescriptionMagicSchools;
         public Button tbEliminarProficiency;
         public Button tbModificarProficiency;
-        public Button tbBuscarProficiency;
+        public Button btBuscarProficiency;
         public TextBox tbFiltrarProficiency;
         public Button tbInsertarProficiency;
         public DataGridView dgvProficiency;

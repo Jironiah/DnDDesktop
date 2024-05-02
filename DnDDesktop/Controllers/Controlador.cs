@@ -335,7 +335,10 @@ namespace DnDDesktop.Controllers
             f.btInsertarMagicSchools.Click += BtInsertarMagicSchools_Click;
             //Proficiency
             f.dgvProficiency.SelectionChanged += DgvProficiency_SelectionChanged;
+            f.btBuscarProficiency.Click += BtBuscarProficiency_Click;
         }
+
+
 
 
 
@@ -4217,5 +4220,38 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        private void BtBuscarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarProficiency.Text))
+                {
+                    string idBuscar = proficiencies.Where(a => a.Index.Equals(f.tbFiltrarProficiency.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Proficiency proficiency = ProficiencyRepository.GetProficiency(idBuscar);
+                        f.tbIndexProficiency.Text = proficiency?.Index;
+                        f.tbNameProficiency.Text = proficiency?.Name;
+                        f.tbTypeProficiency.Text = proficiency?.Type;
+                        f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                        f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
+                        f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }

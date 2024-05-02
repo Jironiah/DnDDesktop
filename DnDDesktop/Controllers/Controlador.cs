@@ -4049,7 +4049,13 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-
+                MagicSchool magicSchoolInsertar = new MagicSchool();
+                magicSchoolInsertar.Index = f.tbIndexMagicSchools.Text;
+                magicSchoolInsertar.Name = f.tbNameMagicSchools.Text;
+                magicSchoolInsertar.Description = f.tbDescriptionMagicSchools.Text;
+                MagicSchoolRepository.CreateMagicSchool(magicSchoolInsertar);
+                MessageBox.Show("Has insertado MagicSchool");
+                LoadDataMagicSchools();
             }
             catch (Exception ex)
             {

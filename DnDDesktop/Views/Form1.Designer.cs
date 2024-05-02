@@ -378,6 +378,13 @@
             tbNameMagicItems = new TextBox();
             tbIndexMagicItems = new TextBox();
             MagicSchools = new TabPage();
+            btEliminarMagicSchools = new Button();
+            btModificarMagicSchools = new Button();
+            btBuscarMagicSchools = new Button();
+            tbFiltrarMagicSchools = new TextBox();
+            btInsertarMagicSchools = new Button();
+            dgvMagicSchools = new DataGridView();
+            tbDescriptionMagicSchools = new TextBox();
             label105 = new Label();
             label103 = new Label();
             label104 = new Label();
@@ -539,13 +546,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            tbDescriptionMagicSchools = new TextBox();
-            btEliminarMagicSchools = new Button();
-            tbModificarMagicSchools = new Button();
-            btBuscarMagicSchools = new Button();
-            tbFiltrarMagicSchools = new TextBox();
-            btInsertarMagicSchools = new Button();
-            dgvMagicSchools = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -605,6 +605,7 @@
             MagicItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMagicItems).BeginInit();
             MagicSchools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMagicSchools).BeginInit();
             Proficiencies.SuspendLayout();
             Races.SuspendLayout();
             Skills.SuspendLayout();
@@ -612,7 +613,6 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMagicSchools).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -666,7 +666,7 @@
             AbilityScore.Controls.Add(tbFullNameAbilityScore);
             AbilityScore.Location = new Point(4, 24);
             AbilityScore.Name = "AbilityScore";
-            AbilityScore.Padding = new Padding(3, 3, 3, 3);
+            AbilityScore.Padding = new Padding(3);
             AbilityScore.Size = new Size(1555, 679);
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
@@ -848,7 +848,7 @@
             Alignments.Controls.Add(tbNameAlignments);
             Alignments.Location = new Point(4, 24);
             Alignments.Name = "Alignments";
-            Alignments.Padding = new Padding(3, 3, 3, 3);
+            Alignments.Padding = new Padding(3);
             Alignments.Size = new Size(1555, 679);
             Alignments.TabIndex = 1;
             Alignments.Text = "Alignments";
@@ -1000,7 +1000,7 @@
             WeaponProperties.Controls.Add(tbNameWeaponProperties);
             WeaponProperties.Location = new Point(4, 24);
             WeaponProperties.Name = "WeaponProperties";
-            WeaponProperties.Padding = new Padding(3, 3, 3, 3);
+            WeaponProperties.Padding = new Padding(3);
             WeaponProperties.Size = new Size(1555, 679);
             WeaponProperties.TabIndex = 2;
             WeaponProperties.Text = "Weapon Properties";
@@ -1160,7 +1160,7 @@
             Classes.Controls.Add(tbNameClasses);
             Classes.Location = new Point(4, 24);
             Classes.Name = "Classes";
-            Classes.Padding = new Padding(3, 3, 3, 3);
+            Classes.Padding = new Padding(3);
             Classes.Size = new Size(1555, 679);
             Classes.TabIndex = 3;
             Classes.Text = "Classes";
@@ -4332,7 +4332,7 @@
             // MagicSchools
             // 
             MagicSchools.Controls.Add(btEliminarMagicSchools);
-            MagicSchools.Controls.Add(tbModificarMagicSchools);
+            MagicSchools.Controls.Add(btModificarMagicSchools);
             MagicSchools.Controls.Add(btBuscarMagicSchools);
             MagicSchools.Controls.Add(tbFiltrarMagicSchools);
             MagicSchools.Controls.Add(btInsertarMagicSchools);
@@ -4350,10 +4350,81 @@
             MagicSchools.Text = "MagicSchools";
             MagicSchools.UseVisualStyleBackColor = true;
             // 
+            // btEliminarMagicSchools
+            // 
+            btEliminarMagicSchools.Location = new Point(1346, 632);
+            btEliminarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            btEliminarMagicSchools.Name = "btEliminarMagicSchools";
+            btEliminarMagicSchools.Size = new Size(82, 22);
+            btEliminarMagicSchools.TabIndex = 154;
+            btEliminarMagicSchools.Text = "Eliminar";
+            btEliminarMagicSchools.UseVisualStyleBackColor = true;
+            // 
+            // btModificarMagicSchools
+            // 
+            btModificarMagicSchools.Location = new Point(1258, 632);
+            btModificarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            btModificarMagicSchools.Name = "btModificarMagicSchools";
+            btModificarMagicSchools.Size = new Size(82, 22);
+            btModificarMagicSchools.TabIndex = 153;
+            btModificarMagicSchools.Text = "Modificar";
+            btModificarMagicSchools.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarMagicSchools
+            // 
+            btBuscarMagicSchools.Location = new Point(1258, 597);
+            btBuscarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            btBuscarMagicSchools.Name = "btBuscarMagicSchools";
+            btBuscarMagicSchools.Size = new Size(170, 22);
+            btBuscarMagicSchools.TabIndex = 152;
+            btBuscarMagicSchools.Text = "Buscar por Index";
+            btBuscarMagicSchools.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarMagicSchools
+            // 
+            tbFiltrarMagicSchools.Location = new Point(1142, 597);
+            tbFiltrarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarMagicSchools.Name = "tbFiltrarMagicSchools";
+            tbFiltrarMagicSchools.Size = new Size(110, 23);
+            tbFiltrarMagicSchools.TabIndex = 151;
+            // 
+            // btInsertarMagicSchools
+            // 
+            btInsertarMagicSchools.Location = new Point(1445, 629);
+            btInsertarMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            btInsertarMagicSchools.Name = "btInsertarMagicSchools";
+            btInsertarMagicSchools.Size = new Size(82, 26);
+            btInsertarMagicSchools.TabIndex = 150;
+            btInsertarMagicSchools.Text = "Insertar";
+            btInsertarMagicSchools.UseVisualStyleBackColor = true;
+            // 
+            // dgvMagicSchools
+            // 
+            dgvMagicSchools.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvMagicSchools.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMagicSchools.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMagicSchools.Location = new Point(12, 290);
+            dgvMagicSchools.Margin = new Padding(3, 2, 3, 2);
+            dgvMagicSchools.MultiSelect = false;
+            dgvMagicSchools.Name = "dgvMagicSchools";
+            dgvMagicSchools.ReadOnly = true;
+            dgvMagicSchools.RowHeadersWidth = 51;
+            dgvMagicSchools.RowTemplate.Height = 29;
+            dgvMagicSchools.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMagicSchools.Size = new Size(1044, 367);
+            dgvMagicSchools.TabIndex = 149;
+            // 
+            // tbDescriptionMagicSchools
+            // 
+            tbDescriptionMagicSchools.Location = new Point(402, 31);
+            tbDescriptionMagicSchools.Name = "tbDescriptionMagicSchools";
+            tbDescriptionMagicSchools.Size = new Size(515, 23);
+            tbDescriptionMagicSchools.TabIndex = 84;
+            // 
             // label105
             // 
             label105.AutoSize = true;
-            label105.Location = new Point(327, 13);
+            label105.Location = new Point(402, 13);
             label105.Name = "label105";
             label105.Size = new Size(67, 15);
             label105.TabIndex = 83;
@@ -4371,7 +4442,7 @@
             // label104
             // 
             label104.AutoSize = true;
-            label104.Location = new Point(67, 14);
+            label104.Location = new Point(142, 14);
             label104.Name = "label104";
             label104.Size = new Size(39, 15);
             label104.TabIndex = 46;
@@ -4381,12 +4452,12 @@
             // 
             tbIndexMagicSchools.Location = new Point(12, 31);
             tbIndexMagicSchools.Name = "tbIndexMagicSchools";
-            tbIndexMagicSchools.Size = new Size(36, 23);
+            tbIndexMagicSchools.Size = new Size(99, 23);
             tbIndexMagicSchools.TabIndex = 44;
             // 
             // tbNameMagicSchools
             // 
-            tbNameMagicSchools.Location = new Point(70, 31);
+            tbNameMagicSchools.Location = new Point(145, 31);
             tbNameMagicSchools.Name = "tbNameMagicSchools";
             tbNameMagicSchools.Size = new Size(221, 23);
             tbNameMagicSchools.TabIndex = 43;
@@ -5844,77 +5915,6 @@
             tbNameTraits.Size = new Size(221, 23);
             tbNameTraits.TabIndex = 63;
             // 
-            // tbDescriptionMagicSchools
-            // 
-            tbDescriptionMagicSchools.Location = new Point(327, 31);
-            tbDescriptionMagicSchools.Name = "tbDescriptionMagicSchools";
-            tbDescriptionMagicSchools.Size = new Size(515, 23);
-            tbDescriptionMagicSchools.TabIndex = 84;
-            // 
-            // btEliminarMagicSchools
-            // 
-            btEliminarMagicSchools.Location = new Point(1346, 632);
-            btEliminarMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            btEliminarMagicSchools.Name = "btEliminarMagicSchools";
-            btEliminarMagicSchools.Size = new Size(82, 22);
-            btEliminarMagicSchools.TabIndex = 154;
-            btEliminarMagicSchools.Text = "Eliminar";
-            btEliminarMagicSchools.UseVisualStyleBackColor = true;
-            // 
-            // tbModificarMagicSchools
-            // 
-            tbModificarMagicSchools.Location = new Point(1258, 632);
-            tbModificarMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            tbModificarMagicSchools.Name = "tbModificarMagicSchools";
-            tbModificarMagicSchools.Size = new Size(82, 22);
-            tbModificarMagicSchools.TabIndex = 153;
-            tbModificarMagicSchools.Text = "Modificar";
-            tbModificarMagicSchools.UseVisualStyleBackColor = true;
-            // 
-            // btBuscarMagicSchools
-            // 
-            btBuscarMagicSchools.Location = new Point(1258, 597);
-            btBuscarMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            btBuscarMagicSchools.Name = "btBuscarMagicSchools";
-            btBuscarMagicSchools.Size = new Size(170, 22);
-            btBuscarMagicSchools.TabIndex = 152;
-            btBuscarMagicSchools.Text = "Buscar por Index";
-            btBuscarMagicSchools.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarMagicSchools
-            // 
-            tbFiltrarMagicSchools.Location = new Point(1142, 597);
-            tbFiltrarMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            tbFiltrarMagicSchools.Name = "tbFiltrarMagicSchools";
-            tbFiltrarMagicSchools.Size = new Size(110, 23);
-            tbFiltrarMagicSchools.TabIndex = 151;
-            // 
-            // btInsertarMagicSchools
-            // 
-            btInsertarMagicSchools.Location = new Point(1445, 629);
-            btInsertarMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            btInsertarMagicSchools.Name = "btInsertarMagicSchools";
-            btInsertarMagicSchools.Size = new Size(82, 26);
-            btInsertarMagicSchools.TabIndex = 150;
-            btInsertarMagicSchools.Text = "Insertar";
-            btInsertarMagicSchools.UseVisualStyleBackColor = true;
-            // 
-            // dgvMagicSchools
-            // 
-            dgvMagicSchools.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvMagicSchools.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvMagicSchools.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMagicSchools.Location = new Point(12, 290);
-            dgvMagicSchools.Margin = new Padding(3, 2, 3, 2);
-            dgvMagicSchools.MultiSelect = false;
-            dgvMagicSchools.Name = "dgvMagicSchools";
-            dgvMagicSchools.ReadOnly = true;
-            dgvMagicSchools.RowHeadersWidth = 51;
-            dgvMagicSchools.RowTemplate.Height = 29;
-            dgvMagicSchools.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMagicSchools.Size = new Size(415, 367);
-            dgvMagicSchools.TabIndex = 149;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -5999,6 +5999,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvMagicItems).EndInit();
             MagicSchools.ResumeLayout(false);
             MagicSchools.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMagicSchools).EndInit();
             Proficiencies.ResumeLayout(false);
             Proficiencies.PerformLayout();
             Races.ResumeLayout(false);
@@ -6013,7 +6014,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMagicSchools).EndInit();
             ResumeLayout(false);
         }
 
@@ -6534,7 +6534,7 @@
         public TextBox tbIndexMagicItems;
         public ComboBox cbVariantsMagicItems;
         public Button btEliminarMagicSchools;
-        public Button tbModificarMagicSchools;
+        public Button btModificarMagicSchools;
         public Button btBuscarMagicSchools;
         public TextBox tbFiltrarMagicSchools;
         public Button btInsertarMagicSchools;

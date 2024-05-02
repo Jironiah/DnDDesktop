@@ -8,27 +8,27 @@ namespace DnDDesktop.Models.Repository
     {
         string urlMagicSchool = "https://localhost:7153/api/MagicSchool/";
 
-        public List<MagicSchool> GetDamageTypes()
+        public List<MagicSchool> GetMagicSchools()
         {
             return MakeRequest<List<MagicSchool>>(urlMagicSchool, null, "GET", "application/json");
         }
 
-        public MagicSchool GetDamageType(string id)
+        public MagicSchool GetMagicSchool(string id)
         {
             return MakeRequest<MagicSchool>(urlMagicSchool + id, null, "GET", "application/json");
         }
 
-        public MagicSchool CreateDamageType(MagicSchool magic)
+        public MagicSchool CreateMagicSchool(MagicSchool magic)
         {
             return MakeRequest<MagicSchool>(urlMagicSchool, magic, "POST", "application/json");
         }
 
-        public MagicSchool UpdateDamageType(MagicSchool magic)
+        public MagicSchool UpdateMagicSchoole(MagicSchool magic)
         {
             return MakeRequest<MagicSchool>(urlMagicSchool + magic.Id, magic, "PUT", "application/json");
         }
 
-        public MagicSchool DeleteDamageType(string id)
+        public MagicSchool DeleteMagicSchool(string id)
         {
             return MakeRequest<MagicSchool>(urlMagicSchool + id, null, "DELETE", "application/json");
         }

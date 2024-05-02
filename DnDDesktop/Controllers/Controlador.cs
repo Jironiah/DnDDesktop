@@ -27,6 +27,7 @@ namespace DnDDesktop.Controllers
         LanguageRepository LanguageRepository = new LanguageRepository();
         LevelRepository LevelRepository = new LevelRepository();
         MagicItemsRepository MagicItemsRepository = new MagicItemsRepository();
+        MagicSchoolRepository MagicSchoolRepository = new MagicSchoolRepository();
 
         //Listas
 
@@ -73,6 +74,10 @@ namespace DnDDesktop.Controllers
         //MagicItem
         List<MagicItem> magicItems = new List<MagicItem>();
 
+        //MagicSchool
+        List<MagicSchool> magicSchools = new List<MagicSchool>();
+
+
         public Controlador()
         {
             LoadData();
@@ -96,6 +101,7 @@ namespace DnDDesktop.Controllers
             LoadDataLanguages();
             LoadDataLevels();
             LoadDataMagicItems();
+            LoadDataMagicSchools();
         }
 
         private void LoadDataAbilityScore()
@@ -204,6 +210,12 @@ namespace DnDDesktop.Controllers
             f.cbRarityMagicItems.DataSource = magicItems?.Select(a => a.Rarity).ToList();
             f.cbRarityMagicItems.DisplayMember = "Name";
         }
+        private void LoadDataMagicSchools()
+        {
+
+            magicSchools = MagicSchoolRepository.GetMagicSchools();
+            f.dgvMagicSchools.DataSource = magicSchools;
+        }
 
         private void InitListeners()
         {
@@ -297,8 +309,13 @@ namespace DnDDesktop.Controllers
             f.btInsertarMagicItems.Click += BtInsertarMagicItems_Click;
             f.btEliminarMagicItems.Click += BtEliminarMagicItems_Click;
             f.btModificarMagicItems.Click += BtModificarMagicItems_Click;
+            //MagicSchools
+            f.dgvMagicSchools.SelectionChanged += DgvMagicSchools_SelectionChanged;
+            f.btBuscarMagicSchools.Click += BtBuscarMagicSchools_Click;
+            f.btEliminarMagicSchools.Click += BtEliminarMagicSchools_Click;
+            f.btModificarMagicSchools.Click += BtModificarMagicSchools_Click;
+            f.btInsertarMagicSchools.Click += BtInsertarMagicSchools_Click;
         }
-
 
         //AbilityScore
 
@@ -4001,6 +4018,74 @@ namespace DnDDesktop.Controllers
                         LoadDataMagicItems();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //MagicSchools
+        private void DgvMagicSchools_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvMagicSchools.CurrentRow;
+                if (row != null)
+                {
+                    MagicSchool magicSchool = MagicSchoolRepository.GetMagicSchool(((MagicSchool)row.DataBoundItem).Id);
+                    f.tbIndexMagicSchools.Text = magicSchool?.Index;
+                    f.tbNameMagicSchools.Text = magicSchool?.Name;
+                    f.tbDescriptionMagicSchools.Text = magicSchool?.Description;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtInsertarMagicSchools_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtModificarMagicSchools_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarMagicSchools_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtBuscarMagicSchools_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+
             }
             catch (Exception ex)
             {

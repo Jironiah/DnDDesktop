@@ -295,7 +295,10 @@ namespace DnDDesktop.Controllers
             f.dgvMagicItems.SelectionChanged += DgvMagicItems_SelectionChanged;
             f.btBuscarMagicItems.Click += BtBuscarMagicItems_Click;
             f.btInsertarMagicItems.Click += BtInsertarMagicItems_Click;
+            f.btEliminarMagicItems.Click += BtEliminarMagicItems_Click;
+            f.btModificarMagicItems.Click += BtModificarMagicItems_Click;
         }
+
 
         //AbilityScore
 
@@ -3853,8 +3856,8 @@ namespace DnDDesktop.Controllers
                 if (row != null)
                 {
                     MagicItem magicItem = MagicItemsRepository.GetMagicItem(((MagicItem)row.DataBoundItem).Id);
-                    f.tbIndexMagicItems.Text = magicItem.Index;
-                    f.tbNameMagicItems.Text = magicItem.Name;
+                    f.tbIndexMagicItems.Text = magicItem?.Index;
+                    f.tbNameMagicItems.Text = magicItem?.Name;
                     f.tbEquipmentCategoryIndexMagicItems.Text = magicItem?.EquipmentCategory?.Index;
                     f.tbEquipmentCategoryNameMagicItems.Text = magicItem?.EquipmentCategory?.Name;
                     f.rtbDescriptionMagicItems.Text = magicItem?.Desc?.FirstOrDefault();
@@ -3863,7 +3866,14 @@ namespace DnDDesktop.Controllers
 
                     f.cbRarityMagicItems.SelectedIndex = f.cbRarityMagicItems.FindString(magicItem?.Rarity?.Name);
 
-                    f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(magicItem?.Variants?.Select(a => a.Name).FirstOrDefault());
+                    if (magicItem?.Variants != null)
+                    {
+                        string firstVariantName = magicItem.Variants.Select(a => a.Name).FirstOrDefault();
+                        if (firstVariantName != null)
+                        {
+                            f.cbVariantsMagicItems.SelectedIndex = f.cbVariantsMagicItems.FindString(firstVariantName);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -3931,7 +3941,66 @@ namespace DnDDesktop.Controllers
 
                 MagicItemsRepository.CreateMagicItem(magicItemInsertar);
                 LoadDataMagicItems();
-                MessageBox.Show("Has insertardo MagicItems");
+                MessageBox.Show("Has insertado MagicItems");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicItems.Text))
+                {
+                    string idBuscar = magicItems.Where(a => a.Index.Equals(f.tbFiltrarMagicItems.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        MagicItemsRepository.DeleteMagicItems(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarMagicItems.Text.ToString());
+                        LoadDataMagicItems();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtModificarMagicItems_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicItems.Text))
+                {
+                    string idBuscar = magicItems.Where(a => a.Index.Equals(f.tbFiltrarMagicItems.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        MagicItem magicItemModificar = new MagicItem();
+                        magicItemModificar.Id = idBuscar;
+                        magicItemModificar.Name = f.tbNameMagicItems.Text;
+                        magicItemModificar.Index = f.tbIndexMagicItems.Text;
+                        magicItemModificar.Variant = f.chbVariantMagicItems.Checked;
+                        From equipmentCategory = new From();
+                        equipmentCategory.Index = f.tbEquipmentCategoryIndexMagicItems.Text;
+                        equipmentCategory.Name = f.tbEquipmentCategoryNameMagicItems.Text;
+                        magicItemModificar.EquipmentCategory = equipmentCategory;
+                        magicItemModificar.Rarity = (RarityMagicItem)f.cbRarityMagicItems.SelectedItem;
+                        magicItemModificar.Desc = new string[] { f.rtbDescriptionMagicItems.Text };
+
+                        List<From> variantsList = new List<From>();
+                        variantsList.Add((From)f.cbVariantsMagicItems.SelectedItem);
+                        magicItemModificar.Variants = variantsList.ToArray();
+                        MagicItemsRepository.UpdateMagicItem(magicItemModificar);
+                        MessageBox.Show("Has modificado " + f.tbFiltrarMagicItems.Text.ToString());
+                        LoadDataMagicItems();
+                    }
+                }
             }
             catch (Exception ex)
             {

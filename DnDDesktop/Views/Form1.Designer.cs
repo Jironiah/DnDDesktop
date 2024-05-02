@@ -33,7 +33,7 @@
             btEliminarAbilityScore = new Button();
             label176 = new Label();
             dgvAbilityScore = new DataGridView();
-            btModificarAbilityScore = new Button();
+            tbModificarAbilityScore = new Button();
             btBuscarAbilityScore = new Button();
             tbFiltrarAbilityScore = new TextBox();
             rtbDescriptionAbilityScore = new RichTextBox();
@@ -392,11 +392,11 @@
             tbNameMagicSchools = new TextBox();
             Proficiencies = new TabPage();
             cbReferenceProficiency = new ComboBox();
-            tbEliminarProficiency = new Button();
-            tbModificarProficiency = new Button();
+            btEliminarProficiency = new Button();
+            btModificarProficiency = new Button();
             btBuscarProficiency = new Button();
             tbFiltrarProficiency = new TextBox();
-            tbInsertarProficiency = new Button();
+            btInsertarProficiency = new Button();
             dgvProficiency = new DataGridView();
             label111 = new Label();
             label110 = new Label();
@@ -657,7 +657,7 @@
             AbilityScore.Controls.Add(btEliminarAbilityScore);
             AbilityScore.Controls.Add(label176);
             AbilityScore.Controls.Add(dgvAbilityScore);
-            AbilityScore.Controls.Add(btModificarAbilityScore);
+            AbilityScore.Controls.Add(tbModificarAbilityScore);
             AbilityScore.Controls.Add(btBuscarAbilityScore);
             AbilityScore.Controls.Add(tbFiltrarAbilityScore);
             AbilityScore.Controls.Add(rtbDescriptionAbilityScore);
@@ -714,14 +714,14 @@
             dgvAbilityScore.Size = new Size(554, 267);
             dgvAbilityScore.TabIndex = 25;
             // 
-            // btModificarAbilityScore
+            // tbModificarAbilityScore
             // 
-            btModificarAbilityScore.Location = new Point(1426, 831);
-            btModificarAbilityScore.Name = "btModificarAbilityScore";
-            btModificarAbilityScore.Size = new Size(94, 29);
-            btModificarAbilityScore.TabIndex = 24;
-            btModificarAbilityScore.Text = "Modificar";
-            btModificarAbilityScore.UseVisualStyleBackColor = true;
+            tbModificarAbilityScore.Location = new Point(1426, 831);
+            tbModificarAbilityScore.Name = "tbModificarAbilityScore";
+            tbModificarAbilityScore.Size = new Size(94, 29);
+            tbModificarAbilityScore.TabIndex = 24;
+            tbModificarAbilityScore.Text = "Modificar";
+            tbModificarAbilityScore.UseVisualStyleBackColor = true;
             // 
             // btBuscarAbilityScore
             // 
@@ -4459,11 +4459,11 @@
             // Proficiencies
             // 
             Proficiencies.Controls.Add(cbReferenceProficiency);
-            Proficiencies.Controls.Add(tbEliminarProficiency);
-            Proficiencies.Controls.Add(tbModificarProficiency);
+            Proficiencies.Controls.Add(btEliminarProficiency);
+            Proficiencies.Controls.Add(btModificarProficiency);
             Proficiencies.Controls.Add(btBuscarProficiency);
             Proficiencies.Controls.Add(tbFiltrarProficiency);
-            Proficiencies.Controls.Add(tbInsertarProficiency);
+            Proficiencies.Controls.Add(btInsertarProficiency);
             Proficiencies.Controls.Add(dgvProficiency);
             Proficiencies.Controls.Add(label111);
             Proficiencies.Controls.Add(label110);
@@ -4487,34 +4487,34 @@
             // cbReferenceProficiency
             // 
             cbReferenceProficiency.FormattingEnabled = true;
-            cbReferenceProficiency.Location = new Point(947, 45);
+            cbReferenceProficiency.Location = new Point(1267, 47);
             cbReferenceProficiency.Margin = new Padding(3, 4, 3, 4);
             cbReferenceProficiency.Name = "cbReferenceProficiency";
             cbReferenceProficiency.Size = new Size(186, 28);
             cbReferenceProficiency.TabIndex = 162;
             // 
-            // tbEliminarProficiency
+            // btEliminarProficiency
             // 
-            tbEliminarProficiency.Location = new Point(1543, 843);
-            tbEliminarProficiency.Name = "tbEliminarProficiency";
-            tbEliminarProficiency.Size = new Size(94, 29);
-            tbEliminarProficiency.TabIndex = 160;
-            tbEliminarProficiency.Text = "Eliminar";
-            tbEliminarProficiency.UseVisualStyleBackColor = true;
+            btEliminarProficiency.Location = new Point(1543, 843);
+            btEliminarProficiency.Name = "btEliminarProficiency";
+            btEliminarProficiency.Size = new Size(94, 29);
+            btEliminarProficiency.TabIndex = 160;
+            btEliminarProficiency.Text = "Eliminar";
+            btEliminarProficiency.UseVisualStyleBackColor = true;
             // 
-            // tbModificarProficiency
+            // btModificarProficiency
             // 
-            tbModificarProficiency.Location = new Point(1443, 843);
-            tbModificarProficiency.Name = "tbModificarProficiency";
-            tbModificarProficiency.Size = new Size(94, 29);
-            tbModificarProficiency.TabIndex = 159;
-            tbModificarProficiency.Text = "Modificar";
-            tbModificarProficiency.UseVisualStyleBackColor = true;
+            btModificarProficiency.Location = new Point(1443, 843);
+            btModificarProficiency.Name = "btModificarProficiency";
+            btModificarProficiency.Size = new Size(94, 29);
+            btModificarProficiency.TabIndex = 159;
+            btModificarProficiency.Text = "Modificar";
+            btModificarProficiency.UseVisualStyleBackColor = true;
             // 
-            // tbBuscarProficiency
+            // btBuscarProficiency
             // 
             btBuscarProficiency.Location = new Point(1443, 796);
-            btBuscarProficiency.Name = "tbBuscarProficiency";
+            btBuscarProficiency.Name = "btBuscarProficiency";
             btBuscarProficiency.Size = new Size(194, 29);
             btBuscarProficiency.TabIndex = 158;
             btBuscarProficiency.Text = "Buscar por Index";
@@ -4527,14 +4527,14 @@
             tbFiltrarProficiency.Size = new Size(125, 27);
             tbFiltrarProficiency.TabIndex = 157;
             // 
-            // tbInsertarProficiency
+            // btInsertarProficiency
             // 
-            tbInsertarProficiency.Location = new Point(1656, 839);
-            tbInsertarProficiency.Name = "tbInsertarProficiency";
-            tbInsertarProficiency.Size = new Size(94, 35);
-            tbInsertarProficiency.TabIndex = 156;
-            tbInsertarProficiency.Text = "Insertar";
-            tbInsertarProficiency.UseVisualStyleBackColor = true;
+            btInsertarProficiency.Location = new Point(1656, 839);
+            btInsertarProficiency.Name = "btInsertarProficiency";
+            btInsertarProficiency.Size = new Size(94, 35);
+            btInsertarProficiency.TabIndex = 156;
+            btInsertarProficiency.Text = "Insertar";
+            btInsertarProficiency.UseVisualStyleBackColor = true;
             // 
             // dgvProficiency
             // 
@@ -4554,7 +4554,7 @@
             // label111
             // 
             label111.AutoSize = true;
-            label111.Location = new Point(947, 21);
+            label111.Location = new Point(1267, 23);
             label111.Name = "label111";
             label111.Size = new Size(75, 20);
             label111.TabIndex = 59;
@@ -4563,7 +4563,7 @@
             // label110
             // 
             label110.AutoSize = true;
-            label110.Location = new Point(487, 24);
+            label110.Location = new Point(807, 26);
             label110.Name = "label110";
             label110.Size = new Size(56, 20);
             label110.TabIndex = 58;
@@ -4572,7 +4572,7 @@
             // label109
             // 
             label109.AutoSize = true;
-            label109.Location = new Point(708, 21);
+            label109.Location = new Point(1028, 23);
             label109.Name = "label109";
             label109.Size = new Size(47, 20);
             label109.TabIndex = 57;
@@ -4581,7 +4581,7 @@
             // cbClassesProficiency
             // 
             cbClassesProficiency.FormattingEnabled = true;
-            cbClassesProficiency.Location = new Point(490, 45);
+            cbClassesProficiency.Location = new Point(810, 47);
             cbClassesProficiency.Margin = new Padding(3, 4, 3, 4);
             cbClassesProficiency.Name = "cbClassesProficiency";
             cbClassesProficiency.Size = new Size(171, 28);
@@ -4590,7 +4590,7 @@
             // cbRacesProficiency
             // 
             cbRacesProficiency.FormattingEnabled = true;
-            cbRacesProficiency.Location = new Point(710, 45);
+            cbRacesProficiency.Location = new Point(1030, 47);
             cbRacesProficiency.Margin = new Padding(3, 4, 3, 4);
             cbRacesProficiency.Name = "cbRacesProficiency";
             cbRacesProficiency.Size = new Size(186, 28);
@@ -4599,7 +4599,7 @@
             // t
             // 
             t.AutoSize = true;
-            t.Location = new Point(373, 24);
+            t.Location = new Point(546, 24);
             t.Name = "t";
             t.Size = new Size(40, 20);
             t.TabIndex = 53;
@@ -4607,10 +4607,10 @@
             // 
             // tbTypeProficiency
             // 
-            tbTypeProficiency.Location = new Point(376, 48);
+            tbTypeProficiency.Location = new Point(549, 48);
             tbTypeProficiency.Margin = new Padding(3, 4, 3, 4);
             tbTypeProficiency.Name = "tbTypeProficiency";
-            tbTypeProficiency.Size = new Size(73, 27);
+            tbTypeProficiency.Size = new Size(181, 27);
             tbTypeProficiency.TabIndex = 52;
             // 
             // label106
@@ -4625,7 +4625,7 @@
             // label107
             // 
             label107.AutoSize = true;
-            label107.Location = new Point(82, 24);
+            label107.Location = new Point(255, 24);
             label107.Name = "label107";
             label107.Size = new Size(49, 20);
             label107.TabIndex = 50;
@@ -4636,12 +4636,12 @@
             tbIndexProficiency.Location = new Point(19, 48);
             tbIndexProficiency.Margin = new Padding(3, 4, 3, 4);
             tbIndexProficiency.Name = "tbIndexProficiency";
-            tbIndexProficiency.Size = new Size(41, 27);
+            tbIndexProficiency.Size = new Size(185, 27);
             tbIndexProficiency.TabIndex = 49;
             // 
             // tbNameProficiency
             // 
-            tbNameProficiency.Location = new Point(85, 48);
+            tbNameProficiency.Location = new Point(258, 48);
             tbNameProficiency.Margin = new Padding(3, 4, 3, 4);
             tbNameProficiency.Name = "tbNameProficiency";
             tbNameProficiency.Size = new Size(252, 27);
@@ -6450,7 +6450,7 @@
         public RichTextBox rtbDescriptionSkills;
         public Button btBuscarAbilityScore;
         public TextBox tbFiltrarAbilityScore;
-        public Button btModificarAbilityScore;
+        public Button tbModificarAbilityScore;
         private Label label176;
         public DataGridView dgvAbilityScore;
         public Button btEliminarAbilityScore;
@@ -6662,11 +6662,11 @@
         public Button btInsertarMagicSchools;
         public DataGridView dgvMagicSchools;
         public TextBox tbDescriptionMagicSchools;
-        public Button tbEliminarProficiency;
-        public Button tbModificarProficiency;
+        public Button btEliminarProficiency;
+        public Button btModificarProficiency;
         public Button btBuscarProficiency;
         public TextBox tbFiltrarProficiency;
-        public Button tbInsertarProficiency;
+        public Button btInsertarProficiency;
         public DataGridView dgvProficiency;
         public Label label111;
         public Label label110;

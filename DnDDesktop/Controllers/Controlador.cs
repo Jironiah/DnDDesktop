@@ -232,7 +232,7 @@ namespace DnDDesktop.Controllers
             f.cbRacesProficiency.DataSource = proficiencies?.SelectMany(a => a.Races)?.ToList();
             f.cbRacesProficiency.DisplayMember = "Name";
             //f.dgvReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
-            f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
+            f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference)?.ToList();
             f.cbReferenceProficiency.DisplayMember = "Name";
         }
         private void InitListeners()
@@ -242,7 +242,7 @@ namespace DnDDesktop.Controllers
             f.btInsertarAbilityScore.MouseUp += btInsertarAbilityScore_MouseUp;
             f.btBuscarAbilityScore.Click += BtBuscarAbilityScore_Click;
             f.btEliminarAbilityScore.Click += BtEliminarAbilityScore_Click;
-            f.btModificarAbilityScore.Click += BtModificarAbilityScore_Click;
+            f.tbModificarAbilityScore.Click += BtModificarAbilityScore_Click;
             f.dgvAbilityScore.SelectionChanged += DgvAbilityScore_SelectionChanged;
             //Alignments
             f.btInsertarAlignments.Click += BtInsertarAlignments_Click;
@@ -336,11 +336,8 @@ namespace DnDDesktop.Controllers
             //Proficiency
             f.dgvProficiency.SelectionChanged += DgvProficiency_SelectionChanged;
             f.btBuscarProficiency.Click += BtBuscarProficiency_Click;
+            f.btInsertarProficiency.Click += BtInsertarProficiency_Click;
         }
-
-
-
-
 
         //AbilityScore
 
@@ -4253,5 +4250,36 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        private void BtInsertarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Proficiency proficiencyInsertar = new Proficiency();
+                proficiencyInsertar.Index = f.tbIndexProficiency.Text;
+                proficiencyInsertar.Name = f.tbNameProficiency.Text;
+                proficiencyInsertar.Type = f.tbTypeProficiency.Text;
+
+                List<From> classesList = new List<From>();
+                From classes = (From)f.cbClassesProficiency.SelectedItem;
+                classesList.Add(classes);
+                proficiencyInsertar.Classes = classesList.ToArray();
+
+                List<From> racesList = new List<From>();
+                From races = (From)f.cbRacesProficiency.SelectedItem;
+                racesList.Add(races);
+                proficiencyInsertar.Races = racesList.ToArray();
+                proficiencyInsertar.Reference = (From)f.cbReferenceProficiency.SelectedItem;
+                ProficiencyRepository.CreateProficiency(proficiencyInsertar);
+                MessageBox.Show("Has insertado Proficiency");
+
+                LoadDataProficiency();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
     }
 }
+

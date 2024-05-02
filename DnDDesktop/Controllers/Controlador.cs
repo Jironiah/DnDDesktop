@@ -3980,6 +3980,14 @@ namespace DnDDesktop.Controllers
                         MessageBox.Show("Has eliminado " + f.tbFiltrarMagicItems.Text.ToString());
                         LoadDataMagicItems();
                     }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
             }
             catch (Exception ex)
@@ -4017,6 +4025,14 @@ namespace DnDDesktop.Controllers
                         MessageBox.Show("Has modificado " + f.tbFiltrarMagicItems.Text.ToString());
                         LoadDataMagicItems();
                     }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
             }
             catch (Exception ex)
@@ -4067,6 +4083,30 @@ namespace DnDDesktop.Controllers
         {
             try
             {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicSchools.Text))
+                {
+                    string idBuscar = magicSchools.Where(a => a.Index.Equals(f.tbFiltrarMagicSchools.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        MagicSchool magicSchoolModificar = new MagicSchool();
+                        magicSchoolModificar.Id = idBuscar;
+                        magicSchoolModificar.Index = f.tbIndexMagicSchools.Text;
+                        magicSchoolModificar.Name = f.tbNameMagicSchools.Text;
+                        magicSchoolModificar.Description = f.tbDescriptionMagicSchools.Text;
+                        MagicSchoolRepository.UpdateMagicSchoole(magicSchoolModificar);
+                        MessageBox.Show("Has modificado MagicSchool");
+                        LoadDataMagicSchools();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
 
             }
             catch (Exception ex)

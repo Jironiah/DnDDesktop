@@ -256,6 +256,16 @@ namespace DnDDesktop.Controllers
             f.dgvAbilityBonusOptionFromRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.FirstOrDefault())?.ToList();
             f.dgvAbilityBonusOptionFromRace.Columns["AbilityScore"].Visible = false;
             f.dgvAbilityBonusOptionsAbilityScoreRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.Select(a => a.AbilityScore).FirstOrDefault())?.ToList();
+            f.dgvAbilityBonusRace.DataSource = races?.Select(a => a.AbilityBonus?.FirstOrDefault())?.ToList();
+            f.dgvAbilityBonusRace.Columns["AbilityScore"].Visible = false;
+            f.cbAbilityBonusAbilityScoreRace.DataSource = races?.FirstOrDefault()?.AbilityBonus?.Select(a => a.AbilityScore).ToList();
+            f.cbAbilityBonusAbilityScoreRace.DisplayMember = "Name";
+            f.dgvLanguageOptionsRace.DataSource = races?.Select(a => a.LanguageOptions).ToList();
+            f.dgvLanguageOptionsFromRace.DataSource = races?.Select(a=>a.LanguageOptions?.From?.FirstOrDefault())?.ToList();
+            f.dgvStartingProficienciesOptionsRace.DataSource = races?.Select(a=>a.StartingProficienciesOptions).ToList();
+            f.cbStartingProficienciesOptionsFromRace.DataSource = races?.FirstOrDefault()?.StartingProficienciesOptions?.From;
+            f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
+
         }
         private void InitListeners()
         {

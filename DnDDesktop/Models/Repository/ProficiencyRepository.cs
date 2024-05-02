@@ -7,31 +7,31 @@ namespace DnDDesktop.Models.Repository
 {
     public class ProficiencyRepository
     {
-        string urlEProficiency = "https://localhost:7153/api/Proficiency/";
+        string urlProficiency = "https://localhost:7153/api/Proficiency/";
 
         public List<Proficiency> GetProficiencies()
         {
-            return MakeRequest<List<Proficiency>>(urlEProficiency, null, "GET", "application/json");
+            return MakeRequest<List<Proficiency>>(urlProficiency, null, "GET", "application/json");
         }
 
         public Proficiency GetProficiency(string id)
         {
-            return MakeRequest<Proficiency>(urlEProficiency + id, null, "GET", "application/json");
+            return MakeRequest<Proficiency>(urlProficiency + id, null, "GET", "application/json");
         }
 
         public Proficiency CreateProficiency(Proficiency proficiency)
         {
-            return MakeRequest<Proficiency>(urlEProficiency, proficiency, "POST", "application/json");
+            return MakeRequest<Proficiency>(urlProficiency, proficiency, "POST", "application/json");
         }
 
         public Proficiency UpdateProficiency(Proficiency proficiency)
         {
-            return MakeRequest<Proficiency>(urlEProficiency + proficiency.Id, proficiency, "PUT", "application/json");
+            return MakeRequest<Proficiency>(urlProficiency + proficiency.Id, proficiency, "PUT", "application/json");
         }
 
         public Proficiency DeleteProficiency(string id)
         {
-            return MakeRequest<Proficiency>(urlEProficiency + id, null, "DELETE", "application/json");
+            return MakeRequest<Proficiency>(urlProficiency + id, null, "DELETE", "application/json");
         }
 
         private T MakeRequest<T>(string requestUrl, object JSONRequest, string JSONmethod, string JSONContentType)

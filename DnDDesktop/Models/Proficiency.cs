@@ -8,7 +8,7 @@ namespace DnDDesktop.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
+        public string Id { get; set; } = String.Empty;
 
         [BsonElement("index")]
         public string Index { get; set; } = String.Empty;

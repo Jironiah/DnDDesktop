@@ -4060,6 +4060,36 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+        private void BtBuscarMagicSchools_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicSchools.Text))
+                {
+                    string idBuscar = magicSchools.Where(a => a.Index.Equals(f.tbFiltrarMagicSchools.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        MagicSchool magicSchool = MagicSchoolRepository.GetMagicSchool(idBuscar);
+                        f.tbIndexMagicSchools.Text = magicSchool?.Index;
+                        f.tbNameMagicSchools.Text = magicSchool?.Name;
+                        f.tbDescriptionMagicSchools.Text = magicSchool?.Description;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
 
         private void BtInsertarMagicSchools_Click(object? sender, EventArgs e)
         {
@@ -4119,7 +4149,25 @@ namespace DnDDesktop.Controllers
         {
             try
             {
+                if (!string.IsNullOrEmpty(f.tbFiltrarMagicSchools.Text))
+                {
+                    string idBuscar = magicSchools.Where(a => a.Index.Equals(f.tbFiltrarMagicSchools.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
+                    if (idBuscar != null)
+                    {
+                        MagicSchoolRepository.DeleteMagicSchool(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarMagicSchools.Text);
+                        LoadDataMagicSchools();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {
@@ -4127,16 +4175,6 @@ namespace DnDDesktop.Controllers
             }
         }
 
-        private void BtBuscarMagicSchools_Click(object? sender, EventArgs e)
-        {
-            try
-            {
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Extensions.GetaAllMessages(ex));
-            }
-        }
     }
 }

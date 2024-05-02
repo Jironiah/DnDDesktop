@@ -231,7 +231,6 @@ namespace DnDDesktop.Controllers
             f.cbClassesProficiency.DisplayMember = "Name";
             f.cbRacesProficiency.DataSource = proficiencies?.SelectMany(a => a.Races)?.ToList();
             f.cbRacesProficiency.DisplayMember = "Name";
-            //f.dgvReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference).ToList();
             f.cbReferenceProficiency.DataSource = proficiencies?.Select(a => a.Reference)?.ToList();
             f.cbReferenceProficiency.DisplayMember = "Name";
         }
@@ -338,9 +337,8 @@ namespace DnDDesktop.Controllers
             f.btBuscarProficiency.Click += BtBuscarProficiency_Click;
             f.btInsertarProficiency.Click += BtInsertarProficiency_Click;
             f.btEliminarProficiency.Click += BtEliminarProficiency_Click;
+            f.btModificarProficiency.Click += BtModificarProficiency_Click;
         }
-
-
 
         //AbilityScore
 
@@ -958,12 +956,18 @@ namespace DnDDesktop.Controllers
                 classeInsertar.ProficienciesChoices = new ProficiencyChoiceClasses[] { ProficiencyChoices };
 
                 // SpellCasting
-                InfoClasses SpellCastingInfoName = (InfoClasses)f.dgvSpellCastingInfoNameClasses.CurrentRow.DataBoundItem;
-                classeInsertar.Spellcasting = new SpellcastingClass
+                DataGridViewRow rowSpellCastingInfoName = f.dgvSpellCastingInfoNameClasses.CurrentRow;
+                if (rowSpellCastingInfoName != null)
                 {
-                    Info = new InfoClasses[] { SpellCastingInfoName },
-                    SpellcastingAbility = new From { Name = f.tbSpellCastingAbilityClasses.Text } // Asignación del SpellcastingAbility
-                };
+                    InfoClasses SpellCastingInfoName = (InfoClasses)rowSpellCastingInfoName.DataBoundItem;
+
+                    classeInsertar.Spellcasting = new SpellcastingClass
+                    {
+                        Info = new InfoClasses[] { SpellCastingInfoName },
+                        SpellcastingAbility = new From { Name = f.tbSpellCastingAbilityClasses.Text } // Asignación del SpellcastingAbility
+                    };
+                }
+
 
                 // StartingEquipmentOptionsChooseDesc
                 StartingEquipmentOptionClasses StartingEquipmentOptionsChooseDesc = (StartingEquipmentOptionClasses)f.dgvStartingEquipmentOptionsChooseDescClasses.CurrentRow.DataBoundItem;
@@ -4213,8 +4217,10 @@ namespace DnDDesktop.Controllers
                     f.tbIndexProficiency.Text = proficiency?.Index;
                     f.tbNameProficiency.Text = proficiency?.Name;
                     f.tbTypeProficiency.Text = proficiency?.Type;
-                    f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
-                    f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
+
+                    f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.FirstOrDefault()?.Name);
+
+                    f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.FirstOrDefault()?.Name);
                     f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
                 }
             }
@@ -4231,12 +4237,17 @@ namespace DnDDesktop.Controllers
                     if (idBuscar != null)
                     {
                         Proficiency proficiency = ProficiencyRepository.GetProficiency(idBuscar);
-                        f.tbIndexProficiency.Text = proficiency?.Index;
-                        f.tbNameProficiency.Text = proficiency?.Name;
-                        f.tbTypeProficiency.Text = proficiency?.Type;
-                        f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.Select(a => a.Name)?.FirstOrDefault());
-                        f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.Select(a => a.Name).FirstOrDefault());
-                        f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                        if (proficiency != null)
+                        {
+                            f.tbIndexProficiency.Text = proficiency?.Index;
+                            f.tbNameProficiency.Text = proficiency?.Name;
+                            f.tbTypeProficiency.Text = proficiency?.Type;
+
+                            f.cbClassesProficiency.SelectedIndex = f.cbClassesProficiency.FindString(proficiency?.Classes?.FirstOrDefault()?.Name);
+
+                            f.cbRacesProficiency.SelectedIndex = f.cbRacesProficiency.FindString(proficiency?.Races?.FirstOrDefault()?.Name);
+                            f.cbReferenceProficiency.SelectedIndex = f.cbReferenceProficiency.FindString(proficiency?.Reference?.Name);
+                        }
                     }
                     else
                     {
@@ -4263,15 +4274,39 @@ namespace DnDDesktop.Controllers
                 proficiencyInsertar.Name = f.tbNameProficiency.Text;
                 proficiencyInsertar.Type = f.tbTypeProficiency.Text;
 
+
                 List<From> classesList = new List<From>();
                 From classes = (From)f.cbClassesProficiency.SelectedItem;
-                classesList.Add(classes);
-                proficiencyInsertar.Classes = classesList.ToArray();
+                if (classes != null)
+                {
+                    classesList.Add(classes);
+                    proficiencyInsertar.Classes = classesList.ToArray();
+                }
+                else
+                {
+                    From classeEmtpy = new From();
+                    classeEmtpy.Index = string.Empty;
+                    classeEmtpy.Name = string.Empty;
+                    classesList.Add(classeEmtpy);
+                    proficiencyInsertar.Classes = classesList.ToArray();
+                }
 
                 List<From> racesList = new List<From>();
                 From races = (From)f.cbRacesProficiency.SelectedItem;
-                racesList.Add(races);
-                proficiencyInsertar.Races = racesList.ToArray();
+                if (races != null)
+                {
+                    racesList.Add(races);
+                    proficiencyInsertar.Races = racesList.ToArray();
+                }
+                else
+                {
+                    From racesEmtpy = new From();
+                    racesEmtpy.Index = string.Empty;
+                    racesEmtpy.Name = string.Empty;
+                    racesList.Add(racesEmtpy);
+                    proficiencyInsertar.Races = racesList.ToArray();
+                }
+
                 proficiencyInsertar.Reference = (From)f.cbReferenceProficiency.SelectedItem;
                 ProficiencyRepository.CreateProficiency(proficiencyInsertar);
                 MessageBox.Show("Has insertado Proficiency");
@@ -4305,6 +4340,55 @@ namespace DnDDesktop.Controllers
                 else
                 {
                     MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtModificarProficiency_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarProficiency.Text))
+                {
+                    string idBuscar = proficiencies?.Where(a => a.Index.Equals(f.tbFiltrarProficiency.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Proficiency proficiencyModificar = new Proficiency();
+
+                        proficiencyModificar.Id = idBuscar;
+                        proficiencyModificar.Index = f.tbIndexProficiency.Text;
+                        proficiencyModificar.Name = f.tbNameProficiency.Text;
+                        proficiencyModificar.Type = f.tbTypeProficiency.Text;
+
+                        List<From> classesList = new List<From>();
+                        From classes = (From)f.cbClassesProficiency.SelectedItem;
+                        classesList.Add(classes);
+                        proficiencyModificar.Classes = classesList.ToArray();
+
+                        List<From> racesList = new List<From>();
+                        From races = (From)f.cbRacesProficiency.SelectedItem;
+                        racesList.Add(races);
+                        proficiencyModificar.Races = racesList.ToArray();
+                        proficiencyModificar.Reference = (From)f.cbReferenceProficiency.SelectedItem;
+
+                        ProficiencyRepository.UpdateProficiency(proficiencyModificar);
+
+                        MessageBox.Show("Has modificado " + f.tbFiltrarProficiency.Text.ToString());
+                        LoadDataProficiency();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
                 }
             }
             catch (Exception ex)

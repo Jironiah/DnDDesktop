@@ -82,6 +82,8 @@ namespace DnDDesktop.Controllers
         //Proficiency
         List<Proficiency> proficiencies = new List<Proficiency>();
 
+        //Races
+        List<Race> races = new List<Race>();
 
         public Controlador()
         {

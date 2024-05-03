@@ -261,9 +261,9 @@ namespace DnDDesktop.Controllers
             f.cbAbilityBonusAbilityScoreRace.DataSource = races?.FirstOrDefault()?.AbilityBonus?.Select(a => a.AbilityScore).ToList();
             f.cbAbilityBonusAbilityScoreRace.DisplayMember = "Name";
             f.dgvLanguageOptionsRace.DataSource = races?.Select(a => a.LanguageOptions).ToList();
-            f.dgvLanguageOptionsFromRace.DataSource = races?.Select(a=>a.LanguageOptions?.From?.FirstOrDefault())?.ToList();
-            f.dgvStartingProficienciesOptionsRace.DataSource = races?.Select(a=>a.StartingProficienciesOptions).ToList();
-            f.cbStartingProficienciesOptionsFromRace.DataSource = races?.FirstOrDefault()?.StartingProficienciesOptions?.From;
+            f.dgvLanguageOptionsFromRace.DataSource = races?.Select(a => a.LanguageOptions?.From?.FirstOrDefault())?.ToList();
+            f.dgvStartingProficienciesOptionsRace.DataSource = races?.Select(a => a.StartingProficienciesOptions).ToList();
+            f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(race => race.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
             f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
 
         }

@@ -374,6 +374,7 @@ namespace DnDDesktop.Controllers
             //Races
             f.dgvRaces.SelectionChanged += DgvRaces_SelectionChanged;
             f.btBuscarRaces.Click += BtBuscarRaces_Click;
+            f.btInsertarRaces.Click += BtInsertarRaces_Click;
         }
 
         //AbilityScore
@@ -4453,7 +4454,7 @@ namespace DnDDesktop.Controllers
                     //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
                     //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
                     f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
-                    MessageBox.Show(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                    //MessageBox.Show(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
                     BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
@@ -4695,22 +4696,62 @@ namespace DnDDesktop.Controllers
         {
             try
             {
-                Race raceInsertar = new Race();
-                string index = f.tbIndexRaces.Text;
-                string name = f.tbNameRaces.Text;
-                string age = f.tbAgeRaces.Text;
-                string alignment = f.tbAlignmentRaces.Text;
-                string languageDesc = f.tbLanguageDescRaces.Text;
-                string size = f.tbSizeRaces.Text;
-                string sizeDescription = f.tbSizeDescriptionRaces.Text;
-                int speed = int.Parse(f.tbSpeedRaces.Text);
-                From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
+                if (!string.IsNullOrEmpty(f.tbFiltrarRaces.Text))
+                {
+                    string idBuscar = races.Where(a => a.Index.Equals(f.tbFiltrarRaces.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Race race = RacesRepository.GetRace(idBuscar);
+                        if (race != null)
+                        {
+                            f.tbIndexRaces.Text = race?.Index;
+                            f.tbNameRaces.Text = race?.Name;
+                            f.tbAgeRaces.Text = race?.age;
+                            f.tbAlignmentRaces.Text = race?.Alignment;
+                            f.tbLanguageDescRaces.Text = race?.LanguageDesc;
+                            f.tbSizeRaces.Text = race?.size;
+                            f.tbSizeDescriptionRaces.Text = race?.SizeDescription;
+                            f.tbSpeedRaces.Text = race?.Speed.ToString();
+                            //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
+                            //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
+                            f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                            BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
+        }
+
+        private void BtInsertarRaces_Click(object? sender, EventArgs e)
+        {
+            Race raceInsertar = new Race();
+            string index = f.tbIndexRaces.Text;
+            string name = f.tbNameRaces.Text;
+            string age = f.tbAgeRaces.Text;
+            string alignment = f.tbAlignmentRaces.Text;
+            string languageDesc = f.tbLanguageDescRaces.Text;
+            string size = f.tbSizeRaces.Text;
+            string sizeDescription = f.tbSizeDescriptionRaces.Text;
+            int speed = int.Parse(f.tbSpeedRaces.Text);
+            From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
         }
     }
 }

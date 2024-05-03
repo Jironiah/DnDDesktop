@@ -256,16 +256,16 @@ namespace DnDDesktop.Controllers
             f.dgvAbilityBonusOptionFromRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.FirstOrDefault())?.ToList();
             f.dgvAbilityBonusOptionFromRace.Columns["AbilityScore"].Visible = false;
             f.dgvAbilityBonusOptionsAbilityScoreRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.Select(a => a.AbilityScore).FirstOrDefault())?.ToList();
-            f.dgvAbilityBonusRace.DataSource = races?.Select(a => a.AbilityBonus?.FirstOrDefault())?.ToList();
-            f.dgvAbilityBonusRace.Columns["AbilityScore"].Visible = false;
+            //f.dgvAbilityBonusRace.DataSource = races?.Select(a => a.AbilityBonus?.FirstOrDefault())?.ToList();
+            //f.dgvAbilityBonusRace.Columns["AbilityScore"].Visible = false;
             f.cbAbilityBonusAbilityScoreRace.DataSource = races?.FirstOrDefault()?.AbilityBonus?.Select(a => a.AbilityScore).ToList();
             f.cbAbilityBonusAbilityScoreRace.DisplayMember = "Name";
             f.dgvLanguageOptionsRace.DataSource = races?.Select(a => a.LanguageOptions).ToList();
-            f.dgvLanguageOptionsFromRace.DataSource = races?.Select(a => a.LanguageOptions?.From?.FirstOrDefault())?.ToList();
             f.dgvStartingProficienciesOptionsRace.DataSource = races?.Select(a => a.StartingProficienciesOptions).ToList();
-            f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(race => race.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
+            f.cbLanguageOptionsFromRace.DataSource = races?.SelectMany(a => a.LanguageOptions?.From ?? Enumerable.Empty<From>())?.ToList();
+            f.cbLanguageOptionsFromRace.DisplayMember = "Name";
+            f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(a => a.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
             f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
-
         }
         private void InitListeners()
         {
@@ -371,7 +371,11 @@ namespace DnDDesktop.Controllers
             f.btInsertarProficiency.Click += BtInsertarProficiency_Click;
             f.btEliminarProficiency.Click += BtEliminarProficiency_Click;
             f.btModificarProficiency.Click += BtModificarProficiency_Click;
+            //Races
+            f.dgvRaces.SelectionChanged += DgvRaces_SelectionChanged;
         }
+
+
 
         //AbilityScore
 
@@ -4429,6 +4433,265 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        //Races
+        private void DgvRaces_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvRaces.CurrentRow;
+                if (row != null)
+                {
+                    Race race = RacesRepository.GetRace(((Race)row.DataBoundItem).Id);
+                    f.tbIndexRaces.Text = race?.Index;
+                    f.tbNameRaces.Text = race?.Name;
+                    f.tbAgeRaces.Text = race?.age;
+                    f.tbAlignmentRaces.Text = race?.Alignment;
+                    f.tbLanguageDescRaces.Text = race?.LanguageDesc;
+                    f.tbSizeRaces.Text = race?.size;
+                    f.tbSizeDescriptionRaces.Text = race?.SizeDescription;
+                    f.tbSpeedRaces.Text = race?.Speed.ToString();
+                    //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
+                    //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
+                    f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                    MessageBox.Show(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                    BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
+                    BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
+                    BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        private void BuscarYSeleccionarAbilityBonusOption(AbilityBonusOptionRace claseBuscar)
+        {
+            Race clase = races?.FirstOrDefault(a => CompareAbilityBonusOptions(a.AbilityBonusOptions, claseBuscar));
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = races.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvAbilityBonusOptionRace.Rows[rowIndex].Selected = true;
+                    f.dgvAbilityBonusOptionRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.");
+            }
+        }
+
+        private bool CompareAbilityBonusOptions(AbilityBonusOptionRace? a, AbilityBonusOptionRace? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            // Comparar Choose y Type
+            if (a.Choose != b.Choose || a.Type != b.Type)
+                return false;
+
+            // Comparar las listas From
+            if (!CompareFromLists(a.From, b.From))
+                return false;
+
+            return true;
+        }
+
+        private bool CompareFromLists(OptionsRace[]? a, OptionsRace[]? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null || a.Length != b.Length)
+                return false;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (!CompareOptionsRace(a[i], b[i]))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool CompareOptionsRace(OptionsRace? a, OptionsRace? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            // Comparar los atributos de OptionsRace
+            if (a.Bonus != b.Bonus || a.OptionType != b.OptionType)
+                return false;
+
+            // Comparar AbilityScore
+            if (!CompareFrom(a.AbilityScore, b.AbilityScore))
+                return false;
+
+            return true;
+        }
+
+        private bool CompareFrom(From? a, From? b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            // Comparar Index y Name de From
+            if (a.Index != b.Index || a.Name != b.Name)
+                return false;
+
+            return true;
+        }
+
+        private void BuscarYSeleccionarAbilityBonusOptionFrom(AbilityBonusOptionRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                // Buscar el objeto Race que contiene el AbilityBonusOptionRace dado
+                Race race = races?.FirstOrDefault(a =>
+                    CompareAbilityBonusOptionsFrom(a.AbilityBonusOptions, claseBuscar)
+                );
+
+                if (race != null && race.AbilityBonusOptions != null && race.AbilityBonusOptions.From != null && claseBuscar?.From != null)
+                {
+                    // Buscar el objeto OptionsRace que coincide con el primer elemento de From de AbilityBonusOptionRace
+                    OptionsRace optionRace = race.AbilityBonusOptions?.From?.FirstOrDefault(a =>
+                        CompareOptionsRace(a, claseBuscar?.From?.FirstOrDefault())
+                    );
+
+                    if (optionRace != null)
+                    {
+                        // Encontrado, ahora seleccionamos la fila en el DataGridView
+                        int rowIndex = f.dgvAbilityBonusOptionFromRace.Rows
+                            .Cast<DataGridViewRow>()
+                            .FirstOrDefault(row => row.DataBoundItem == optionRace)?
+                            .Index ?? -1;
+
+                        if (rowIndex != -1)
+                        {
+                            // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                            f.dgvAbilityBonusOptionFromRace.Rows[rowIndex].Selected = true;
+                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
+            }
+            else
+            {
+                f.dgvAbilityBonusOptionFromRace.Rows[0].Selected = true;
+                f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = f.dgvAbilityBonusOptionFromRace.Rows[0].Index; // Desplazamos el DataGridView a la fila seleccionada
+            }
+
+        }
+
+        private bool CompareAbilityBonusOptionsFrom(AbilityBonusOptionRace a, AbilityBonusOptionRace b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            return a.Choose == b.Choose && a.Type == b.Type &&
+                CompareOptionsRaceArray(a.From, b.From);
+        }
+
+        private bool CompareOptionsRaceArray(OptionsRace[] a, OptionsRace[] b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null || a.Length != b.Length)
+                return false;
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (!CompareFromOptionsRace(a[i], b[i]))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool CompareFromOptionsRace(OptionsRace a, OptionsRace b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            return a.Bonus == b.Bonus && a.OptionType == b.OptionType &&
+                CompareFrom2(a.AbilityScore, b.AbilityScore);
+        }
+
+        private bool CompareFrom2(From a, From b)
+        {
+            if (a == null && b == null)
+                return true;
+
+            if (a == null || b == null)
+                return false;
+
+            return a.Name == b.Name && a.Index == b.Index;
+        }
+
+        private void BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(AbilityBonusOptionRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                // Buscar el objeto Race que contiene el AbilityBonusOptionRace dado
+                Race race = races?.FirstOrDefault(a =>
+                    CompareAbilityBonusOptions(a.AbilityBonusOptions, claseBuscar)
+                );
+
+                if (race != null && race.AbilityBonusOptions != null && race.AbilityBonusOptions.From != null && claseBuscar?.From != null)
+                {
+                    // Buscar el objeto OptionsRace que coincide con el primer elemento de From de AbilityBonusOptionRace
+                    OptionsRace optionRace = race.AbilityBonusOptions?.From?.FirstOrDefault(a =>
+                        CompareOptionsRace(a, claseBuscar?.From?.FirstOrDefault())
+                    );
+
+                    if (optionRace != null)
+                    {
+                        // Encontrado, ahora seleccionamos la fila en el DataGridView
+                        int rowIndex = f.dgvAbilityBonusOptionFromRace.Rows
+                            .Cast<DataGridViewRow>()
+                            .FirstOrDefault(row => row.DataBoundItem == optionRace)?
+                            .Index ?? -1;
+
+                        if (rowIndex != -1)
+                        {
+                            // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                            f.dgvAbilityBonusOptionFromRace.Rows[rowIndex].Selected = true;
+                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
+            }
+
+        }
     }
 }
+
 

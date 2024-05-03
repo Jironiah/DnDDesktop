@@ -410,7 +410,6 @@
             tbIndexProficiency = new TextBox();
             tbNameProficiency = new TextBox();
             Races = new TabPage();
-            dgvLanguageOptionsFromRace = new DataGridView();
             dgvAbilityBonusOptionsAbilityScoreRace = new DataGridView();
             cbAbilityBonusAbilityScoreRace = new ComboBox();
             label205 = new Label();
@@ -421,8 +420,6 @@
             label197 = new Label();
             dgvLanguageOptionsRace = new DataGridView();
             label196 = new Label();
-            label125 = new Label();
-            dgvAbilityBonusRace = new DataGridView();
             label123 = new Label();
             label121 = new Label();
             dgvAbilityBonusOptionFromRace = new DataGridView();
@@ -566,6 +563,7 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
+            cbLanguageOptionsFromRace = new ComboBox();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -629,11 +627,9 @@
             Proficiencies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProficiency).BeginInit();
             Races.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvLanguageOptionsFromRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsAbilityScoreRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLanguageOptionsRace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRaces).BeginInit();
@@ -4672,7 +4668,7 @@
             // 
             // Races
             // 
-            Races.Controls.Add(dgvLanguageOptionsFromRace);
+            Races.Controls.Add(cbLanguageOptionsFromRace);
             Races.Controls.Add(dgvAbilityBonusOptionsAbilityScoreRace);
             Races.Controls.Add(cbAbilityBonusAbilityScoreRace);
             Races.Controls.Add(label205);
@@ -4683,8 +4679,6 @@
             Races.Controls.Add(label197);
             Races.Controls.Add(dgvLanguageOptionsRace);
             Races.Controls.Add(label196);
-            Races.Controls.Add(label125);
-            Races.Controls.Add(dgvAbilityBonusRace);
             Races.Controls.Add(label123);
             Races.Controls.Add(label121);
             Races.Controls.Add(dgvAbilityBonusOptionFromRace);
@@ -4728,21 +4722,6 @@
             Races.Text = "Races";
             Races.UseVisualStyleBackColor = true;
             // 
-            // dgvLanguageOptionsFromRace
-            // 
-            dgvLanguageOptionsFromRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvLanguageOptionsFromRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvLanguageOptionsFromRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLanguageOptionsFromRace.Location = new Point(1219, 308);
-            dgvLanguageOptionsFromRace.MultiSelect = false;
-            dgvLanguageOptionsFromRace.Name = "dgvLanguageOptionsFromRace";
-            dgvLanguageOptionsFromRace.ReadOnly = true;
-            dgvLanguageOptionsFromRace.RowHeadersWidth = 51;
-            dgvLanguageOptionsFromRace.RowTemplate.Height = 29;
-            dgvLanguageOptionsFromRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLanguageOptionsFromRace.Size = new Size(342, 135);
-            dgvLanguageOptionsFromRace.TabIndex = 202;
-            // 
             // dgvAbilityBonusOptionsAbilityScoreRace
             // 
             dgvAbilityBonusOptionsAbilityScoreRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -4761,7 +4740,7 @@
             // cbAbilityBonusAbilityScoreRace
             // 
             cbAbilityBonusAbilityScoreRace.FormattingEnabled = true;
-            cbAbilityBonusAbilityScoreRace.Location = new Point(418, 308);
+            cbAbilityBonusAbilityScoreRace.Location = new Point(1210, 127);
             cbAbilityBonusAbilityScoreRace.Margin = new Padding(3, 4, 3, 4);
             cbAbilityBonusAbilityScoreRace.Name = "cbAbilityBonusAbilityScoreRace";
             cbAbilityBonusAbilityScoreRace.Size = new Size(121, 28);
@@ -4770,7 +4749,7 @@
             // label205
             // 
             label205.AutoSize = true;
-            label205.Location = new Point(949, 516);
+            label205.Location = new Point(1210, 284);
             label205.Name = "label205";
             label205.Size = new Size(43, 20);
             label205.TabIndex = 199;
@@ -4779,7 +4758,7 @@
             // cbStartingProficienciesOptionsFromRace
             // 
             cbStartingProficienciesOptionsFromRace.FormattingEnabled = true;
-            cbStartingProficienciesOptionsFromRace.Location = new Point(949, 540);
+            cbStartingProficienciesOptionsFromRace.Location = new Point(1210, 308);
             cbStartingProficienciesOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
             cbStartingProficienciesOptionsFromRace.Name = "cbStartingProficienciesOptionsFromRace";
             cbStartingProficienciesOptionsFromRace.Size = new Size(149, 28);
@@ -4788,7 +4767,7 @@
             // label201
             // 
             label201.AutoSize = true;
-            label201.Location = new Point(565, 517);
+            label201.Location = new Point(805, 285);
             label201.Name = "label201";
             label201.Size = new Size(196, 20);
             label201.TabIndex = 191;
@@ -4799,7 +4778,7 @@
             dgvStartingProficienciesOptionsRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvStartingProficienciesOptionsRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvStartingProficienciesOptionsRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStartingProficienciesOptionsRace.Location = new Point(565, 540);
+            dgvStartingProficienciesOptionsRace.Location = new Point(805, 308);
             dgvStartingProficienciesOptionsRace.MultiSelect = false;
             dgvStartingProficienciesOptionsRace.Name = "dgvStartingProficienciesOptionsRace";
             dgvStartingProficienciesOptionsRace.ReadOnly = true;
@@ -4812,7 +4791,7 @@
             // label200
             // 
             label200.AutoSize = true;
-            label200.Location = new Point(1219, 285);
+            label200.Location = new Point(418, 285);
             label200.Name = "label200";
             label200.Size = new Size(160, 20);
             label200.TabIndex = 189;
@@ -4821,7 +4800,7 @@
             // label197
             // 
             label197.AutoSize = true;
-            label197.Location = new Point(835, 285);
+            label197.Location = new Point(19, 285);
             label197.Name = "label197";
             label197.Size = new Size(126, 20);
             label197.TabIndex = 182;
@@ -4832,7 +4811,7 @@
             dgvLanguageOptionsRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvLanguageOptionsRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvLanguageOptionsRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLanguageOptionsRace.Location = new Point(835, 308);
+            dgvLanguageOptionsRace.Location = new Point(19, 308);
             dgvLanguageOptionsRace.MultiSelect = false;
             dgvLanguageOptionsRace.Name = "dgvLanguageOptionsRace";
             dgvLanguageOptionsRace.ReadOnly = true;
@@ -4845,35 +4824,11 @@
             // label196
             // 
             label196.AutoSize = true;
-            label196.Location = new Point(418, 285);
+            label196.Location = new Point(1210, 104);
             label196.Name = "label196";
             label196.Size = new Size(172, 20);
             label196.TabIndex = 180;
             label196.Text = "AbilityBonusAbilityScore";
-            // 
-            // label125
-            // 
-            label125.AutoSize = true;
-            label125.Location = new Point(19, 285);
-            label125.Name = "label125";
-            label125.Size = new Size(132, 20);
-            label125.TabIndex = 176;
-            label125.Text = "AbilityBonusBonus";
-            // 
-            // dgvAbilityBonusRace
-            // 
-            dgvAbilityBonusRace.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAbilityBonusRace.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAbilityBonusRace.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAbilityBonusRace.Location = new Point(19, 308);
-            dgvAbilityBonusRace.MultiSelect = false;
-            dgvAbilityBonusRace.Name = "dgvAbilityBonusRace";
-            dgvAbilityBonusRace.ReadOnly = true;
-            dgvAbilityBonusRace.RowHeadersWidth = 51;
-            dgvAbilityBonusRace.RowTemplate.Height = 29;
-            dgvAbilityBonusRace.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAbilityBonusRace.Size = new Size(342, 135);
-            dgvAbilityBonusRace.TabIndex = 175;
             // 
             // label123
             // 
@@ -6261,6 +6216,15 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
+            // cbLanguageOptionsFromRace
+            // 
+            cbLanguageOptionsFromRace.FormattingEnabled = true;
+            cbLanguageOptionsFromRace.Location = new Point(418, 308);
+            cbLanguageOptionsFromRace.Margin = new Padding(3, 4, 3, 4);
+            cbLanguageOptionsFromRace.Name = "cbLanguageOptionsFromRace";
+            cbLanguageOptionsFromRace.Size = new Size(149, 28);
+            cbLanguageOptionsFromRace.TabIndex = 202;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -6352,11 +6316,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvProficiency).EndInit();
             Races.ResumeLayout(false);
             Races.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvLanguageOptionsFromRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionsAbilityScoreRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStartingProficienciesOptionsRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvLanguageOptionsRace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionFromRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRaces).EndInit();
@@ -6914,11 +6876,9 @@
         public Label label113;
         public Label label112;
         public Label label108;
-        public Label label125;
-        public DataGridView dgvAbilityBonusRace;
         public ComboBox cbAbilityBonusAbilityScoreRace;
         public DataGridView dgvAbilityBonusOptionsAbilityScoreRace;
-        public DataGridView dgvLanguageOptionsFromRace;
+        public ComboBox cbLanguageOptionsFromRace;
     }
 }
 

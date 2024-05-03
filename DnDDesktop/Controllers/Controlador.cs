@@ -373,9 +373,8 @@ namespace DnDDesktop.Controllers
             f.btModificarProficiency.Click += BtModificarProficiency_Click;
             //Races
             f.dgvRaces.SelectionChanged += DgvRaces_SelectionChanged;
+            f.btBuscarRaces.Click += BtBuscarRaces_Click;
         }
-
-
 
         //AbilityScore
 
@@ -4690,6 +4689,28 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
             }
 
+        }
+
+        private void BtBuscarRaces_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Race raceInsertar = new Race();
+                string index = f.tbIndexRaces.Text;
+                string name = f.tbNameRaces.Text;
+                string age = f.tbAgeRaces.Text;
+                string alignment = f.tbAlignmentRaces.Text;
+                string languageDesc = f.tbLanguageDescRaces.Text;
+                string size = f.tbSizeRaces.Text;
+                string sizeDescription = f.tbSizeDescriptionRaces.Text;
+                int speed = int.Parse(f.tbSpeedRaces.Text);
+                From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
     }
 }

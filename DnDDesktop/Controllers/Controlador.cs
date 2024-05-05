@@ -393,6 +393,7 @@ namespace DnDDesktop.Controllers
             f.btModificarRaces.Click += BtModificarRaces_Click;
             //Skill
             f.dgvSkills.SelectionChanged += DgvSkills_SelectionChanged;
+            f.btBuscarSkills.Click += BtBuscarSkills_Click;
         }
 
         //AbilityScore
@@ -5233,6 +5234,43 @@ namespace DnDDesktop.Controllers
                     f.tbNameSkills.Text = skill?.Name;
                     f.rtbDescriptionSkills.Text = skill?.Desc?.FirstOrDefault();
                     f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtBuscarSkills_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarSkills.Text))
+                {
+                    string idBuscar = skills.Where(a => a.Index.Equals(f.tbFiltrarSkills.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Skill skill = SkillRepository.GetSkill(idBuscar);
+                        if (skill != null)
+                        {
+                            f.tbIndexSkills.Text = skill?.Index;
+                            f.tbNameSkills.Text = skill?.Name;
+                            f.rtbDescriptionSkills.Text = skill?.Desc?.FirstOrDefault();
+                            f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
             }
             catch (Exception ex)

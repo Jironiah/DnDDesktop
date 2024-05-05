@@ -374,6 +374,9 @@ namespace DnDDesktop.Controllers
             //Races
             f.dgvRaces.SelectionChanged += DgvRaces_SelectionChanged;
             f.btBuscarRaces.Click += BtBuscarRaces_Click;
+            f.btInsertarRaces.Click += BtInsertarRaces_Click;
+            f.btEliminarRaces.Click += BtEliminarRaces_Click;
+            f.btModificarRaces.Click += BtModificarRaces_Click;
         }
 
         //AbilityScore
@@ -4394,9 +4397,9 @@ namespace DnDDesktop.Controllers
 
                     if (idBuscar != null)
                     {
-                        Proficiency proficiencyModificar = new Proficiency();
+                        Proficiency proficiencyModificar = ProficiencyRepository.GetProficiency(idBuscar);
 
-                        proficiencyModificar.Id = idBuscar;
+                        //proficiencyModificar.Id = idBuscar;
                         proficiencyModificar.Index = f.tbIndexProficiency.Text;
                         proficiencyModificar.Name = f.tbNameProficiency.Text;
                         proficiencyModificar.Type = f.tbTypeProficiency.Text;
@@ -4453,11 +4456,16 @@ namespace DnDDesktop.Controllers
                     //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
                     //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
                     f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
-                    MessageBox.Show(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                    f.cbStartingProficienciesRaces.SelectedIndex = f.cbStartingProficienciesRaces.FindString(race?.StartingProficiencies?.FirstOrDefault()?.Name);
+                    f.cbSubracesRaces.SelectedIndex = f.cbSubracesRaces.FindString(race?.Subraces?.FirstOrDefault()?.Name);
+                    f.cbTraitsRaces.SelectedIndex = f.cbTraitsRaces.FindString(race?.Traits?.FirstOrDefault()?.Name);
+                    f.cbAbilityBonusAbilityScoreRace.SelectedIndex = f.cbAbilityBonusAbilityScoreRace.FindString(race?.AbilityBonus?.FirstOrDefault()?.AbilityScore?.Name);
+                    f.cbStartingProficienciesOptionsFromRace.SelectedIndex = f.cbStartingProficienciesOptionsFromRace.FindString(race?.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name);
                     BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
-
+                    BuscarYSeleccionarLanguageOptions(race?.LanguageOptions);
+                    BuscarYSeleccionarStartingProficienciesOptions(race?.StartingProficienciesOptions);
                 }
             }
             catch (Exception ex)
@@ -4679,19 +4687,132 @@ namespace DnDDesktop.Controllers
                         if (rowIndex != -1)
                         {
                             // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
-                            f.dgvAbilityBonusOptionFromRace.Rows[rowIndex].Selected = true;
-                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                            f.dgvAbilityBonusOptionsAbilityScoreRace.Rows[rowIndex].Selected = true;
+                            f.dgvAbilityBonusOptionsAbilityScoreRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
                             return;
                         }
                     }
                 }
 
-                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.AbilityScore");
+            }
+            else
+            {
+                f.dgvAbilityBonusOptionsAbilityScoreRace.Rows[0].Selected = true;
+                f.dgvAbilityBonusOptionsAbilityScoreRace.FirstDisplayedScrollingRowIndex = f.dgvAbilityBonusOptionsAbilityScoreRace.SelectedRows[0].Index;
             }
 
         }
+        private void BuscarYSeleccionarStartingProficienciesOptions(StartingProficiencyOptionsRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                Race race = races?.FirstOrDefault(a => a.StartingProficienciesOptions?.Choose == claseBuscar?.Choose && a.StartingProficienciesOptions?.Description == claseBuscar?.Description &&
+                a.StartingProficienciesOptions?.Type == claseBuscar?.Type && a.StartingProficienciesOptions?.From?.FirstOrDefault()?.Index == claseBuscar?.From?.FirstOrDefault()?.Index &&
+                a.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name == claseBuscar?.From?.FirstOrDefault()?.Name);
+                if (race != null && race.StartingProficienciesOptions != null && race.StartingProficienciesOptions.From != null && claseBuscar != null && claseBuscar.From != null)
+                {
+                    StartingProficiencyOptionsRace startingProficiencyOptionsRace = race.StartingProficienciesOptions;
+
+                    if (startingProficiencyOptionsRace != null)
+                    {
+                        int rowIndex = f.dgvStartingProficienciesOptionsRace.Rows.Cast<DataGridViewRow>().FirstOrDefault(a => a.DataBoundItem == startingProficiencyOptionsRace)?.Index ?? -1;
+                        if (rowIndex != null)
+                        {
+                            f.dgvStartingProficienciesOptionsRace.Rows[rowIndex].Selected = true;
+                            f.dgvStartingProficienciesOptionsRace.FirstDisplayedScrollingRowIndex = rowIndex;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BuscarYSeleccionarLanguageOptions(LanguageOptionsRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                Race race = races?.FirstOrDefault(a => a.LanguageOptions?.Type == claseBuscar?.Type && a.LanguageOptions?.Choose == claseBuscar?.Choose &&
+                    a.LanguageOptions?.From?.FirstOrDefault()?.Name == claseBuscar?.From?.FirstOrDefault()?.Name && a.LanguageOptions?.From?.FirstOrDefault()?.Index == claseBuscar?.From?.FirstOrDefault()?.Index);
+
+                if (race != null && race.LanguageOptions != null && race.LanguageOptions.Choose != null && race.LanguageOptions.From != null && race.LanguageOptions.Type != null &&
+                    claseBuscar?.Type != null && claseBuscar?.From != null && claseBuscar?.Choose != null)
+                {
+                    LanguageOptionsRace languageOptions = race.LanguageOptions;
+
+                    if (languageOptions != null)
+                    {
+                        int rowIndex = f.dgvLanguageOptionsRace.Rows.Cast<DataGridViewRow>().FirstOrDefault(a => a.DataBoundItem == languageOptions)?.Index ?? -1;
+
+                        if (rowIndex != -1)
+                        {
+                            f.dgvLanguageOptionsRace.Rows[rowIndex].Selected = true;
+                            f.dgvLanguageOptionsRace.FirstDisplayedScrollingRowIndex = rowIndex;
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                f.dgvLanguageOptionsRace.Rows[0].Selected = true;
+                f.dgvLanguageOptionsRace.FirstDisplayedScrollingRowIndex = f.dgvLanguageOptionsRace.Rows[0].Index;
+            }
+        }
 
         private void BtBuscarRaces_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarRaces.Text))
+                {
+                    string idBuscar = races.Where(a => a.Index.Equals(f.tbFiltrarRaces.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Race race = RacesRepository.GetRace(idBuscar);
+                        if (race != null)
+                        {
+                            f.tbIndexRaces.Text = race?.Index;
+                            f.tbNameRaces.Text = race?.Name;
+                            f.tbAgeRaces.Text = race?.age;
+                            f.tbAlignmentRaces.Text = race?.Alignment;
+                            f.tbLanguageDescRaces.Text = race?.LanguageDesc;
+                            f.tbSizeRaces.Text = race?.size;
+                            f.tbSizeDescriptionRaces.Text = race?.SizeDescription;
+                            f.tbSpeedRaces.Text = race?.Speed.ToString();
+                            //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
+                            //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
+                            f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                            f.cbStartingProficienciesRaces.SelectedIndex = f.cbStartingProficienciesRaces.FindString(race?.StartingProficiencies?.FirstOrDefault()?.Name);
+                            f.cbSubracesRaces.SelectedIndex = f.cbSubracesRaces.FindString(race?.Subraces?.FirstOrDefault()?.Name);
+                            f.cbTraitsRaces.SelectedIndex = f.cbTraitsRaces.FindString(race?.Traits?.FirstOrDefault()?.Name);
+                            f.cbAbilityBonusAbilityScoreRace.SelectedIndex = f.cbAbilityBonusAbilityScoreRace.FindString(race?.AbilityBonus?.FirstOrDefault()?.AbilityScore?.Name);
+                            f.cbStartingProficienciesOptionsFromRace.SelectedIndex = f.cbStartingProficienciesOptionsFromRace.FindString(race?.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name);
+                            BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarLanguageOptions(race?.LanguageOptions);
+                            BuscarYSeleccionarStartingProficienciesOptions(race?.StartingProficienciesOptions);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtInsertarRaces_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -4704,15 +4825,384 @@ namespace DnDDesktop.Controllers
                 string size = f.tbSizeRaces.Text;
                 string sizeDescription = f.tbSizeDescriptionRaces.Text;
                 int speed = int.Parse(f.tbSpeedRaces.Text);
-                From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
+                //Estos son From[]
+                From languages = (From)f.cbLanguagesRaces.SelectedItem;
+                From startingProficiencies = (From)f.cbStartingProficienciesRaces.SelectedItem;
+                From subraces = (From)f.cbSubracesRaces.SelectedItem;
+                From traits = (From)f.cbTraitsRaces.SelectedItem;
+                //
+                From abilityScore = (From)f.cbAbilityBonusAbilityScoreRace.SelectedItem;
+                From languageOptionsFrom = (From)f.cbLanguageOptionsFromRace.SelectedItem;
+                From startingProficienciesOptionsFrom = (From)f.cbStartingProficienciesOptionsFromRace.SelectedItem;
 
+                DataGridViewRow abilityBonusOptionRow = f.dgvAbilityBonusOptionRace.CurrentRow;
+                DataGridViewRow abilityBonusOptionFromRow = f.dgvAbilityBonusOptionFromRace.CurrentRow;
+                DataGridViewRow abilityBonusOptionsFromAbilityScoreRow = f.dgvAbilityBonusOptionsAbilityScoreRace.CurrentRow;
+                DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
+                DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
+
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) && !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) &&
+                    !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
+                {
+                    raceInsertar.Index = index;
+                    raceInsertar.Name = name;
+                    raceInsertar.age = age;
+                    raceInsertar.Alignment = alignment;
+                    raceInsertar.LanguageDesc = languageDesc;
+                    raceInsertar.size = size;
+                    raceInsertar.SizeDescription = sizeDescription;
+                    raceInsertar.Speed = speed;
+
+                    if (languages != null)
+                    {
+                        List<From> languagesList = new List<From>();
+                        languagesList.Add(languages);
+                        raceInsertar.Languages = languagesList.ToArray();
+                        //MessageBox.Show("Languages");
+                    }
+
+                    if (startingProficiencies != null)
+                    {
+                        List<From> startingProficienciesList = new List<From>();
+                        startingProficienciesList.Add(startingProficiencies);
+                        raceInsertar.StartingProficiencies = startingProficienciesList.ToArray();
+                        //MessageBox.Show("startingProficiencies");
+                    }
+                    else
+                    {
+                        List<From> startingProficienciesListEmpty = new List<From>();
+                        From startingProficienciesEmtpy = new From();
+                        startingProficienciesEmtpy.Index = string.Empty;
+                        startingProficienciesEmtpy.Name = string.Empty;
+                        startingProficienciesListEmpty.Add(startingProficienciesEmtpy);
+                        raceInsertar.StartingProficiencies = startingProficienciesListEmpty.ToArray();
+                        //MessageBox.Show("startingProficienciesEmpty");
+                    }
+
+                    if (subraces != null)
+                    {
+                        List<From> subracesList = new List<From>();
+                        subracesList.Add(subraces);
+                        raceInsertar.Subraces = subracesList.ToArray();
+                        //MessageBox.Show("subraces");
+                    }
+                    else
+                    {
+                        List<From> subracesListEmpty = new List<From>();
+                        From subracesEmpty = new From();
+                        subracesEmpty.Name = string.Empty;
+                        subracesEmpty.Index = string.Empty;
+                        subracesListEmpty.Add(subracesEmpty);
+                        raceInsertar.Subraces = subracesListEmpty.ToArray();
+                        //MessageBox.Show("subracesEmpty");
+                    }
+
+                    if (traits != null)
+                    {
+                        List<From> traitsList = new List<From>();
+                        traitsList.Add(traits);
+                        raceInsertar.Traits = traitsList.ToArray();
+                        //MessageBox.Show("traits");
+
+                    }
+
+                    if (abilityScore != null)
+                    {
+                        List<AbilityBonusRace> abilityBonusRacesList = new List<AbilityBonusRace>();
+                        AbilityBonusRace abilityBonusRaces = new AbilityBonusRace();
+                        abilityBonusRaces.AbilityScore = abilityScore;
+                        abilityBonusRaces.Bonus = 0;
+                        abilityBonusRacesList.Add(abilityBonusRaces);
+                        raceInsertar.AbilityBonus = abilityBonusRacesList.ToArray();
+                        //MessageBox.Show("abilityScore");
+
+                    }
+
+                    if (abilityBonusOptionRow != null && abilityBonusOptionFromRow != null && abilityBonusOptionsFromAbilityScoreRow != null)
+                    {
+                        AbilityBonusOptionRace abilityBonusOptionRace = (AbilityBonusOptionRace)abilityBonusOptionRow.DataBoundItem;
+                        OptionsRace abilityBonusOptionFrom = (OptionsRace)abilityBonusOptionFromRow.DataBoundItem;
+                        List<OptionsRace> abilityBonusOptionFromList = new List<OptionsRace>();
+                        From abilityBonusOptionsAbilityScore = (From)abilityBonusOptionsFromAbilityScoreRow.DataBoundItem;
+
+                        abilityBonusOptionFromList.Add(abilityBonusOptionFrom);
+                        //abilityBonusOptionRace.From = abilityBonusOptionFromList.ToArray();
+                        //abilityBonusOptionRace.From.FirstOrDefault().AbilityScore = abilityBonusOptionsAbilityScore;
+
+
+                        raceInsertar.AbilityBonusOptions = abilityBonusOptionRace;
+
+                        //MessageBox.Show("abilityOptions");
+                    }
+
+                    if (languageOptionsRow != null)
+                    {
+                        //Guardar aqui del cb de languageOptionsFrom
+                        LanguageOptionsRace languageOptionsRace = (LanguageOptionsRace)languageOptionsRow.DataBoundItem;
+                        if (languageOptionsRace != null)
+                        {
+                            List<From> languageOptionsFromList = new List<From>();
+                            languageOptionsFromList.Add(languageOptionsFrom);
+                            languageOptionsRace.From = languageOptionsFromList.ToArray();
+                            raceInsertar.LanguageOptions = languageOptionsRace;
+                            //MessageBox.Show("languageOptionsRow");
+                        }
+                        else
+                        {
+                            LanguageOptionsRace newLanguageOptionsRace = new LanguageOptionsRace();
+                            List<From> languageOptionsFromList = new List<From>();
+                            languageOptionsFromList.Add(languageOptionsFrom);
+                            newLanguageOptionsRace.Choose = 0;
+                            newLanguageOptionsRace.Type = string.Empty;
+                            raceInsertar.LanguageOptions = languageOptionsRace;
+                            //MessageBox.Show("languageOptionsRow vacio");
+                        }
+
+                    }
+
+                    if (startingProficienciesOptionsRow != null)
+                    {
+                        StartingProficiencyOptionsRace startingProficienciesOptions = (StartingProficiencyOptionsRace)startingProficienciesOptionsRow.DataBoundItem;
+                        List<From> startingProficienciesOptionsFromList = new List<From>();
+                        startingProficienciesOptionsFromList.Add(startingProficienciesOptionsFrom);
+                        startingProficienciesOptions.From = startingProficienciesOptionsFromList.ToArray();
+                        raceInsertar.StartingProficienciesOptions = startingProficienciesOptions;
+                        //MessageBox.Show("startingProficienciesOptionsRow");
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debes rellenar todos los textos");
+                }
+                RacesRepository.CreateRace(raceInsertar);
+                MessageBox.Show("Has insertado Race");
+                LoadDataRace();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        private void BtEliminarRaces_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarRaces.Text))
+                {
+                    string idBuscar = races.Where(a => a.Index.Equals(f.tbFiltrarRaces.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        RacesRepository.DeleteRace(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarRaces.Text.ToString());
+                        LoadDataRace();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtModificarRaces_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarRaces.Text))
+                {
+                    string idBuscar = races.Where(a => a.Index.Equals(f.tbFiltrarRaces.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Race raceModificar = RacesRepository.GetRace(idBuscar);
+                        string index = f.tbIndexRaces.Text;
+                        string name = f.tbNameRaces.Text;
+                        string age = f.tbAgeRaces.Text;
+                        string alignment = f.tbAlignmentRaces.Text;
+                        string languageDesc = f.tbLanguageDescRaces.Text;
+                        string size = f.tbSizeRaces.Text;
+                        string sizeDescription = f.tbSizeDescriptionRaces.Text;
+                        int speed = int.Parse(f.tbSpeedRaces.Text);
+                        //Estos son From[]
+                        From languages = (From)f.cbLanguagesRaces.SelectedItem;
+                        From startingProficiencies = (From)f.cbStartingProficienciesRaces.SelectedItem;
+                        From subraces = (From)f.cbSubracesRaces.SelectedItem;
+                        From traits = (From)f.cbTraitsRaces.SelectedItem;
+                        //
+                        From abilityScore = (From)f.cbAbilityBonusAbilityScoreRace.SelectedItem;
+                        From languageOptionsFrom = (From)f.cbLanguageOptionsFromRace.SelectedItem;
+                        From startingProficienciesOptionsFrom = (From)f.cbStartingProficienciesOptionsFromRace.SelectedItem;
+
+                        DataGridViewRow abilityBonusOptionRow = f.dgvAbilityBonusOptionRace.CurrentRow;
+                        DataGridViewRow abilityBonusOptionFromRow = f.dgvAbilityBonusOptionFromRace.CurrentRow;
+                        DataGridViewRow abilityBonusOptionsFromAbilityScoreRow = f.dgvAbilityBonusOptionsAbilityScoreRace.CurrentRow;
+                        DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
+                        DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
+
+                        if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) && !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) &&
+                            !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
+                        {
+                            raceModificar.Index = index;
+                            raceModificar.Name = name;
+                            raceModificar.age = age;
+                            raceModificar.Alignment = alignment;
+                            raceModificar.LanguageDesc = languageDesc;
+                            raceModificar.size = size;
+                            raceModificar.SizeDescription = sizeDescription;
+                            raceModificar.Speed = speed;
+
+                            if (languages != null)
+                            {
+                                List<From> languagesList = new List<From>();
+                                languagesList.Add(languages);
+                                raceModificar.Languages = languagesList.ToArray();
+                                //MessageBox.Show("Languages");
+                            }
+
+                            if (startingProficiencies != null)
+                            {
+                                List<From> startingProficienciesList = new List<From>();
+                                startingProficienciesList.Add(startingProficiencies);
+                                raceModificar.StartingProficiencies = startingProficienciesList.ToArray();
+                                //MessageBox.Show("startingProficiencies");
+                            }
+                            else
+                            {
+                                List<From> startingProficienciesListEmpty = new List<From>();
+                                From startingProficienciesEmtpy = new From();
+                                startingProficienciesEmtpy.Index = string.Empty;
+                                startingProficienciesEmtpy.Name = string.Empty;
+                                startingProficienciesListEmpty.Add(startingProficienciesEmtpy);
+                                raceModificar.StartingProficiencies = startingProficienciesListEmpty.ToArray();
+                                //MessageBox.Show("startingProficienciesEmpty");
+                            }
+
+                            if (subraces != null)
+                            {
+                                List<From> subracesList = new List<From>();
+                                subracesList.Add(subraces);
+                                raceModificar.Subraces = subracesList.ToArray();
+                                //MessageBox.Show("subraces");
+                            }
+                            else
+                            {
+                                List<From> subracesListEmpty = new List<From>();
+                                From subracesEmpty = new From();
+                                subracesEmpty.Name = string.Empty;
+                                subracesEmpty.Index = string.Empty;
+                                subracesListEmpty.Add(subracesEmpty);
+                                raceModificar.Subraces = subracesListEmpty.ToArray();
+                                //MessageBox.Show("subracesEmpty");
+                            }
+
+                            if (traits != null)
+                            {
+                                List<From> traitsList = new List<From>();
+                                traitsList.Add(traits);
+                                raceModificar.Traits = traitsList.ToArray();
+                                //MessageBox.Show("traits");
+
+                            }
+
+                            if (abilityScore != null)
+                            {
+                                List<AbilityBonusRace> abilityBonusRacesList = new List<AbilityBonusRace>();
+                                AbilityBonusRace abilityBonusRaces = new AbilityBonusRace();
+                                abilityBonusRaces.AbilityScore = abilityScore;
+                                abilityBonusRaces.Bonus = 0;
+                                abilityBonusRacesList.Add(abilityBonusRaces);
+                                raceModificar.AbilityBonus = abilityBonusRacesList.ToArray();
+                                //MessageBox.Show("abilityScore");
+
+                            }
+
+                            if (abilityBonusOptionRow != null && abilityBonusOptionFromRow != null && abilityBonusOptionsFromAbilityScoreRow != null)
+                            {
+                                AbilityBonusOptionRace abilityBonusOptionRace = (AbilityBonusOptionRace)abilityBonusOptionRow.DataBoundItem;
+                                OptionsRace abilityBonusOptionFrom = (OptionsRace)abilityBonusOptionFromRow.DataBoundItem;
+                                List<OptionsRace> abilityBonusOptionFromList = new List<OptionsRace>();
+                                From abilityBonusOptionsAbilityScore = (From)abilityBonusOptionsFromAbilityScoreRow.DataBoundItem;
+
+                                abilityBonusOptionFromList.Add(abilityBonusOptionFrom);
+                                //abilityBonusOptionRace.From = abilityBonusOptionFromList.ToArray();
+                                //abilityBonusOptionRace.From.FirstOrDefault().AbilityScore = abilityBonusOptionsAbilityScore;
+
+
+                                raceModificar.AbilityBonusOptions = abilityBonusOptionRace;
+
+                                //MessageBox.Show("abilityOptions");
+                            }
+
+                            if (languageOptionsRow != null)
+                            {
+                                //Guardar aqui del cb de languageOptionsFrom
+                                LanguageOptionsRace languageOptionsRace = (LanguageOptionsRace)languageOptionsRow.DataBoundItem;
+                                if (languageOptionsRace != null)
+                                {
+                                    List<From> languageOptionsFromList = new List<From>();
+                                    languageOptionsFromList.Add(languageOptionsFrom);
+                                    languageOptionsRace.From = languageOptionsFromList.ToArray();
+                                    raceModificar.LanguageOptions = languageOptionsRace;
+                                    //MessageBox.Show("languageOptionsRow");
+                                }
+                                else
+                                {
+                                    LanguageOptionsRace newLanguageOptionsRace = new LanguageOptionsRace();
+                                    List<From> languageOptionsFromList = new List<From>();
+                                    languageOptionsFromList.Add(languageOptionsFrom);
+                                    newLanguageOptionsRace.Choose = 0;
+                                    newLanguageOptionsRace.Type = string.Empty;
+                                    raceModificar.LanguageOptions = languageOptionsRace;
+                                    //MessageBox.Show("languageOptionsRow vacio");
+                                }
+
+                            }
+
+                            if (startingProficienciesOptionsRow != null)
+                            {
+                                StartingProficiencyOptionsRace startingProficienciesOptions = (StartingProficiencyOptionsRace)startingProficienciesOptionsRow.DataBoundItem;
+                                List<From> startingProficienciesOptionsFromList = new List<From>();
+                                startingProficienciesOptionsFromList.Add(startingProficienciesOptionsFrom);
+                                startingProficienciesOptions.From = startingProficienciesOptionsFromList.ToArray();
+                                raceModificar.StartingProficienciesOptions = startingProficienciesOptions;
+                                //MessageBox.Show("startingProficienciesOptionsRow");
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debes rellenar todos los textos");
+                        }
+                        MessageBox.Show("Has modificado " + f.tbFiltrarRaces.Text.ToString());
+                        LoadDataRace();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres modificar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+
+            }
+        }
     }
 }
-
 

@@ -276,7 +276,7 @@ namespace DnDDesktop.Controllers
         private void LoadDataSkill()
         {
             skills = SkillRepository.GetSkills();
-            f.dgvSkills.DataSource = skills;
+            f.dgvSkills.DataSource = skills.Select(a => new SkillDAO(a)).ToList();
             f.cbAbilityScoreSkills.DataSource = skills.Select(a => a.AbilityScore).ToList();
             f.cbAbilityScoreSkills.DisplayMember = "Name";
         }
@@ -5228,8 +5228,11 @@ namespace DnDDesktop.Controllers
                 DataGridViewRow row = f.dgvSkills.CurrentRow;
                 if (row != null)
                 {
-                    Skill skill = SkillRepository.GetSkill(((Skill)row.DataBoundItem).Id);
-
+                    Skill skill = SkillRepository.GetSkill(((SkillDAO)row.DataBoundItem).id);
+                    f.tbIndexSkills.Text = skill?.Index;
+                    f.tbNameSkills.Text = skill?.Name;
+                    f.rtbDescriptionSkills.Text = skill?.Desc?.FirstOrDefault();
+                    f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
                 }
             }
             catch (Exception ex)

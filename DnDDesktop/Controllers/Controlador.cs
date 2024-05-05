@@ -277,6 +277,8 @@ namespace DnDDesktop.Controllers
         {
             skills = SkillRepository.GetSkills();
             f.dgvSkills.DataSource = skills;
+            f.cbAbilityScoreSkills.DataSource = skills.Select(a => a.AbilityScore).ToList();
+            f.cbAbilityScoreSkills.DisplayMember = "Name";
         }
 
         private void InitListeners()
@@ -389,6 +391,8 @@ namespace DnDDesktop.Controllers
             f.btInsertarRaces.Click += BtInsertarRaces_Click;
             f.btEliminarRaces.Click += BtEliminarRaces_Click;
             f.btModificarRaces.Click += BtModificarRaces_Click;
+            //Skill
+            f.dgvSkills.SelectionChanged += DgvSkills_SelectionChanged;
         }
 
         //AbilityScore
@@ -5213,6 +5217,24 @@ namespace DnDDesktop.Controllers
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
 
+            }
+        }
+
+        //Skill
+        private void DgvSkills_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = f.dgvSkills.CurrentRow;
+                if (row != null)
+                {
+                    Skill skill = SkillRepository.GetSkill(((Skill)row.DataBoundItem).Id);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
     }

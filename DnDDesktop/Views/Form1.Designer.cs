@@ -6496,8 +6496,6 @@
         public System.Windows.Forms.Label label107;
         public System.Windows.Forms.TextBox tbIndexProficiency;
         public System.Windows.Forms.TextBox tbNameProficiency;
-        private System.Windows.Forms.Label label130;
-        private System.Windows.Forms.ComboBox cbAbilityScoreSkills;
         public System.Windows.Forms.Label label127;
         public System.Windows.Forms.Label label128;
         public System.Windows.Forms.Label label129;
@@ -6898,6 +6896,8 @@
         public TextBox tbFiltrarSkills;
         public Button btInsertarSkills;
         public DataGridView dgvSkills;
+        public Label label130;
+        public ComboBox cbAbilityScoreSkills;
     }
 }
 

@@ -397,6 +397,7 @@ namespace DnDDesktop.Controllers
             f.btInsertarSkills.Click += BtInsertarSkills_Click;
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
             f.btModificarSkills.Click += BtModificarSkills_Click;
+            f.btInsertarSkills.MouseUp += BtInsertarSkills_MouseUp;
         }
 
         //AbilityScore
@@ -5236,7 +5237,14 @@ namespace DnDDesktop.Controllers
                     f.tbIndexSkills.Text = skill?.Index;
                     f.tbNameSkills.Text = skill?.Name;
                     f.rtbDescriptionSkills.Text = skill?.Desc?.FirstOrDefault();
-                    f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
+                    if (skill?.AbilityScore?.Name == string.Empty)
+                    {
+                        f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
+                    }
+                    else
+                    {
+                        f.cbAbilityScoreSkills.SelectedIndex = f.cbAbilityScoreSkills.FindString(skill?.AbilityScore?.Name);
+                    }
                 }
             }
             catch (Exception ex)
@@ -5362,6 +5370,35 @@ namespace DnDDesktop.Controllers
                 }
             }
 
+        }
+        private void BtInsertarSkills_MouseUp(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Middle)
+                {
+                    Skill skillInsertar = new Skill();
+                    string index = f.tbIndexSkills.Text;
+                    string name = f.tbNameSkills.Text;
+                    string[] description = new string[] { f.rtbDescriptionSkills.Text };
+                    From abilityScore = new From();
+                    abilityScore.Index = string.Empty;
+                    abilityScore.Name = string.Empty;
+
+                    skillInsertar.Index = index;
+                    skillInsertar.Name = name;
+                    skillInsertar.Desc = description;
+                    skillInsertar.AbilityScore = abilityScore;
+
+                    SkillRepository.CreateSkill(skillInsertar);
+                    MessageBox.Show("Has insertado Skill con atributos vacíos");
+                    LoadDataSkill();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
     }
 }

@@ -4826,39 +4826,156 @@ namespace DnDDesktop.Controllers
                 string size = f.tbSizeRaces.Text;
                 string sizeDescription = f.tbSizeDescriptionRaces.Text;
                 int speed = int.Parse(f.tbSpeedRaces.Text);
-                From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
-                From[] startingProficiencies = (From[])f.cbStartingProficienciesRaces.SelectedItem;
-                From[] subraces = (From[])f.cbSubracesRaces.SelectedItem;
-                From[] traits = (From[])f.cbTraitsRaces.SelectedItem;
+                //Estos son From[]
+                From languages = (From)f.cbLanguagesRaces.SelectedItem;
+                From startingProficiencies = (From)f.cbStartingProficienciesRaces.SelectedItem;
+                From subraces = (From)f.cbSubracesRaces.SelectedItem;
+                From traits = (From)f.cbTraitsRaces.SelectedItem;
+                //
                 From abilityScore = (From)f.cbAbilityBonusAbilityScoreRace.SelectedItem;
                 From languageOptionsFrom = (From)f.cbLanguageOptionsFromRace.SelectedItem;
                 From startingProficienciesOptionsFrom = (From)f.cbStartingProficienciesOptionsFromRace.SelectedItem;
 
                 DataGridViewRow abilityBonusOptionRow = f.dgvAbilityBonusOptionRace.CurrentRow;
                 DataGridViewRow abilityBonusOptionFromRow = f.dgvAbilityBonusOptionFromRace.CurrentRow;
-                DataGridViewRow abilityBonusOptionsAbilityScoreRow = f.dgvAbilityBonusOptionsAbilityScoreRace.CurrentRow;
+                DataGridViewRow abilityBonusOptionsFromAbilityScoreRow = f.dgvAbilityBonusOptionsAbilityScoreRace.CurrentRow;
                 DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
                 DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
 
-                //Guardar los valores string, combobox y datagridview y comprobar nulls
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) && !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) &&
+                    !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
+                {
+                    raceInsertar.Index = index;
+                    raceInsertar.Name = name;
+                    raceInsertar.age = age;
+                    raceInsertar.Alignment = alignment;
+                    raceInsertar.LanguageDesc = languageDesc;
+                    raceInsertar.size = size;
+                    raceInsertar.SizeDescription = sizeDescription;
+                    raceInsertar.Speed = speed;
 
-                if (abilityBonusOptionRow != null)
-                {
+                    if (languages != null)
+                    {
+                        List<From> languagesList = new List<From>();
+                        languagesList.Add(languages);
+                        raceInsertar.Languages = languagesList.ToArray();
+                        //MessageBox.Show("Languages");
+                    }
 
-                }
-                if (abilityBonusOptionFromRow != null)
-                {
-                }
-                if (abilityBonusOptionsAbilityScoreRow != null)
-                {
-                }
-                if (languageOptionsRow != null)
-                {
-                }
-                if (startingProficienciesOptionsRow != null)
-                {
-                }
+                    if (startingProficiencies != null)
+                    {
+                        List<From> startingProficienciesList = new List<From>();
+                        startingProficienciesList.Add(startingProficiencies);
+                        raceInsertar.StartingProficiencies = startingProficienciesList.ToArray();
+                        //MessageBox.Show("startingProficiencies");
+                    }
+                    else
+                    {
+                        List<From> startingProficienciesListEmpty = new List<From>();
+                        From startingProficienciesEmtpy = new From();
+                        startingProficienciesEmtpy.Index = string.Empty;
+                        startingProficienciesEmtpy.Name = string.Empty;
+                        startingProficienciesListEmpty.Add(startingProficienciesEmtpy);
+                        raceInsertar.StartingProficiencies = startingProficienciesListEmpty.ToArray();
+                        //MessageBox.Show("startingProficienciesEmpty");
+                    }
 
+                    if (subraces != null)
+                    {
+                        List<From> subracesList = new List<From>();
+                        subracesList.Add(subraces);
+                        raceInsertar.Subraces = subracesList.ToArray();
+                        //MessageBox.Show("subraces");
+                    }
+                    else
+                    {
+                        List<From> subracesListEmpty = new List<From>();
+                        From subracesEmpty = new From();
+                        subracesEmpty.Name = string.Empty;
+                        subracesEmpty.Index = string.Empty;
+                        subracesListEmpty.Add(subracesEmpty);
+                        raceInsertar.Subraces = subracesListEmpty.ToArray();
+                        //MessageBox.Show("subracesEmpty");
+                    }
+
+                    if (traits != null)
+                    {
+                        List<From> traitsList = new List<From>();
+                        traitsList.Add(traits);
+                        raceInsertar.Traits = traitsList.ToArray();
+                        //MessageBox.Show("traits");
+
+                    }
+
+                    if (abilityScore != null)
+                    {
+                        List<AbilityBonusRace> abilityBonusRacesList = new List<AbilityBonusRace>();
+                        AbilityBonusRace abilityBonusRaces = new AbilityBonusRace();
+                        abilityBonusRaces.AbilityScore = abilityScore;
+                        abilityBonusRaces.Bonus = 0;
+                        abilityBonusRacesList.Add(abilityBonusRaces);
+                        raceInsertar.AbilityBonus = abilityBonusRacesList.ToArray();
+                        //MessageBox.Show("abilityScore");
+
+                    }
+
+                    if (abilityBonusOptionRow != null && abilityBonusOptionFromRow != null && abilityBonusOptionsFromAbilityScoreRow != null)
+                    {
+                        AbilityBonusOptionRace abilityBonusOptionRace = (AbilityBonusOptionRace)abilityBonusOptionRow.DataBoundItem;
+                        OptionsRace abilityBonusOptionFrom = (OptionsRace)abilityBonusOptionFromRow.DataBoundItem;
+                        List<OptionsRace> abilityBonusOptionFromList = new List<OptionsRace>();
+                        From abilityBonusOptionsAbilityScore = (From)abilityBonusOptionsFromAbilityScoreRow.DataBoundItem;
+
+                        abilityBonusOptionFromList.Add(abilityBonusOptionFrom);
+                        abilityBonusOptionRace.From = abilityBonusOptionFromList.ToArray();
+                        abilityBonusOptionRace.From.FirstOrDefault().AbilityScore = abilityBonusOptionsAbilityScore;
+
+
+                        raceInsertar.AbilityBonusOptions = abilityBonusOptionRace;
+
+                        //MessageBox.Show("abilityOptions");
+                    }
+
+                    if (languageOptionsRow != null)
+                    {
+                        //Guardar aqui del cb de languageOptionsFrom
+                        LanguageOptionsRace languageOptionsRace = (LanguageOptionsRace)languageOptionsRow.DataBoundItem;
+                        if (languageOptionsRace != null)
+                        {
+                            List<From> languageOptionsFromList = new List<From>();
+                            languageOptionsFromList.Add(languageOptionsFrom);
+                            languageOptionsRace.From = languageOptionsFromList.ToArray();
+                            raceInsertar.LanguageOptions = languageOptionsRace;
+                            //MessageBox.Show("languageOptionsRow");
+                        }
+                        else
+                        {
+                            LanguageOptionsRace newLanguageOptionsRace = new LanguageOptionsRace();
+                            List<From> languageOptionsFromList = new List<From>();
+                            languageOptionsFromList.Add(languageOptionsFrom);
+                            newLanguageOptionsRace.Choose = 0;
+                            newLanguageOptionsRace.Type = string.Empty;
+                            raceInsertar.LanguageOptions = languageOptionsRace;
+                            //MessageBox.Show("languageOptionsRow vacio");
+                        }
+
+                    }
+
+                    if (startingProficienciesOptionsRow != null)
+                    {
+                        StartingProficiencyOptionsRace startingProficienciesOptions = (StartingProficiencyOptionsRace)startingProficienciesOptionsRow.DataBoundItem;
+                        List<From> startingProficienciesOptionsFromList = new List<From>();
+                        startingProficienciesOptionsFromList.Add(startingProficienciesOptionsFrom);
+                        startingProficienciesOptions.From = startingProficienciesOptionsFromList.ToArray();
+                        raceInsertar.StartingProficienciesOptions = startingProficienciesOptions;
+                        //MessageBox.Show("startingProficienciesOptionsRow");
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debes rellenar todos los textos");
+                }
                 RacesRepository.CreateRace(raceInsertar);
                 MessageBox.Show("Has insertado Race");
                 LoadDataRace();

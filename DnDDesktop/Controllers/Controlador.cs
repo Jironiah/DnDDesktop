@@ -4454,11 +4454,16 @@ namespace DnDDesktop.Controllers
                     //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
                     //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
                     f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
-                    //MessageBox.Show(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                    f.cbStartingProficienciesRaces.SelectedIndex = f.cbStartingProficienciesRaces.FindString(race?.StartingProficiencies?.FirstOrDefault()?.Name);
+                    f.cbSubracesRaces.SelectedIndex = f.cbSubracesRaces.FindString(race?.Subraces?.FirstOrDefault()?.Name);
+                    f.cbTraitsRaces.SelectedIndex = f.cbTraitsRaces.FindString(race?.Traits?.FirstOrDefault()?.Name);
+                    f.cbAbilityBonusAbilityScoreRace.SelectedIndex = f.cbAbilityBonusAbilityScoreRace.FindString(race?.AbilityBonus?.FirstOrDefault()?.AbilityScore?.Name);
+                    f.cbStartingProficienciesOptionsFromRace.SelectedIndex = f.cbStartingProficienciesOptionsFromRace.FindString(race?.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name);
                     BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
                     BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
-
+                    BuscarYSeleccionarLanguageOptions(race?.LanguageOptions);
+                    BuscarYSeleccionarStartingProficienciesOptions(race?.StartingProficienciesOptions);
                 }
             }
             catch (Exception ex)
@@ -4680,16 +4685,77 @@ namespace DnDDesktop.Controllers
                         if (rowIndex != -1)
                         {
                             // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
-                            f.dgvAbilityBonusOptionFromRace.Rows[rowIndex].Selected = true;
-                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                            f.dgvAbilityBonusOptionsAbilityScoreRace.Rows[rowIndex].Selected = true;
+                            f.dgvAbilityBonusOptionsAbilityScoreRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
                             return;
                         }
                     }
                 }
 
-                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.AbilityScore");
+            }
+            else
+            {
+                f.dgvAbilityBonusOptionsAbilityScoreRace.Rows[0].Selected = true;
+                f.dgvAbilityBonusOptionsAbilityScoreRace.FirstDisplayedScrollingRowIndex = f.dgvAbilityBonusOptionsAbilityScoreRace.SelectedRows[0].Index;
             }
 
+        }
+        private void BuscarYSeleccionarStartingProficienciesOptions(StartingProficiencyOptionsRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                Race race = races?.FirstOrDefault(a => a.StartingProficienciesOptions?.Choose == claseBuscar?.Choose && a.StartingProficienciesOptions?.Description == claseBuscar?.Description &&
+                a.StartingProficienciesOptions?.Type == claseBuscar?.Type && a.StartingProficienciesOptions?.From?.FirstOrDefault()?.Index == claseBuscar?.From?.FirstOrDefault()?.Index &&
+                a.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name == claseBuscar?.From?.FirstOrDefault()?.Name);
+                if (race != null && race.StartingProficienciesOptions != null && race.StartingProficienciesOptions.From != null && claseBuscar != null && claseBuscar.From != null)
+                {
+                    StartingProficiencyOptionsRace startingProficiencyOptionsRace = race.StartingProficienciesOptions;
+
+                    if (startingProficiencyOptionsRace != null)
+                    {
+                        int rowIndex = f.dgvStartingProficienciesOptionsRace.Rows.Cast<DataGridViewRow>().FirstOrDefault(a => a.DataBoundItem == startingProficiencyOptionsRace)?.Index ?? -1;
+                        if (rowIndex != null)
+                        {
+                            f.dgvStartingProficienciesOptionsRace.Rows[rowIndex].Selected = true;
+                            f.dgvStartingProficienciesOptionsRace.FirstDisplayedScrollingRowIndex = rowIndex;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BuscarYSeleccionarLanguageOptions(LanguageOptionsRace claseBuscar)
+        {
+            if (claseBuscar != null)
+            {
+                Race race = races?.FirstOrDefault(a => a.LanguageOptions?.Type == claseBuscar?.Type && a.LanguageOptions?.Choose == claseBuscar?.Choose &&
+                    a.LanguageOptions?.From?.FirstOrDefault()?.Name == claseBuscar?.From?.FirstOrDefault()?.Name && a.LanguageOptions?.From?.FirstOrDefault()?.Index == claseBuscar?.From?.FirstOrDefault()?.Index);
+
+                if (race != null && race.LanguageOptions != null && race.LanguageOptions.Choose != null && race.LanguageOptions.From != null && race.LanguageOptions.Type != null &&
+                    claseBuscar?.Type != null && claseBuscar?.From != null && claseBuscar?.Choose != null)
+                {
+                    LanguageOptionsRace languageOptions = race.LanguageOptions;
+
+                    if (languageOptions != null)
+                    {
+                        int rowIndex = f.dgvLanguageOptionsRace.Rows.Cast<DataGridViewRow>().FirstOrDefault(a => a.DataBoundItem == languageOptions)?.Index ?? -1;
+
+                        if (rowIndex != -1)
+                        {
+                            f.dgvLanguageOptionsRace.Rows[rowIndex].Selected = true;
+                            f.dgvLanguageOptionsRace.FirstDisplayedScrollingRowIndex = rowIndex;
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                f.dgvLanguageOptionsRace.Rows[0].Selected = true;
+                f.dgvLanguageOptionsRace.FirstDisplayedScrollingRowIndex = f.dgvLanguageOptionsRace.Rows[0].Index;
+            }
         }
 
         private void BtBuscarRaces_Click(object? sender, EventArgs e)
@@ -4716,9 +4782,16 @@ namespace DnDDesktop.Controllers
                             //MessageBox.Show(race?.Languages?.FirstOrDefault()?.Name);
                             //f.cbLanguagesRaces.SelectedIndex = f.cbLanguagesRaces.FindString(race?.Languages?.FirstOrDefault()?.Name);
                             f.cbLanguageOptionsFromRace.SelectedIndex = f.cbLanguageOptionsFromRace.FindString(race?.LanguageOptions?.From?.FirstOrDefault()?.Name);
+                            f.cbStartingProficienciesRaces.SelectedIndex = f.cbStartingProficienciesRaces.FindString(race?.StartingProficiencies?.FirstOrDefault()?.Name);
+                            f.cbSubracesRaces.SelectedIndex = f.cbSubracesRaces.FindString(race?.Subraces?.FirstOrDefault()?.Name);
+                            f.cbTraitsRaces.SelectedIndex = f.cbTraitsRaces.FindString(race?.Traits?.FirstOrDefault()?.Name);
+                            f.cbAbilityBonusAbilityScoreRace.SelectedIndex = f.cbAbilityBonusAbilityScoreRace.FindString(race?.AbilityBonus?.FirstOrDefault()?.AbilityScore?.Name);
+                            f.cbStartingProficienciesOptionsFromRace.SelectedIndex = f.cbStartingProficienciesOptionsFromRace.FindString(race?.StartingProficienciesOptions?.From?.FirstOrDefault()?.Name);
                             BuscarYSeleccionarAbilityBonusOption(race?.AbilityBonusOptions);
                             BuscarYSeleccionarAbilityBonusOptionFrom(race?.AbilityBonusOptions);
                             BuscarYSeleccionarAbilityBonusOptionFromAbilityScore(race?.AbilityBonusOptions);
+                            BuscarYSeleccionarLanguageOptions(race?.LanguageOptions);
+                            BuscarYSeleccionarStartingProficienciesOptions(race?.StartingProficienciesOptions);
                         }
                     }
                     else
@@ -4742,16 +4815,58 @@ namespace DnDDesktop.Controllers
 
         private void BtInsertarRaces_Click(object? sender, EventArgs e)
         {
-            Race raceInsertar = new Race();
-            string index = f.tbIndexRaces.Text;
-            string name = f.tbNameRaces.Text;
-            string age = f.tbAgeRaces.Text;
-            string alignment = f.tbAlignmentRaces.Text;
-            string languageDesc = f.tbLanguageDescRaces.Text;
-            string size = f.tbSizeRaces.Text;
-            string sizeDescription = f.tbSizeDescriptionRaces.Text;
-            int speed = int.Parse(f.tbSpeedRaces.Text);
-            From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
+            try
+            {
+                Race raceInsertar = new Race();
+                string index = f.tbIndexRaces.Text;
+                string name = f.tbNameRaces.Text;
+                string age = f.tbAgeRaces.Text;
+                string alignment = f.tbAlignmentRaces.Text;
+                string languageDesc = f.tbLanguageDescRaces.Text;
+                string size = f.tbSizeRaces.Text;
+                string sizeDescription = f.tbSizeDescriptionRaces.Text;
+                int speed = int.Parse(f.tbSpeedRaces.Text);
+                From[] languages = (From[])f.cbLanguagesRaces.SelectedItem;
+                From[] startingProficiencies = (From[])f.cbStartingProficienciesRaces.SelectedItem;
+                From[] subraces = (From[])f.cbSubracesRaces.SelectedItem;
+                From[] traits = (From[])f.cbTraitsRaces.SelectedItem;
+                From abilityScore = (From)f.cbAbilityBonusAbilityScoreRace.SelectedItem;
+                From languageOptionsFrom = (From)f.cbLanguageOptionsFromRace.SelectedItem;
+                From startingProficienciesOptionsFrom = (From)f.cbStartingProficienciesOptionsFromRace.SelectedItem;
+
+                DataGridViewRow abilityBonusOptionRow = f.dgvAbilityBonusOptionRace.CurrentRow;
+                DataGridViewRow abilityBonusOptionFromRow = f.dgvAbilityBonusOptionFromRace.CurrentRow;
+                DataGridViewRow abilityBonusOptionsAbilityScoreRow = f.dgvAbilityBonusOptionsAbilityScoreRace.CurrentRow;
+                DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
+                DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
+
+                //Guardar los valores string, combobox y datagridview y comprobar nulls
+
+                if (abilityBonusOptionRow != null)
+                {
+
+                }
+                if (abilityBonusOptionFromRow != null)
+                {
+                }
+                if (abilityBonusOptionsAbilityScoreRow != null)
+                {
+                }
+                if (languageOptionsRow != null)
+                {
+                }
+                if (startingProficienciesOptionsRow != null)
+                {
+                }
+
+                RacesRepository.CreateRace(raceInsertar);
+                MessageBox.Show("Has insertado Race");
+                LoadDataRace();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
     }
 }

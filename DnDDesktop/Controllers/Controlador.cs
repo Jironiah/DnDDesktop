@@ -31,6 +31,7 @@ namespace DnDDesktop.Controllers
         MagicSchoolRepository MagicSchoolRepository = new MagicSchoolRepository();
         ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
         RacesRepository RacesRepository = new RacesRepository();
+        SkillRepository SkillRepository = new SkillRepository();
 
         //Listas
 
@@ -86,6 +87,9 @@ namespace DnDDesktop.Controllers
         //Races
         List<Race> races = new List<Race>();
 
+        //Skill
+        List<Skill> skills = new List<Skill>();
+
         public Controlador()
         {
             LoadData();
@@ -112,6 +116,7 @@ namespace DnDDesktop.Controllers
             LoadDataMagicSchools();
             LoadDataProficiency();
             LoadDataRace();
+            LoadDataSkill();
         }
 
         private void LoadDataAbilityScore()
@@ -267,6 +272,13 @@ namespace DnDDesktop.Controllers
             f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(a => a.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
             f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
         }
+
+        private void LoadDataSkill()
+        {
+            skills = SkillRepository.GetSkills();
+            f.dgvSkills.DataSource = skills;
+        }
+
         private void InitListeners()
         {
             //AbilityScore

@@ -457,6 +457,12 @@
             tbNameRaces = new TextBox();
             tbIndexRaces = new TextBox();
             Skills = new TabPage();
+            btEliminarSkills = new Button();
+            btModificarSkills = new Button();
+            btBuscarSkills = new Button();
+            tbFiltrarSkills = new TextBox();
+            btInsertarSkills = new Button();
+            dgvSkills = new DataGridView();
             rtbDescriptionSkills = new RichTextBox();
             label130 = new Label();
             cbAbilityScoreSkills = new ComboBox();
@@ -563,12 +569,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btEliminarSkills = new Button();
-            btModificarSkills = new Button();
-            btBuscarSkills = new Button();
-            tbFiltrarSkills = new TextBox();
-            btInsertarSkills = new Button();
-            dgvSkills = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -639,11 +639,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvAbilityBonusOptionRace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRaces).BeginInit();
             Skills.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSkills).BeginInit();
             Spells.SuspendLayout();
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSkills).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -697,7 +697,7 @@
             AbilityScore.Controls.Add(tbFullNameAbilityScore);
             AbilityScore.Location = new Point(4, 24);
             AbilityScore.Name = "AbilityScore";
-            AbilityScore.Padding = new Padding(3, 3, 3, 3);
+            AbilityScore.Padding = new Padding(3);
             AbilityScore.Size = new Size(1555, 679);
             AbilityScore.TabIndex = 0;
             AbilityScore.Text = "AbilityScore";
@@ -879,7 +879,7 @@
             Alignments.Controls.Add(tbNameAlignments);
             Alignments.Location = new Point(4, 24);
             Alignments.Name = "Alignments";
-            Alignments.Padding = new Padding(3, 3, 3, 3);
+            Alignments.Padding = new Padding(3);
             Alignments.Size = new Size(1555, 679);
             Alignments.TabIndex = 1;
             Alignments.Text = "Alignments";
@@ -1031,7 +1031,7 @@
             WeaponProperties.Controls.Add(tbNameWeaponProperties);
             WeaponProperties.Location = new Point(4, 24);
             WeaponProperties.Name = "WeaponProperties";
-            WeaponProperties.Padding = new Padding(3, 3, 3, 3);
+            WeaponProperties.Padding = new Padding(3);
             WeaponProperties.Size = new Size(1555, 679);
             WeaponProperties.TabIndex = 2;
             WeaponProperties.Text = "Weapon Properties";
@@ -1191,7 +1191,7 @@
             Classes.Controls.Add(tbNameClasses);
             Classes.Location = new Point(4, 24);
             Classes.Name = "Classes";
-            Classes.Padding = new Padding(3, 3, 3, 3);
+            Classes.Padding = new Padding(3);
             Classes.Size = new Size(1555, 679);
             Classes.TabIndex = 3;
             Classes.Text = "Classes";
@@ -5199,18 +5199,82 @@
             Skills.Text = "Skills";
             Skills.UseVisualStyleBackColor = true;
             // 
+            // btEliminarSkills
+            // 
+            btEliminarSkills.Location = new Point(1351, 635);
+            btEliminarSkills.Margin = new Padding(3, 2, 3, 2);
+            btEliminarSkills.Name = "btEliminarSkills";
+            btEliminarSkills.Size = new Size(82, 22);
+            btEliminarSkills.TabIndex = 172;
+            btEliminarSkills.Text = "Eliminar";
+            btEliminarSkills.UseVisualStyleBackColor = true;
+            // 
+            // btModificarSkills
+            // 
+            btModificarSkills.Location = new Point(1264, 635);
+            btModificarSkills.Margin = new Padding(3, 2, 3, 2);
+            btModificarSkills.Name = "btModificarSkills";
+            btModificarSkills.Size = new Size(82, 22);
+            btModificarSkills.TabIndex = 171;
+            btModificarSkills.Text = "Modificar";
+            btModificarSkills.UseVisualStyleBackColor = true;
+            // 
+            // btBuscarSkills
+            // 
+            btBuscarSkills.Location = new Point(1264, 600);
+            btBuscarSkills.Margin = new Padding(3, 2, 3, 2);
+            btBuscarSkills.Name = "btBuscarSkills";
+            btBuscarSkills.Size = new Size(170, 22);
+            btBuscarSkills.TabIndex = 170;
+            btBuscarSkills.Text = "Buscar por Index";
+            btBuscarSkills.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarSkills
+            // 
+            tbFiltrarSkills.Location = new Point(1147, 600);
+            tbFiltrarSkills.Margin = new Padding(3, 2, 3, 2);
+            tbFiltrarSkills.Name = "tbFiltrarSkills";
+            tbFiltrarSkills.Size = new Size(110, 23);
+            tbFiltrarSkills.TabIndex = 169;
+            // 
+            // btInsertarSkills
+            // 
+            btInsertarSkills.Location = new Point(1450, 632);
+            btInsertarSkills.Margin = new Padding(3, 2, 3, 2);
+            btInsertarSkills.Name = "btInsertarSkills";
+            btInsertarSkills.Size = new Size(82, 26);
+            btInsertarSkills.TabIndex = 168;
+            btInsertarSkills.Text = "Insertar";
+            btInsertarSkills.UseVisualStyleBackColor = true;
+            // 
+            // dgvSkills
+            // 
+            dgvSkills.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSkills.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSkills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSkills.Location = new Point(18, 397);
+            dgvSkills.Margin = new Padding(3, 2, 3, 2);
+            dgvSkills.MultiSelect = false;
+            dgvSkills.Name = "dgvSkills";
+            dgvSkills.ReadOnly = true;
+            dgvSkills.RowHeadersWidth = 51;
+            dgvSkills.RowTemplate.Height = 29;
+            dgvSkills.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSkills.Size = new Size(458, 262);
+            dgvSkills.TabIndex = 167;
+            // 
             // rtbDescriptionSkills
             // 
-            rtbDescriptionSkills.Location = new Point(328, 32);
+            rtbDescriptionSkills.Location = new Point(518, 32);
             rtbDescriptionSkills.Name = "rtbDescriptionSkills";
-            rtbDescriptionSkills.Size = new Size(432, 96);
+            rtbDescriptionSkills.Size = new Size(678, 96);
             rtbDescriptionSkills.TabIndex = 57;
             rtbDescriptionSkills.Text = "";
             // 
             // label130
             // 
             label130.AutoSize = true;
-            label130.Location = new Point(796, 14);
+            label130.Location = new Point(1237, 14);
             label130.Name = "label130";
             label130.Size = new Size(70, 15);
             label130.TabIndex = 55;
@@ -5219,7 +5283,7 @@
             // cbAbilityScoreSkills
             // 
             cbAbilityScoreSkills.FormattingEnabled = true;
-            cbAbilityScoreSkills.Location = new Point(799, 31);
+            cbAbilityScoreSkills.Location = new Point(1240, 31);
             cbAbilityScoreSkills.Name = "cbAbilityScoreSkills";
             cbAbilityScoreSkills.Size = new Size(106, 23);
             cbAbilityScoreSkills.TabIndex = 54;
@@ -5236,7 +5300,7 @@
             // label128
             // 
             label128.AutoSize = true;
-            label128.Location = new Point(74, 14);
+            label128.Location = new Point(264, 14);
             label128.Name = "label128";
             label128.Size = new Size(39, 15);
             label128.TabIndex = 52;
@@ -5245,7 +5309,7 @@
             // label129
             // 
             label129.AutoSize = true;
-            label129.Location = new Point(328, 14);
+            label129.Location = new Point(518, 14);
             label129.Name = "label129";
             label129.Size = new Size(67, 15);
             label129.TabIndex = 51;
@@ -5255,12 +5319,12 @@
             // 
             tbIndexSkills.Location = new Point(18, 31);
             tbIndexSkills.Name = "tbIndexSkills";
-            tbIndexSkills.Size = new Size(36, 23);
+            tbIndexSkills.Size = new Size(160, 23);
             tbIndexSkills.TabIndex = 50;
             // 
             // tbNameSkills
             // 
-            tbNameSkills.Location = new Point(76, 31);
+            tbNameSkills.Location = new Point(266, 31);
             tbNameSkills.Name = "tbNameSkills";
             tbNameSkills.Size = new Size(221, 23);
             tbNameSkills.TabIndex = 49;
@@ -6175,70 +6239,6 @@
             tbNameTraits.Size = new Size(221, 23);
             tbNameTraits.TabIndex = 63;
             // 
-            // btEliminarSkills
-            // 
-            btEliminarSkills.Location = new Point(1351, 635);
-            btEliminarSkills.Margin = new Padding(3, 2, 3, 2);
-            btEliminarSkills.Name = "btEliminarSkills";
-            btEliminarSkills.Size = new Size(82, 22);
-            btEliminarSkills.TabIndex = 172;
-            btEliminarSkills.Text = "Eliminar";
-            btEliminarSkills.UseVisualStyleBackColor = true;
-            // 
-            // btModificarSkills
-            // 
-            btModificarSkills.Location = new Point(1264, 635);
-            btModificarSkills.Margin = new Padding(3, 2, 3, 2);
-            btModificarSkills.Name = "btModificarSkills";
-            btModificarSkills.Size = new Size(82, 22);
-            btModificarSkills.TabIndex = 171;
-            btModificarSkills.Text = "Modificar";
-            btModificarSkills.UseVisualStyleBackColor = true;
-            // 
-            // btBuscarSkills
-            // 
-            btBuscarSkills.Location = new Point(1264, 600);
-            btBuscarSkills.Margin = new Padding(3, 2, 3, 2);
-            btBuscarSkills.Name = "btBuscarSkills";
-            btBuscarSkills.Size = new Size(170, 22);
-            btBuscarSkills.TabIndex = 170;
-            btBuscarSkills.Text = "Buscar por Index";
-            btBuscarSkills.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarSkills
-            // 
-            tbFiltrarSkills.Location = new Point(1147, 600);
-            tbFiltrarSkills.Margin = new Padding(3, 2, 3, 2);
-            tbFiltrarSkills.Name = "tbFiltrarSkills";
-            tbFiltrarSkills.Size = new Size(110, 23);
-            tbFiltrarSkills.TabIndex = 169;
-            // 
-            // btInsertarSkills
-            // 
-            btInsertarSkills.Location = new Point(1450, 632);
-            btInsertarSkills.Margin = new Padding(3, 2, 3, 2);
-            btInsertarSkills.Name = "btInsertarSkills";
-            btInsertarSkills.Size = new Size(82, 26);
-            btInsertarSkills.TabIndex = 168;
-            btInsertarSkills.Text = "Insertar";
-            btInsertarSkills.UseVisualStyleBackColor = true;
-            // 
-            // dgvSkills
-            // 
-            dgvSkills.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvSkills.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvSkills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSkills.Location = new Point(18, 397);
-            dgvSkills.Margin = new Padding(3, 2, 3, 2);
-            dgvSkills.MultiSelect = false;
-            dgvSkills.Name = "dgvSkills";
-            dgvSkills.ReadOnly = true;
-            dgvSkills.RowHeadersWidth = 51;
-            dgvSkills.RowTemplate.Height = 29;
-            dgvSkills.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSkills.Size = new Size(458, 262);
-            dgvSkills.TabIndex = 167;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -6337,6 +6337,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvRaces).EndInit();
             Skills.ResumeLayout(false);
             Skills.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSkills).EndInit();
             Spells.ResumeLayout(false);
             Spells.PerformLayout();
             Subclasses.ResumeLayout(false);
@@ -6345,7 +6346,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSkills).EndInit();
             ResumeLayout(false);
         }
 

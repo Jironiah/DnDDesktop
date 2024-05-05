@@ -375,7 +375,10 @@ namespace DnDDesktop.Controllers
             f.dgvRaces.SelectionChanged += DgvRaces_SelectionChanged;
             f.btBuscarRaces.Click += BtBuscarRaces_Click;
             f.btInsertarRaces.Click += BtInsertarRaces_Click;
+            f.btEliminarRaces.Click += BtEliminarRaces_Click;
         }
+
+
 
         //AbilityScore
 
@@ -4803,9 +4806,6 @@ namespace DnDDesktop.Controllers
                 {
                     MessageBox.Show("Lo que quieres buscar no puede estar vacío");
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -4927,8 +4927,8 @@ namespace DnDDesktop.Controllers
                         From abilityBonusOptionsAbilityScore = (From)abilityBonusOptionsFromAbilityScoreRow.DataBoundItem;
 
                         abilityBonusOptionFromList.Add(abilityBonusOptionFrom);
-                        abilityBonusOptionRace.From = abilityBonusOptionFromList.ToArray();
-                        abilityBonusOptionRace.From.FirstOrDefault().AbilityScore = abilityBonusOptionsAbilityScore;
+                        //abilityBonusOptionRace.From = abilityBonusOptionFromList.ToArray();
+                        //abilityBonusOptionRace.From.FirstOrDefault().AbilityScore = abilityBonusOptionsAbilityScore;
 
 
                         raceInsertar.AbilityBonusOptions = abilityBonusOptionRace;
@@ -4979,6 +4979,36 @@ namespace DnDDesktop.Controllers
                 RacesRepository.CreateRace(raceInsertar);
                 MessageBox.Show("Has insertado Race");
                 LoadDataRace();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarRaces_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarRaces.Text))
+                {
+                    string idBuscar = races.Where(a => a.Index.Equals(f.tbFiltrarRaces.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        RacesRepository.DeleteRace(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarRaces.Text.ToString());
+                        LoadDataRace();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
             }
             catch (Exception ex)
             {

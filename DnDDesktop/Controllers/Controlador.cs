@@ -394,6 +394,7 @@ namespace DnDDesktop.Controllers
             //Skill
             f.dgvSkills.SelectionChanged += DgvSkills_SelectionChanged;
             f.btBuscarSkills.Click += BtBuscarSkills_Click;
+            f.btEliminarSkills.Click += BtEliminarSkills_Click;
         }
 
         //AbilityScore
@@ -5271,6 +5272,36 @@ namespace DnDDesktop.Controllers
                 else
                 {
                     MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarSkills_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarSkills.Text))
+                {
+                    string idBuscar = skills.Where(a => a.Index.Equals(f.tbFiltrarSkills.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        SkillRepository.DeleteSkill(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarSkills.Text.ToString());
+                        LoadDataSkill();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
                 }
             }
             catch (Exception ex)

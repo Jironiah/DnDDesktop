@@ -396,6 +396,7 @@ namespace DnDDesktop.Controllers
             f.btBuscarSkills.Click += BtBuscarSkills_Click;
             f.btInsertarSkills.Click += BtInsertarSkills_Click;
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
+            f.btModificarSkills.Click += BtModificarSkills_Click;
         }
 
         //AbilityScore
@@ -5336,7 +5337,32 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        private void BtModificarSkills_Click(object? sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(f.tbFiltrarSkills.Text))
+            {
+                string idBuscar = skills.Where(a => a.Index.Equals(f.tbFiltrarSkills.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
 
+                if (idBuscar != null)
+                {
+                    Skill skillModificar = SkillRepository.GetSkill(idBuscar);
+                    string index = f.tbIndexSkills.Text;
+                    string name = f.tbNameSkills.Text;
+                    string[] description = new string[] { f.rtbDescriptionSkills.Text };
+                    From abilityScore = (From)f.cbAbilityScoreSkills.SelectedItem;
+
+                    skillModificar.Index = index;
+                    skillModificar.Name = name;
+                    skillModificar.Desc = description;
+                    skillModificar.AbilityScore = abilityScore;
+
+                    SkillRepository.UpdateSkill(skillModificar);
+                    MessageBox.Show("Has modificado " + f.tbFiltrarSkills.Text.ToString());
+                    LoadDataSkill();
+                }
+            }
+
+        }
     }
 }
 

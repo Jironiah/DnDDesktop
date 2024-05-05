@@ -394,6 +394,7 @@ namespace DnDDesktop.Controllers
             //Skill
             f.dgvSkills.SelectionChanged += DgvSkills_SelectionChanged;
             f.btBuscarSkills.Click += BtBuscarSkills_Click;
+            f.btInsertarSkills.Click += BtInsertarSkills_Click;
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
         }
 
@@ -5280,6 +5281,31 @@ namespace DnDDesktop.Controllers
             }
         }
 
+        private void BtInsertarSkills_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Skill skillInsertar = new Skill();
+                string index = f.tbIndexSkills.Text;
+                string name = f.tbNameSkills.Text;
+                string[] description = new string[] { f.rtbDescriptionSkills.Text };
+                From abilityScore = (From)f.cbAbilityScoreSkills.SelectedItem;
+
+                skillInsertar.Index = index;
+                skillInsertar.Name = name;
+                skillInsertar.Desc = description;
+                skillInsertar.AbilityScore = abilityScore;
+
+                SkillRepository.CreateSkill(skillInsertar);
+                MessageBox.Show("Has insertado Skill");
+                LoadDataSkill();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
         private void BtEliminarSkills_Click(object? sender, EventArgs e)
         {
             try
@@ -5309,6 +5335,8 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+
     }
 }
 

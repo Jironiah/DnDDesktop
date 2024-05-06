@@ -472,6 +472,8 @@
             tbIndexSkills = new TextBox();
             tbNameSkills = new TextBox();
             Spells = new TabPage();
+            chbRitualSpells = new CheckBox();
+            chbConcentrationSpells = new CheckBox();
             dgvDamageTypeSpells = new DataGridView();
             dgvAreaOfEffectSpells = new DataGridView();
             dgvDamageAtSlotLevelSpells = new DataGridView();
@@ -505,14 +507,12 @@
             label141 = new Label();
             tbRangeSpells = new TextBox();
             label139 = new Label();
-            label138 = new Label();
             label136 = new Label();
             label135 = new Label();
             label133 = new Label();
             label134 = new Label();
             label132 = new Label();
             label131 = new Label();
-            tbConcentrationSpells = new TextBox();
             tbDurationSpells = new TextBox();
             tbCastingTimeSpells = new TextBox();
             tbAttackTypeSpells = new TextBox();
@@ -5340,6 +5340,8 @@
             // 
             // Spells
             // 
+            Spells.Controls.Add(chbRitualSpells);
+            Spells.Controls.Add(chbConcentrationSpells);
             Spells.Controls.Add(dgvDamageTypeSpells);
             Spells.Controls.Add(dgvAreaOfEffectSpells);
             Spells.Controls.Add(dgvDamageAtSlotLevelSpells);
@@ -5373,14 +5375,12 @@
             Spells.Controls.Add(label141);
             Spells.Controls.Add(tbRangeSpells);
             Spells.Controls.Add(label139);
-            Spells.Controls.Add(label138);
             Spells.Controls.Add(label136);
             Spells.Controls.Add(label135);
             Spells.Controls.Add(label133);
             Spells.Controls.Add(label134);
             Spells.Controls.Add(label132);
             Spells.Controls.Add(label131);
-            Spells.Controls.Add(tbConcentrationSpells);
             Spells.Controls.Add(tbDurationSpells);
             Spells.Controls.Add(tbCastingTimeSpells);
             Spells.Controls.Add(tbAttackTypeSpells);
@@ -5395,6 +5395,26 @@
             Spells.TabIndex = 19;
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
+            // 
+            // chbRitualSpells
+            // 
+            chbRitualSpells.AutoSize = true;
+            chbRitualSpells.Location = new Point(1104, 48);
+            chbRitualSpells.Name = "chbRitualSpells";
+            chbRitualSpells.Size = new Size(69, 24);
+            chbRitualSpells.TabIndex = 194;
+            chbRitualSpells.Text = "Ritual";
+            chbRitualSpells.UseVisualStyleBackColor = true;
+            // 
+            // chbConcentrationSpells
+            // 
+            chbConcentrationSpells.AutoSize = true;
+            chbConcentrationSpells.Location = new Point(935, 47);
+            chbConcentrationSpells.Name = "chbConcentrationSpells";
+            chbConcentrationSpells.Size = new Size(124, 24);
+            chbConcentrationSpells.TabIndex = 193;
+            chbConcentrationSpells.Text = "Concentration";
+            chbConcentrationSpells.UseVisualStyleBackColor = true;
             // 
             // dgvDamageTypeSpells
             // 
@@ -5431,7 +5451,7 @@
             dgvDamageAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtSlotLevelSpells.Location = new Point(911, 248);
+            dgvDamageAtSlotLevelSpells.Location = new Point(468, 247);
             dgvDamageAtSlotLevelSpells.MultiSelect = false;
             dgvDamageAtSlotLevelSpells.Name = "dgvDamageAtSlotLevelSpells";
             dgvDamageAtSlotLevelSpells.ReadOnly = true;
@@ -5446,7 +5466,7 @@
             dgvDamageAtCharacterLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageAtCharacterLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageAtCharacterLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtCharacterLevelSpells.Location = new Point(473, 248);
+            dgvDamageAtCharacterLevelSpells.Location = new Point(910, 247);
             dgvDamageAtCharacterLevelSpells.MultiSelect = false;
             dgvDamageAtCharacterLevelSpells.Name = "dgvDamageAtCharacterLevelSpells";
             dgvDamageAtCharacterLevelSpells.ReadOnly = true;
@@ -5733,15 +5753,6 @@
             label139.TabIndex = 18;
             label139.Text = "Duration";
             // 
-            // label138
-            // 
-            label138.AutoSize = true;
-            label138.Location = new Point(937, 21);
-            label138.Name = "label138";
-            label138.Size = new Size(102, 20);
-            label138.TabIndex = 17;
-            label138.Text = "Concentration";
-            // 
             // label136
             // 
             label136.AutoSize = true;
@@ -5795,14 +5806,6 @@
             label131.Size = new Size(45, 20);
             label131.TabIndex = 10;
             label131.Text = "Index";
-            // 
-            // tbConcentrationSpells
-            // 
-            tbConcentrationSpells.Location = new Point(937, 45);
-            tbConcentrationSpells.Margin = new Padding(3, 4, 3, 4);
-            tbConcentrationSpells.Name = "tbConcentrationSpells";
-            tbConcentrationSpells.Size = new Size(114, 27);
-            tbConcentrationSpells.TabIndex = 9;
             // 
             // tbDurationSpells
             // 
@@ -6743,7 +6746,6 @@
         public TextBox tbNameSpells;
         public TextBox tbIndexSpells;
         public Label label139;
-        public Label label138;
         public Label label136;
         public Label label135;
         public Label label133;
@@ -7109,6 +7111,8 @@
         public Label label140;
         public DataGridView dgvHealAtSlotLevelSpells;
         public DataGridView dgvDamageTypeSpells;
+        public CheckBox chbConcentrationSpells;
+        public CheckBox chbRitualSpells;
     }
 }
 

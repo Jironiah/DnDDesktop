@@ -5,6 +5,8 @@ using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
 using System.Diagnostics;
+using System.Drawing;
+using System;
 
 
 namespace DnDDesktop.Controllers
@@ -428,8 +430,11 @@ namespace DnDDesktop.Controllers
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
             f.btModificarSkills.Click += BtModificarSkills_Click;
             f.btInsertarSkills.MouseUp += BtInsertarSkills_MouseUp;
-            
+            //Spells
+            f.dgvSpells.SelectionChanged += DgvSpells_SelectionChanged;
         }
+
+
 
         //AbilityScore
 
@@ -5429,6 +5434,113 @@ namespace DnDDesktop.Controllers
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        //Spells
+        private void DgvSpells_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow rowSpells = f.dgvSpells.CurrentRow;
+                if (rowSpells != null)
+                {
+                    Spell spell = SpellsRepository.GetSpell(((Spell)rowSpells.DataBoundItem).Id);
+                    if (spell != null)
+                    {
+                        f.tbIndexSpells.Text = spell?.Index;
+                        f.tbNameSpells.Text = spell?.Name;
+                        f.tbLevelSpells.Text = spell?.Level.ToString();
+                        f.tbMaterialSpells.Text = spell?.Material;
+                        f.tbAttackTypeSpells.Text = spell?.AttackType;
+                        f.tbCastingTimeSpells.Text = spell?.CastingTime;
+                        f.chbConcentrationSpells.Checked = (bool)(spell?.Concentration);
+                        f.chbRitualSpells.Checked = (bool)(spell?.Ritual);
+                        f.tbDurationSpells.Text = spell?.Duration;
+                        f.tbRangeSpells.Text = spell?.Range;
+                        f.cbClassesSpells.SelectedIndex = f.cbClassesSpells.FindString(spell?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                        f.cbSchoolsSpells.SelectedIndex = f.cbSchoolsSpells.FindString(spell?.From?.Name);
+                        f.cbSubclassesSpells.SelectedIndex = f.cbSubclassesSpells.FindString(spell?.Subclasses?.Select(a => a.Name)?.FirstOrDefault());
+                        BuscarYSeleccionarHealAtSlotLevel(spell?.HealAtSlotLevel);
+                        BuscarYSeleccionarDamageAtSlotLevel(spell?.DamageSpell?.DamageSlotLevel);
+                        BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BuscarYSeleccionarHealAtSlotLevel(HealAtSlotLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.HealAtSlotLevel?.HealAtSlotLevel1 == claseBuscar?.HealAtSlotLevel1 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel2 == claseBuscar?.HealAtSlotLevel2 && a.HealAtSlotLevel?.HealAtSlotLevel3 == claseBuscar?.HealAtSlotLevel3 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel4 == claseBuscar?.HealAtSlotLevel4 && a.HealAtSlotLevel?.HealAtSlotLevel5 == claseBuscar?.HealAtSlotLevel5 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel6 == claseBuscar?.HealAtSlotLevel6 && a.HealAtSlotLevel?.HealAtSlotLevel7 == claseBuscar?.HealAtSlotLevel7 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel8 == claseBuscar?.HealAtSlotLevel8 && a.HealAtSlotLevel?.HealAtSlotLevel9 == claseBuscar?.HealAtSlotLevel9);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvHealAtSlotLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvHealAtSlotLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto HealAtSlotLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageAtSlotLevel(DamageSlotLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageSlotLevel?.DmSlLvl1 == claseBuscar?.DmSlLvl1 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl2 == claseBuscar?.DmSlLvl2 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl3 == claseBuscar?.DmSlLvl3 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl4 == claseBuscar?.DmSlLvl4 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl5 == claseBuscar?.DmSlLvl5 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl6 == claseBuscar?.DmSlLvl6 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl7 == claseBuscar?.DmSlLvl7 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl8 == claseBuscar?.DmSlLvl8 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl9 == claseBuscar?.DmSlLvl9);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageAtSlotLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageAtSlotLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageSlotLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageAtCharacterLevel(DamageCharacterLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl1 == claseBuscar?.DmChLcl1 &&
+            a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl5 == claseBuscar?.DmChLcl5 && a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl11 == claseBuscar?.DmChLcl11 &&
+            a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl17 == claseBuscar?.DmChLcl17);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageAtCharacterLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageAtCharacterLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageCharacterLevel.");
             }
         }
     }

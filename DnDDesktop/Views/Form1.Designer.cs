@@ -472,6 +472,26 @@
             tbIndexSkills = new TextBox();
             tbNameSkills = new TextBox();
             Spells = new TabPage();
+            dgvDamageTypeSpells = new DataGridView();
+            dgvAreaOfEffectSpells = new DataGridView();
+            dgvDamageAtSlotLevelSpells = new DataGridView();
+            dgvDamageAtCharacterLevelSpells = new DataGridView();
+            dgvDCSpells = new DataGridView();
+            label198 = new Label();
+            label140 = new Label();
+            dgvHealAtSlotLevelSpells = new DataGridView();
+            cbDCType = new ComboBox();
+            label137 = new Label();
+            label194 = new Label();
+            rtbHigherLevelSpells = new RichTextBox();
+            label125 = new Label();
+            rtbDescSpells = new RichTextBox();
+            btEliminarSpells = new Button();
+            btModificarSpells = new Button();
+            btBuscarSpells = new Button();
+            tbFiltrarSpells = new TextBox();
+            btInsertarSpells = new Button();
+            dgvSpells = new DataGridView();
             label149 = new Label();
             rtbComponentsSpells = new RichTextBox();
             label148 = new Label();
@@ -560,26 +580,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            btEliminarSpells = new Button();
-            btModificarSpells = new Button();
-            btBuscarSpells = new Button();
-            tbFiltrarSpells = new TextBox();
-            btInsertarSpells = new Button();
-            dgvSpells = new DataGridView();
-            label125 = new Label();
-            rtbDescSpells = new RichTextBox();
-            label194 = new Label();
-            rtbHigherLevelSpells = new RichTextBox();
-            label137 = new Label();
-            comboBox1 = new ComboBox();
-            dgvHealAtSlotLevelSpells = new DataGridView();
-            label140 = new Label();
-            label198 = new Label();
-            dgvDCSpells = new DataGridView();
-            dgvDamageAtCharacterLevelSpells = new DataGridView();
-            dgvDamageAtSlotLevelSpells = new DataGridView();
-            dgvAreaOfEffectSpells = new DataGridView();
-            dgvDamageTypeSpells = new DataGridView();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -652,16 +652,16 @@
             Skills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSkills).BeginInit();
             Spells.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageAtCharacterLevelSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDCSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHealAtSlotLevelSpells).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpells).BeginInit();
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvHealAtSlotLevelSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDCSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageAtCharacterLevelSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -5350,7 +5350,7 @@
             Spells.Controls.Add(label198);
             Spells.Controls.Add(label140);
             Spells.Controls.Add(dgvHealAtSlotLevelSpells);
-            Spells.Controls.Add(comboBox1);
+            Spells.Controls.Add(cbDCType);
             Spells.Controls.Add(label137);
             Spells.Controls.Add(label194);
             Spells.Controls.Add(rtbHigherLevelSpells);
@@ -5399,6 +5399,227 @@
             Spells.TabIndex = 19;
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
+            // 
+            // dgvDamageTypeSpells
+            // 
+            dgvDamageTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageTypeSpells.Location = new Point(713, 386);
+            dgvDamageTypeSpells.MultiSelect = false;
+            dgvDamageTypeSpells.Name = "dgvDamageTypeSpells";
+            dgvDamageTypeSpells.ReadOnly = true;
+            dgvDamageTypeSpells.RowHeadersWidth = 51;
+            dgvDamageTypeSpells.RowTemplate.Height = 29;
+            dgvDamageTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageTypeSpells.Size = new Size(287, 98);
+            dgvDamageTypeSpells.TabIndex = 192;
+            // 
+            // dgvAreaOfEffectSpells
+            // 
+            dgvAreaOfEffectSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAreaOfEffectSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAreaOfEffectSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAreaOfEffectSpells.Location = new Point(22, 386);
+            dgvAreaOfEffectSpells.MultiSelect = false;
+            dgvAreaOfEffectSpells.Name = "dgvAreaOfEffectSpells";
+            dgvAreaOfEffectSpells.ReadOnly = true;
+            dgvAreaOfEffectSpells.RowHeadersWidth = 51;
+            dgvAreaOfEffectSpells.RowTemplate.Height = 29;
+            dgvAreaOfEffectSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAreaOfEffectSpells.Size = new Size(287, 98);
+            dgvAreaOfEffectSpells.TabIndex = 191;
+            // 
+            // dgvDamageAtSlotLevelSpells
+            // 
+            dgvDamageAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageAtSlotLevelSpells.Location = new Point(367, 247);
+            dgvDamageAtSlotLevelSpells.MultiSelect = false;
+            dgvDamageAtSlotLevelSpells.Name = "dgvDamageAtSlotLevelSpells";
+            dgvDamageAtSlotLevelSpells.ReadOnly = true;
+            dgvDamageAtSlotLevelSpells.RowHeadersWidth = 51;
+            dgvDamageAtSlotLevelSpells.RowTemplate.Height = 29;
+            dgvDamageAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageAtSlotLevelSpells.Size = new Size(287, 98);
+            dgvDamageAtSlotLevelSpells.TabIndex = 190;
+            // 
+            // dgvDamageAtCharacterLevelSpells
+            // 
+            dgvDamageAtCharacterLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDamageAtCharacterLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDamageAtCharacterLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDamageAtCharacterLevelSpells.Location = new Point(713, 247);
+            dgvDamageAtCharacterLevelSpells.MultiSelect = false;
+            dgvDamageAtCharacterLevelSpells.Name = "dgvDamageAtCharacterLevelSpells";
+            dgvDamageAtCharacterLevelSpells.ReadOnly = true;
+            dgvDamageAtCharacterLevelSpells.RowHeadersWidth = 51;
+            dgvDamageAtCharacterLevelSpells.RowTemplate.Height = 29;
+            dgvDamageAtCharacterLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDamageAtCharacterLevelSpells.Size = new Size(287, 98);
+            dgvDamageAtCharacterLevelSpells.TabIndex = 189;
+            // 
+            // dgvDCSpells
+            // 
+            dgvDCSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDCSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDCSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDCSpells.Location = new Point(367, 386);
+            dgvDCSpells.MultiSelect = false;
+            dgvDCSpells.Name = "dgvDCSpells";
+            dgvDCSpells.ReadOnly = true;
+            dgvDCSpells.RowHeadersWidth = 51;
+            dgvDCSpells.RowTemplate.Height = 29;
+            dgvDCSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDCSpells.Size = new Size(287, 98);
+            dgvDCSpells.TabIndex = 188;
+            // 
+            // label198
+            // 
+            label198.AutoSize = true;
+            label198.Location = new Point(712, 224);
+            label198.Name = "label198";
+            label198.Size = new Size(178, 20);
+            label198.TabIndex = 187;
+            label198.Text = "DamageAtCharacterLevel";
+            // 
+            // label140
+            // 
+            label140.AutoSize = true;
+            label140.Location = new Point(712, 363);
+            label140.Name = "label140";
+            label140.Size = new Size(97, 20);
+            label140.TabIndex = 186;
+            label140.Text = "DamageType";
+            // 
+            // dgvHealAtSlotLevelSpells
+            // 
+            dgvHealAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvHealAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvHealAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHealAtSlotLevelSpells.Location = new Point(22, 247);
+            dgvHealAtSlotLevelSpells.MultiSelect = false;
+            dgvHealAtSlotLevelSpells.Name = "dgvHealAtSlotLevelSpells";
+            dgvHealAtSlotLevelSpells.ReadOnly = true;
+            dgvHealAtSlotLevelSpells.RowHeadersWidth = 51;
+            dgvHealAtSlotLevelSpells.RowTemplate.Height = 29;
+            dgvHealAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvHealAtSlotLevelSpells.Size = new Size(287, 98);
+            dgvHealAtSlotLevelSpells.TabIndex = 185;
+            // 
+            // cbDCType
+            // 
+            cbDCType.FormattingEnabled = true;
+            cbDCType.Location = new Point(897, 156);
+            cbDCType.Margin = new Padding(3, 4, 3, 4);
+            cbDCType.Name = "cbDCType";
+            cbDCType.Size = new Size(138, 28);
+            cbDCType.TabIndex = 184;
+            // 
+            // label137
+            // 
+            label137.AutoSize = true;
+            label137.Location = new Point(897, 133);
+            label137.Name = "label137";
+            label137.Size = new Size(60, 20);
+            label137.TabIndex = 183;
+            label137.Text = "DCType";
+            // 
+            // label194
+            // 
+            label194.AutoSize = true;
+            label194.Location = new Point(1258, 476);
+            label194.Name = "label194";
+            label194.Size = new Size(92, 20);
+            label194.TabIndex = 182;
+            label194.Text = "Higher Level";
+            // 
+            // rtbHigherLevelSpells
+            // 
+            rtbHigherLevelSpells.Location = new Point(1258, 500);
+            rtbHigherLevelSpells.Margin = new Padding(3, 4, 3, 4);
+            rtbHigherLevelSpells.Name = "rtbHigherLevelSpells";
+            rtbHigherLevelSpells.Size = new Size(494, 180);
+            rtbHigherLevelSpells.TabIndex = 181;
+            rtbHigherLevelSpells.Text = "";
+            // 
+            // label125
+            // 
+            label125.AutoSize = true;
+            label125.Location = new Point(1258, 246);
+            label125.Name = "label125";
+            label125.Size = new Size(85, 20);
+            label125.TabIndex = 180;
+            label125.Text = "Description";
+            // 
+            // rtbDescSpells
+            // 
+            rtbDescSpells.Location = new Point(1258, 270);
+            rtbDescSpells.Margin = new Padding(3, 4, 3, 4);
+            rtbDescSpells.Name = "rtbDescSpells";
+            rtbDescSpells.Size = new Size(494, 180);
+            rtbDescSpells.TabIndex = 179;
+            rtbDescSpells.Text = "";
+            // 
+            // btEliminarSpells
+            // 
+            btEliminarSpells.Location = new Point(1545, 850);
+            btEliminarSpells.Name = "btEliminarSpells";
+            btEliminarSpells.Size = new Size(94, 29);
+            btEliminarSpells.TabIndex = 178;
+            btEliminarSpells.Text = "Eliminar";
+            btEliminarSpells.UseVisualStyleBackColor = true;
+            // 
+            // btModificarSpells
+            // 
+            btModificarSpells.Location = new Point(1446, 850);
+            btModificarSpells.Name = "btModificarSpells";
+            btModificarSpells.Size = new Size(94, 29);
+            btModificarSpells.TabIndex = 177;
+            btModificarSpells.Text = "Modificar";
+            btModificarSpells.UseVisualStyleBackColor = true;
+            btModificarSpells.Click += button2_Click;
+            // 
+            // btBuscarSpells
+            // 
+            btBuscarSpells.Location = new Point(1446, 803);
+            btBuscarSpells.Name = "btBuscarSpells";
+            btBuscarSpells.Size = new Size(194, 29);
+            btBuscarSpells.TabIndex = 176;
+            btBuscarSpells.Text = "Buscar por Index";
+            btBuscarSpells.UseVisualStyleBackColor = true;
+            // 
+            // tbFiltrarSpells
+            // 
+            tbFiltrarSpells.Location = new Point(1312, 803);
+            tbFiltrarSpells.Name = "tbFiltrarSpells";
+            tbFiltrarSpells.Size = new Size(125, 27);
+            tbFiltrarSpells.TabIndex = 175;
+            // 
+            // btInsertarSpells
+            // 
+            btInsertarSpells.Location = new Point(1658, 846);
+            btInsertarSpells.Name = "btInsertarSpells";
+            btInsertarSpells.Size = new Size(94, 35);
+            btInsertarSpells.TabIndex = 174;
+            btInsertarSpells.Text = "Insertar";
+            btInsertarSpells.UseVisualStyleBackColor = true;
+            // 
+            // dgvSpells
+            // 
+            dgvSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSpells.Location = new Point(22, 532);
+            dgvSpells.MultiSelect = false;
+            dgvSpells.Name = "dgvSpells";
+            dgvSpells.ReadOnly = true;
+            dgvSpells.RowHeadersWidth = 51;
+            dgvSpells.RowTemplate.Height = 29;
+            dgvSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSpells.Size = new Size(523, 349);
+            dgvSpells.TabIndex = 173;
             // 
             // label149
             // 
@@ -6234,227 +6455,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // btEliminarSpells
-            // 
-            btEliminarSpells.Location = new Point(1545, 850);
-            btEliminarSpells.Name = "btEliminarSpells";
-            btEliminarSpells.Size = new Size(94, 29);
-            btEliminarSpells.TabIndex = 178;
-            btEliminarSpells.Text = "Eliminar";
-            btEliminarSpells.UseVisualStyleBackColor = true;
-            // 
-            // btModificarSpells
-            // 
-            btModificarSpells.Location = new Point(1446, 850);
-            btModificarSpells.Name = "btModificarSpells";
-            btModificarSpells.Size = new Size(94, 29);
-            btModificarSpells.TabIndex = 177;
-            btModificarSpells.Text = "Modificar";
-            btModificarSpells.UseVisualStyleBackColor = true;
-            btModificarSpells.Click += button2_Click;
-            // 
-            // btBuscarSpells
-            // 
-            btBuscarSpells.Location = new Point(1446, 803);
-            btBuscarSpells.Name = "btBuscarSpells";
-            btBuscarSpells.Size = new Size(194, 29);
-            btBuscarSpells.TabIndex = 176;
-            btBuscarSpells.Text = "Buscar por Index";
-            btBuscarSpells.UseVisualStyleBackColor = true;
-            // 
-            // tbFiltrarSpells
-            // 
-            tbFiltrarSpells.Location = new Point(1312, 803);
-            tbFiltrarSpells.Name = "tbFiltrarSpells";
-            tbFiltrarSpells.Size = new Size(125, 27);
-            tbFiltrarSpells.TabIndex = 175;
-            // 
-            // btInsertarSpells
-            // 
-            btInsertarSpells.Location = new Point(1658, 846);
-            btInsertarSpells.Name = "btInsertarSpells";
-            btInsertarSpells.Size = new Size(94, 35);
-            btInsertarSpells.TabIndex = 174;
-            btInsertarSpells.Text = "Insertar";
-            btInsertarSpells.UseVisualStyleBackColor = true;
-            // 
-            // dgvSpells
-            // 
-            dgvSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSpells.Location = new Point(22, 532);
-            dgvSpells.MultiSelect = false;
-            dgvSpells.Name = "dgvSpells";
-            dgvSpells.ReadOnly = true;
-            dgvSpells.RowHeadersWidth = 51;
-            dgvSpells.RowTemplate.Height = 29;
-            dgvSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSpells.Size = new Size(523, 349);
-            dgvSpells.TabIndex = 173;
-            // 
-            // label125
-            // 
-            label125.AutoSize = true;
-            label125.Location = new Point(1258, 246);
-            label125.Name = "label125";
-            label125.Size = new Size(85, 20);
-            label125.TabIndex = 180;
-            label125.Text = "Description";
-            // 
-            // rtbDescSpells
-            // 
-            rtbDescSpells.Location = new Point(1258, 270);
-            rtbDescSpells.Margin = new Padding(3, 4, 3, 4);
-            rtbDescSpells.Name = "rtbDescSpells";
-            rtbDescSpells.Size = new Size(494, 180);
-            rtbDescSpells.TabIndex = 179;
-            rtbDescSpells.Text = "";
-            // 
-            // label194
-            // 
-            label194.AutoSize = true;
-            label194.Location = new Point(1258, 476);
-            label194.Name = "label194";
-            label194.Size = new Size(92, 20);
-            label194.TabIndex = 182;
-            label194.Text = "Higher Level";
-            // 
-            // rtbHigherLevelSpells
-            // 
-            rtbHigherLevelSpells.Location = new Point(1258, 500);
-            rtbHigherLevelSpells.Margin = new Padding(3, 4, 3, 4);
-            rtbHigherLevelSpells.Name = "rtbHigherLevelSpells";
-            rtbHigherLevelSpells.Size = new Size(494, 180);
-            rtbHigherLevelSpells.TabIndex = 181;
-            rtbHigherLevelSpells.Text = "";
-            // 
-            // label137
-            // 
-            label137.AutoSize = true;
-            label137.Location = new Point(897, 133);
-            label137.Name = "label137";
-            label137.Size = new Size(60, 20);
-            label137.TabIndex = 183;
-            label137.Text = "DCType";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(897, 156);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(138, 28);
-            comboBox1.TabIndex = 184;
-            // 
-            // dgvHealAtSlotLevelSpells
-            // 
-            dgvHealAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvHealAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvHealAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHealAtSlotLevelSpells.Location = new Point(22, 247);
-            dgvHealAtSlotLevelSpells.MultiSelect = false;
-            dgvHealAtSlotLevelSpells.Name = "dgvHealAtSlotLevelSpells";
-            dgvHealAtSlotLevelSpells.ReadOnly = true;
-            dgvHealAtSlotLevelSpells.RowHeadersWidth = 51;
-            dgvHealAtSlotLevelSpells.RowTemplate.Height = 29;
-            dgvHealAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHealAtSlotLevelSpells.Size = new Size(287, 98);
-            dgvHealAtSlotLevelSpells.TabIndex = 185;
-            // 
-            // label140
-            // 
-            label140.AutoSize = true;
-            label140.Location = new Point(712, 363);
-            label140.Name = "label140";
-            label140.Size = new Size(97, 20);
-            label140.TabIndex = 186;
-            label140.Text = "DamageType";
-            // 
-            // label198
-            // 
-            label198.AutoSize = true;
-            label198.Location = new Point(712, 224);
-            label198.Name = "label198";
-            label198.Size = new Size(178, 20);
-            label198.TabIndex = 187;
-            label198.Text = "DamageAtCharacterLevel";
-            // 
-            // dgvDCSpells
-            // 
-            dgvDCSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDCSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDCSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDCSpells.Location = new Point(367, 386);
-            dgvDCSpells.MultiSelect = false;
-            dgvDCSpells.Name = "dgvDCSpells";
-            dgvDCSpells.ReadOnly = true;
-            dgvDCSpells.RowHeadersWidth = 51;
-            dgvDCSpells.RowTemplate.Height = 29;
-            dgvDCSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDCSpells.Size = new Size(287, 98);
-            dgvDCSpells.TabIndex = 188;
-            // 
-            // dgvDamageAtCharacterLevelSpells
-            // 
-            dgvDamageAtCharacterLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDamageAtCharacterLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDamageAtCharacterLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtCharacterLevelSpells.Location = new Point(713, 247);
-            dgvDamageAtCharacterLevelSpells.MultiSelect = false;
-            dgvDamageAtCharacterLevelSpells.Name = "dgvDamageAtCharacterLevelSpells";
-            dgvDamageAtCharacterLevelSpells.ReadOnly = true;
-            dgvDamageAtCharacterLevelSpells.RowHeadersWidth = 51;
-            dgvDamageAtCharacterLevelSpells.RowTemplate.Height = 29;
-            dgvDamageAtCharacterLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageAtCharacterLevelSpells.Size = new Size(287, 98);
-            dgvDamageAtCharacterLevelSpells.TabIndex = 189;
-            // 
-            // dgvDamageAtSlotLevelSpells
-            // 
-            dgvDamageAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDamageAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDamageAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtSlotLevelSpells.Location = new Point(367, 247);
-            dgvDamageAtSlotLevelSpells.MultiSelect = false;
-            dgvDamageAtSlotLevelSpells.Name = "dgvDamageAtSlotLevelSpells";
-            dgvDamageAtSlotLevelSpells.ReadOnly = true;
-            dgvDamageAtSlotLevelSpells.RowHeadersWidth = 51;
-            dgvDamageAtSlotLevelSpells.RowTemplate.Height = 29;
-            dgvDamageAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageAtSlotLevelSpells.Size = new Size(287, 98);
-            dgvDamageAtSlotLevelSpells.TabIndex = 190;
-            // 
-            // dgvAreaOfEffectSpells
-            // 
-            dgvAreaOfEffectSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvAreaOfEffectSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvAreaOfEffectSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAreaOfEffectSpells.Location = new Point(22, 386);
-            dgvAreaOfEffectSpells.MultiSelect = false;
-            dgvAreaOfEffectSpells.Name = "dgvAreaOfEffectSpells";
-            dgvAreaOfEffectSpells.ReadOnly = true;
-            dgvAreaOfEffectSpells.RowHeadersWidth = 51;
-            dgvAreaOfEffectSpells.RowTemplate.Height = 29;
-            dgvAreaOfEffectSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAreaOfEffectSpells.Size = new Size(287, 98);
-            dgvAreaOfEffectSpells.TabIndex = 191;
-            // 
-            // dgvDamageTypeSpells
-            // 
-            dgvDamageTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDamageTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDamageTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageTypeSpells.Location = new Point(713, 386);
-            dgvDamageTypeSpells.MultiSelect = false;
-            dgvDamageTypeSpells.Name = "dgvDamageTypeSpells";
-            dgvDamageTypeSpells.ReadOnly = true;
-            dgvDamageTypeSpells.RowHeadersWidth = 51;
-            dgvDamageTypeSpells.RowTemplate.Height = 29;
-            dgvDamageTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageTypeSpells.Size = new Size(287, 98);
-            dgvDamageTypeSpells.TabIndex = 192;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -6557,19 +6557,19 @@
             ((System.ComponentModel.ISupportInitialize)dgvSkills).EndInit();
             Spells.ResumeLayout(false);
             Spells.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDamageAtCharacterLevelSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDCSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHealAtSlotLevelSpells).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSpells).EndInit();
             Subclasses.ResumeLayout(false);
             Subclasses.PerformLayout();
             SubRaces.ResumeLayout(false);
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvHealAtSlotLevelSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDCSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageAtCharacterLevelSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).EndInit();
             ResumeLayout(false);
         }
 
@@ -7123,7 +7123,7 @@
         public RichTextBox rtbHigherLevelSpells;
         public Label label125;
         public RichTextBox rtbDescSpells;
-        public ComboBox comboBox1;
+        public ComboBox cbDCType;
         public Label label137;
         public DataGridView dgvAreaOfEffectSpells;
         public DataGridView dgvDamageAtSlotLevelSpells;

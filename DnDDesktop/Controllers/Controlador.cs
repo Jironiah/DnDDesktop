@@ -295,6 +295,12 @@ namespace DnDDesktop.Controllers
             f.dgvSpells.Columns["DC"].Visible = false;
             f.dgvSpells.Columns["HealAtSlotLevel"].Visible = false;
             f.dgvSpells.Columns["From"].Visible = false;
+            f.cbClassesSpells.DataSource = spells?.Select(a => a.Classes?.FirstOrDefault())?.ToList();
+            f.cbClassesSpells.DisplayMember = "Name";
+            //f.cbDCType.DataSource = spells?.FirstOrDefault().DC.dc_type.
+            f.cbDCType.DisplayMember = "Name";
+            f.cbSchoolsSpells.DataSource = spells?.Select(a => a.From).ToList();
+            f.cbSchoolsSpells.DisplayMember = "Name";
         }
         private void InitListeners()
         {

@@ -299,13 +299,12 @@ namespace DnDDesktop.Controllers
             f.dgvSpells.Columns["From"].Visible = false;
             f.cbClassesSpells.DataSource = spells?.Select(a => a.Classes?.FirstOrDefault())?.ToList();
             f.cbClassesSpells.DisplayMember = "Name";
-            //f.cbDCType.DataSource = spells?.Select(a => a.DC?.dc_type).ToList();
-            //f.cbDCType.DisplayMember = "Name";
-            f.cbSchoolsSpells.DataSource = spells?.Select(a => a.From).ToList();
+            f.dgvDCTypeSpells.DataSource = spells?.Select(a => a.DC?.dc_type)?.ToList();
+            f.cbSchoolsSpells.DataSource = spells?.Select(a => a.From)?.ToList();
             f.cbSchoolsSpells.DisplayMember = "Name";
             f.cbSubclassesSpells.DataSource = spells?.SelectMany(a => a.Subclasses)?.ToList();
             f.cbSubclassesSpells.DisplayMember = "Name";
-            f.dgvHealAtSlotLevelSpells.DataSource = spells?.Select(a => a.HealAtSlotLevel).ToList();
+            f.dgvHealAtSlotLevelSpells.DataSource = spells?.Select(a => a.HealAtSlotLevel)?.ToList();
             f.dgvDamageAtSlotLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageSlotLevel)?.ToList();
             f.dgvDamageAtCharacterLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageAtCharacterLevel)?.ToList();
             f.dgvDamageTypeSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageType)?.ToList();
@@ -5458,6 +5457,13 @@ namespace DnDDesktop.Controllers
                         f.chbRitualSpells.Checked = (bool)(spell?.Ritual);
                         f.tbDurationSpells.Text = spell?.Duration;
                         f.tbRangeSpells.Text = spell?.Range;
+                        f.rtbComponentsSpells.ResetText();
+                        for (int i = 0; i < 3 && i < spell?.Components?.Length; i++)
+                        {
+                            f.rtbComponentsSpells.AppendText(spell?.Components[i]);
+                        }
+                        f.rtbDescSpells.Text = spell?.Description?.FirstOrDefault();
+                        f.rtbHigherLevelSpells.Text = spell?.HigherLevel?.FirstOrDefault();
                         f.cbClassesSpells.SelectedIndex = f.cbClassesSpells.FindString(spell?.Classes?.Select(a => a.Name)?.FirstOrDefault());
                         f.cbSchoolsSpells.SelectedIndex = f.cbSchoolsSpells.FindString(spell?.From?.Name);
                         f.cbSubclassesSpells.SelectedIndex = f.cbSubclassesSpells.FindString(spell?.Subclasses?.Select(a => a.Name)?.FirstOrDefault());
@@ -5466,6 +5472,8 @@ namespace DnDDesktop.Controllers
                         BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
                         BuscarYSeleccionarDamageType(spell?.DamageSpell?.DamageType);
                         BuscarYSeleccionarAreaOfEffect(spell?.AreaOfEffect);
+                        BuscarYSeleccionarDC(spell?.DC);
+                        BuscarYSeleccionarDCType(spell?.DC?.dc_type);
                     }
                 }
             }
@@ -5587,7 +5595,8 @@ namespace DnDDesktop.Controllers
         }
         private void BuscarYSeleccionarDC(DCSpell claseBuscar)
         {
-            Spell clase = spells?.FirstOrDefault();
+            Spell clase = spells?.FirstOrDefault(a => a.DC?.dc_success == claseBuscar?.dc_success && a.DC?.dc_desc == claseBuscar?.dc_desc &&
+            a.DC?.dc_type?.Index == claseBuscar?.dc_type?.Index && a.DC?.dc_type?.Name == claseBuscar?.dc_type?.Name);
 
             if (clase != null)
             {
@@ -5602,7 +5611,27 @@ namespace DnDDesktop.Controllers
             }
             else
             {
-                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto Level.");
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DC.");
+            }
+        }
+        private void BuscarYSeleccionarDCType(From claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DC?.dc_type?.Index == claseBuscar?.Index && a.DC?.dc_type?.Name == claseBuscar?.Name);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDCTypeSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDCTypeSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DCType.");
             }
         }
     }

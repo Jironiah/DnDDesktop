@@ -431,7 +431,10 @@ namespace DnDDesktop.Controllers
             f.btInsertarSkills.MouseUp += BtInsertarSkills_MouseUp;
             //Spells
             f.dgvSpells.SelectionChanged += DgvSpells_SelectionChanged;
+            f.btBuscarSpells.Click += BtBuscarSpells_Click;
         }
+
+
 
 
 
@@ -5632,6 +5635,64 @@ namespace DnDDesktop.Controllers
             else
             {
                 MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DCType.");
+            }
+        }
+
+        private void BtBuscarSpells_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarSpells.Text))
+                {
+                    string idBuscar = spells.Where(a => a.Index.Equals(f.tbFiltrarSpells.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Spell spell = SpellsRepository.GetSpell(idBuscar);
+                        if (spell != null)
+                        {
+                            f.tbIndexSpells.Text = spell?.Index;
+                            f.tbNameSpells.Text = spell?.Name;
+                            f.tbLevelSpells.Text = spell?.Level.ToString();
+                            f.tbMaterialSpells.Text = spell?.Material;
+                            f.tbAttackTypeSpells.Text = spell?.AttackType;
+                            f.tbCastingTimeSpells.Text = spell?.CastingTime;
+                            f.chbConcentrationSpells.Checked = (bool)(spell?.Concentration);
+                            f.chbRitualSpells.Checked = (bool)(spell?.Ritual);
+                            f.tbDurationSpells.Text = spell?.Duration;
+                            f.tbRangeSpells.Text = spell?.Range;
+                            f.rtbComponentsSpells.ResetText();
+                            for (int i = 0; i < 3 && i < spell?.Components?.Length; i++)
+                            {
+                                f.rtbComponentsSpells.AppendText(spell?.Components[i]);
+                            }
+                            f.rtbDescSpells.Text = spell?.Description?.FirstOrDefault();
+                            f.rtbHigherLevelSpells.Text = spell?.HigherLevel?.FirstOrDefault();
+                            f.cbClassesSpells.SelectedIndex = f.cbClassesSpells.FindString(spell?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                            f.cbSchoolsSpells.SelectedIndex = f.cbSchoolsSpells.FindString(spell?.From?.Name);
+                            f.cbSubclassesSpells.SelectedIndex = f.cbSubclassesSpells.FindString(spell?.Subclasses?.Select(a => a.Name)?.FirstOrDefault());
+                            BuscarYSeleccionarHealAtSlotLevel(spell?.HealAtSlotLevel);
+                            BuscarYSeleccionarDamageAtSlotLevel(spell?.DamageSpell?.DamageSlotLevel);
+                            BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
+                            BuscarYSeleccionarDamageType(spell?.DamageSpell?.DamageType);
+                            BuscarYSeleccionarAreaOfEffect(spell?.AreaOfEffect);
+                            BuscarYSeleccionarDC(spell?.DC);
+                            BuscarYSeleccionarDCType(spell?.DC?.dc_type);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
     }

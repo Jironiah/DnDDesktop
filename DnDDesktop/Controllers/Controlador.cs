@@ -5464,6 +5464,8 @@ namespace DnDDesktop.Controllers
                         BuscarYSeleccionarHealAtSlotLevel(spell?.HealAtSlotLevel);
                         BuscarYSeleccionarDamageAtSlotLevel(spell?.DamageSpell?.DamageSlotLevel);
                         BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
+                        BuscarYSeleccionarDamageType(spell?.DamageSpell?.DamageType);
+                        BuscarYSeleccionarAreaOfEffect(spell?.AreaOfEffect);
                     }
                 }
             }
@@ -5541,6 +5543,66 @@ namespace DnDDesktop.Controllers
             else
             {
                 MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageCharacterLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageType(From claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageType?.Name == claseBuscar?.Name && a.DamageSpell?.DamageType?.Index == claseBuscar?.Index);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageTypeSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageTypeSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageType.");
+            }
+        }
+        private void BuscarYSeleccionarAreaOfEffect(AreaOfEffect claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.AreaOfEffect?.Size == claseBuscar?.Size && a.AreaOfEffect?.Type == claseBuscar?.Type);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvAreaOfEffectSpells.Rows[rowIndex].Selected = true;
+                    f.dgvAreaOfEffectSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AreaOfEffect.");
+            }
+        }
+        private void BuscarYSeleccionarDC(DCSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault();
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDCSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDCSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto Level.");
             }
         }
     }

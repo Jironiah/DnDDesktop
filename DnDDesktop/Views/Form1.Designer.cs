@@ -578,6 +578,8 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
+            dgvDCTypeSpells = new DataGridView();
+            label137 = new Label();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -660,6 +662,7 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -5340,6 +5343,8 @@
             // 
             // Spells
             // 
+            Spells.Controls.Add(dgvDCTypeSpells);
+            Spells.Controls.Add(label137);
             Spells.Controls.Add(chbRitualSpells);
             Spells.Controls.Add(chbConcentrationSpells);
             Spells.Controls.Add(dgvDamageTypeSpells);
@@ -5421,7 +5426,7 @@
             dgvDamageTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageTypeSpells.Location = new Point(911, 384);
+            dgvDamageTypeSpells.Location = new Point(593, 555);
             dgvDamageTypeSpells.MultiSelect = false;
             dgvDamageTypeSpells.Name = "dgvDamageTypeSpells";
             dgvDamageTypeSpells.ReadOnly = true;
@@ -5503,7 +5508,7 @@
             // label140
             // 
             label140.AutoSize = true;
-            label140.Location = new Point(910, 361);
+            label140.Location = new Point(592, 532);
             label140.Name = "label140";
             label140.Size = new Size(97, 20);
             label140.TabIndex = 186;
@@ -6436,6 +6441,30 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
+            // dgvDCTypeSpells
+            // 
+            dgvDCTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDCTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDCTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDCTypeSpells.Location = new Point(855, 384);
+            dgvDCTypeSpells.MultiSelect = false;
+            dgvDCTypeSpells.Name = "dgvDCTypeSpells";
+            dgvDCTypeSpells.ReadOnly = true;
+            dgvDCTypeSpells.RowHeadersWidth = 51;
+            dgvDCTypeSpells.RowTemplate.Height = 29;
+            dgvDCTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDCTypeSpells.Size = new Size(349, 125);
+            dgvDCTypeSpells.TabIndex = 196;
+            // 
+            // label137
+            // 
+            label137.AutoSize = true;
+            label137.Location = new Point(855, 361);
+            label137.Name = "label137";
+            label137.Size = new Size(60, 20);
+            label137.TabIndex = 195;
+            label137.Text = "DCType";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -6551,6 +6580,7 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).EndInit();
             ResumeLayout(false);
         }
 
@@ -7113,6 +7143,8 @@
         public DataGridView dgvDamageTypeSpells;
         public CheckBox chbConcentrationSpells;
         public CheckBox chbRitualSpells;
+        public DataGridView dgvDCTypeSpells;
+        public Label label137;
     }
 }
 

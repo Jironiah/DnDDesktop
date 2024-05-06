@@ -32,6 +32,7 @@ namespace DnDDesktop.Controllers
         ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
         RacesRepository RacesRepository = new RacesRepository();
         SkillRepository SkillRepository = new SkillRepository();
+        SpellsRepository SpellsRepository = new SpellsRepository();
 
         //Listas
 
@@ -90,6 +91,9 @@ namespace DnDDesktop.Controllers
         //Skill
         List<Skill> skills = new List<Skill>();
 
+        //Spells
+        List<Spell> spells = new List<Spell>();
+
         public Controlador()
         {
             LoadData();
@@ -117,6 +121,7 @@ namespace DnDDesktop.Controllers
             LoadDataProficiency();
             LoadDataRace();
             LoadDataSkill();
+            LoadDataSpells();
         }
 
         private void LoadDataAbilityScore()
@@ -281,6 +286,16 @@ namespace DnDDesktop.Controllers
             f.cbAbilityScoreSkills.DisplayMember = "Name";
         }
 
+        private void LoadDataSpells()
+        {
+            spells = SpellsRepository.GetSpells();
+            f.dgvSpells.DataSource = spells;
+            f.dgvSpells.Columns["AreaOfEffect"].Visible = false;
+            f.dgvSpells.Columns["DamageSpell"].Visible = false;
+            f.dgvSpells.Columns["DC"].Visible = false;
+            f.dgvSpells.Columns["HealAtSlotLevel"].Visible = false;
+            f.dgvSpells.Columns["From"].Visible = false;
+        }
         private void InitListeners()
         {
             //AbilityScore

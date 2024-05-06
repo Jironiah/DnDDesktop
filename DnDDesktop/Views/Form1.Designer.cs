@@ -480,8 +480,6 @@
             label198 = new Label();
             label140 = new Label();
             dgvHealAtSlotLevelSpells = new DataGridView();
-            cbDCType = new ComboBox();
-            label137 = new Label();
             label194 = new Label();
             rtbHigherLevelSpells = new RichTextBox();
             label125 = new Label();
@@ -5350,8 +5348,6 @@
             Spells.Controls.Add(label198);
             Spells.Controls.Add(label140);
             Spells.Controls.Add(dgvHealAtSlotLevelSpells);
-            Spells.Controls.Add(cbDCType);
-            Spells.Controls.Add(label137);
             Spells.Controls.Add(label194);
             Spells.Controls.Add(rtbHigherLevelSpells);
             Spells.Controls.Add(label125);
@@ -5405,14 +5401,14 @@
             dgvDamageTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageTypeSpells.Location = new Point(713, 386);
+            dgvDamageTypeSpells.Location = new Point(911, 384);
             dgvDamageTypeSpells.MultiSelect = false;
             dgvDamageTypeSpells.Name = "dgvDamageTypeSpells";
             dgvDamageTypeSpells.ReadOnly = true;
             dgvDamageTypeSpells.RowHeadersWidth = 51;
             dgvDamageTypeSpells.RowTemplate.Height = 29;
             dgvDamageTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageTypeSpells.Size = new Size(287, 98);
+            dgvDamageTypeSpells.Size = new Size(251, 177);
             dgvDamageTypeSpells.TabIndex = 192;
             // 
             // dgvAreaOfEffectSpells
@@ -5420,14 +5416,14 @@
             dgvAreaOfEffectSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvAreaOfEffectSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvAreaOfEffectSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAreaOfEffectSpells.Location = new Point(22, 386);
+            dgvAreaOfEffectSpells.Location = new Point(22, 384);
             dgvAreaOfEffectSpells.MultiSelect = false;
             dgvAreaOfEffectSpells.Name = "dgvAreaOfEffectSpells";
             dgvAreaOfEffectSpells.ReadOnly = true;
             dgvAreaOfEffectSpells.RowHeadersWidth = 51;
             dgvAreaOfEffectSpells.RowTemplate.Height = 29;
             dgvAreaOfEffectSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAreaOfEffectSpells.Size = new Size(287, 98);
+            dgvAreaOfEffectSpells.Size = new Size(224, 125);
             dgvAreaOfEffectSpells.TabIndex = 191;
             // 
             // dgvDamageAtSlotLevelSpells
@@ -5435,14 +5431,14 @@
             dgvDamageAtSlotLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageAtSlotLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageAtSlotLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtSlotLevelSpells.Location = new Point(367, 247);
+            dgvDamageAtSlotLevelSpells.Location = new Point(911, 248);
             dgvDamageAtSlotLevelSpells.MultiSelect = false;
             dgvDamageAtSlotLevelSpells.Name = "dgvDamageAtSlotLevelSpells";
             dgvDamageAtSlotLevelSpells.ReadOnly = true;
             dgvDamageAtSlotLevelSpells.RowHeadersWidth = 51;
             dgvDamageAtSlotLevelSpells.RowTemplate.Height = 29;
             dgvDamageAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageAtSlotLevelSpells.Size = new Size(287, 98);
+            dgvDamageAtSlotLevelSpells.Size = new Size(420, 98);
             dgvDamageAtSlotLevelSpells.TabIndex = 190;
             // 
             // dgvDamageAtCharacterLevelSpells
@@ -5450,14 +5446,14 @@
             dgvDamageAtCharacterLevelSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDamageAtCharacterLevelSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDamageAtCharacterLevelSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDamageAtCharacterLevelSpells.Location = new Point(713, 247);
+            dgvDamageAtCharacterLevelSpells.Location = new Point(473, 248);
             dgvDamageAtCharacterLevelSpells.MultiSelect = false;
             dgvDamageAtCharacterLevelSpells.Name = "dgvDamageAtCharacterLevelSpells";
             dgvDamageAtCharacterLevelSpells.ReadOnly = true;
             dgvDamageAtCharacterLevelSpells.RowHeadersWidth = 51;
             dgvDamageAtCharacterLevelSpells.RowTemplate.Height = 29;
             dgvDamageAtCharacterLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDamageAtCharacterLevelSpells.Size = new Size(287, 98);
+            dgvDamageAtCharacterLevelSpells.Size = new Size(420, 98);
             dgvDamageAtCharacterLevelSpells.TabIndex = 189;
             // 
             // dgvDCSpells
@@ -5465,20 +5461,20 @@
             dgvDCSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDCSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDCSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDCSpells.Location = new Point(367, 386);
+            dgvDCSpells.Location = new Point(300, 384);
             dgvDCSpells.MultiSelect = false;
             dgvDCSpells.Name = "dgvDCSpells";
             dgvDCSpells.ReadOnly = true;
             dgvDCSpells.RowHeadersWidth = 51;
             dgvDCSpells.RowTemplate.Height = 29;
             dgvDCSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDCSpells.Size = new Size(287, 98);
+            dgvDCSpells.Size = new Size(492, 125);
             dgvDCSpells.TabIndex = 188;
             // 
             // label198
             // 
             label198.AutoSize = true;
-            label198.Location = new Point(712, 224);
+            label198.Location = new Point(911, 223);
             label198.Name = "label198";
             label198.Size = new Size(178, 20);
             label198.TabIndex = 187;
@@ -5487,7 +5483,7 @@
             // label140
             // 
             label140.AutoSize = true;
-            label140.Location = new Point(712, 363);
+            label140.Location = new Point(910, 361);
             label140.Name = "label140";
             label140.Size = new Size(97, 20);
             label140.TabIndex = 186;
@@ -5505,31 +5501,13 @@
             dgvHealAtSlotLevelSpells.RowHeadersWidth = 51;
             dgvHealAtSlotLevelSpells.RowTemplate.Height = 29;
             dgvHealAtSlotLevelSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHealAtSlotLevelSpells.Size = new Size(287, 98);
+            dgvHealAtSlotLevelSpells.Size = new Size(420, 98);
             dgvHealAtSlotLevelSpells.TabIndex = 185;
-            // 
-            // cbDCType
-            // 
-            cbDCType.FormattingEnabled = true;
-            cbDCType.Location = new Point(897, 156);
-            cbDCType.Margin = new Padding(3, 4, 3, 4);
-            cbDCType.Name = "cbDCType";
-            cbDCType.Size = new Size(138, 28);
-            cbDCType.TabIndex = 184;
-            // 
-            // label137
-            // 
-            label137.AutoSize = true;
-            label137.Location = new Point(897, 133);
-            label137.Name = "label137";
-            label137.Size = new Size(60, 20);
-            label137.TabIndex = 183;
-            label137.Text = "DCType";
             // 
             // label194
             // 
             label194.AutoSize = true;
-            label194.Location = new Point(1258, 476);
+            label194.Location = new Point(1353, 476);
             label194.Name = "label194";
             label194.Size = new Size(92, 20);
             label194.TabIndex = 182;
@@ -5537,17 +5515,17 @@
             // 
             // rtbHigherLevelSpells
             // 
-            rtbHigherLevelSpells.Location = new Point(1258, 500);
+            rtbHigherLevelSpells.Location = new Point(1353, 500);
             rtbHigherLevelSpells.Margin = new Padding(3, 4, 3, 4);
             rtbHigherLevelSpells.Name = "rtbHigherLevelSpells";
-            rtbHigherLevelSpells.Size = new Size(494, 180);
+            rtbHigherLevelSpells.Size = new Size(399, 180);
             rtbHigherLevelSpells.TabIndex = 181;
             rtbHigherLevelSpells.Text = "";
             // 
             // label125
             // 
             label125.AutoSize = true;
-            label125.Location = new Point(1258, 246);
+            label125.Location = new Point(1353, 246);
             label125.Name = "label125";
             label125.Size = new Size(85, 20);
             label125.TabIndex = 180;
@@ -5555,10 +5533,10 @@
             // 
             // rtbDescSpells
             // 
-            rtbDescSpells.Location = new Point(1258, 270);
+            rtbDescSpells.Location = new Point(1353, 270);
             rtbDescSpells.Margin = new Padding(3, 4, 3, 4);
             rtbDescSpells.Name = "rtbDescSpells";
-            rtbDescSpells.Size = new Size(494, 180);
+            rtbDescSpells.Size = new Size(399, 180);
             rtbDescSpells.TabIndex = 179;
             rtbDescSpells.Text = "";
             // 
@@ -5624,7 +5602,7 @@
             // label149
             // 
             label149.AutoSize = true;
-            label149.Location = new Point(1258, 21);
+            label149.Location = new Point(1353, 21);
             label149.Name = "label149";
             label149.Size = new Size(93, 20);
             label149.TabIndex = 37;
@@ -5632,10 +5610,10 @@
             // 
             // rtbComponentsSpells
             // 
-            rtbComponentsSpells.Location = new Point(1258, 45);
+            rtbComponentsSpells.Location = new Point(1353, 45);
             rtbComponentsSpells.Margin = new Padding(3, 4, 3, 4);
             rtbComponentsSpells.Name = "rtbComponentsSpells";
-            rtbComponentsSpells.Size = new Size(494, 180);
+            rtbComponentsSpells.Size = new Size(399, 180);
             rtbComponentsSpells.TabIndex = 36;
             rtbComponentsSpells.Text = "";
             // 
@@ -5669,7 +5647,7 @@
             // label145
             // 
             label145.AutoSize = true;
-            label145.Location = new Point(367, 363);
+            label145.Location = new Point(300, 361);
             label145.Name = "label145";
             label145.Size = new Size(29, 20);
             label145.TabIndex = 32;
@@ -5678,7 +5656,7 @@
             // label144
             // 
             label144.AutoSize = true;
-            label144.Location = new Point(367, 224);
+            label144.Location = new Point(468, 225);
             label144.Name = "label144";
             label144.Size = new Size(141, 20);
             label144.TabIndex = 31;
@@ -5696,7 +5674,7 @@
             // label142
             // 
             label142.AutoSize = true;
-            label142.Location = new Point(22, 363);
+            label142.Location = new Point(22, 361);
             label142.Name = "label142";
             label142.Size = new Size(94, 20);
             label142.TabIndex = 29;
@@ -7123,8 +7101,6 @@
         public RichTextBox rtbHigherLevelSpells;
         public Label label125;
         public RichTextBox rtbDescSpells;
-        public ComboBox cbDCType;
-        public Label label137;
         public DataGridView dgvAreaOfEffectSpells;
         public DataGridView dgvDamageAtSlotLevelSpells;
         public DataGridView dgvDamageAtCharacterLevelSpells;

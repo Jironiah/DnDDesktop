@@ -297,10 +297,19 @@ namespace DnDDesktop.Controllers
             f.dgvSpells.Columns["From"].Visible = false;
             f.cbClassesSpells.DataSource = spells?.Select(a => a.Classes?.FirstOrDefault())?.ToList();
             f.cbClassesSpells.DisplayMember = "Name";
-            //f.cbDCType.DataSource = spells?.FirstOrDefault().DC.dc_type.
-            f.cbDCType.DisplayMember = "Name";
+            //f.cbDCType.DataSource = spells?.Select(a => a.DC?.dc_type).ToList();
+            //f.cbDCType.DisplayMember = "Name";
             f.cbSchoolsSpells.DataSource = spells?.Select(a => a.From).ToList();
             f.cbSchoolsSpells.DisplayMember = "Name";
+            f.cbSubclassesSpells.DataSource = spells?.SelectMany(a => a.Subclasses)?.ToList();
+            f.cbSubclassesSpells.DisplayMember = "Name";
+            f.dgvHealAtSlotLevelSpells.DataSource = spells?.Select(a => a.HealAtSlotLevel).ToList();
+            f.dgvDamageAtSlotLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageSlotLevel)?.ToList();
+            f.dgvDamageAtCharacterLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageAtCharacterLevel)?.ToList();
+            f.dgvDamageTypeSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageType)?.ToList();
+            f.dgvAreaOfEffectSpells.DataSource = spells?.Select(a => a.AreaOfEffect)?.ToList();
+            f.dgvDCSpells.DataSource = spells?.Select(a => a.DC)?.ToList();
+            f.dgvDCSpells.Columns["dc_type"].Visible = false;
         }
         private void InitListeners()
         {
@@ -419,6 +428,7 @@ namespace DnDDesktop.Controllers
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
             f.btModificarSkills.Click += BtModificarSkills_Click;
             f.btInsertarSkills.MouseUp += BtInsertarSkills_MouseUp;
+            
         }
 
         //AbilityScore

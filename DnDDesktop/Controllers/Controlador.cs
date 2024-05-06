@@ -279,7 +279,6 @@ namespace DnDDesktop.Controllers
             f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(a => a.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
             f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
         }
-
         private void LoadDataSkill()
         {
             skills = SkillRepository.GetSkills();
@@ -287,7 +286,6 @@ namespace DnDDesktop.Controllers
             f.cbAbilityScoreSkills.DataSource = skills.Select(a => a.AbilityScore).ToList();
             f.cbAbilityScoreSkills.DisplayMember = "Name";
         }
-
         private void LoadDataSpells()
         {
             spells = SpellsRepository.GetSpells();
@@ -433,6 +431,7 @@ namespace DnDDesktop.Controllers
             f.dgvSpells.SelectionChanged += DgvSpells_SelectionChanged;
             f.btBuscarSpells.Click += BtBuscarSpells_Click;
             f.btEliminarSpells.Click += BtEliminarSpells_Click;
+            f.btInsertarSpells.Click += BtInsertarSpells_Click;
         }
 
         //AbilityScore
@@ -5722,6 +5721,49 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
 
+        }
+        private void BtInsertarSpells_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Spell spellInsertar = new Spell();
+                string index = f.tbIndexSpells.Text;
+                string name = f.tbIndexSpells.Text;
+                int level = int.Parse(f.tbIndexSpells.Text);
+                string material = f.tbIndexSpells.Text;
+                string attackType = f.tbIndexSpells.Text;
+                string castingTime = f.tbIndexSpells.Text;
+                string duration = f.tbIndexSpells.Text;
+                string range = f.tbIndexSpells.Text;
+                bool concentration = f.chbConcentrationSpells.Checked;
+                bool ritual = f.chbRitualSpells.Checked;
+                string[] components = new string[] { f.rtbComponentsSpells.Text };
+                string[] description = new string[] { f.rtbDescSpells.Text };
+                string[] higherLevel = new string[] { f.rtbHigherLevelSpells.Text };
+
+                From classes = (From)f.cbClassesSpells.SelectedItem;
+                From schools = (From)f.cbSchoolsSpells.SelectedItem;
+                From subclasses = (From)f.cbSubclassesSpells.SelectedItem;
+
+                DataGridViewRow healAtSlotLevelRow = f.dgvHealAtSlotLevelSpells.CurrentRow;
+                DataGridViewRow damageAtSlotLevelRow = f.dgvDamageAtSlotLevelSpells.CurrentRow;
+                DataGridViewRow damageAtCharacterLevelRow = f.dgvDamageAtCharacterLevelSpells.CurrentRow;
+                DataGridViewRow damageTypeRow = f.dgvDamageType.CurrentRow;
+                DataGridViewRow areaOfEffectRow = f.dgvAreaOfEffectSpells.CurrentRow;
+                DataGridViewRow dcRow = f.dgvDCSpells.CurrentRow;
+                DataGridViewRow dcTypeRow = f.dgvDCTypeSpells.CurrentRow;
+
+                if (healAtSlotLevelRow != null && damageAtSlotLevelRow != null && damageAtCharacterLevelRow != null && damageTypeRow != null &&
+                    areaOfEffectRow != null && dcRow != null && dcTypeRow != null)
+                {
+                    //Guardar todos los damage en un objeto DamageSpell
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
         }
     }
 }

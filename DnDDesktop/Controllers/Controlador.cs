@@ -5728,13 +5728,13 @@ namespace DnDDesktop.Controllers
             {
                 Spell spellInsertar = new Spell();
                 string index = f.tbIndexSpells.Text;
-                string name = f.tbIndexSpells.Text;
-                int level = int.Parse(f.tbIndexSpells.Text);
-                string material = f.tbIndexSpells.Text;
-                string attackType = f.tbIndexSpells.Text;
-                string castingTime = f.tbIndexSpells.Text;
-                string duration = f.tbIndexSpells.Text;
-                string range = f.tbIndexSpells.Text;
+                string name = f.tbNameSpells.Text;
+                int level = int.Parse(f.tbLevelSpells.Text);
+                string material = f.tbMaterialSpells.Text;
+                string attackType = f.tbAttackTypeSpells.Text;
+                string castingTime = f.tbCastingTimeSpells.Text;
+                string duration = f.tbDurationSpells.Text;
+                string range = f.tbRangeSpells.Text;
                 bool concentration = f.chbConcentrationSpells.Checked;
                 bool ritual = f.chbRitualSpells.Checked;
                 string[] components = new string[] { f.rtbComponentsSpells.Text };
@@ -5753,48 +5753,105 @@ namespace DnDDesktop.Controllers
                 DataGridViewRow dcRow = f.dgvDCSpells.CurrentRow;
                 DataGridViewRow dcTypeRow = f.dgvDCTypeSpells.CurrentRow;
 
-                //if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level.ToString()) &&
-                //    !string.IsNullOrEmpty(castingTime) && !string.IsNullOrEmpty(duration) && !string.IsNullOrEmpty(range) &&
-                //    f.rtbComponentsSpells.Text != string.Empty)
-                //{
-
-                //}
-
-                if (f.rtbComponentsSpells.Text != string.Empty)
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level.ToString()) &&
+                    !string.IsNullOrEmpty(castingTime) && !string.IsNullOrEmpty(duration) && !string.IsNullOrEmpty(range) &&
+                    f.rtbComponentsSpells.Text != string.Empty && f.rtbDescSpells.Text != string.Empty)
                 {
-                    MessageBox.Show("Tiene contenido");
+                    if (healAtSlotLevelRow != null && damageAtSlotLevelRow != null && damageAtCharacterLevelRow != null && damageTypeRow != null &&
+                    areaOfEffectRow != null && dcRow != null && dcTypeRow != null)
+                    {
+
+                        spellInsertar.Index = index;
+                        spellInsertar.Name = name;
+                        spellInsertar.Level = level;
+                        if (!string.IsNullOrEmpty(material))
+                        {
+                            spellInsertar.Material = material;
+                        }
+                        else
+                        {
+                            spellInsertar.Material = string.Empty;
+                        }
+                        if (!string.IsNullOrEmpty(attackType))
+                        {
+                            spellInsertar.AttackType = attackType;
+
+                        }
+                        else
+                        {
+                            spellInsertar.AttackType = string.Empty;
+                        }
+                        spellInsertar.CastingTime = castingTime;
+                        spellInsertar.Duration = duration;
+                        spellInsertar.Range = range;
+                        spellInsertar.Concentration = concentration;
+                        spellInsertar.Ritual = ritual;
+                        spellInsertar.Components = components;
+                        spellInsertar.Description = description;
+                        //Este también puede estar vacío
+                        if (f.rtbHigherLevelSpells.Text != string.Empty)
+                        {
+                            spellInsertar.HigherLevel = higherLevel;
+                        }
+                        else
+                        {
+                            spellInsertar.HigherLevel = new string[] { string.Empty };
+                        }
+
+                        List<From> classesList = new List<From>();
+                        classesList.Add(classes);
+                        spellInsertar.Classes = classesList.ToArray();
+                        spellInsertar.From = schools;
+                        if (subclasses != null)
+                        {
+                            List<From> subclassesList = new List<From>();
+                            subclassesList.Add(subclasses);
+                            spellInsertar.Subclasses = subclassesList.ToArray();
+                        }
+                        else
+                        {
+                            List<From> subclassesList = new List<From>();
+                            From emtpySubclass = new From();
+                            emtpySubclass.Index = string.Empty;
+                            emtpySubclass.Name = string.Empty;
+                            subclassesList.Add(emtpySubclass);
+                            spellInsertar.Subclasses = subclassesList.ToArray();
+                        }
+
+
+                        //Guardar todos los damage en un objeto DamageSpell
+                        DamageSpell damage = new DamageSpell();
+                        damage.DamageAtCharacterLevel = (DamageCharacterLevelSpell)damageAtCharacterLevelRow.DataBoundItem;
+                        damage.DamageSlotLevel = (DamageSlotLevelSpell)damageAtSlotLevelRow.DataBoundItem;
+                        damage.DamageType = (From)damageTypeRow.DataBoundItem;
+
+                        spellInsertar.DamageSpell = damage;
+                        spellInsertar.HealAtSlotLevel = (HealAtSlotLevelSpell)healAtSlotLevelRow.DataBoundItem;
+                        spellInsertar.AreaOfEffect = (AreaOfEffect)areaOfEffectRow.DataBoundItem;
+                        DCSpell dc = (DCSpell)dcRow.DataBoundItem;
+                        dc.dc_type = (From)dcTypeRow.DataBoundItem;
+                        spellInsertar.DC = dc;
+
+                        SpellsRepository.CreateSpell(spellInsertar);
+                        MessageBox.Show("Has insertado Spells");
+                        LoadDataSpells();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rellena los combobox");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Está vacío");
+                    MessageBox.Show("Rellena toda la información necesaria");
                 }
-                if (healAtSlotLevelRow != null && damageAtSlotLevelRow != null && damageAtCharacterLevelRow != null && damageTypeRow != null &&
-                    areaOfEffectRow != null && dcRow != null && dcTypeRow != null)
-                {
-                    //Guardar todos los damage en un objeto DamageSpell
-                    DamageSpell damage = new DamageSpell();
-                    damage.DamageAtCharacterLevel = (DamageCharacterLevelSpell)damageAtCharacterLevelRow.DataBoundItem;
-                    damage.DamageSlotLevel = (DamageSlotLevelSpell)damageAtSlotLevelRow.DataBoundItem;
-                    damage.DamageType = (From)damageTypeRow.DataBoundItem;
 
 
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
-        ////This method returns true if the RichTextBox is empty.
-        //public bool isRichTextBoxEmpty()
-        //{
-        //    TextPointer startPointer = MyRTB1.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward);
-        //    TextPointer endPointer = MyRTB1.ContentEnd.GetNextInsertionPosition(LogicalDirection.Backward);
-        //    if (startPointer.CompareTo(endPointer) == 0)
-        //        return true;
-        //    else
-        //        return false;
-        //}
     }
 }
-

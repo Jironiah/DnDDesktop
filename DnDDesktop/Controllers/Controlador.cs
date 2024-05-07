@@ -5753,10 +5753,30 @@ namespace DnDDesktop.Controllers
                 DataGridViewRow dcRow = f.dgvDCSpells.CurrentRow;
                 DataGridViewRow dcTypeRow = f.dgvDCTypeSpells.CurrentRow;
 
+                //if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level.ToString()) &&
+                //    !string.IsNullOrEmpty(castingTime) && !string.IsNullOrEmpty(duration) && !string.IsNullOrEmpty(range) &&
+                //    f.rtbComponentsSpells.Text != string.Empty)
+                //{
+
+                //}
+
+                if (f.rtbComponentsSpells.Text != string.Empty)
+                {
+                    MessageBox.Show("Tiene contenido");
+                }
+                else
+                {
+                    MessageBox.Show("Está vacío");
+                }
                 if (healAtSlotLevelRow != null && damageAtSlotLevelRow != null && damageAtCharacterLevelRow != null && damageTypeRow != null &&
                     areaOfEffectRow != null && dcRow != null && dcTypeRow != null)
                 {
                     //Guardar todos los damage en un objeto DamageSpell
+                    DamageSpell damage = new DamageSpell();
+                    damage.DamageAtCharacterLevel = (DamageCharacterLevelSpell)damageAtCharacterLevelRow.DataBoundItem;
+                    damage.DamageSlotLevel = (DamageSlotLevelSpell)damageAtSlotLevelRow.DataBoundItem;
+                    damage.DamageType = (From)damageTypeRow.DataBoundItem;
+
 
                 }
             }
@@ -5765,6 +5785,16 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+        ////This method returns true if the RichTextBox is empty.
+        //public bool isRichTextBoxEmpty()
+        //{
+        //    TextPointer startPointer = MyRTB1.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward);
+        //    TextPointer endPointer = MyRTB1.ContentEnd.GetNextInsertionPosition(LogicalDirection.Backward);
+        //    if (startPointer.CompareTo(endPointer) == 0)
+        //        return true;
+        //    else
+        //        return false;
+        //}
     }
 }
 

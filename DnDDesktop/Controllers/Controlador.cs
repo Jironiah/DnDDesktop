@@ -5,6 +5,8 @@ using DnDDesktop.Models.SubModels;
 using Extensions = DnDDesktop.Models.Extensions;
 using DnDDesktop.Models.Repository.DAOs;
 using System.Diagnostics;
+using System.Drawing;
+using System;
 
 
 namespace DnDDesktop.Controllers
@@ -32,6 +34,7 @@ namespace DnDDesktop.Controllers
         ProficiencyRepository ProficiencyRepository = new ProficiencyRepository();
         RacesRepository RacesRepository = new RacesRepository();
         SkillRepository SkillRepository = new SkillRepository();
+        SpellsRepository SpellsRepository = new SpellsRepository();
 
         //Listas
 
@@ -90,6 +93,9 @@ namespace DnDDesktop.Controllers
         //Skill
         List<Skill> skills = new List<Skill>();
 
+        //Spells
+        List<Spell> spells = new List<Spell>();
+
         public Controlador()
         {
             LoadData();
@@ -117,6 +123,7 @@ namespace DnDDesktop.Controllers
             LoadDataProficiency();
             LoadDataRace();
             LoadDataSkill();
+            LoadDataSpells();
         }
 
         private void LoadDataAbilityScore()
@@ -272,7 +279,6 @@ namespace DnDDesktop.Controllers
             f.cbStartingProficienciesOptionsFromRace.DataSource = races?.SelectMany(a => a.StartingProficienciesOptions?.From ?? Enumerable.Empty<From>()).ToList();
             f.cbStartingProficienciesOptionsFromRace.DisplayMember = "Name";
         }
-
         private void LoadDataSkill()
         {
             skills = SkillRepository.GetSkills();
@@ -280,7 +286,30 @@ namespace DnDDesktop.Controllers
             f.cbAbilityScoreSkills.DataSource = skills.Select(a => a.AbilityScore).ToList();
             f.cbAbilityScoreSkills.DisplayMember = "Name";
         }
-
+        private void LoadDataSpells()
+        {
+            spells = SpellsRepository.GetSpells();
+            f.dgvSpells.DataSource = spells;
+            f.dgvSpells.Columns["AreaOfEffect"].Visible = false;
+            f.dgvSpells.Columns["DamageSpell"].Visible = false;
+            f.dgvSpells.Columns["DC"].Visible = false;
+            f.dgvSpells.Columns["HealAtSlotLevel"].Visible = false;
+            f.dgvSpells.Columns["From"].Visible = false;
+            f.cbClassesSpells.DataSource = spells?.Select(a => a.Classes?.FirstOrDefault())?.ToList();
+            f.cbClassesSpells.DisplayMember = "Name";
+            f.dgvDCTypeSpells.DataSource = spells?.Select(a => a.DC?.dc_type)?.ToList();
+            f.cbSchoolsSpells.DataSource = spells?.Select(a => a.From)?.ToList();
+            f.cbSchoolsSpells.DisplayMember = "Name";
+            f.cbSubclassesSpells.DataSource = spells?.SelectMany(a => a.Subclasses)?.ToList();
+            f.cbSubclassesSpells.DisplayMember = "Name";
+            f.dgvHealAtSlotLevelSpells.DataSource = spells?.Select(a => a.HealAtSlotLevel)?.ToList();
+            f.dgvDamageAtSlotLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageSlotLevel)?.ToList();
+            f.dgvDamageAtCharacterLevelSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageAtCharacterLevel)?.ToList();
+            f.dgvDamageTypeSpells.DataSource = spells?.Select(a => a.DamageSpell?.DamageType)?.ToList();
+            f.dgvAreaOfEffectSpells.DataSource = spells?.Select(a => a.AreaOfEffect)?.ToList();
+            f.dgvDCSpells.DataSource = spells?.Select(a => a.DC)?.ToList();
+            f.dgvDCSpells.Columns["dc_type"].Visible = false;
+        }
         private void InitListeners()
         {
             //AbilityScore
@@ -398,6 +427,11 @@ namespace DnDDesktop.Controllers
             f.btEliminarSkills.Click += BtEliminarSkills_Click;
             f.btModificarSkills.Click += BtModificarSkills_Click;
             f.btInsertarSkills.MouseUp += BtInsertarSkills_MouseUp;
+            //Spells
+            f.dgvSpells.SelectionChanged += DgvSpells_SelectionChanged;
+            f.btBuscarSpells.Click += BtBuscarSpells_Click;
+            f.btEliminarSpells.Click += BtEliminarSpells_Click;
+            f.btInsertarSpells.Click += BtInsertarSpells_Click;
         }
 
         //AbilityScore
@@ -5400,6 +5434,367 @@ namespace DnDDesktop.Controllers
                 MessageBox.Show(Extensions.GetaAllMessages(ex));
             }
         }
+
+        //Spells
+        private void DgvSpells_SelectionChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow rowSpells = f.dgvSpells.CurrentRow;
+                if (rowSpells != null)
+                {
+                    Spell spell = SpellsRepository.GetSpell(((Spell)rowSpells.DataBoundItem).Id);
+                    if (spell != null)
+                    {
+                        f.tbIndexSpells.Text = spell?.Index;
+                        f.tbNameSpells.Text = spell?.Name;
+                        f.tbLevelSpells.Text = spell?.Level.ToString();
+                        f.tbMaterialSpells.Text = spell?.Material;
+                        f.tbAttackTypeSpells.Text = spell?.AttackType;
+                        f.tbCastingTimeSpells.Text = spell?.CastingTime;
+                        f.chbConcentrationSpells.Checked = (bool)(spell?.Concentration);
+                        f.chbRitualSpells.Checked = (bool)(spell?.Ritual);
+                        f.tbDurationSpells.Text = spell?.Duration;
+                        f.tbRangeSpells.Text = spell?.Range;
+                        f.rtbComponentsSpells.ResetText();
+                        for (int i = 0; i < 3 && i < spell?.Components?.Length; i++)
+                        {
+                            f.rtbComponentsSpells.AppendText(spell?.Components[i]);
+                        }
+                        f.rtbDescSpells.Text = spell?.Description?.FirstOrDefault();
+                        f.rtbHigherLevelSpells.Text = spell?.HigherLevel?.FirstOrDefault();
+                        f.cbClassesSpells.SelectedIndex = f.cbClassesSpells.FindString(spell?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                        f.cbSchoolsSpells.SelectedIndex = f.cbSchoolsSpells.FindString(spell?.From?.Name);
+                        f.cbSubclassesSpells.SelectedIndex = f.cbSubclassesSpells.FindString(spell?.Subclasses?.Select(a => a.Name)?.FirstOrDefault());
+                        BuscarYSeleccionarHealAtSlotLevel(spell?.HealAtSlotLevel);
+                        BuscarYSeleccionarDamageAtSlotLevel(spell?.DamageSpell?.DamageSlotLevel);
+                        BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
+                        BuscarYSeleccionarDamageType(spell?.DamageSpell?.DamageType);
+                        BuscarYSeleccionarAreaOfEffect(spell?.AreaOfEffect);
+                        BuscarYSeleccionarDC(spell?.DC);
+                        BuscarYSeleccionarDCType(spell?.DC?.dc_type);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BuscarYSeleccionarHealAtSlotLevel(HealAtSlotLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.HealAtSlotLevel?.HealAtSlotLevel1 == claseBuscar?.HealAtSlotLevel1 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel2 == claseBuscar?.HealAtSlotLevel2 && a.HealAtSlotLevel?.HealAtSlotLevel3 == claseBuscar?.HealAtSlotLevel3 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel4 == claseBuscar?.HealAtSlotLevel4 && a.HealAtSlotLevel?.HealAtSlotLevel5 == claseBuscar?.HealAtSlotLevel5 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel6 == claseBuscar?.HealAtSlotLevel6 && a.HealAtSlotLevel?.HealAtSlotLevel7 == claseBuscar?.HealAtSlotLevel7 &&
+            a.HealAtSlotLevel?.HealAtSlotLevel8 == claseBuscar?.HealAtSlotLevel8 && a.HealAtSlotLevel?.HealAtSlotLevel9 == claseBuscar?.HealAtSlotLevel9);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvHealAtSlotLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvHealAtSlotLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto HealAtSlotLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageAtSlotLevel(DamageSlotLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageSlotLevel?.DmSlLvl1 == claseBuscar?.DmSlLvl1 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl2 == claseBuscar?.DmSlLvl2 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl3 == claseBuscar?.DmSlLvl3 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl4 == claseBuscar?.DmSlLvl4 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl5 == claseBuscar?.DmSlLvl5 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl6 == claseBuscar?.DmSlLvl6 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl7 == claseBuscar?.DmSlLvl7 &&
+            a.DamageSpell?.DamageSlotLevel?.DmSlLvl8 == claseBuscar?.DmSlLvl8 && a.DamageSpell?.DamageSlotLevel?.DmSlLvl9 == claseBuscar?.DmSlLvl9);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageAtSlotLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageAtSlotLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageSlotLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageAtCharacterLevel(DamageCharacterLevelSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl1 == claseBuscar?.DmChLcl1 &&
+            a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl5 == claseBuscar?.DmChLcl5 && a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl11 == claseBuscar?.DmChLcl11 &&
+            a.DamageSpell?.DamageAtCharacterLevel?.DmChLcl17 == claseBuscar?.DmChLcl17);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageAtCharacterLevelSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageAtCharacterLevelSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageCharacterLevel.");
+            }
+        }
+        private void BuscarYSeleccionarDamageType(From claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DamageSpell?.DamageType?.Name == claseBuscar?.Name && a.DamageSpell?.DamageType?.Index == claseBuscar?.Index);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDamageTypeSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDamageTypeSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DamageType.");
+            }
+        }
+        private void BuscarYSeleccionarAreaOfEffect(AreaOfEffect claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.AreaOfEffect?.Size == claseBuscar?.Size && a.AreaOfEffect?.Type == claseBuscar?.Type);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvAreaOfEffectSpells.Rows[rowIndex].Selected = true;
+                    f.dgvAreaOfEffectSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AreaOfEffect.");
+            }
+        }
+        private void BuscarYSeleccionarDC(DCSpell claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DC?.dc_success == claseBuscar?.dc_success && a.DC?.dc_desc == claseBuscar?.dc_desc &&
+            a.DC?.dc_type?.Index == claseBuscar?.dc_type?.Index && a.DC?.dc_type?.Name == claseBuscar?.dc_type?.Name);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDCSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDCSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DC.");
+            }
+        }
+        private void BuscarYSeleccionarDCType(From claseBuscar)
+        {
+            Spell clase = spells?.FirstOrDefault(a => a.DC?.dc_type?.Index == claseBuscar?.Index && a.DC?.dc_type?.Name == claseBuscar?.Name);
+
+            if (clase != null)
+            {
+                // Encontrado, ahora seleccionamos la fila en el DataGridView
+                int rowIndex = spells.IndexOf(clase);
+                if (rowIndex != -1)
+                {
+                    // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
+                    f.dgvDCTypeSpells.Rows[rowIndex].Selected = true;
+                    f.dgvDCTypeSpells.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                }
+            }
+            else
+            {
+                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto DCType.");
+            }
+        }
+
+        private void BtBuscarSpells_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarSpells.Text))
+                {
+                    string idBuscar = spells.Where(a => a.Index.Equals(f.tbFiltrarSpells.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        Spell spell = SpellsRepository.GetSpell(idBuscar);
+                        if (spell != null)
+                        {
+                            f.tbIndexSpells.Text = spell?.Index;
+                            f.tbNameSpells.Text = spell?.Name;
+                            f.tbLevelSpells.Text = spell?.Level.ToString();
+                            f.tbMaterialSpells.Text = spell?.Material;
+                            f.tbAttackTypeSpells.Text = spell?.AttackType;
+                            f.tbCastingTimeSpells.Text = spell?.CastingTime;
+                            f.chbConcentrationSpells.Checked = (bool)(spell?.Concentration);
+                            f.chbRitualSpells.Checked = (bool)(spell?.Ritual);
+                            f.tbDurationSpells.Text = spell?.Duration;
+                            f.tbRangeSpells.Text = spell?.Range;
+                            f.rtbComponentsSpells.ResetText();
+                            for (int i = 0; i < 3 && i < spell?.Components?.Length; i++)
+                            {
+                                f.rtbComponentsSpells.AppendText(spell?.Components[i]);
+                            }
+                            f.rtbDescSpells.Text = spell?.Description?.FirstOrDefault();
+                            f.rtbHigherLevelSpells.Text = spell?.HigherLevel?.FirstOrDefault();
+                            f.cbClassesSpells.SelectedIndex = f.cbClassesSpells.FindString(spell?.Classes?.Select(a => a.Name)?.FirstOrDefault());
+                            f.cbSchoolsSpells.SelectedIndex = f.cbSchoolsSpells.FindString(spell?.From?.Name);
+                            f.cbSubclassesSpells.SelectedIndex = f.cbSubclassesSpells.FindString(spell?.Subclasses?.Select(a => a.Name)?.FirstOrDefault());
+                            BuscarYSeleccionarHealAtSlotLevel(spell?.HealAtSlotLevel);
+                            BuscarYSeleccionarDamageAtSlotLevel(spell?.DamageSpell?.DamageSlotLevel);
+                            BuscarYSeleccionarDamageAtCharacterLevel(spell?.DamageSpell?.DamageAtCharacterLevel);
+                            BuscarYSeleccionarDamageType(spell?.DamageSpell?.DamageType);
+                            BuscarYSeleccionarAreaOfEffect(spell?.AreaOfEffect);
+                            BuscarYSeleccionarDC(spell?.DC);
+                            BuscarYSeleccionarDCType(spell?.DC?.dc_type);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres buscar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+
+        private void BtEliminarSpells_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(f.tbFiltrarSpells.Text))
+                {
+                    string idBuscar = spells.Where(a => a.Index.Equals(f.tbFiltrarSpells.Text.ToString())).Select(a => a.Id.ToLower().ToString()).FirstOrDefault();
+
+                    if (idBuscar != null)
+                    {
+                        SpellsRepository.DeleteSpell(idBuscar);
+                        MessageBox.Show("Has eliminado " + f.tbFiltrarSpells.Text.ToString());
+                        LoadDataSpells();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe una referencia con ese index");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo que quieres eliminar no puede estar vacío");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+
+        }
+        private void BtInsertarSpells_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Spell spellInsertar = new Spell();
+                string index = f.tbIndexSpells.Text;
+                string name = f.tbIndexSpells.Text;
+                int level = int.Parse(f.tbIndexSpells.Text);
+                string material = f.tbIndexSpells.Text;
+                string attackType = f.tbIndexSpells.Text;
+                string castingTime = f.tbIndexSpells.Text;
+                string duration = f.tbIndexSpells.Text;
+                string range = f.tbIndexSpells.Text;
+                bool concentration = f.chbConcentrationSpells.Checked;
+                bool ritual = f.chbRitualSpells.Checked;
+                string[] components = new string[] { f.rtbComponentsSpells.Text };
+                string[] description = new string[] { f.rtbDescSpells.Text };
+                string[] higherLevel = new string[] { f.rtbHigherLevelSpells.Text };
+
+                From classes = (From)f.cbClassesSpells.SelectedItem;
+                From schools = (From)f.cbSchoolsSpells.SelectedItem;
+                From subclasses = (From)f.cbSubclassesSpells.SelectedItem;
+
+                DataGridViewRow healAtSlotLevelRow = f.dgvHealAtSlotLevelSpells.CurrentRow;
+                DataGridViewRow damageAtSlotLevelRow = f.dgvDamageAtSlotLevelSpells.CurrentRow;
+                DataGridViewRow damageAtCharacterLevelRow = f.dgvDamageAtCharacterLevelSpells.CurrentRow;
+                DataGridViewRow damageTypeRow = f.dgvDamageType.CurrentRow;
+                DataGridViewRow areaOfEffectRow = f.dgvAreaOfEffectSpells.CurrentRow;
+                DataGridViewRow dcRow = f.dgvDCSpells.CurrentRow;
+                DataGridViewRow dcTypeRow = f.dgvDCTypeSpells.CurrentRow;
+
+                //if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(level.ToString()) &&
+                //    !string.IsNullOrEmpty(castingTime) && !string.IsNullOrEmpty(duration) && !string.IsNullOrEmpty(range) &&
+                //    f.rtbComponentsSpells.Text != string.Empty)
+                //{
+
+                //}
+
+                if (f.rtbComponentsSpells.Text != string.Empty)
+                {
+                    MessageBox.Show("Tiene contenido");
+                }
+                else
+                {
+                    MessageBox.Show("Está vacío");
+                }
+                if (healAtSlotLevelRow != null && damageAtSlotLevelRow != null && damageAtCharacterLevelRow != null && damageTypeRow != null &&
+                    areaOfEffectRow != null && dcRow != null && dcTypeRow != null)
+                {
+                    //Guardar todos los damage en un objeto DamageSpell
+                    DamageSpell damage = new DamageSpell();
+                    damage.DamageAtCharacterLevel = (DamageCharacterLevelSpell)damageAtCharacterLevelRow.DataBoundItem;
+                    damage.DamageSlotLevel = (DamageSlotLevelSpell)damageAtSlotLevelRow.DataBoundItem;
+                    damage.DamageType = (From)damageTypeRow.DataBoundItem;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Extensions.GetaAllMessages(ex));
+            }
+        }
+        ////This method returns true if the RichTextBox is empty.
+        //public bool isRichTextBoxEmpty()
+        //{
+        //    TextPointer startPointer = MyRTB1.ContentStart.GetNextInsertionPosition(LogicalDirection.Forward);
+        //    TextPointer endPointer = MyRTB1.ContentEnd.GetNextInsertionPosition(LogicalDirection.Backward);
+        //    if (startPointer.CompareTo(endPointer) == 0)
+        //        return true;
+        //    else
+        //        return false;
+        //}
     }
 }
 

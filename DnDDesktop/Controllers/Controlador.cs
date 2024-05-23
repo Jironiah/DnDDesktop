@@ -36,63 +36,45 @@ namespace DnDDesktop.Controllers
         SkillRepository SkillRepository = new SkillRepository();
         SpellsRepository SpellsRepository = new SpellsRepository();
 
-        //Listas
+        //Lists
 
         //AbilityScores
         List<From> listaAbilityScoreSkills = new List<From>();
         List<AbilityScore> abilityScores = new List<AbilityScore>();
-
         //Alignments
         List<Alignments> alignments = new List<Alignments>();
-
         //WeaponProperties
         List<WeaponProperty> weapons = new List<WeaponProperty>();
-
         //Classes
         List<Classes> classes = new List<Classes>();
-
         //Backgrounds
         List<Background> backgrounds = new List<Background>();
-
         //Conditions
         List<Conditions> conditions = new List<Conditions>();
-
         //DamageType
         List<DamageType> damageTypes = new List<DamageType>();
-
         //Equipment
         List<Equipment> equipments = new List<Equipment>();
-
         //EquipmentCategories
         List<EquipmentCategory> equipmentCategories = new List<EquipmentCategory>();
-
         //Feats
         List<Feats> feats = new List<Feats>();
-
         //Feature
         List<Feature> features = new List<Feature>();
-
         //Language
         List<Language> languages = new List<Language>();
-
         //Level
         List<Level> levels = new List<Level>();
-
         //MagicItem
         List<MagicItem> magicItems = new List<MagicItem>();
-
         //MagicSchool
         List<MagicSchool> magicSchools = new List<MagicSchool>();
-
         //Proficiency
         List<Proficiency> proficiencies = new List<Proficiency>();
-
         //Races
         List<Race> races = new List<Race>();
-
         //Skill
         List<Skill> skills = new List<Skill>();
-
         //Spells
         List<Spell> spells = new List<Spell>();
 
@@ -102,6 +84,7 @@ namespace DnDDesktop.Controllers
             InitListeners();
             Application.Run(f);
         }
+
 
         private void LoadData()
         {
@@ -268,8 +251,6 @@ namespace DnDDesktop.Controllers
             f.dgvAbilityBonusOptionFromRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.FirstOrDefault())?.ToList();
             f.dgvAbilityBonusOptionFromRace.Columns["AbilityScore"].Visible = false;
             f.dgvAbilityBonusOptionsAbilityScoreRace.DataSource = races?.Select(a => a.AbilityBonusOptions?.From?.Select(a => a.AbilityScore).FirstOrDefault())?.ToList();
-            //f.dgvAbilityBonusRace.DataSource = races?.Select(a => a.AbilityBonus?.FirstOrDefault())?.ToList();
-            //f.dgvAbilityBonusRace.Columns["AbilityScore"].Visible = false;
             f.cbAbilityBonusAbilityScoreRace.DataSource = races?.FirstOrDefault()?.AbilityBonus?.Select(a => a.AbilityScore).ToList();
             f.cbAbilityBonusAbilityScoreRace.DisplayMember = "Name";
             f.dgvLanguageOptionsRace.DataSource = races?.Select(a => a.LanguageOptions).ToList();
@@ -4623,21 +4604,18 @@ namespace DnDDesktop.Controllers
         {
             if (claseBuscar != null)
             {
-                // Buscar el objeto Race que contiene el AbilityBonusOptionRace dado
-                Race race = races?.FirstOrDefault(a =>
+                Race? race = races?.FirstOrDefault(a =>
                     CompareAbilityBonusOptionsFrom(a.AbilityBonusOptions, claseBuscar)
                 );
 
                 if (race != null && race.AbilityBonusOptions != null && race.AbilityBonusOptions.From != null && claseBuscar?.From != null)
                 {
-                    // Buscar el objeto OptionsRace que coincide con el primer elemento de From de AbilityBonusOptionRace
-                    OptionsRace optionRace = race.AbilityBonusOptions?.From?.FirstOrDefault(a =>
+                    OptionsRace? optionRace = race.AbilityBonusOptions?.From?.FirstOrDefault(a =>
                         CompareOptionsRace(a, claseBuscar?.From?.FirstOrDefault())
                     );
 
                     if (optionRace != null)
                     {
-                        // Encontrado, ahora seleccionamos la fila en el DataGridView
                         int rowIndex = f.dgvAbilityBonusOptionFromRace.Rows
                             .Cast<DataGridViewRow>()
                             .FirstOrDefault(row => row.DataBoundItem == optionRace)?
@@ -4645,20 +4623,19 @@ namespace DnDDesktop.Controllers
 
                         if (rowIndex != -1)
                         {
-                            // Si rowIndex es -1, significa que el objeto no se encuentra en la lista
                             f.dgvAbilityBonusOptionFromRace.Rows[rowIndex].Selected = true;
-                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; // Desplazamos el DataGridView a la fila seleccionada
+                            f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = rowIndex; 
                             return;
                         }
                     }
                 }
 
-                MessageBox.Show("El objeto que quiero mostrar no está contenido en ningún objeto AbilityBonusOption.From.");
+                MessageBox.Show("El objeto que quiero mostrar no está en ningún objeto AbilityBonusOption.From.");
             }
             else
             {
                 f.dgvAbilityBonusOptionFromRace.Rows[0].Selected = true;
-                f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = f.dgvAbilityBonusOptionFromRace.Rows[0].Index; // Desplazamos el DataGridView a la fila seleccionada
+                f.dgvAbilityBonusOptionFromRace.FirstDisplayedScrollingRowIndex = f.dgvAbilityBonusOptionFromRace.Rows[0].Index; 
             }
 
         }
@@ -4896,8 +4873,8 @@ namespace DnDDesktop.Controllers
                 DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
                 DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
 
-                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) && !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) &&
-                    !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
+                if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) &&
+                    !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) && !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
                 {
                     raceInsertar.Index = index;
                     raceInsertar.Name = name;
@@ -4988,7 +4965,7 @@ namespace DnDDesktop.Controllers
                         raceInsertar.AbilityBonusOptions = abilityBonusOptionRace;
 
                         //MessageBox.Show("abilityOptions");
-                    }
+                    } 
 
                     if (languageOptionsRow != null)
                     {

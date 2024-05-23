@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class SkillRepository
     {
-        string urlSkill = "https://localhost:7153/api/Skill/";
+        string urlSkill = "https://api.mounthein.es/api/Skill/";
 
         public List<Skill> GetSkills()
         {

@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class ClassesRepository
     {
-        string ws1 = "https://localhost:7153/api/Classes/";
+        string ws1 = "https://api.mounthein.es/api/Classes/";
 
         public List<Classes> GetClasses()
         {

@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class FeatRepository
     {
-        string urlFeats = "https://localhost:7153/api/Feat/";
+        string urlFeats = "https://api.mounthein.es/api/Feat/";
 
         public List<Feats> GetFeats()
         {

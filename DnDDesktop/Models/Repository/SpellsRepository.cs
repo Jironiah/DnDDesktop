@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class SpellsRepository
     {
-        string urlSpells = "https://localhost:7153/api/Spell/";
+        string urlSpells = "https://api.mounthein.es/api/Spell/";
 
         public List<Spell> GetSpells()
         {

@@ -472,6 +472,8 @@
             tbIndexSkills = new TextBox();
             tbNameSkills = new TextBox();
             Spells = new TabPage();
+            dgvDCTypeSpells = new DataGridView();
+            label137 = new Label();
             chbRitualSpells = new CheckBox();
             chbConcentrationSpells = new CheckBox();
             dgvDamageTypeSpells = new DataGridView();
@@ -578,8 +580,6 @@
             label167 = new Label();
             tbIndexTraits = new TextBox();
             tbNameTraits = new TextBox();
-            dgvDCTypeSpells = new DataGridView();
-            label137 = new Label();
             tabControl1.SuspendLayout();
             AbilityScore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAbilityScore).BeginInit();
@@ -652,6 +652,7 @@
             Skills.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSkills).BeginInit();
             Spells.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).BeginInit();
@@ -662,7 +663,6 @@
             Subclasses.SuspendLayout();
             SubRaces.SuspendLayout();
             Traits.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -3964,7 +3964,7 @@
             dgvClassEspecificLevels.RowHeadersWidth = 51;
             dgvClassEspecificLevels.RowTemplate.Height = 29;
             dgvClassEspecificLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClassEspecificLevels.Size = new Size(1729, 93);
+            dgvClassEspecificLevels.Size = new Size(1729, 229);
             dgvClassEspecificLevels.TabIndex = 124;
             // 
             // label89
@@ -5401,6 +5401,30 @@
             Spells.Text = "Spells";
             Spells.UseVisualStyleBackColor = true;
             // 
+            // dgvDCTypeSpells
+            // 
+            dgvDCTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDCTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvDCTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDCTypeSpells.Location = new Point(855, 384);
+            dgvDCTypeSpells.MultiSelect = false;
+            dgvDCTypeSpells.Name = "dgvDCTypeSpells";
+            dgvDCTypeSpells.ReadOnly = true;
+            dgvDCTypeSpells.RowHeadersWidth = 51;
+            dgvDCTypeSpells.RowTemplate.Height = 29;
+            dgvDCTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDCTypeSpells.Size = new Size(349, 125);
+            dgvDCTypeSpells.TabIndex = 196;
+            // 
+            // label137
+            // 
+            label137.AutoSize = true;
+            label137.Location = new Point(855, 361);
+            label137.Name = "label137";
+            label137.Size = new Size(60, 20);
+            label137.TabIndex = 195;
+            label137.Text = "DCType";
+            // 
             // chbRitualSpells
             // 
             chbRitualSpells.AutoSize = true;
@@ -6441,30 +6465,6 @@
             tbNameTraits.Size = new Size(252, 27);
             tbNameTraits.TabIndex = 63;
             // 
-            // dgvDCTypeSpells
-            // 
-            dgvDCTypeSpells.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvDCTypeSpells.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDCTypeSpells.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDCTypeSpells.Location = new Point(855, 384);
-            dgvDCTypeSpells.MultiSelect = false;
-            dgvDCTypeSpells.Name = "dgvDCTypeSpells";
-            dgvDCTypeSpells.ReadOnly = true;
-            dgvDCTypeSpells.RowHeadersWidth = 51;
-            dgvDCTypeSpells.RowTemplate.Height = 29;
-            dgvDCTypeSpells.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDCTypeSpells.Size = new Size(349, 125);
-            dgvDCTypeSpells.TabIndex = 196;
-            // 
-            // label137
-            // 
-            label137.AutoSize = true;
-            label137.Location = new Point(855, 361);
-            label137.Name = "label137";
-            label137.Size = new Size(60, 20);
-            label137.TabIndex = 195;
-            label137.Text = "DCType";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -6567,6 +6567,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvSkills).EndInit();
             Spells.ResumeLayout(false);
             Spells.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvDamageTypeSpells).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAreaOfEffectSpells).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvDamageAtSlotLevelSpells).EndInit();
@@ -6580,7 +6581,6 @@
             SubRaces.PerformLayout();
             Traits.ResumeLayout(false);
             Traits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDCTypeSpells).EndInit();
             ResumeLayout(false);
         }
 

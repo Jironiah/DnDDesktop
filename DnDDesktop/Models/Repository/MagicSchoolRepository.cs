@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class MagicSchoolRepository
     {
-        string urlMagicSchool = "https://localhost:7153/api/MagicSchool/";
+        string urlMagicSchool = "https://api.mounthein.es/api/MagicSchool/";
 
         public List<MagicSchool> GetMagicSchools()
         {

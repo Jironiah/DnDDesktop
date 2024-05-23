@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class LevelRepository
     {
-        string urlLevel = "https://localhost:7153/api/Level/";
+        string urlLevel = "https://api.mounthein.es/api/Level/";
 
         public List<Level> GetLevels()
         {

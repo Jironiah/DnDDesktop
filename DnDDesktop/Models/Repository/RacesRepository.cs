@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class RacesRepository
     {
-        string urlRaces = "https://localhost:7153/api/Race/";
+        string urlRaces = "https://api.mounthein.es/api/Race/";
 
         public List<Race> GetRaces()
         {

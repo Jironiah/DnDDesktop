@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class DamageTypeRepository
     {
-        string urlDamageType = "https://localhost:7153/api/DamageType/";
+        string urlDamageType = "https://api.mounthein.es/api/DamageType/";
 
         public List<DamageType> GetDamageTypes()
         {

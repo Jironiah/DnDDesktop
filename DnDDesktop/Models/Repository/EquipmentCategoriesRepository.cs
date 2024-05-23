@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class EquipmentCategoriesRepository
     {
-        string urlEquipmentCategory = "https://localhost:7153/api/EquipmentCategory/";
+        string urlEquipmentCategory = "https://api.mounthein.es/api/EquipmentCategory/";
 
 
         public List<EquipmentCategory> GetEquipmentCategories()

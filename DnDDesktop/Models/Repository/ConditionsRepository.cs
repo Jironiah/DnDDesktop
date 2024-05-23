@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     internal class ConditionsRepository
     {
-        string urlConditions = "https://localhost:7153/api/Conditions/";
+        string urlConditions = "https://api.mounthein.es/api/Conditions/";
 
         public List<Conditions> GetConditions()
         {

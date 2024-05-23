@@ -7,7 +7,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class ProficiencyRepository
     {
-        string urlProficiency = "https://localhost:7153/api/Proficiency/";
+        string urlProficiency = "https://api.mounthein.es/api/Proficiency/";
 
         public List<Proficiency> GetProficiencies()
         {

@@ -10,7 +10,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class AlignmentsRepository
     {
-        string urlAlignments = "https://localhost:7153/api/Alignment/";
+        string urlAlignments = "https://api.mounthein.es/api/Alignment/";
 
         public List<Alignments> GetAlignments()
         {

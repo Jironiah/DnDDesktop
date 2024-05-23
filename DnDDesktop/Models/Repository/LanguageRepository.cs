@@ -6,7 +6,7 @@ namespace DnDDesktop.Models.Repository
 {
     public class LanguageRepository
     {
-        string ws1 = "https://localhost:7153/api/Language/";
+        string ws1 = "https://api.mounthein.es/api/Language/";
 
         public List<Language> GetLanguages()
         {

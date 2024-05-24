@@ -5082,8 +5082,8 @@ namespace DnDDesktop.Controllers
                         DataGridViewRow languageOptionsRow = f.dgvLanguageOptionsRace.CurrentRow;
                         DataGridViewRow startingProficienciesOptionsRow = f.dgvStartingProficienciesOptionsRace.CurrentRow;
 
-                        if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) && !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) &&
-                            !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
+                        if (!string.IsNullOrEmpty(index) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(age) && !string.IsNullOrEmpty(alignment) &&
+                            !string.IsNullOrEmpty(languageDesc) && !string.IsNullOrEmpty(size) && !string.IsNullOrEmpty(sizeDescription) && !string.IsNullOrEmpty(speed.ToString()))
                         {
                             raceModificar.Index = index;
                             raceModificar.Name = name;
